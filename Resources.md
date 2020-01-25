@@ -24,8 +24,8 @@ Link to past year contests organized by CRUx: [codeforces.com/group/mnjOBx357f/c
 Link to post on workshop held in first sem: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2470947036473588/]\
 DP problems: [atcoder.jp/contests/dp]\
 Graph Theory: [hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/]\
-a2oj: [a2oj.com/]
-AshishGupGod >\\\< [github.com/Ashishgup1/Competitive-Coding?files=1]
+a2oj: [a2oj.com/]\
+AshishGupGod >\\\\\\< [github.com/Ashishgup1/Competitive-Coding?files=1]
 
 Extra:\
 Track your progress: [cfviz.netlify.com/]\
