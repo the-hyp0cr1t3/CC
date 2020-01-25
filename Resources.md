@@ -25,7 +25,8 @@ Link to post on workshop held in first sem: [facebook.com/groups/BPHCCompetitive
 DP problems: [atcoder.jp/contests/dp]\
 Graph Theory: [hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/]\
 a2oj: [a2oj.com/]
+AshishGupGod >\\\< [github.com/Ashishgup1/Competitive-Coding?files=1]
 
 Extra:\
 Track your progress: [cfviz.netlify.com/]\
-Rating Predictor (Download the extension): [cf-predictor-frontend.herokuapp.com/]
+Rating Predictor (Download the extension): [cf-predictor-frontend.herokuapp.com/
