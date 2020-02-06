@@ -27,11 +27,11 @@ DP problems: [atcoder.jp/contests/dp]\
 Graph Theory: [hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/]\
 Data Structures: [hackerearth.com/practice/data-structures/arrays/1-d/tutorial/]
 a2oj: [a2oj.com/]\
-AshishGupGod >\\\\\\< [github.com/Ashishgup1/Competitive-Coding?files=1]
+AshishGupGod > [github.com/Ashishgup1/Competitive-Coding?files=1]
 
 Extra:\
 Track your progress: [cfviz.netlify.com/]\
-Rating Predictor (Download the extension): [cf-predictor-frontend.herokuapp.com/
+Rating Predictor (Download the extension): [cf-predictor-frontend.herokuapp.com/]
 
 Motivation :D\
 [github.com/ashishgup/Motivation?files=1]
