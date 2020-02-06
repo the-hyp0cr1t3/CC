@@ -22,8 +22,10 @@ Also, Virtual Contests are a thing. You could have all the conceptual knowledge 
 Additional links:\
 Link to past year contests organized by CRUx: [codeforces.com/group/mnjOBx357f/contests]\
 Link to post on workshop held in first sem: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2470947036473588/]\
+DP Guide: [codeforces.com/blog/entry/67679]
 DP problems: [atcoder.jp/contests/dp]\
 Graph Theory: [hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/]\
+Data Structures: [hackerearth.com/practice/data-structures/arrays/1-d/tutorial/]
 a2oj: [a2oj.com/]\
 AshishGupGod >\\\\\\< [github.com/Ashishgup1/Competitive-Coding?files=1]
 
