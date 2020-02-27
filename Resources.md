@@ -1,7 +1,7 @@
 Resources (I used) starting out
 
 Setting up an IDE:\
-I like Sublime Text because it's fast and light. Another popular choice is Visual Studio (paired with Divyanshu's CRUx sellout sorry-not-sorry extension). It's upto personal preference. Just don't use Codechef IDE online (cuz it sucks and is very slow) like a certain someone in this group..\
+I like Sublime Text because it's fast and light. Another popular choice is Visual Studio (paired with some useful extensions). It's upto personal preference.\
 Link to setting up Sublime: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/]\
 Link to VS extension: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2491737024394589/]
 
