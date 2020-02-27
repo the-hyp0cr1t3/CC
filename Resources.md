@@ -1,7 +1,7 @@
 Resources (I used) starting out
 
 Setting up an IDE:\
-I like Sublime Text because it's fast and light. Another popular choice is Visual Studio (paired with some useful extensions). It's upto personal preference.\
+I like Sublime Text because it's fast and light weight. Another popular choice is Visual Studio (paired with some useful extensions). It's comes down to personal preference.\
 Link to setting up Sublime: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/]\
 Link to VS extension: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2491737024394589/]
 
@@ -10,7 +10,7 @@ If you're not already familiar with the language, going through this is highly a
 Link: [hackerrank.com/domains/cpp/stl]
 
 Topics:\
-Post says it all. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.\
+Posts say it all. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.\
 Link: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/]
 
 Once you're familiar with a particular topic, you can go to Problemset on Codeforces and search by tag and/or rating. \
