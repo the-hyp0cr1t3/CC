@@ -28,6 +28,7 @@ Graph Theory: [hackerearth.com/practice/algorithms/graphs/graph-representation/t
 Data Structures: [hackerearth.com/practice/data-structures/arrays/1-d/tutorial/]
 a2oj: [a2oj.com/]\
 AshishGupGod > [github.com/Ashishgup1/Competitive-Coding?files=1]
+[quora.com/What-are-some-C-hacks-for-competitive-programming-except-STL/answer/Ashish-Gupta-211?ch=10&share=79b0de97&srid=ihpN]
 
 Extra:\
 Track your progress: [cfviz.netlify.com/]\
