@@ -11,7 +11,7 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
   <summary>Spoiler</summary>
  
   It's *C++* and [here's](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming) why.\
-  **tl;dr**: C++ is the fastest and has a lot of useful functions.
+  **tl;dr**: C++ is the most commmonly used 'fast' language, that also comes with great functionality.
   
   If you're not already familiar with this language, it's advised that you switch over. There are infinitely many links on the internet that guide you through the basics, so this blog won't mention any.
 </details>
