@@ -1,4 +1,5 @@
-# Resources (I used) starting out
+# Getting into Competitive Coding
+Here are some resources I used starting out.
 
 ## Setting up an IDE
 I like *Sublime Text* because it's fast and light weight. Another popular choice is *Visual Studio* (paired with some useful extensions). However, anything is fine as it comes down to personal preference.\
