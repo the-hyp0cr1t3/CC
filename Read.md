@@ -21,7 +21,7 @@ STL, or Standard Template Library, is a huge library of useful functions. If you
 
 ## Getting started
 [Here](CC%20Sites.md) is a comprehensive guide on Competitive Coding websites (primarily CodeForces, which I recommend).
-Before you actually start it is important to familiarize yourself with the big-O notation. Understanding [Time and Space Complexity](https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/) is the only prerequisite (apart from knowing a language). Once you've done all this, you're ready to start.
+Before you actually start it is important to familiarize yourself with the big-O notation. Understanding [Time and Space Complexity](https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/) is the only prerequisite (apart from knowing a language). Once you've done all this, you're ready to [start](Hello%20world.cpp).
 
 ## One formula for everything
 * Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts that cover most beginner topics. **Upsolve every problem** from these posts. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to **explore further**.
