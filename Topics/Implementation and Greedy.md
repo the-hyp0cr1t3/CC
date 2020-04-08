@@ -13,7 +13,8 @@ Ad Hoc/Implementation problems do not rely on the knowledge of any particular da
 ## Greedy
 
 As the name suggests, a greedy approach is one where the *greedily* picking the **best option** at every 'stage' leads to the **best outcome**.
-[Tutorial](https://www.hackerearth.com/…/basics-of-greedy-alg…/tutorial)
+
+[Tutorial](https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/)
 
 ### Problems
 * [Codeforces 337 A](http://codeforces.com/problemset/problem/337/A)
