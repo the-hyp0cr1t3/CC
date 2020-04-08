@@ -58,8 +58,8 @@ There are 3 broad divisions, namely
 * Div. 2
 * Div. 3
 
-Original, I know. Particiapants in a Div. 3 contest rated *1600 and below* **only** are given rating changes for the contest. In other words, the contest remains unrated for those above R1600. Similarly, those rated either *1900* or *2100 and below* (depends on the contest) **only** are affected by rating changes. Div. 1 contests are the hardest and are rated for all. Subsequently in terms of difficulty, **Div. 3 < Div. 2 < Div. 1**.
-Some of the types of contests held, according to division are
+Original, I know. Particiapants in a Div. 3 contest rated *1600 and below* **only** are given rating changes for the contest. In other words, the contest remains unrated for those above R1600. Similarly, in a Div. 2 contest, those rated either *1900* or *2100 and below* (depends on the contest) **only** are affected by rating changes. Div. 1 contests are the hardest and are rated for all. Subsequently in terms of difficulty, **Div. 3 < Div. 2 < Div. 1**.
+Some common types of division-wise contests held are
 * Div. 2
 * Div. 3
 * Div. 1 and Div. 2 (in parallel)
