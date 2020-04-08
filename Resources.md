@@ -20,7 +20,7 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
 STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://hackerrank.com/domains/cpp/stl) is a good place to start.
 
 ## Everything that comes after
-* Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts on FB which covers most beginner topics. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.
+* Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts from the FB group (which you have to be a part of to access) that covers most beginner topics. Upsolve every problem from these posts. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.
 
 * Once you're familiar with a particular topic, you can go to [Problemset](https://codeforces.com/problemset) on Codeforces and search by tag and/or rating. From there, it's just practice, practice, practice.
 
@@ -29,8 +29,8 @@ STL, or Standard Template Library, is a huge library of useful functions. If you
 Learn new topic > Practice problems > Improve speed. Rinse and repeat.
 
 ## Additional links
-[Link to past year contests organized by CRUx](https://codeforces.com/group/mnjOBx357f/contests)\
-[Link to post on workshop held in first sem](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2470947036473588/)\
+[Link](https://codeforces.com/group/mnjOBx357f/contests) to past year contests organized by CRUx\
+[Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2470947036473588/) to FB post on workshop held in first sem\
 [DP Guide](https://codeforces.com/blog/entry/67679)\
 [DP problems](https://atcoder.jp/contests/dp)\
 [Graph Theory](https://hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/)\
