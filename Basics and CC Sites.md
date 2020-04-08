@@ -2,7 +2,7 @@
 
 ## Codeforces
 
-While there are quite a few good sites for contests, I'd primarily recommend *[CodeForces](https://codeforces.com/)* for it's amazing community, interface and problem statements.
+While there are quite a few good sites for contests, I'd primarily recommend *[CodeForces](https://codeforces.com/)* for its amazing community, interface and problem statements.
 
 ### Problems
 A problem typically consists of a problem statement (that details the task), constraints on the input (in simple terms, how big the input will be), input and output instructions (what to read, what to write), and finally a sample test case.
