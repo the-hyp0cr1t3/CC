@@ -1,18 +1,16 @@
 # Resources (I used) starting out
 
 ## Setting up an IDE
-I like *Sublime Text* because it's fast and light weight. Another popular choice is *Visual Studio* (paired with some useful extensions). It comes down to personal preference.\
+I like *Sublime Text* because it's fast and light weight. Another popular choice is *Visual Studio* (paired with some useful extensions). However, anything is fine as it comes down to personal preference.\
 [Link](facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/) to setting up Sublime\
 [Link](facebook.com/groups/BPHCCompetitiveCoding/permalink/2491737024394589/) to VS extension
 
 ## Choosing a language
 <details>
   <summary>Spoiler</summary>
-  
-  ```
-  It's C++ and [here's](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming) why. 
-  tl;dr: C++ is the fastest and has a lot of useful functions.
-  ```
+ 
+  It's *C++* and [here's](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming) why.\
+  **tl;dr**: C++ is the fastest and has a lot of useful functions.
 </details>
 
 ## C++ STL
