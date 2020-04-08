@@ -1,38 +1,37 @@
-Resources (I used) starting out
+# Resources (I used) starting out
 
-Setting up an IDE:\
+## Setting up an IDE:\
 I like Sublime Text because it's fast and light weight. Another popular choice is Visual Studio (paired with some useful extensions). It's comes down to personal preference.\
-Link to setting up Sublime: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/]\
-Link to VS extension: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2491737024394589/]
+[Link to setting up Sublime](facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/)\
+[Link to VS extension](facebook.com/groups/BPHCCompetitiveCoding/permalink/2491737024394589/)
 
-C++ STL:\
+## C++ STL:\
 If you're not already familiar with the language, going through this is highly advisable.\
-Link: [hackerrank.com/domains/cpp/stl]
+[Link](hackerrank.com/domains/cpp/stl)
 
-Topics:\
+## Topics:\
 Posts say it all. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.\
-Link: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/]
+[Link](facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/)
 
 Once you're familiar with a particular topic, you can go to Problemset on Codeforces and search by tag and/or rating. \
-Link: [codeforces.com/problemset]\
-From there, it's just practice, practice, practice. Hope this helps :)
+[Link](codeforces.com/problemset)\
+From there, it's just practice, practice, practice.
 
 Also, Virtual Contests are a thing. You could have all the conceptual knowledge in the world but that wouldn't mean jack if you aren't fast. Virtual contests are the way to go (at least for me) to improve speed.
 
-Additional links:\
-Link to past year contests organized by CRUx: [codeforces.com/group/mnjOBx357f/contests]\
-Link to post on workshop held in first sem: [facebook.com/groups/BPHCCompetitiveCoding/permalink/2470947036473588/]\
-DP Guide: [codeforces.com/blog/entry/67679]
-DP problems: [atcoder.jp/contests/dp]\
-Graph Theory: [hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/]\
-Data Structures: [hackerearth.com/practice/data-structures/arrays/1-d/tutorial/]
-a2oj: [a2oj.com/]\
-AshishGupGod > [github.com/Ashishgup1/Competitive-Coding?files=1]
-[quora.com/What-are-some-C-hacks-for-competitive-programming-except-STL/answer/Ashish-Gupta-211?ch=10&share=79b0de97&srid=ihpN]
+## Additional links:\
+[Link to past year contests organized by CRUx](codeforces.com/group/mnjOBx357f/contests)\
+[Link to post on workshop held in first sem](facebook.com/groups/BPHCCompetitiveCoding/permalink/2470947036473588/)\
+[DP Guide](codeforces.com/blog/entry/67679]
+[DP problems](atcoder.jp/contests/dp)\
+[Graph Theory](hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/)\
+[Data Structures](hackerearth.com/practice/data-structures/arrays/1-d/tutorial/)
+[a2oj](a2oj.com/)\
+[AshishGupGod > [Github](github.com/Ashishgup1/Competitive-Coding?files=1) and [Quora](quora.com/What-are-some-C-hacks-for-competitive-programming-except-STL/answer/Ashish-Gupta-211?ch=10&share=79b0de97&srid=ihpN)
 
-Extra:\
-Track your progress: [cfviz.netlify.com/]\
-Rating Predictor (Download the extension): [cf-predictor-frontend.herokuapp.com/]
+## Extra:\
+[Track your progress](cfviz.netlify.com/)\
+[Rating Predictor](cf-predictor-frontend.herokuapp.com/) (Download the extension)
 
-Motivation :D\
-[github.com/ashishgup/Motivation?files=1]
+## Motivation :D\
+[Link](github.com/ashishgup/Motivation?files=1)
