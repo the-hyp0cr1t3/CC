@@ -3,7 +3,7 @@ Here are some resources I used starting out.
 
 ## Setting up an IDE
 I like *Sublime Text* because it's fast and light weight. Another popular choice is *Visual Studio* (paired with some useful extensions). However, anything is fine as it comes down to personal preference.\
-[Link](Setting up Sublime.md) to setting up Sublime\
+[Link](Setting_up_Sublime.md) to setting up Sublime\
 [Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2491737024394589/) to VS extension
 
 ## Choosing a language
