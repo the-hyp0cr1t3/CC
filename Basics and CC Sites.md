@@ -1,41 +1,44 @@
 # Competitive coding sites
 
-𝐂𝐎𝐃𝐄𝐅𝐎𝐑𝐂𝐄𝐒
+## Codeforces
 
-While there are a few good sites for contests , the main site I'd recommend would be CodeForces.
+While there are quite a few good sites for contests, I'd primarily recommend *CodeForces* for it's amazing community, interface and problem statements.
 
-Here's a short writeup on how CodeForces style contests work :
+### Problems
+Each problem typically consists of a problem statement (that details the task), constraints on the input (in simple terms, how big the input will be), input and output instructions (what to read, what to write), and finally a sample test case.
 
-There are 5-8 problems (generally 6) in (mostly) increasing order of difficulty.
-There is max defined number of points per problem, also generally increasing (say 250 for A, 500 for B, 750/1000 for C, etc ).
-As time passes, the score reduces at a rate of n/250 points per minute , where n is the total number of points for a problem. For example submitting A after
+[Here](https://codeforces.com/problemset/problem/4/A) is an example.
+
+### Contests and how they work
+
+There are **5-8 problems** in (mostly) **increasing order of difficulty**, which grant an increasing number of points (say 250 for problem A, 500 for B, 750/1000 for C, etc).
+As time passes, the scores for each problem reduce at a rate of n/250 points per minute, where n is the initial number of points awarded by the problem, and stops reducing after a certain point. Given below is an example of the relation between submitting problem A after x minutes vs the y points that are awarded for it.
 
 1 min - 498 points
 2 mins - 496 points
 5 mins - 490 points
 
-On submitting your code , it is run and output is checked for 10-20 'test cases', if it passes all you get 'pretests passed' and you'll be awarded (temporary*) points and shown your approx rank in the contest at that moment.
+On submitting your code, it is run against a number of ***test cases***. If it outputs the correct answer for *every* test case, you will be awarded (temporary*) points for it. Your rank is determined by the sum total of your points. Following are the most common verdicts a submission may get after being judged.
 
-However your program may not pass pretests in some cases :
+#### Wrong Answer (WA)
+Your program output the wrong answer for a particular test case and was subsequently not run on the remaining test set. Usually, there is no partial marking for contests on Codeforces, so you have to pass all tests.
 
-𝟏.) WA - Wrong answer - your program gave the wrong answer for a test case
+#### Runtime Error (RTE)
+An error occured during run time; Division by 0, accessing an array index that is out of bounds, etc.
 
-𝟐.) Runtime error - Your program did something not allowed in your language(Division by 0 , accessing an array index that is out of bounds , etc.).
+#### Time Limit Exceeded (TLE)
+Took too long. Your program is not able to run within the specified time limit with the given constraints on input. It thus becomes important to be able to judge the **time complexity** of your algorithm and ensure it satifies the time limit, given the constraints, as discussed later.
 
-𝟑.) TLE - Time limit exceed - your program exceeded the time limit mentioned in the question - try improving the time complexity of your code.
+#### Memry Limit Exceeded (MLE)
+Similar to TLE, your program exceeded the memory limit mentioned.
 
-𝟒.) Memory limit exceeded - your program exceeded the memory limit mentioned in the question - try using less arrays,vectors,sets,maps or similar.
+#### Compilation Error
+Your code could not be compiled, i.e, there is probably a syntactic error. Locally test it and fix the bug. Also ensure that you have selected the correct compiler when you submit.
 
-𝟓.) Compilation error - exactly what it states, try compiling on your system , find the error and fix it. ENSURE YOU ARE USING THE CORRECT COMPILER ON CODEFORCES(as in if you use MinGW/g++ <version> locally select GNU g++ <version> on CodeForces)
+#### Accepted (AC)
+Yay, it passed all the tests.
 
-Now it is to be noted in most contests, a WA / TLE / Runtime error /memory limit exceeded will cost you 50 points to the final points earned on correct submission.
-However if the error is on test 1 or in the case of a compilation error , no points will be deducted.
-
-Example :
-
-Submission at 4 mins : 492
-Submission at 10 mins : 480
-Submission at 4 mins with 1 wrong submission : 442
+As mentioned above, there is a penalty for wrong submissions (anything but AC), usually worth -50 points (each time) to the remaining points that the question will award if you get an AC afterwards. There is no penalty for a wrong submission of any kind that fails the first test case.
 
 Now these points given to you are only representative of how you are doing at that point and are NOT FINAL, there are ways you can still lose points for these questions. Now the essence of the problem is that pretests must be fast and therefore aren't perfect which leads to 2 possibilities :
 
