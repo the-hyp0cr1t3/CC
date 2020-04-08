@@ -19,7 +19,7 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
 STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://hackerrank.com/domains/cpp/stl) is a good place to start.
 
 ## Everything that comes after
-* Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts on FB which covers most beginner topics. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.\
+* Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts on FB which covers most beginner topics. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.
 
 * Once you're familiar with a particular topic, you can go to [Problemset](https://codeforces.com/problemset) on Codeforces and search by tag and/or rating. From there, it's just practice, practice, practice.
 
