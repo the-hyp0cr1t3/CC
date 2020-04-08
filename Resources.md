@@ -5,15 +5,27 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
 [Link](facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/) to setting up Sublime\
 [Link](facebook.com/groups/BPHCCompetitiveCoding/permalink/2491737024394589/) to VS extension
 
+## Choosing a language
+<details>
+  <summary>Spoiler</summary>
+  
+  ```
+  It's C++ and [here's](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming/) why. 
+  tl;dr: C++ is the fastest and has a lot of useful functions.
+  ```
+</details>
+
 ## C++ STL
-STL stands for Standard Template Library. It's a huge library of useful functions. If you're not already familiar with it, [this](hackerrank.com/domains/cpp/stl) is a good place to start.
+STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](hackerrank.com/domains/cpp/stl) is a good place to start.
 
-## Topics
-[Link](facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) says it all. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.\
+## Everything that comes after
+* Here is a [link](facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts on FB which covers most beginner topics. Upsolve every problem. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.\
 
-Once you're familiar with a particular topic, you can go to [Problemset](codeforces.com/problemset) on Codeforces and search by tag and/or rating. From there, it's just practice, practice, practice.
+* Once you're familiar with a particular topic, you can go to [Problemset](codeforces.com/problemset) on Codeforces and search by tag and/or rating. From there, it's just practice, practice, practice.
 
-[Virtual Contests](https://codeforces.com/blog/entry/70036) are a great way to improve speed. You could have all the conceptual knowledge in the world but that wouldn't mean jack if you aren't fast.
+* [Virtual Contests](https://codeforces.com/blog/entry/70036) are a great way to improve speed. You could have all the conceptual knowledge in the world but that wouldn't mean jack if you aren't fast.
+
+Learn new topic > Practice problems > Improve speed. Rinse and repeat.
 
 ## Additional links
 [Link to past year contests organized by CRUx](codeforces.com/group/mnjOBx357f/contests)\
