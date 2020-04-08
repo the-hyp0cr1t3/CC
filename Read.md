@@ -20,7 +20,7 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
 STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://hackerrank.com/domains/cpp/stl) is a good place to start.
 
 ## Getting started
-[Here](Basics%20and%20CC%20Sites.md) is a comprehensive guide on Competitive Coding websites (primarily CodeForces, which I recommend).
+[Here](CC%20Sites.md) is a comprehensive guide on Competitive Coding websites (primarily CodeForces, which I recommend).
 Before you actually start it is important to familiarize yourself with the big-O notation. Understanding [Time and Space Complexity](https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/) is the only prerequisite (apart from knowing a language). Once you've done all this, you're ready to start.
 
 ## One formula for everything
