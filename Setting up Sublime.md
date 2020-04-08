@@ -66,13 +66,7 @@ Right click on taskbar → Taskbar settings → Disable "Replace Command prompt.
 Now you can use Win+X followed by C to quickly open command prompt.
 This isn't necessary, but it is important to know because if your editor fails to work for some reason during a contest, you should be able to write, compile and run your code. Your workspace should be easily navigable from the user folder.
 
-That's it for now.
-Feel free to PM if you have any doubts.
-Happy coding! 😄
-
 UPD: Sublime Text 3176 crack does not work anymore, so you should preferably install the latest version from their website.
-
-&lt /Direct-copy-pasta-from-the-FB-group-for-those-who-may-not-be-able-to-access &rt
 
 ## Source
 [Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/)
