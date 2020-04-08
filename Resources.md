@@ -3,8 +3,8 @@ Here are some resources I used starting out.
 
 ## Setting up an IDE
 I like *Sublime Text* because it's fast and light weight. Another popular choice is *Visual Studio* (paired with some useful extensions). However, anything is fine as it comes down to personal preference.\
-[Link](Setting%20up%20Sublime.md) to setting up Sublime\
-Github [Link](https://github.com/agrawal-d/competitive-programming-helper/) to VS extension
+[Link](Setting%20up%20Sublime.md) to setting up Sublime, courtesy [Muzaffar Ahmed](https://github.com/muzaffarahmed75)\
+Github [Link](https://github.com/agrawal-d/competitive-programming-helper/) to VS extension, courtesy [Divyanshu Agrawal](https://github.com/agrawal-d)
 
 ## Choosing a language
 <details>
