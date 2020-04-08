@@ -68,41 +68,15 @@ Some common types of division-wise contests held are
 Lastly, there are currently 10 different tiers on codeforces. Each tier is specified by a rating range, **Newbie** (Gray) being the lowest, and **Tourist** (Legendary Grandmaster) being the highest.
 
 ## AtCoder
-
 Similar to Codeforces, [AtCoder](https://atcoder.jp/) is another programming contest website, based in Japan. **AtCoder Beginner Contests** are a great way to improve your basic implementation skills.
 
 [Getting started with AtCoder](https://atcoder.jp/posts/2)
 
-𝗣𝗮𝗿𝘁 𝟮 : 𝗖𝗼𝗺𝗽𝗹𝗲𝘅𝗶𝘁𝘆 𝗔𝗻𝗮𝗹𝘆𝘀𝗶𝘀
+## CodeChef
+[CodeChef](https://www.codechef.com/)
 
-I would recommend watching the following videos to gain a basic understanding of complexity analysis.
+## HackerEarth
+[HackerEarth](https://www.hackerearth.com/challenges/)
 
-General time complexity : https://www.youtube.com/watch…
-Recursive time complexity : https://www.youtube.com/watch?v=ncpTxqK35PI
-
-Once you have watched the above videos I would suggest trying these questions to ensure you have understood the concept :
-
-https://www.geeksforgeeks.org/practice-questions-time-comp…/
-
-Now in general the number of operations that can be executed on the CodeForces platform in 1 second using C/C++/Java is ~10^8.
-
-However you have to remember that we neglect the constant when calculating complexity.
-For example say we have an algorithm that contains a for loop that has a large number of calculations (say 20-30) per iteration.
-Now if you were to run the loop 10^8 times (n=10^8) , the number of operations would actually be in the range of ~10^9 and would take more than a second.
-As such it is a good idea to try to keep the number of operations per second calculated using time complexity a bit below the maximum possible.
-
-Ideal/Maximum operations per second for various complexities
-
-Time complexity [ideal , maximum]
-
-O(n) [ 10^6 , 10^8]
-O(n^2) [ 10^3 , 10^4 ]
-O(n^3) [ 100 , 500 ]
-O(n^4) [ 50 , 100 ]
-O(n logn) [ 10^5 , 5*(10^6) ]
-O(log n) [ 10^100 , 2^(10^7) ]
-O(2^n) [ 20 , 26 ]
-
-Ideal numbers should generally work on nearly all platforms , the maximum numbers are written with respect to CodeForces.
-
-One more thing to note is that 'logn' here represents log2(n) NOT log10(n) , equivalent to a multiplicative factor of log2(10) [approx. 3.33] to the answer of log10(n).
+## FoolsHaven
+[FoolsHaven](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
