@@ -19,14 +19,19 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
 ## C++ STL
 STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://hackerrank.com/domains/cpp/stl) is a good place to start.
 
-## Everything that comes after
-* Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts from the FB group (which you have to be a part of to access) that covers most beginner topics. Upsolve every problem from these posts. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to explore further.
+## Getting started
+[Here](Basics%20and%20CC%20Sites.md) is a comprehensive guide on Competitive Coding websites (primarily CodeForces, which I recommend).
+Before you actually start it is important to familiarize yourself with the big-O notation. Understanding [Time and Space Complexity](https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/) is the only prerequisite (apart from knowing a language). Once you've done all this, you're ready to start.
 
-* Once you're familiar with a particular topic, you can go to [Problemset](https://codeforces.com/problemset) on Codeforces and search by tag and/or rating. From there, it's just practice, practice, practice.
+## One formula for everything
+* Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts that cover most beginner topics. **Upsolve every problem** from these posts. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to **explore further**.
 
-* [Virtual Contests](https://codeforces.com/blog/entry/70036) are a great way to improve speed. You could have all the conceptual knowledge in the world but that wouldn't mean jack if you aren't fast.
+* Once you're familiar with a particular topic, you can go to [problemset](https://codeforces.com/problemset) on Codeforces and filter by tag and/or rating. From there, it's just **practice**, **practice**, **practice**.
 
-Learn new topic > Practice problems > Improve speed. Rinse and repeat.
+* [Virtual Contests](https://codeforces.com/blog/entry/70036) are a great way to improve speed. You could have all the conceptual knowledge in the world but that wouldn't mean anything if you aren't fast.
+
+### Formula
+Learn new topic > Practice problems > Improve speed > Learn new topic > Practice ... Rinse and repeat.
 
 ## Additional links
 [Link](https://codeforces.com/group/mnjOBx357f/contests) to past year contests organized by CRUx\
@@ -38,6 +43,6 @@ Learn new topic > Practice problems > Improve speed. Rinse and repeat.
 [a2oj](https://a2oj.com/)\
 AshishGupGod > [Github](https://github.com/Ashishgup1/Competitive-Coding?files=1) and [Quora](https://quora.com/What-are-some-C-hacks-for-competitive-programming-except-STL/answer/Ashish-Gupta-211?ch=10&share=79b0de97&srid=ihpN)
 
-## Extra
+## Extras
 [Track your progress](https://cfviz.netlify.com/)\
 [Rating Predictor](https://cf-predictor-frontend.herokuapp.com/) (Download the extension)
