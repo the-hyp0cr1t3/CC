@@ -10,7 +10,7 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
   <summary>Spoiler</summary>
   
   ```
-  It's C++ and [here's](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming/) why. 
+  It's C++ and <a href="https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming/">here's</a> why. 
   tl;dr: C++ is the fastest and has a lot of useful functions.
   ```
 </details>
