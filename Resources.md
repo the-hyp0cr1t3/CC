@@ -38,6 +38,3 @@ AshishGupGod > [Github](github.com/Ashishgup1/Competitive-Coding?files=1) and [Q
 ## Extra
 [Track your progress](cfviz.netlify.com/)\
 [Rating Predictor](cf-predictor-frontend.herokuapp.com/) (Download the extension)
-
-## Motivation :D
-[Link](github.com/ashishgup/Motivation?files=1)
