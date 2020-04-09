@@ -22,7 +22,7 @@ To check if you have g++ installed, execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘�
 * Add <𝚎𝚡𝚝𝚛𝚊𝚌𝚝𝚎𝚍_𝚝𝚘_𝚏𝚘𝚕𝚍𝚎𝚛>/𝚖𝚒𝚗𝚐𝚠𝟼𝟺/𝚋𝚒𝚗 to path. To add to path:
   * Click on Start, search for "environment variables".
   * Click on "Environment Variables..." at the bottom of the window.
-  * Under User variables (or System variables), double click on the value of Path, and paste the above path in a new line (if you were unable to follow the above, refer to [this](https://www.youtube.com/watch?v=ozoO0e7hg48) video.
+  * Under User variables (or System variables), double click on the value of Path, and paste the above path in a new line (if you were       unable to follow the above, refer to [this](https://www.youtube.com/watch?v=ozoO0e7hg48) video.
 * Start a new command prompt and execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 to check if installation was successful.
 
 ## CppFastOlympicCoding
