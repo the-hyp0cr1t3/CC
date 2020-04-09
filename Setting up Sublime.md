@@ -12,8 +12,8 @@ I use and recommend Sublime Text over other editors/IDEs because it is light and
 Follow [these](https://packagecontrol.io/installation) instructions to install Package Control, needed for easy installation of packages.
 
 ## MinGW (GNU C/C++ compiler collection for Windows 64-bit)
-[Link](https://sourceforge.net/projects/mingw-w64/files/latest/download)\
-[Aternate Drive link](https://drive.google.com/file/d/1NISQqx2x0Ss5AveZy3AV4V41zL7HdIOo/)(MinGW 7.3.0)
+[Link](https://sourceforge.net/projects/mingw-w64/files/latest/download)\ (Latest)
+[Aternate Drive link](https://drive.google.com/file/d/1NISQqx2x0Ss5AveZy3AV4V41zL7HdIOo/) (MinGW 7.3.0)
 
 To check if you have g++ installed, execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 from the command prompt.
 
