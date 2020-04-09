@@ -6,13 +6,13 @@ Before we begin with Competitive Programming tutorials, I felt like I should wri
 I use and recommend Sublime Text over other editors/IDEs because it is light and extremely fast. IDEs in general are heavy and slow, which waste precious time during contests. Sublime has many shortcuts and features which will save you a lot of time while coding.
 
 ### Application
-[Link](https://www.sublimetext.com/3)
+Download Sublime Text 3 from [here](https://www.sublimetext.com/3).
 
 ### Package Control
 Follow [these](https://packagecontrol.io/installation) instructions to install Package Control, needed for easy installation of packages.
 
 ## MinGW (GNU C/C++ compiler collection for Windows 64-bit)
-[Link](https://sourceforge.net/projects/mingw-w64/files/latest/download)\ (Latest)
+[Link](https://sourceforge.net/projects/mingw-w64/files/latest/download) (Latest)\
 [Aternate Drive link](https://drive.google.com/file/d/1NISQqx2x0Ss5AveZy3AV4V41zL7HdIOo/) (MinGW 7.3.0)
 
 To check if you have g++ installed, execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 from the command prompt.
