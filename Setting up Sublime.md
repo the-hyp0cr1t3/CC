@@ -1,29 +1,31 @@
 (☞ﾟ∀ﾟ)☞ Credit to Muzaffar Ahmed for the all that follows
 
-𝐒𝐞𝐭𝐭𝐢𝐧𝐠 𝐮𝐩 𝐒𝐮𝐛𝐥𝐢𝐦𝐞 𝐓𝐞𝐱𝐭 𝟑 𝐚𝐧𝐝 𝐂++ 𝐜𝐨𝐦𝐩𝐢𝐥𝐞𝐫 𝐟𝐨𝐫 𝐖𝐢𝐧𝐝𝐨𝐰𝐬
+# Setting up Sublime Text 3 and C++ for Windows
 
 Hello!
 Before we begin with Competitive Programming tutorials, I felt like I should write this since many face problems with setting up the environment or end up setting poor environment which affects their speed.
 I use and recommend Sublime Text over other editors/IDEs because it is light and extremely fast. IDEs in general are heavy and slow, which waste precious time during contests. Sublime has many shortcuts and features which will save you a lot of time while coding.
 
-𝗦𝘂𝗯𝗹𝗶𝗺𝗲 𝗧𝗲𝘅𝘁 𝟯𝟭𝟳𝟲 𝗳𝗼𝗿 𝗪𝗶𝗻𝗱𝗼𝘄𝘀 𝟲𝟰-𝗯𝗶𝘁 (because crack for later versions isn't out yet and the recurring unregistered dialog box is quite annoying):
-https://drive.google.com/open…
+## Sublime Text 3176 for Windows 64-bit
+Crack for later versions isn't out yet (at the time of writing this) and the recurring unregistered dialog box is quite annoying
+[Link](https://drive.google.com/file/d/1UvHcREdBNR8XdxtacM4mm_Qe70_ipQPV/view?fbclid=IwAR0sGLnURp9kLD3-R5Te0RPLLDK4TlKut7mEw_GF5Z4kzeTqAVmnt-Go868)
 License key:
-Open Sublime Text, click on Help → Enter License and paste the following license: http://p.ip.fi/BNXS
+Open Sublime Text, click on Help → Enter License and paste the following license: [Link](http://p.ip.fi/BNXS)
 Package Control:
-Follow these instructions to install Package Control, needed for easy installation of packages: https://packagecontrol.io/installation
+Follow these instructions to install Package Control, needed for easy installation of packages: [Link](https://packagecontrol.io/installation)
 
-𝗠𝗶𝗻𝗚𝗪 𝟳.𝟯.𝟬 (GNU C/C++ compiler collection for Windows 64-bit):
-https://drive.google.com/open…
+## MinGW 7.3.0
+MinGW 7.3.0 (GNU C/C++ compiler collection for Windows 64-bit):
+[Link](https://drive.google.com/file/d/1NISQqx2x0Ss5AveZy3AV4V41zL7HdIOo/view?fbclid=IwAR1022HAuj-57k6gjH4x3ZVsjkCH9bU7Ly9odgzAoXltiKzFs9RX4xixmdw)
 I use 7.3 because later versions have many bugs.
 To check if you have g++ installed, execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 from the command prompt. If you have an older version, uninstall it and install this. If you have a later version, I recommend rolling back, but it's not necessary if you aren't facing issues.
 Installation instructions:
-1. Extract the .zip to wherever you wish, preferably Program Files.
-2. Add <𝚎𝚡𝚝𝚛𝚊𝚌𝚝𝚎𝚍_𝚝𝚘_𝚏𝚘𝚕𝚍𝚎𝚛>/𝚖𝚒𝚗𝚐𝚠𝟼𝟺/𝚋𝚒𝚗 to path. To add to path:
-i. Click on Start, search for "environment variables".
-ii. Click on "Environment Variables..." at the bottom of the window.
-iii. Under User variables (or System variables), double click on the value of Path, and paste the above path in a new line (if you were unable to follow the above, refer to this video: https://www.youtube.com/watch?v=ozoO0e7hg48).
-3. Start a new command prompt and execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 to check if installation was successful.
+* Extract the .zip to wherever you wish, preferably Program Files.
+* Add <𝚎𝚡𝚝𝚛𝚊𝚌𝚝𝚎𝚍_𝚝𝚘_𝚏𝚘𝚕𝚍𝚎𝚛>/𝚖𝚒𝚗𝚐𝚠𝟼𝟺/𝚋𝚒𝚗 to path. To add to path:
+  * Click on Start, search for "environment variables".
+  * Click on "Environment Variables..." at the bottom of the window.
+  * Under User variables (or System variables), double click on the value of Path, and paste the above path in a new line (if you were unable to follow the above, refer to [this](https://www.youtube.com/watch?v=ozoO0e7hg48) video.
+* Start a new command prompt and execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 to check if installation was successful.
 
 𝗖𝗽𝗽𝗙𝗮𝘀𝘁𝗢𝗹𝘆𝗺𝗽𝗶𝗰𝗖𝗼𝗱𝗶𝗻𝗴:
 My favorite tool (and the only one I use right now) for competitive programming. It's a Sublime plugin for managing test cases and linting(error checking on the fly) C++ and is pretty neat. There are other useful features too, like stress testing, check it out yourself: https://packagecontrol.io/packages/CppFastOlympicCoding
