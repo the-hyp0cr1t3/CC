@@ -5,22 +5,17 @@ Before we begin with Competitive Programming tutorials, I felt like I should wri
 
 I use and recommend Sublime Text over other editors/IDEs because it is light and extremely fast. IDEs in general are heavy and slow, which waste precious time during contests. Sublime has many shortcuts and features which will save you a lot of time while coding.
 
-## Sublime Text 3176 for Windows 64-bit
-Crack for later versions isn't out yet (at the time of writing this) and the recurring unregistered dialog box is quite annoying.
-
 ### Application
-[Link](https://drive.google.com/file/d/1UvHcREdBNR8XdxtacM4mm_Qe70_ipQPV/view?fbclid=IwAR0sGLnURp9kLD3-R5Te0RPLLDK4TlKut7mEw_GF5Z4kzeTqAVmnt-Go868)
-
-### License key
-Open Sublime Text, click on Help → Enter License and paste [this](http://p.ip.fi/BNXS).
+[Link](https://www.sublimetext.com/3)
 
 ### Package Control
 Follow [these](https://packagecontrol.io/installation) instructions to install Package Control, needed for easy installation of packages.
 
-## MinGW 7.3.0
-[MinGW 7.3.0](https://drive.google.com/file/d/1NISQqx2x0Ss5AveZy3AV4V41zL7HdIOo/view?fbclid=IwAR1022HAuj-57k6gjH4x3ZVsjkCH9bU7Ly9odgzAoXltiKzFs9RX4xixmdw) (GNU C/C++ compiler collection for Windows 64-bit); I use 7.3 because later versions have many bugs.
+## MinGW (GNU C/C++ compiler collection for Windows 64-bit)
+[Link](https://sourceforge.net/projects/mingw-w64/files/latest/download)\
+[Aternate Drive link](https://drive.google.com/file/d/1NISQqx2x0Ss5AveZy3AV4V41zL7HdIOo/)(MinGW 7.3.0)
 
-To check if you have g++ installed, execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 from the command prompt. If you have an older version, uninstall it and install this. If you have a later version, I recommend rolling back, but it's not necessary if you aren't facing issues.
+To check if you have g++ installed, execute 𝚐++ --𝚟𝚎𝚛𝚜𝚒𝚘𝚗 from the command prompt.
 
 ### Installation
 * Extract the .zip to wherever you wish, preferably Program Files.
@@ -77,8 +72,6 @@ Right click on taskbar → Taskbar settings → Disable "Replace Command prompt.
 Now you can use Win+X followed by C to quickly open command prompt.
 
 This isn't necessary, but it is important to know because if your editor fails to work for some reason during a contest, you should be able to write, compile and run your code. Your workspace should be easily navigable from the user folder.
-
-UPD: Sublime Text 3176 crack does not work anymore, so you should preferably install the latest version from their website.
 
 ## Sauce
 [Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/)
