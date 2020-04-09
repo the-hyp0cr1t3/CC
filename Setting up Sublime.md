@@ -55,9 +55,8 @@ We're almost through. Following are just tips and guidelines which you may find 
 ## Sublime snippets 
 Ah, snippets. Most useful for competitive programmers, it's one hell of a feature. They're templates which are triggered by a keyword/phrase. In Sublime Text, go to Tools → Developer → New Snippet... to create a new snippet. You can use this for your CC template or commonly used functions (Please, don't make your CC template ugly by adding every function and macro ever; Keep it clean and use snippets instead).
 
-Snippet I use for my template: [PyAlphagawd](pastebin.com/jp79zQM1)
-Another example for a snippet (RNG): [PyAlphagawdtheReturn](pastebin.com/cwYhUvw1)
-Read more on this feature [here](http://docs.sublimetext.info/…/…/extensibility/snippets.html)
+Snippet I use for my template: [PyAlphagawd](http://pastebin.com/jp79zQM1)\
+Another example for a snippet (RNG): [PyAlphagawdtheReturn](http://pastebin.com/cwYhUvw1)
 
 ## CppFastOlympicCoding settings
 
@@ -67,10 +66,10 @@ Hitting ctrl+alt+b every single time to run is too much work, ain't it? You can 
 ### C++17 and other compilation flags
 CppFastOlympicCoding uses C++11 by default. To change the compile command, go to Tools → FastOlympicCoding → settings and make your changes in the right pane. Change -𝚜𝚝𝚍=𝚐𝚗𝚞++𝟷𝟷 to -𝚜𝚝𝚍=𝚌++𝟷𝟽 and add any flags you wish to. 
 
-[My settings](pastebin.com/biNXA2Cg)
+[My settings](http://pastebin.com/biNXA2Cg)
 
 ## Other Sublime settings
-Go to Preferences → Settings and explore. Whatever changes you want to make, add that change in the right panel. I suggest [these](pastebin.com/peJ8tVyE) settings (yes, spaces are better than tabs).
+Go to Preferences → Settings and explore. Whatever changes you want to make, add that change in the right panel. I suggest [these](http://pastebin.com/peJ8tVyE) settings (yes, spaces are better than tabs).
 
 ## Command prompt shortcut
 Right click on taskbar → Taskbar settings → Disable "Replace Command prompt... ...Windows key+X".
