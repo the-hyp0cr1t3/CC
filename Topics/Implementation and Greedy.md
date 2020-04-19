@@ -12,8 +12,10 @@ Ad Hoc/Implementation problems do not rely on the knowledge of any particular da
 * [Codeforces 158 A](http://codeforces.com/problemset/problem/158/A)
 * [Codeforces 459 A](http://codeforces.com/problemset/problem/459/A)
 * [Codeforces 1 A](https://codeforces.com/contest/1/problem/A)
+* [Codeforces 1201 A](https://codeforces.com/problemset/problem/1201/A)
+* [Codeforces 1157 A](https://codeforces.com/contest/1157/problem/A)
 
-**Note:** Sometimes the input may be large enough to cause an overlow (It is safe to assume anything above 2x10<sup>9</sup> overflows). So remember to use long long (64-bit integer) instead of int (32-bit integer).
+**Note:** Sometimes the input may be large enough to cause an overlow. So remember to use long long (64-bit integer) instead of int (32-bit integer). It is safe to assume anything above 2x10<sup>9</sup> overflows *int*, and anything above 2x10<sup>18</sup> overflows *long long int*
 
 ## Greedy
 
