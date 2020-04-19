@@ -11,7 +11,9 @@ Ad Hoc/Implementation problems do not rely on the knowledge of any particular da
 * [Codeforces 282 A](http://codeforces.com/problemset/problem/282/A)
 * [Codeforces 158 A](http://codeforces.com/problemset/problem/158/A)
 * [Codeforces 459 A](http://codeforces.com/problemset/problem/459/A)
-* [Codeforces 1 A](https://codeforces.com/contest/1/problem/A) (Remember to use 64-bit integers [long long] as the input is large enough to over flow 32-bit integers [int])
+* [Codeforces 1 A](https://codeforces.com/contest/1/problem/A)
+
+**Note:** Sometimes the input may be large enough to cause an overlow (It is safe to assume anything above 2x10<sup>9</sup> overflows). So remember to use long long (64-bit integer) instead of int (32-bit integer).
 
 ## Greedy
 
