@@ -2,6 +2,7 @@ Try [this](https://codeforces.com/problemset/problem/4/A) problem.
 
 Following is a starting template you may use:
 
+```c++
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -11,3 +12,4 @@ int main() {
   cout << n+1 << " " << "Watermelon" << endl;
   return 0;
 }
+```
