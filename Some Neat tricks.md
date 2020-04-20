@@ -63,4 +63,4 @@ cout << a << endl << b << endl << c;
 1000000000000000000
 1000000000000000000
 ```
-Same thing can be done with **1.0** for *double*.
+Same thing can be done with ***1.0*** for ```double```.
