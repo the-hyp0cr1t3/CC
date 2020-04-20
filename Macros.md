@@ -1,7 +1,7 @@
 # Macros
-Anything that starts with a **'#'** is a *preprocessor directive*. A macro is a preprocessor directive which behaves like a find and replace tool. You may read more about it from [here](http://www.cplusplus.com/doc/tutorial/preprocessor/). 
+Anything that starts with a **'#'** is a *preprocessor directive*. A macro is a preprocessor directive which in essence performs a find and replace on code before it is actually compiled. You may read more about it from [here](http://www.cplusplus.com/doc/tutorial/preprocessor/). 
 
-When it comes to cp, macros can prove to be quite useful. Here are a few common macros (with a few other useful things here and there).
+When it comes to cp, macros are quite useful. Here are a few common ones (along with some other useful things).
 
 ```c++
 #define FastIO ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
