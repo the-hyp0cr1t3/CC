@@ -1,4 +1,4 @@
-Here are some neat tricks I've across through my experience with CP and C++ in general.
+Here are some neat tricks I've come across through my experience with CP and C++ in general.
 
 ## Pass by reference (Obligatory starter to list)
  Pass by [reference](https://pasteboard.co/J4IxG77.jpg) when possible and avoid passing by value; It improves performance.
