@@ -63,4 +63,43 @@ cout << a << endl << b << endl << c;
 1000000000000000000
 1000000000000000000
 ```
-Same thing can be done with ***1.0*** for ```double```.
+Same thing can be done with *1.0* for ```double```.
+
+### !!, ~ and ^
+The ```!!``` operator is equivalent to typecasting the operand to bool, i.e, it returns false if the value is 0, and true if the value is anything else.
+```c++
+int a = 3, b = 0;
+cout << bool(a) << " " << !!a << endl;
+cout << bool(b) << " " << !!b << endl;
+```
+**Output**
+```
+1 1
+0 0
+```
+
+The ```~``` operator returns 0 if the value is -1.
+```c++
+// iterating in reverse, while i >= 0
+for(int i = n-1; ~i; i--) 
+    // do stuff
+
+// checking if a value is -1
+int dp[N];
+memset(dp, -1, sizeof(dp));
+
+int rec(int i) {
+    int& ans = dp[i];
+    if(~ans)
+      return ans;
+    // do stuff
+}
+```
+
+The ```^``` operator returns 0 if both operands are equal.
+```c++
+void dfs(int u, int par) {
+   for(auto v: graph[u])
+       if(v ^ p) dfs(v, u);
+}
+```
