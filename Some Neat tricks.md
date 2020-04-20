@@ -7,7 +7,7 @@ Here are some neat tricks I've come across through my experience with CP and C++
 Globally declared variables are initialized to 0 at compile time (see [this](https://www.tutorialspoint.com/why-are-global-and-static-variables-initialized-to-their-default-values-in-c-cplusplus)). Initializing them is redundant.
 
 ### Measuring execution time
-The timer is set to start when the object is instantiated (constructor is called). When the object falls out of scope (destructor is called) the timer returns the time elapsed since.
+The timer is set to start when the object is instantiated (constructor is invoked). When the object falls out of scope (destructor is invoked) it returns the time elapsed since then.
 ```c++
 struct Timer {
     string label = "";
