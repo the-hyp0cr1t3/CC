@@ -62,7 +62,7 @@ Try this out.
 ```c++
 #include <iostream>
 using namespace std;
-#define watch(x) cout << #x << " = " << x << endl;
+#define watch(x) cout << #x << " = " << x << endl
 int main() {
     int a = 5;
     watch(a);
