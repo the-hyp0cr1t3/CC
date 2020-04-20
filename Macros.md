@@ -54,3 +54,18 @@ for(int i = 0; i < (int)vect.size(); i++)
   // do stuff
 ```
 It is thus advisable to explicitly cast it to ```int``` every time, as shown above.
+
+### Debugging using the power of macros
+The *stringizing* operator (*#*) turns source code into text tokens, i.e, it can turn parameters into string literals.
+
+Try this out.
+```c++
+#include <iostream>
+using namespace std;
+#define watch(x) cout << #x << " = " << x << endl;
+int main() {
+    int a = 5;
+    watch(a);
+    return 0;
+}
+```
