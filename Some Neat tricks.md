@@ -1,12 +1,12 @@
 Here are some neat tricks I've come across through my experience with CP and C++ in general.
 
-## Pass by reference (Obligatory starter to list)
+### Pass by reference (Obligatory starter to list)
  Pass by [reference](https://pasteboard.co/J4IxG77.jpg) when possible and avoid passing by value; It improves performance.
  
-## No need to initialize global variables
+### No need to initialize global variables
 Globally declared variables are initialized to 0 at compile time (see [this](https://www.tutorialspoint.com/why-are-global-and-static-variables-initialized-to-their-default-values-in-c-cplusplus)). Initializing them is redundant.
 
-## Measuring execution time
+### Measuring execution time
 The timer is set to start when the object is instantiated (constructor is called). When the object falls out of scope (destructor is called) the timer returns the time elapsed since.
 ```c++
 struct Timer {
@@ -47,3 +47,20 @@ int main() {
 Inside -> 109.2 ms
 Outide -> 343.201 ms
 ```
+
+### Use 1LL or 1ll
+When you are handling arithmetic expressions which may overlow ```int```, you have to typecast it to ```long long```. A simple way of doing that is:
+```c++
+int x = 1e9;
+long long a = x * x;
+long long b = (long long) x * x;
+long long c = 1ll * x * x;
+cout << a << endl << b << endl << c;
+```
+**Output**
+```
+-1486618624
+1000000000000000000
+1000000000000000000
+```
+Same thing can be done with **1.0** for *double*.
