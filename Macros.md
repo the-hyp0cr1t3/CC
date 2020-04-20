@@ -28,3 +28,29 @@ const int dy[] = {0,1,0,-1};
 
 const int MxN = 2e5 + 5;
 ```
+
+## A few notes
+### FastIO
+```c++
+ios::sync_with_stdio(0); 
+cin.tie(0); 
+cout.tie(0)
+```
+The ```std::cin``` and ```std::cout``` methods may sometimes be too slow. Thus when there is large input, it is common practice to include these two lines of code in your program to speed them up. You may refer to [this](https://www.geeksforgeeks.org/fast-io-for-competitive-programming/) for a better understanding on what it does, and how it works.
+
+### endl vs '\n'
+Using ```'\n'``` is better (faster) than using ```std::endl``` (in the context of cp) and [here's](https://www.educative.io/edpresso/what-is-the-difference-between-endl-and-n-in-cpp) why. 
+
+I like typing one more than the other (hence the macro), but it's completely fine to just type ```'\n'``` as is.
+
+However, remember to use ```std::endl``` in [interactive problems](https://codeforces.com/blog/entry/45307), not ```'\n'``` as it is required to flush the output.
+
+### The size() method and where you can go wrong with it
+The ```size()``` method, compatible with most STL containers, returns a value of type ```size_t```, which is an *unsigned int*. When comparisons are made between values of different data types, the compiler (implicitly) tyecasts one of them to the other, and when a negative integer of type ```int``` is casted to an ```unsigned int```, the expression may evaluate to a different value altogether. 
+
+```c++
+vector<int> vect{1, 2, 3};
+for(int i = 0; i < (int)vect.size(); i++)
+  // do stuff
+```
+It is thus advisable to explicitly cast it to ```int``` every time, as shown above.
