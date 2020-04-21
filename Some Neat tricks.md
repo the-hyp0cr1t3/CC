@@ -1,7 +1,7 @@
 Here are some neat tricks I've come across through my experience with CP and C++ in general.
 
 ### Pass by reference (Obligatory starter to list)
- Pass by [reference](https://pasteboard.co/J4IxG77.jpg) when possible and avoid passing by value; It improves performance.
+ Pass by ***[reference](https://pasteboard.co/J4IxG77.jpg)*** when possible and avoid passing by value; It improves performance.
  
 ### No need to initialize global variables
 Globally declared variables are initialized to 0 at compile time (see [this](https://www.tutorialspoint.com/why-are-global-and-static-variables-initialized-to-their-default-values-in-c-cplusplus)). Initializing them is redundant.
@@ -101,5 +101,27 @@ The ```^``` operator returns 0 if both operands are equal.
 void dfs(int u, int par) {
    for(auto v: graph[u])
        if(v ^ p) dfs(v, u);
+}
+```
+
+### A more convenient if statement
+Consider a scenario where you are calling some function ```f()```. If its value satisfies some condition ```ok()```, you want use it.
+```c++
+if (ok(f())) {
+    use(f());
+}
+```
+This costs 2 function calls, which may be inefficient. What one would normally do then, is:
+```c++
+int x = f();
+if (ok(x)) {
+    use(x);
+}
+```
+However, this is also not very clean and leaves a variable which is not used.
+The following is a concise way of doing the same thing (valid C++17 onwards).
+```c++
+if (int x = f(); ok(x)) {
+    use(x);
 }
 ```
