@@ -250,4 +250,4 @@ for(int i = 0; i < m; i++) {
     graph[v].emplace_back(u, wt);
 }
 ```
-Read more about this [here](http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function)
+Read more about this from [here](http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function)
