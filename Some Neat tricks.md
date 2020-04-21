@@ -237,7 +237,7 @@ cout << *max_element(all(v));
 ```
 
 ### push_back() vs emplace_back()
-```emplace_back()``` essentially does everything ```push_back()``` does. In addition, it accepts constructor arguments and constructs a user defined object directly within the vector, as opposed to ```push_back()```, which first has to create a temporary object, copy it to the vector, then destroy the temporary object. It is thus more efficient. 
+```emplace_back()``` essentially does everything ```push_back()``` does. In addition, it accepts constructor arguments and constructs the object directly within the vector, as opposed to ```push_back()```, which first has to create a temporary object, copy it to the vector, then destroy the temporary object. It is thus more efficient. 
 ```c++
 vector<pair<int, int>> v;
 v.emplace_back(1, 2);
@@ -250,4 +250,4 @@ for(int i = 0; i < m; i++) {
     graph[v].emplace_back(u, wt);
 }
 ```
-[Link](http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function)
+Read more about this [here](http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function)
