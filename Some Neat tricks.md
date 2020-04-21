@@ -196,3 +196,35 @@ Simple way of eliminating all duplicates in a vector is to make use of ```std::u
 sort(all(vect));
 vect.erase(unique(all(vect)), vect.end());
 ```
+
+### std::rotate
+```std::rotate``` cyclically shifts a vector to the left or right.
+```c++
+rotate(vect.begin(), vect.begin() + k, vect.end());
+```
+This function works in such a way that after rotate(begin, middle, end) the element *\*middle* becomes the first from beginning.
+
+### Min-max of multiple elements
+You can rewrite this
+```c++
+int x = min(a, min(b, min(c, d)));
+```
+as
+```c++
+int x = min({a, b, c, d});
+```
+
+### std::nth_element, std::min_element, std::max_element
+```std:nth_element``` makes sure the nth element of the vector is at the nth position in linear time, if it was in sorted order. Note that it does not actually sort the vector. Here is an example.
+```c++
+vector<int> v{2, 4, 3, 1, 5, 6};
+nth_element(v.begin(), v.begin()+3, v.end());
+cout << v[3] << endl;
+for(auto x: v)
+    cout << x << " ";
+```
+**Output**
+```
+4
+2 1 3 4 5 6
+```
