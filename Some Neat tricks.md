@@ -23,7 +23,7 @@ struct Timer {
     ~Timer() {
         end = std::chrono::high_resolution_clock::now();
         duration = end - start;
-        cout << label << " -> " << duration.count() << " ms" << '\n';
+        cout << "@" << label << "> " << duration.count() << " ms" << '\n';
     }
 };
 ```
@@ -35,7 +35,7 @@ void func() {
 }
 
 int main() {
-    Timer timer("Outside");
+    Timer timer("Main");
     func();
     this_thread::sleep_for(chrono::milliseconds(230));
     return 0;
@@ -44,8 +44,8 @@ int main() {
 
 **Output**
 ```
-Inside -> 109.2 ms
-Outide -> 343.201 ms
+@Inside> 109.2 ms
+@Main> 343.201 ms
 ```
 
 ### Use 1LL or 1ll
@@ -113,4 +113,45 @@ The following is a concise way of doing the same thing (valid C++17 onwards).
 if (int x = f(); ok(x)) {
     use(x);
 }
+```
+
+### Auto type-deduction, Range-based for loops and Structured bindings
+The magic word [auto](https://www.tutorialspoint.com/What-does-an-auto-keyword-do-in-Cplusplus) (introduced as a deduced type in C++11), behaves like a placeholder type specifier.
+```c++
+vector<int> v{1, 2, 3};
+
+// how you would normally do it
+vector<int>::iterator it = find(v.begin(), v.end(), 2);
+
+// much simpler
+auto it = find(v.begin(), v.end(), 2);
+```
+
+C++11 also introduces range based for loops which make code easier to implement and more readable.
+```c++
+for(int i = 0; i < vect.size(); i++)
+    // do stuff with vect[i]
+for(auto it: vect)
+    // do stuff with *it
+```
+
+Structured binding, a utility of C++17, allows a single definition to define multiple variables with different types simultaneously.
+```c++
+pair<int, int> p = make_pair(2, 3);
+auto [f, s] = p;
+cout << f << s;
+
+map<int, string> mp;
+for(auto [key, value]: mp) {
+   cout << key << value;
+}
+```
+A nifty trick to simultaneously check if a value exists in a set, and insert it otherwise, is to:
+```c++
+set<int> s;
+auto [itr, isPresent] = s.insert(2);
+if(isPresent)
+   cout << *it;
+else
+   cout << "is already present";
 ```
