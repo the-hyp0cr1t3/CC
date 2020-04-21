@@ -49,7 +49,7 @@ int main() {
 ```
 
 ### Use 1LL or 1ll
-When you are handling arithmetic expressions which may overlow ```int```, you have to typecast it to ```long long```. A simple way of doing that is:
+When you are handling arithmetic expressions which may overlow ```int```, you have to typecast it to ```long long```. A simpler way of doing that is:
 ```c++
 int x = 1e9;
 long long a = x * x;
@@ -68,14 +68,8 @@ Same thing can be done with *1.0* for ```double```.
 ### !!, ~ and ^
 The ```!!``` operator is equivalent to typecasting the operand to bool, i.e, it returns false if the value is 0, and true if the value is anything else.
 ```c++
-int a = 3, b = 0;
-cout << bool(a) << " " << !!a << endl;
-cout << bool(b) << " " << !!b << endl;
-```
-**Output**
-```
-1 1
-0 0
+for(int i = 0; i < n; i++)
+    cnt_nonzeros += !!arr[i];
 ```
 
 The ```~``` operator returns 0 if the value is -1.
@@ -115,6 +109,16 @@ if (int x = f(); ok(x)) {
 }
 ```
 
+### Checking if a set or map has a key
+Use ```count()``` instead of ```find()```. It returns 1 if the element is present, 0 if not.
+```c++
+set<int> s;
+if(s.count(42))
+    // life has meaning
+else
+    // sad-face
+```
+
 ### Auto type-deduction, Range-based for loops and Structured bindings
 The magic word [auto](https://www.tutorialspoint.com/What-does-an-auto-keyword-do-in-Cplusplus) (introduced as a deduced type in C++11), behaves like a placeholder type specifier.
 ```c++
@@ -131,8 +135,8 @@ C++11 also introduces range based for loops which make code easier to implement 
 ```c++
 for(int i = 0; i < vect.size(); i++)
     // do stuff with vect[i]
-for(auto it: vect)
-    // do stuff with *it
+for(auto x: vect)
+    // do stuff with x
 ```
 
 Structured binding, a utility of C++17, allows a single definition to define multiple variables with different types simultaneously.
