@@ -228,3 +228,26 @@ for(auto x: v)
 4
 2 1 3 4 5 6
 ```
+
+```std::min_element``` and ```std::max_element``` return an iterator to the min and max elements respectively.
+```c++
+vector<int> v{2, 4, 3, 1, 5, 6};
+cout << *min_element(all(v));
+cout << *max_element(all(v));
+```
+
+### push_back() vs emplace_back()
+```emplace_back()``` essentially does everything ```push_back()``` does. In addition, it accepts constructor arguments and constructs a user defined object directly within the vector, as opposed to ```push_back()```, which first has to create a temporary object, copy it to the vector, then destroy the temporary object. It is thus more efficient. 
+```c++
+vector<pair<int, int>> v;
+v.emplace_back(1, 2);
+
+vector<pair<int, int>> graph[N];
+for(int i = 0; i < m; i++) {
+    int u, v, wt;
+    cin >> u >> v >> wt;
+    graph[u].emplace_back(v, wt);
+    graph[v].emplace_back(u, wt);
+}
+```
+[Link](http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function)
