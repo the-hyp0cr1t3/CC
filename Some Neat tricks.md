@@ -125,7 +125,7 @@ The magic word [auto](https://www.tutorialspoint.com/What-does-an-auto-keyword-d
 vector<int> v{1, 2, 3};
 
 // how you would normally do it
-vector<int>::iterator it = find(v.begin(), v.end(), 2);
+vector<int>::iterator it = find(all(vect), 2);
 
 // much simpler
 auto it = find(v.begin(), v.end(), 2);
@@ -158,4 +158,41 @@ if(isPresent)
    cout << *it;
 else
    cout << "is already present";
+```
+
+### all(x)
+Many times you will find the need to pass ```x.begin(), x.end()``` to STL functions, where x is an STL container. In that case, you may find the following macro useful.
+```c++
+#define all(x) (x).begin(), (x).end()
+```
+
+### Sorting in reverse
+```c++
+sort(vect.begin(), vect.end());
+reverse(vect.begin(), vect.end());
+```
+Instead,
+```c++
+sort(vect.end(), vect.begin());
+```
+
+### std::fill and std::iota
+```std::fill``` fills an array or a vector with the specified value.
+```c++
+fill(arr, arr+n, 42);
+fill(all(vect), 42);
+```
+```std::iota``` fills with consecutive numbers.
+```c++
+Dsu(int _n): n(_n), parent(_n), rank(_n) {
+    iota(all(parent), 0);
+}
+```
+Here 0 denotes the value of *\*parent.begin()*, and each next value is obtained from the previous one by incrementing it.
+
+### std::unique
+Simple way of eliminating all duplicates in a vector is to make use of ```std::unique```.
+```c++
+sort(all(vect));
+vect.erase(unique(all(vect)), vect.end());
 ```
