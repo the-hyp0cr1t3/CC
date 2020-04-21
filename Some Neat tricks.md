@@ -83,17 +83,6 @@ The ```~``` operator returns 0 if the value is -1.
 // iterating in reverse, while i >= 0
 for(int i = n-1; ~i; i--) 
     // do stuff
-
-// checking if a value is -1
-int dp[N];
-memset(dp, -1, sizeof(dp));
-
-int rec(int i) {
-    int& ans = dp[i];
-    if(~ans)
-      return ans;
-    // do stuff
-}
 ```
 
 The ```^``` operator returns 0 if both operands are equal.
