@@ -12,7 +12,7 @@ The timer is set to start when the object is instantiated (constructor is invoke
 struct Timer {
     string label = "";
     std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
-    std::chrono::duration<float, milli> duration;
+    std::chrono::duration<float, std::milli> duration;
     Timer() {
         start = std::chrono::high_resolution_clock::now();
     }
