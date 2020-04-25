@@ -74,19 +74,19 @@ if(n & 1) cout << "odd";
 else cout << "even";
 ```
 
-The **Bitwise One's Complement** operator,  ```~```,  is a unary operator which flips the bits. How is this useful? It returns a non-zero value for all numbers except -1.
-```c++
-// iterating in reverse, while i >= 0
-for(int i = n-1; ~i; i--) 
-    // do stuff
-```
-
 The **Bitwise XOR** operator, ```^```, only sets bits which are exclusive to either operand. It evaluates to 0 if both operands are equal.
 ```c++
 void dfs(int u, int par) {
    for(auto v: graph[u])
        if(v ^ p) dfs(v, u);
 }
+```
+
+The **Bitwise One's Complement** operator,  ```~```,  is a unary operator which flips the bits. How is this useful? It returns a non-zero value for all numbers except -1.
+```c++
+// iterating in reverse, while i >= 0
+for(int i = n-1; ~i; i--) 
+    // do stuff
 ```
 
 The **Logical NOT** operator, when used on itself, ```!!```, is equivalent to typecasting the operand to bool, i.e, it returns false if the value is 0, and true if the value is anything else.
@@ -245,7 +245,7 @@ cout << *max_element(all(v));
 ```
 
 ### Optimizing vectors
-The following is essentailly a summary of [this](https://www.youtube.com/watch?v=HcESuwmlHEY) video, in written form.
+The following is essentailly a summary of [this](https://www.youtube.com/watch?v=HcESuwmlHEY) video.
 
 #### std::vector::reserve()
 Capacity of a vector ([difference between size and capacity of a vector](https://stackoverflow.com/questions/6296945/size-vs-capacity-of-a-vector)) is the amount of space it is currently using. When the number of elements in the vector (aka its size) reaches its maximum capacity, it needs to be resized, or in the worst case, reallocated (which would take linear time as it invloves copying all the elements from one place to another). This is where the ```reserve()``` method comes in. If you roughly know before hand, the size of your vector, you can instruct the compiler to reserve enough space. It is not to be confused with ```resize()```; They do different things (see [reserve() vs resize()](https://stackoverflow.com/questions/13029299/stdvectorresize-vs-stdvectorreserve)).
@@ -287,4 +287,48 @@ b ^= 1;      // bitwise operators also work
 b &= 12;
 b |= 3;
 cout << b.to_ulong();   // returns the integer in decimal form
+```
+
+### Builtin functions of the GCC Compiler
+Here are some not-so-widely known builtin functions to make life simpler.
+
+#### __gcd()
+
+As the name suggests, it finds the gcd of two integers.
+```c++
+int x = 4, y = 6;
+cout << __gcd(x, y);   // returns 2.
+```
+
+#### __builtin_popcount()
+
+To count the number of set bits, simply use ```__builtin_popcount()``` for 32-bit int and ```__builtin_popcountll()``` for 64-bit int.
+```c++
+int x = 5;
+cout << __builtin_popcount(x);   // returns 2.
+```
+
+#### __builtin_clz(x) and __builtin_ctz(x)
+
+To count the number of leading and trailing zeroes in binary representation, use ```__builtin_clz()``` and ```__builtin_ctz()```for 32-bit int and ```__builtin_clzll()``` and ```__builtin_ctzll()```for 64-bit int respectively.
+```c++
+int x = 10;    // 00000000 00000000 00000000 00001010 (32 bits)
+cout << __builtin_clz(x);   // returns 28.
+cout << __builtin_ctz(x);   // returns 1.
+
+int x = 10;    // 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001010 (64 bits)
+cout << __builtin_clzll(x);   // returns 60.
+cout << __builtin_ctzll(x);   // returns 1.
+```
+
+#### __builtin_ffs() and __lg()
+
+```__lg()``` returns the index of the highest set bit.
+
+```__builtin_ffs()``` (Find first set) returns (the index of the least significant bit) + 1
+
+```c++
+int x = 10;    // 00000000 00000000 00000000 00001010 (32 bits)
+cout << __builtin_ffs(x);   // returns (1+1) = 2
+cout << __lg(x);   // returns 3
 ```
