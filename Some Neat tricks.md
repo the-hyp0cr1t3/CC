@@ -332,3 +332,43 @@ int x = 10;    // 00000000 00000000 00000000 00001010 (32 bits)
 cout << __lg(x);   // returns 3
 cout << __builtin_ffs(x);   // returns (1+1) = 2
 ```
+
+### Lambdas
+A lambda is an expression that generates a function object (a functor) on the fly. Lambdas allow you to inline anonymous function objects as parameters to various STL functions. They can also capture (or close over) variables from the surrounding scope, either by value or by reference.
+
+[Good article on Lambdas](https://blog.feabhas.com/2014/03/demystifying-c-lambdas/)
+
+[Documentation](https://en.cppreference.com/w/cpp/language/lambda)
+
+In the context of cp, I find lambdas quite useful for its following aspects
+* Anonymous inlining of functors that act as *comparators* for various STL functions like ```sort()```.
+* Function-like behaviour and capture of local variables to perform repetitive tasks with them, without having to explicitly pass as many arguements.
+
+```c++
+vector<pair<int, int>> v{{1, 2}, {3, -5}, {-1, 0}};
+
+// sorting by second value of pair using a lambda as comparator
+auto cmp = [](const pair<int, int>& A, const pair<int, int>& B) { 
+    if(A.second == B.second) return A.first < B.first;
+    return A.second < B.second; 
+});
+sort(all(v), cmp);
+
+// sorting by second value of pair using a lambda (inline) as comparator
+sort(all(v), [](const pair<int, int>& A, const pair<int, int>& B) { 
+    if(A.second == B.second) return A.first < B.first;
+    return A.second < B.second; 
+});
+
+#define x first
+#define y second
+
+auto dist = [&] (int a, int b) {     // the [] is the capture clause; Here [&] captures everything by reference.
+    return sqrt((v[a].x-v[b].x)*(v[a].x-v[b].x) + (v[a].y-v[b].y)*(v[a].y-v[b].y));
+};
+
+for(int i = 0; i < 3; i++)
+    for(int j = 0; j < 3; j++) 
+        cout << dist(i, j) << endl;     // calling it like a function
+
+```
