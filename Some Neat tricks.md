@@ -273,7 +273,7 @@ for(int i = 0; i < m; i++) {
 Read more about this from [here](http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function)
 
 ### assert()
-The ```assert()``` macro is very useful in situations where you suspect something may be wrong. When an expression passed to assert() is false, it causes an abort and terminates the program (Runtime error). This is not only useful for local testing, but can be exploited on online judges such as codeforces. If an assertion is evaluated to be false in a particular test case, the judge returns an RTE verdict, so now you have an idea of what may be wrong.
+The ```assert()``` macro is very useful in situations where you suspect something may be wrong. When an expression passed to ```assert()``` is false, it causes an abort and terminates the program (Runtime error). This is not only useful for local testing, but can be exploited on online judges such as codeforces. If an assertion is evaluated to be false in a particular test case, the judge returns an RTE verdict, so now you have an idea of what may be wrong.
 
 ### Bitsets
 A bitset is a dataset that stores multiple boolean values but takes lesser memory space as compared to other data sets that can store a sequence of bits like a boolean array or boolean vector. One of the constructor overloads accepts and integer, which means, you can get the binary representation of an integer in as simple as 2 lines:
@@ -310,7 +310,7 @@ cout << __builtin_popcount(x);   // returns 2.
 
 #### __builtin_clz(x) and __builtin_ctz(x)
 
-To count the number of leading and trailing zeroes in binary representation, use ```__builtin_clz()``` and ```__builtin_ctz()```for 32-bit int and ```__builtin_clzll()``` and ```__builtin_ctzll()```for 64-bit int respectively.
+To count the number of leading and trailing zeroes in binary representation, use ```__builtin_clz()``` and ```__builtin_ctz()``` for 32-bit int and ```__builtin_clzll()``` and ```__builtin_ctzll()``` for 64-bit int respectively.
 ```c++
 int x = 10;    // 00000000 00000000 00000000 00001010 (32 bits)
 cout << __builtin_clz(x);   // returns 28.
@@ -329,6 +329,6 @@ cout << __builtin_ctzll(x);   // returns 1.
 
 ```c++
 int x = 10;    // 00000000 00000000 00000000 00001010 (32 bits)
-cout << __builtin_ffs(x);   // returns (1+1) = 2
 cout << __lg(x);   // returns 3
+cout << __builtin_ffs(x);   // returns (1+1) = 2
 ```
