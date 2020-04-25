@@ -1,54 +1,21 @@
 Here are some neat tricks I've come across through my experience with CP and C++ in general.
-
-### Pass by reference (Obligatory starter to list)
- Pass by ***[reference](https://pasteboard.co/J4IxG77.jpg)*** when possible and avoid passing by value; It improves performance.
  
-### No need to initialize global variables
-Globally declared variables are initialized to 0 at compile time (see [this](https://www.tutorialspoint.com/why-are-global-and-static-variables-initialized-to-their-default-values-in-c-cplusplus)). Initializing them is redundant.
+### Global variable initialization
+Globally declared variables are, by default, initialized to 0 at compile time (see [this](https://www.tutorialspoint.com/why-are-global-and-static-variables-initialized-to-their-default-values-in-c-cplusplus)). Initializing them is redundant.
 
-### Measuring execution time
-The timer is set to start when the object is instantiated (constructor is invoked). When the object falls out of scope (destructor is invoked) it returns the time elapsed since then.
+### Typecasting
+
+### sz(x)
+The ```size()``` method, compatible with most STL containers, returns a value of type ```size_t```, which is an *unsigned int*. When comparisons are made between values of different data types, the compiler (implicitly) typecasts one of them to the other. When a negative integer of type ```int``` is casted to an ```unsigned int```, the expression may evaluate to a different value altogether. So you'd have to explicitly typecast ```size()``` to int every time. To do this, you may find the following macro useful.
 ```c++
-struct Timer {
-    string label = "";
-    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
-    std::chrono::duration<float, std::milli> duration;
-    Timer() {
-        start = std::chrono::high_resolution_clock::now();
-    }
-    Timer(string name) {
-      label = name;
-      start = std::chrono::high_resolution_clock::now();
-    }
-    ~Timer() {
-        end = std::chrono::high_resolution_clock::now();
-        duration = end - start;
-        cout << "@" << label << "> " << duration.count() << " ms" << '\n';
-    }
-};
-```
-Here is how you'd use it.
-```c++
-void func() {
-    Timer timer2("Inside");
-    this_thread::sleep_for(chrono::milliseconds(100));
-}
+#define sz(x) (int)x.size()
 
-int main() {
-    Timer timer("Main");
-    func();
-    this_thread::sleep_for(chrono::milliseconds(230));
-    return 0;
-}
+// using it
+vector<int> v{1, 2, 3};
+int x = sz(v);
 ```
 
-**Output**
-```
-@Inside> 109.2 ms
-@Main> 343.201 ms
-```
-
-### Use 1LL or 1ll
+#### Use 1LL or 1ll
 When you are handling arithmetic expressions which may overlow ```int```, you have to typecast it to ```long long```. A simpler way of doing that is:
 ```c++
 int x = 1e9;
@@ -117,16 +84,6 @@ if (int x = f(); ok(x)) {
 }
 ```
 
-### Checking if a set or map has a key
-Use ```count()``` instead of ```find()```. It returns 1 if the element is present, 0 if not.
-```c++
-set<int> s;
-if(s.count(42))
-    // life has meaning
-else
-    // sad-face
-```
-
 ### Auto type-deduction, Range-based for loops and Structured bindings
 The magic word [auto](https://www.tutorialspoint.com/What-does-an-auto-keyword-do-in-Cplusplus) (introduced as a deduced type in C++11), behaves like a placeholder type specifier.
 ```c++
@@ -168,23 +125,55 @@ else
    cout << "is already present";
 ```
 
-### all(x)
+### Lambdas
+A lambda is an expression that generates a function object (a functor) on the fly. Lambdas allow you to inline anonymous function objects as parameters to various STL functions. They can also capture (or close over) variables from the surrounding scope, either by value or by reference.
+
+[Good article on Lambdas](https://blog.feabhas.com/2014/03/demystifying-c-lambdas/)
+
+[Documentation](https://en.cppreference.com/w/cpp/language/lambda)
+
+In the context of cp, I find lambdas quite useful for its following aspects
+* Anonymous inlining of functors that act as *comparators* for various STL functions like ```sort()```.
+* Function-like behaviour and capture of local variables to perform repetitive tasks, without having to explicitly pass as many arguements.
+
+```c++
+vector<pair<int, int>> v{{1, 2}, {3, -5}, {-1, 0}};
+
+// sorting by second value of pair using a lambda as comparator
+auto cmp = [](const pair<int, int>& A, const pair<int, int>& B) { 
+    if(A.second == B.second) return A.first < B.first;
+    return A.second < B.second; 
+});
+sort(all(v), cmp);
+
+// sorting by second value of pair using a lambda (inline) as comparator
+sort(all(v), [](const pair<int, int>& A, const pair<int, int>& B) { 
+    if(A.second == B.second) return A.first < B.first;
+    return A.second < B.second; 
+});
+
+#define x first
+#define y second
+
+auto dist = [&] (int a, int b) {     // the [] is the capture clause; Here [&] captures everything by reference.
+    return sqrt((v[a].x-v[b].x)*(v[a].x-v[b].x) + (v[a].y-v[b].y)*(v[a].y-v[b].y));
+};
+
+for(int i = 0; i < 3; i++)
+    for(int j = 0; j < 3; j++) 
+        cout << dist(i, j) << endl;     // calling it like a function
+```
+
+### Vector, Set and Map utility functions
+Before we get to those lets introduce the following macro, as it will be used a couple of times further down.
+
+#### all(x)
 Many times you will find the need to pass ```x.begin(), x.end()``` to STL functions, where x is an STL container. In that case, you may find the following macro useful.
 ```c++
 #define all(x) (x).begin(), (x).end()
 ```
 
-### Sorting in reverse
-```c++
-sort(vect.begin(), vect.end());
-reverse(vect.begin(), vect.end());
-```
-Instead,
-```c++
-sort(vect.end(), vect.begin());
-```
-
-### std::fill and std::iota
+#### std::fill and std::iota
 ```std::fill``` fills an array or a vector with the specified value.
 ```c++
 fill(arr, arr+n, 42);
@@ -198,21 +187,31 @@ Dsu(int _n): n(_n), parent(_n), rank(_n) {
 ```
 Here 0 denotes the value of *\*parent.begin()*, and each next value is obtained from the previous one by incrementing it.
 
-### std::unique
+#### std::unique
 Simple way of eliminating all duplicates in a vector is to make use of ```std::unique```.
 ```c++
 sort(all(vect));
 vect.erase(unique(all(vect)), vect.end());
 ```
 
-### std::rotate
+#### std::rotate
 ```std::rotate``` cyclically shifts a vector to the left or right.
 ```c++
 rotate(vect.begin(), vect.begin() + k, vect.end());
 ```
 This function works in such a way that after rotate(begin, middle, end) the element *\*middle* becomes the first from beginning.
 
-### Min-max of multiple elements
+#### Sorting in reverse
+```c++
+sort(vect.begin(), vect.end());
+reverse(vect.begin(), vect.end());
+```
+Instead,
+```c++
+sort(vect.end(), vect.begin());
+```
+
+#### Min-max of multiple elements
 You can rewrite this
 ```c++
 int x = min(a, min(b, min(c, d)));
@@ -222,7 +221,7 @@ as
 int x = min({a, b, c, d});
 ```
 
-### std::nth_element, std::min_element, std::max_element
+#### std::nth_element
 ```std:nth_element``` makes sure the nth element of the vector is at the nth position in linear time, if it was in sorted order. Note that it does not actually sort the vector. Here is an example.
 ```c++
 vector<int> v{2, 4, 3, 1, 5, 6};
@@ -237,11 +236,22 @@ for(auto x: v)
 2 1 3 4 5 6
 ```
 
+#### std::min_element and std::max_element
 ```std::min_element``` and ```std::max_element``` return an iterator to the min and max elements respectively.
 ```c++
 vector<int> v{2, 4, 3, 1, 5, 6};
 cout << *min_element(all(v));
 cout << *max_element(all(v));
+```
+
+#### count()
+To check if a key value exists within a set or map, use ```count()``` instead of ```find()```. It returns 1 if the element is present, 0 if not.
+```c++
+set<int> s;
+if(s.count(42))
+    // life has meaning
+else
+    // sad-face
 ```
 
 ### Optimizing vectors
@@ -274,6 +284,15 @@ Read more about this from [here](http://candcplusplus.com/c-difference-between-e
 
 ### assert()
 The ```assert()``` macro is very useful in situations where you suspect something may be wrong. When an expression passed to ```assert()``` is false, it causes an abort and terminates the program (Runtime error). This is not only useful for local testing, but can be exploited on online judges such as codeforces. If an assertion is evaluated to be false in a particular test case, the judge returns an RTE verdict, so now you have an idea of what may be wrong.
+```c++
+int main() {
+    // Do stuff, compute the answer. Lets store it in a variable ans
+    // Now lets say that the final output is always supposed to be an integer greater than 1  
+    assert(ans > 1);   // If ans <= 1 then you will see an RTE verdict, and thats how you know something is wrong with your logic above
+    cout << ans;
+    return;
+}
+```
 
 ### Bitsets
 A bitset is a dataset that stores multiple boolean values but takes lesser memory space as compared to other data sets that can store a sequence of bits like a boolean array or boolean vector. One of the constructor overloads accepts and integer, which means, you can get the binary representation of an integer in as simple as 2 lines:
@@ -333,42 +352,46 @@ cout << __lg(x);   // returns 3
 cout << __builtin_ffs(x);   // returns (1+1) = 2
 ```
 
-### Lambdas
-A lambda is an expression that generates a function object (a functor) on the fly. Lambdas allow you to inline anonymous function objects as parameters to various STL functions. They can also capture (or close over) variables from the surrounding scope, either by value or by reference.
+### Clocking
+Here is a clean way of measuring execution time.
 
-[Good article on Lambdas](https://blog.feabhas.com/2014/03/demystifying-c-lambdas/)
-
-[Documentation](https://en.cppreference.com/w/cpp/language/lambda)
-
-In the context of cp, I find lambdas quite useful for its following aspects
-* Anonymous inlining of functors that act as *comparators* for various STL functions like ```sort()```.
-* Function-like behaviour and capture of local variables to perform repetitive tasks with them, without having to explicitly pass as many arguements.
-
+The timer is set to start when the object is instantiated (constructor is invoked). When the object falls out of scope (destructor is invoked) it returns the time elapsed since then.
 ```c++
-vector<pair<int, int>> v{{1, 2}, {3, -5}, {-1, 0}};
-
-// sorting by second value of pair using a lambda as comparator
-auto cmp = [](const pair<int, int>& A, const pair<int, int>& B) { 
-    if(A.second == B.second) return A.first < B.first;
-    return A.second < B.second; 
-});
-sort(all(v), cmp);
-
-// sorting by second value of pair using a lambda (inline) as comparator
-sort(all(v), [](const pair<int, int>& A, const pair<int, int>& B) { 
-    if(A.second == B.second) return A.first < B.first;
-    return A.second < B.second; 
-});
-
-#define x first
-#define y second
-
-auto dist = [&] (int a, int b) {     // the [] is the capture clause; Here [&] captures everything by reference.
-    return sqrt((v[a].x-v[b].x)*(v[a].x-v[b].x) + (v[a].y-v[b].y)*(v[a].y-v[b].y));
+struct Timer {
+    string label = "";
+    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
+    std::chrono::duration<float, std::milli> duration;
+    Timer() {
+        start = std::chrono::high_resolution_clock::now();
+    }
+    Timer(string name) {
+      label = name;
+      start = std::chrono::high_resolution_clock::now();
+    }
+    ~Timer() {
+        end = std::chrono::high_resolution_clock::now();
+        duration = end - start;
+        cout << "@" << label << "> " << duration.count() << " ms" << '\n';
+    }
 };
+```
+Here is how you'd use it.
+```c++
+void func() {
+    Timer timer2("Inside");
+    this_thread::sleep_for(chrono::milliseconds(100));
+}
 
-for(int i = 0; i < 3; i++)
-    for(int j = 0; j < 3; j++) 
-        cout << dist(i, j) << endl;     // calling it like a function
+int main() {
+    Timer timer("Main");
+    func();
+    this_thread::sleep_for(chrono::milliseconds(230));
+    return 0;
+}
+```
 
+**Output**
+```
+@Inside> 109.2 ms
+@Main> 343.201 ms
 ```
