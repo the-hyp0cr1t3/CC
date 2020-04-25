@@ -65,26 +65,34 @@ cout << a << endl << b << endl << c;
 ```
 Same thing can be done with *1.0* for ```double```.
 
-### !!, ~ and ^
-The ```!!``` operator is equivalent to typecasting the operand to bool, i.e, it returns false if the value is 0, and true if the value is anything else.
+### Bitwise operators and more
+
+The **Bitwise AND** operator, ```&```, only sets bits which are common to either operand. It can be used to check parity of an integer.
 ```c++
-for(int i = 0; i < n; i++)
-    cnt_nonzeros += !!arr[i];
+int n = 42;
+if(n & 1) cout << "odd";
+else cout << "even";
 ```
 
-The ```~``` operator returns 0 if the value is -1.
+The **Bitwise One's Complement** operator,  ```~```,  is a unary operator which flips the bits. How is this useful? It returns a non-zero value for all numbers except -1.
 ```c++
 // iterating in reverse, while i >= 0
 for(int i = n-1; ~i; i--) 
     // do stuff
 ```
 
-The ```^``` operator returns 0 if both operands are equal.
+The **Bitwise XOR** operator, ```^```, only sets bits which are exclusive to either operand. It evaluates to 0 if both operands are equal.
 ```c++
 void dfs(int u, int par) {
    for(auto v: graph[u])
        if(v ^ p) dfs(v, u);
 }
+```
+
+The **Logical NOT** operator, when used on itself, ```!!```, is equivalent to typecasting the operand to bool, i.e, it returns false if the value is 0, and true if the value is anything else.
+```c++
+for(int i = 0; i < n; i++)
+    cnt_nonzeros += !!arr[i];
 ```
 
 ### A more convenient if statement
@@ -236,8 +244,20 @@ cout << *min_element(all(v));
 cout << *max_element(all(v));
 ```
 
-### push_back() vs emplace_back()
-```emplace_back()``` essentially does everything ```push_back()``` does. In addition, it accepts constructor arguments and constructs the object directly within the vector, as opposed to ```push_back()```, which first has to create a temporary object, copy it to the vector, then destroy the temporary object. It is thus more efficient. 
+### Optimizing vectors
+The following is essentailly a summary of [this](https://www.youtube.com/watch?v=HcESuwmlHEY) video, in written form.
+
+#### std::vector::reserve()
+Capacity of a vector ([difference between size and capacity of a vector](https://stackoverflow.com/questions/6296945/size-vs-capacity-of-a-vector)) is the amount of space it is currently using. When the number of elements in the vector (aka its size) reaches its maximum capacity, it needs to be resized, or in the worst case, reallocated (which would take linear time as it invloves copying all the elements from one place to another). This is where the ```reserve()``` method comes in. If you roughly know before hand, the size of your vector, you can instruct the compiler to reserve enough space. It is not to be confused with ```resize()```; They do different things (see [reserve() vs resize()](https://stackoverflow.com/questions/13029299/stdvectorresize-vs-stdvectorreserve)).
+```c++
+vector<int> v;
+v.reserve(N);
+for(int i = 0; i < N; i++)
+    v.push_back(i);
+```
+
+#### push_back() vs emplace_back()
+The ```emplace_back()``` method essentially does everything ```push_back()``` does. In addition, it accepts constructor arguments and constructs the object directly within the vector, as opposed to ```push_back()```, which first has to create a temporary object, copy it to the vector, then destroy the temporary object. 
 ```c++
 vector<pair<int, int>> v;
 v.emplace_back(1, 2);
@@ -251,3 +271,20 @@ for(int i = 0; i < m; i++) {
 }
 ```
 Read more about this from [here](http://candcplusplus.com/c-difference-between-emplace_back-and-push_back-function)
+
+### assert()
+The ```assert()``` macro is very useful in situations where you suspect something may be wrong. When an expression passed to assert() is false, it causes an abort and terminates the program (Runtime error). This is not only useful for local testing, but can be exploited on online judges such as codeforces. If an assertion is evaluated to be false in a particular test case, the judge returns an RTE verdict, so now you have an idea of what may be wrong.
+
+### Bitsets
+A bitset is a dataset that stores multiple boolean values but takes lesser memory space as compared to other data sets that can store a sequence of bits like a boolean array or boolean vector. One of the constructor overloads accepts and integer, which means, you can get the binary representation of an integer in as simple as 2 lines:
+```c++
+int n = 10;
+bitset<32> b(n);
+cout << b;
+cout << b[i];    // accessing the i-th bit directly
+cout << b.count();    // returns number of set bits
+b ^= 1;      // bitwise operators also work
+b &= 12;
+b |= 3;
+cout << b.to_ulong();   // returns the integer in decimal form
+```
