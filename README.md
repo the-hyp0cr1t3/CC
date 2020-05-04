@@ -16,7 +16,7 @@ I like *Sublime Text* because it's fast and light weight. Another popular choice
 </details>
 
 ## C++ STL
-STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://hackerrank.com/domains/cpp/stl) is a good place to start.
+STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://www.hackerearth.com/practice/notes/standard-template-library/) is a good place to start. Try out a few problems [here](https://hackerrank.com/domains/cpp/stl).
 
 ## Getting started
 [Here](CC%20Sites.md) is a comprehensive guide on Competitive Coding websites (primarily CodeForces, which I recommend).
