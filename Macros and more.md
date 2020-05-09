@@ -36,7 +36,7 @@ ios::sync_with_stdio(0);
 cin.tie(0); 
 cout.tie(0)
 ```
-The ```std::cin``` and ```std::cout``` methods may sometimes be too slow. Thus when there is large input, it is common practice to include these two lines of code in your program to speed them up. You may refer to [this](https://www.geeksforgeeks.org/fast-io-for-competitive-programming/) for a better understanding on what it does, and how it works.
+The ```std::cin``` and ```std::cout``` streams may sometimes be too slow. Thus when there is large input, it is common practice to include these two lines of code in your program to speed them up. You may refer to [this](https://www.geeksforgeeks.org/fast-io-for-competitive-programming/) for a better understanding on what it does, and how it works.
 
 ### endl vs '\n'
 Using ```'\n'``` is better (faster) than using ```std::endl``` (in the context of cp) and [here's](https://www.educative.io/edpresso/what-is-the-difference-between-endl-and-n-in-cpp) why. 
