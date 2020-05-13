@@ -38,7 +38,7 @@ Learn new topic > Practice problems > Improve speed > Learn new topic > Practice
 [DP Guide](https://codeforces.com/blog/entry/67679)\
 [DP problems](https://atcoder.jp/contests/dp)\
 [Graph Theory](https://hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/)\
-[Data Structures](https://hackerearth.com/practice/data-structures/arrays/1-d/tutorial/)\
+[Data Structures](https://codeforces.com/blog/entry/15729)\
 [a2oj](https://a2oj.com/)\
 AshishGupGod > [Github](https://github.com/Ashishgup1/Competitive-Coding?files=1) and [Quora](https://quora.com/What-are-some-C-hacks-for-competitive-programming-except-STL/answer/Ashish-Gupta-211?ch=10&share=79b0de97&srid=ihpN)
 
