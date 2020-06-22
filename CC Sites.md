@@ -2,7 +2,7 @@
 
 ## Codeforces
 
-While there are quite a few good sites for contests, I'd primarily recommend *[CodeForces](https://codeforces.com/)* for its amazing community, interface and problem statements.
+While there are quite a few good sites for contests, I'd primarily recommend *[Codeforces](https://codeforces.com/)* for its amazing community, interface and problem statements.
 
 ### Problems
 A problem typically consists of a problem statement (that details the task), constraints on the input (in simple terms, how big the input will be), input and output instructions (what to read, what to write), and finally a sample test case.
@@ -32,7 +32,7 @@ An error occurred during run time; Division by 0, accessing an array index that 
 #### Time Limit Exceeded (TLE)
 Took too long. Your program is not able to run within the specified time limit with the given constraints on input. It thus becomes important to be able to judge the **time complexity** of your algorithm and ensure it satisfies the time limit, given the constraints, as discussed later.
 
-#### Memry Limit Exceeded (MLE)
+#### Memory Limit Exceeded (MLE)
 Similar to TLE, your program exceeded the memory limit mentioned.
 
 #### Compilation Error
@@ -50,7 +50,7 @@ This means that someone was able to supply a test case where your code gives one
 
 For more info on the rules, visit [link](https://codeforces.com/blog/entry/456) and [link](https://codeforces.com/blog/entry/4088)
 
-### Rating
+### Rating System
 Following every official contest, are the rating changes. You gain or lose rating based on your rank and performance. Your rating is a number that goes up as you get better.
 
 There are 3 broad divisions, namely
@@ -58,7 +58,7 @@ There are 3 broad divisions, namely
 * Div. 2
 * Div. 3
 
-Original, I know. Particiapants in a Div. 3 contest rated *1600 and below* **only** are given rating changes for the contest. In other words, the contest remains unrated for those above R1600. Similarly, in a Div. 2 contest, those rated either *1900* or *2100 and below* (depends on the contest) **only** are affected by rating changes. Div. 1 contests are the hardest and are rated for those above *1900*. Subsequently in terms of difficulty, **Div. 3 < Div. 2 < Div. 1**.
+Original, I know. Participants in a Div. 3 contest rated *1600 and below* **only** are given rating changes for the contest. In other words, the contest remains unrated for those above R1600. Similarly, in a Div. 2 contest, those rated either *1900* or *2100 and below* (depends on the contest) **only** are affected by rating changes. Div. 1 contests are the hardest and are rated for all. Subsequently in terms of difficulty, **Div. 3 < Div. 2 < Div. 1**.
 Some common types of division-wise contests held are
 * Div. 2 only
 * Div. 3 only
