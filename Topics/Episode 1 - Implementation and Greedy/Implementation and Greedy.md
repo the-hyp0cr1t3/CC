@@ -11,7 +11,7 @@ Implementation problems do not rely on the knowledge of any particular data stru
 
 **Note:** Sometimes the input may be large enough to cause an overflow. So remember to use long long (64-bit integer) instead of int (32-bit integer). It is safe to assume anything above 2x10<sup>9</sup> overflows *int*, and anything above 2x10<sup>18</sup> overflows *long long int*
 
-Greedy
+## Greedy
 As the name suggests, a greedy approach is one where (greedily) picking the **best option** at every stage leads to the **best outcome**.
 
 [Tutorial](https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/)
