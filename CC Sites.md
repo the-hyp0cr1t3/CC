@@ -84,7 +84,7 @@ ABCs are usually held every weekend and they consist of 6 problems which are to 
 In each contest, you get performance. This value represents how well you've performed in a contest. Your rating is computed as the weighted average (recent contests have more weights) of performances. After 10 rated contests, you can assume that your rating is close to your real strength.
 
 ## Codechef
-Codechef is another  popular platform. Codechef hosts three kinds of contests:
+[Codechef](https://www.codechef.com/) is another  popular platform. Codechef hosts three kinds of contests:
 * **The Long Challenge**: These contests go on for 10 days, giving you enough time to think about a problem, try different ways approaches, etc. If you’re usually slow at solving problems but strong in concepts, this is ideal for you.
 * **Cook Off**: These are similar to most contests on Codeforces, spanning 2.5 hours, usually with about 5 – 7 problems to solve.
 * **Lunchtime**: This is similar to the Cook Off challenge, where you have 3 hours time to solve 5 – 7 problems.
