@@ -68,15 +68,17 @@ Some common types of division-wise contests held are
 Lastly, there are currently 10 different tiers on codeforces. Each tier is specified by a rating range, **Newbie** (Gray) being the lowest, and **Tourist** (Legendary Grandmaster) being the highest.
 
 ## AtCoder
-Similar to Codeforces, [AtCoder](https://atcoder.jp/) is another programming contest website, based in Japan. **AtCoder Beginner Contests** are a great way to improve your basic implementation skills.
+Similar to Codeforces, [AtCoder](https://atcoder.jp/) is another programming contest website, based in Japan. There are two main types of official contests on AtCoder:
+* **AtCoder Beginner Contest (ABC)**: This is mainly targeted at those who are new to competitive programming. The problems are usually easy and educational.
+* **AtCoder Grand Contest (AGC)**: Here, problems usually have high originality and require interesting observations.
 
 [Getting started with AtCoder](https://atcoder.jp/posts/2)
 
-## CodeChef
-[CodeChef](https://www.codechef.com/)
+### AtCoder Beginner Contests (ABCs)
+Anyone with basic knowledge of implementation, brute-force and simple math is guaranteed to solve at least 3 problems in ABCs. These contests enable beginners to strengthen their basics which can come in handy when they try to learn more complex subjects like data structures, algorithms and higher mathematics.
 
-## HackerEarth
-[HackerEarth](https://www.hackerearth.com/challenges/)
+### Contests and how they work
+ABCs are usually held every weekend and they consist of 6 problems which are to be solved in a time limit of 100 minutes. It is rated for participants in the range 0 – 1999.The problems are generally arranged in an increasing order of difficulty and hence grant an increasing number of points (100 for Task A, 200 for Task B and so on).When you solve a problem, you get the score assigned to it. However, you would incur a penalty for every incorrect submission (no deduction from score). The penalties are computed as (the time you spend to get your current score) + (5 minutes) * (the number of incorrect attempts).  Competitors are ranked first by total scores, then by penalties. The verdicts a submission may get are quite similar to the ones on Codeforces.
 
-## FoolsHaven
-[FoolsHaven](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+### Rating system
+In each contest, you get performance. This value represents how well you've performed in a contest. Your rating is computed as the weighted average (recent contests have more weights) of performances. After 10 rated contests, you can assume that your rating is close to your real strength.
