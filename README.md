@@ -20,10 +20,10 @@ STL, or Standard Template Library, is a huge library of useful functions. If you
 
 ## Getting started
 [Here](CC%20Sites.md) is a comprehensive guide on Competitive Coding websites (primarily CodeForces, which I recommend).
-Before you actually start it is important to familiarize yourself with the big-O notation. Understanding [Time and Space Complexity](https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/) is the only prerequisite (apart from knowing a language). Once you've done all this, you're ready to [start](Hello%20world.md).
+Before you actually start it is important to familiarize yourself with the big-O notation. Understanding [Time and Space Complexity](https://github.com/the-hyp0cr1t3/CC/blob/master/Complexity%20and%20Big-O%20Notation.md) is the only prerequisite (apart from knowing a language). Once you've done all this, you're ready to [start](Hello%20world.md).
 
 ## One formula for everything
-* Here is a [link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2368441416724151/) to some very useful posts that cover most beginner topics. **Upsolve every problem** from these posts. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to **explore further**.
+* [This](https://github.com/the-hyp0cr1t3/CC/tree/master/Topics) covers most beginner topics. **Upsolve every problem** from these posts. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to **explore further**.
 
 * Once you're familiar with a particular topic, you can go to [problemset](https://codeforces.com/problemset) on Codeforces and filter by tag and/or rating. From there, it's just **practice**, **practice**, **practice**.
 
@@ -31,16 +31,6 @@ Before you actually start it is important to familiarize yourself with the big-O
 
 ### Formula
 Learn new topic > Practice problems > Improve speed > Learn new topic > Practice ... Rinse and repeat.
-
-## Additional links
-[Link](https://codeforces.com/group/mnjOBx357f/contests) to past year contests organized by CRUx\
-[Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2470947036473588/) to FB post on workshop held in first sem\
-[DP Guide](https://codeforces.com/blog/entry/67679)\
-[DP problems](https://atcoder.jp/contests/dp)\
-[Graph Theory](https://hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/)\
-[Data Structures](https://codeforces.com/blog/entry/15729)\
-[a2oj](https://a2oj.com/)\
-AshishGupGod > [Github](https://github.com/Ashishgup1/Competitive-Coding?files=1) and [Quora](https://quora.com/What-are-some-C-hacks-for-competitive-programming-except-STL/answer/Ashish-Gupta-211?ch=10&share=79b0de97&srid=ihpN)
 
 ## Extras
 [Track your progress](https://cfviz.netlify.com/)\
