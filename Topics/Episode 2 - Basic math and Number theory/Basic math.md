@@ -1,6 +1,6 @@
 # Basic math
 
-### Problems
+#### Problems
 * [Codeforces 1327 A](https://codeforces.com/problemset/problem/1327/A)
 * [Codeforces 1341 A](https://codeforces.com/problemset/problem/1341/A)
 * [Codeforces 1107 B](https://codeforces.com/problemset/problem/1107/B)
