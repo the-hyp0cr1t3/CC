@@ -25,3 +25,9 @@ That said, here are some links I've found helpful in my competitive programming 
 [Coin change problem](https://hackernoon.com/the-coin-change-problem-explained-ddd035a8f22f)\
 [Partition problem](https://www.youtube.com/watch?v=zNVT8SnGRig)\
 [Subset sum problem](https://www.quora.com/What-is-the-best-way-to-understanding-the-subset-sum-problem-dynamic-programming)
+
+<details>
+  <summary>Relevant meme</summary>
+  
+  ![Relevant meme](https://github.com/the-hyp0cr1t3/CC/blob/master/Topics/Episode%205%20-%20Dynamic%20Programming%20(DP)/Relevant%20meme.jpg)
+</details>
