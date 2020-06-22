@@ -3,7 +3,7 @@
 ## Ad hoc/Implementation
 Implementation problems do not rely on the knowledge of any particular data structure or algorithm and instead require the usage of pure logic. There isn't really any way to learn this method except to practice problems.
 
-### Problems
+#### Problems
 * [Codeforces 1030 A](https://codeforces.com/problemset/problem/1030/A)
 * [Codeforces 977 A](https://codeforces.com/problemset/problem/977/A)
 * [Codeforces 1201 A](https://codeforces.com/problemset/problem/1201/A)
@@ -16,7 +16,7 @@ As the name suggests, a greedy approach is one where (greedily) picking the **be
 
 [Tutorial](https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/)
 
-### Problems
+#### Problems
 * [Codeforces 1321 A](https://codeforces.com/problemset/problem/1321/A)
 * [Codeforces 1325 B](https://codeforces.com/problemset/problem/1325/B)
 * [Codeforces 1236 C](https://codeforces.com/contest/1236/problem/C)
