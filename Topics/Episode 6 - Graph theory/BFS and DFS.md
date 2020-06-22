@@ -1,5 +1,6 @@
 # BFS and DFS
 [Graph representation](https://www.hackerearth.com/practice/algorithms/graphs/graph-representation/tutorial/)
+[Good read](https://codeforces.com/blog/entry/16221)
 
 ## Depth first search (DFS)
 [Tutorial](https://cp-algorithms.com/graph/depth-first-search.html)\
