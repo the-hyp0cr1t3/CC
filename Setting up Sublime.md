@@ -1,5 +1,3 @@
-(☞ﾟ∀ﾟ)☞ Credit to Muzaffar Ahmed for the all that follows
-
 # Setting up Sublime Text 3 and C++ for Windows
 Before we begin with Competitive Programming tutorials, I felt like I should write this since many face problems with setting up the environment or end up setting poor environment which affects their speed.
 
@@ -32,7 +30,35 @@ My favorite tool (and the only one I use right now) for competitive programming.
 In Sublime Text, go to `Preferences → Package Control → Install Package`, wait until the packages load, search for CppFastOlympicCoding and hit enter to install.
 
 #### Alternative
-If you don't want to use a package, you can use 𝚏𝚛𝚎𝚘𝚙𝚎𝚗 to redirect input and output to files. Have an 𝚒𝚗𝚙𝚞𝚝.𝚝𝚡𝚝 and an 𝚘𝚞𝚝𝚙𝚞𝚝.𝚝𝚡𝚝 in the same folder as your source code file, use [𝚏𝚛𝚎𝚘𝚙𝚎𝚗](http://p.ip.fi/psMk) in an 𝚒𝚏𝚗𝚍𝚎𝚏 (or better, 𝚒𝚏𝚍𝚎𝚏) directive and change the layout of Sublime by clicking `View → Groups → New Group twice`.
+If you don't want to use a package, you can use 𝚏𝚛𝚎𝚘𝚙𝚎𝚗 to redirect input and output to files. Have an 𝚒𝚗𝚙𝚞𝚝.𝚝𝚡𝚝 and an 𝚘𝚞𝚝𝚙𝚞𝚝.𝚝𝚡𝚝 in the same folder as your source code file, use [𝚏𝚛𝚎𝚘𝚙𝚎𝚗](https://en.cppreference.com/w/cpp/io/c/freopen) in an 𝚒𝚏𝚗𝚍𝚎𝚏 (or better, 𝚒𝚏𝚍𝚎𝚏) directive and change the layout of Sublime by clicking `View → Groups → New Group twice`.
+
+<details>
+  <summary>Code</summary>
+ 
+ ```c++
+// Relies on the online judge using -DONLINE_JUDGE flag during compilation.
+// Most judges (like Codefoces, UVa) do use it, but not all.
+int main() {
+    #ifndef ONLINE_JUDGE
+      freopen("input.txt", "r", stdin);
+      freopen("output.txt", "w", stdout);
+    #endif
+ 
+    /* your code */
+}
+```
+```c++
+// Requires you to compile with -DMY_FLAG_6969 flag during compilation. Always works.
+int main() {
+    #ifdef MY_FLAG_6969
+      freopen("input.txt", "r", stdin);
+      freopen("output.txt", "w", stdout);
+    #endif
+ 
+    /* your code */
+}
+ ```
+</details>
 
 # Some tips and shortcuts
 We're almost through. Following are just tips and guidelines which you may find helpful.
@@ -50,8 +76,50 @@ We're almost through. Following are just tips and guidelines which you may find 
 ## Sublime snippets 
 Ah, snippets. Most useful for competitive programmers, it's one hell of a feature. They're templates which are triggered by a keyword/phrase. In Sublime Text, go to `Tools → Developer → New Snippet...` to create a new snippet. You can use this for your CC template or commonly used functions (Please, don't make your CC template ugly by adding every function and macro ever; Keep it clean and use snippets instead).
 
-Snippet I use for my template: [PyAlphagawd](http://pastebin.com/jp79zQM1)\
-Another example for a snippet (RNG): [PyAlphagawdtheReturn](http://pastebin.com/cwYhUvw1)
+<details>
+  <summary>Example of a starting snippet</summary>
+ 
+ ```xml
+<snippet>
+    <content><![CDATA[
+// Author: πα
+#include <bits/stdc++.h>
+using namespace std;
+#define long int64_t
+$1
+int main() {
+   int n, i$2;
+   cin >> n$3;
+   $4
+   return 0;
+}
+ 
+]]></content>
+    <tabTrigger>cpp</tabTrigger>
+    <description>PyAlpha's cpp template</description>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>
+ ```
+</details>
+<details>
+  <summary>Rng snippet</summary>
+ 
+ ```xml
+<snippet>
+    <content><![CDATA[
+mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+int randint(int L, int R) {
+    uniform_int_distribution<int> dist(L, R);
+    return dist(rng);
+}
+ 
+]]></content>
+    <tabTrigger>rng</tabTrigger>
+    <description>Random number generator</description>
+    <scope>source.c, source.objc, source.c++, source.objc++</scope>
+</snippet>
+ ```
+</details>
 
 ## CppFastOlympicCoding settings
 
@@ -61,10 +129,64 @@ Hitting ctrl+alt+b every single time to run is too much work, ain't it? You can 
 ### C++17 and other compilation flags
 CppFastOlympicCoding uses C++11 by default. To change the compile command, go to Tools → FastOlympicCoding → settings and make your changes in the right pane. Change `-𝚜𝚝𝚍=𝚐𝚗𝚞++𝟷𝟷` to `-𝚜𝚝𝚍=𝚌++𝟷𝟽` and add any flags you wish to. 
 
-[My settings](http://pastebin.com/biNXA2Cg)
+<details>
+  <summary>My settings</summary>
+ 
+ ```json
+{
+    "cpp_complete_enabled": false,
+    "run_settings": [
+        {
+            "name": "C++",
+            "extensions": ["cpp"],
+            "compile_cmd": "g++ -fmessage-length=38 -Warray-bounds -Wmisleading-indentation -Wformat=2 -Wmaybe-uninitialized -Wsign-compare -Wconversion -Wshift-overflow=2 -Wstrict-overflow=5 -Wshadow -Wdangling-else -D_GLIBCXX_DEBUG \"{source_file}\" -Wl,--stack=268435456 -O2 -std=c++17 -o \"{file_name}\"",
+            "run_cmd": "\"{source_file_dir}\\{file_name}.exe\" {args} -debug",
+            "lint_compile_cmd": "g++ -Warray-bounds -Wmisleading-indentation -Wformat=2 -Wmaybe-uninitialized -Wsign-compare -Wconversion -Wshift-overflow=2 -Wstrict-overflow=5 -Wshadow -Wdangling-else -std=c++17 \"{source_file}\" -I \"{source_file_dir}\""
+        },
+ 
+        {
+            "name": "Python",
+            "extensions": ["py"],
+            "compile_cmd": null,
+            "run_cmd": "python \"{source_file}\""
+        },
+ 
+        {
+            "name": "C",
+            "extensions": ["c"],
+            "compile_cmd": "gcc \"{source_file}\" -std=c99 -o \"{file_name}\"",
+            "run_cmd": "\"{source_file_dir}\\{file_name}.exe\"",
+        }
+    ]
+}
+ ```
+</details>
 
 ## Other Sublime settings
-Go to `Preferences → Settings` and explore. Whatever changes you want to make, add that change in the right panel. I suggest [these](http://pastebin.com/peJ8tVyE) settings (yes, spaces are better than tabs).
+Go to `Preferences → Settings` and explore. Any changes you want to make can be added to right panel.
+
+<details>
+  <summary>My settings</summary>
+ 
+ ```json
+{
+    "color_scheme": "Packages/Color Scheme - Default/Monokai.sublime-color-scheme",
+    "font_size": 13,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "indent_guide_options":
+    [
+        "draw_active"
+    ],
+    "save_on_focus_lost": true,
+    "scroll_past_end": false,
+    "theme": "Adaptive.sublime-theme",
+    "translate_tabs_to_spaces": true
+}
+ ```
+</details>
 
 ## Command prompt shortcut
 Right click on `taskbar → Taskbar settings → Disable "Replace Command prompt... ...Windows key+X"`.
@@ -74,4 +196,5 @@ Now you can use Win+X followed by C to quickly open command prompt.
 This isn't necessary, but it is important to know because if your editor fails to work for some reason during a contest, you should be able to write, compile and run your code. Your workspace should be easily navigable from the user folder.
 
 ## Sauce
+(☞ﾟ∀ﾟ)☞ Muzaffar Ahmed
 [Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/)
