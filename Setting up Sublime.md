@@ -196,5 +196,5 @@ Now you can use Win+X followed by C to quickly open command prompt.
 This isn't necessary, but it is important to know because if your editor fails to work for some reason during a contest, you should be able to write, compile and run your code. Your workspace should be easily navigable from the user folder.
 
 ## Sauce
-(☞ﾟ∀ﾟ)☞ Muzaffar Ahmed
+(☞ﾟ∀ﾟ)☞ Muzaffar Ahmed\
 [Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/)
