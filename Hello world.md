@@ -1,7 +1,4 @@
-Try [this](https://codeforces.com/problemset/problem/4/A) problem.
-
-Following is a starting template you may use:
-
+#### Hello World
 ```c++
 #include <bits/stdc++.h>
 using namespace std;
@@ -9,7 +6,8 @@ using namespace std;
 int main() {
   int n;
   cin >> n;
-  cout << n+1 << " " << "Watermelon" << endl;
+  cout << 2 << " " << "Am I a Watermelon to you" << endl;
   return 0;
 }
 ```
+Try [this](https://codeforces.com/problemset/problem/4/A) problem.
