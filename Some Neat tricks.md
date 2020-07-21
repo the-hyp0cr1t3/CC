@@ -1,4 +1,4 @@
-Here are some neat tricks I've come across through my experience with CP and C++ in general.
+Here are some neat tricks I've come across through my experience with CP and C++ in general. The inspiration to write this came from [here](https://codeforces.com/blog/entry/74684).
  
 ### Global variable initialization
 Globally declared variables are, by default, initialized to 0 at compile time (see [this](https://www.tutorialspoint.com/why-are-global-and-static-variables-initialized-to-their-default-values-in-c-cplusplus)). Initializing them is redundant.
