@@ -2,8 +2,8 @@
 
 ## Setting up an IDE
 I like *Sublime Text* because it's fast and light weight. Another popular choice is *Visual Studio* (paired with some useful extensions). However, anything is fine as it comes down to personal preference.\
-[Link](Setting%20up%20Sublime.md) to setting up Sublime, courtesy [Muzaffar Ahmed](https://github.com/muzaffarahmed75)\
-[Link](https://github.com/agrawal-d/competitive-programming-helper/) to VS extension, courtesy [Divyanshu Agrawal](https://github.com/agrawal-d)
+[Link](Setting%20up%20Sublime.md) to setting up Sublime\
+[Link](https://github.com/agrawal-d/competitive-programming-helper/) to VS extension (cph)
 
 ## Choosing a language
 <details>
