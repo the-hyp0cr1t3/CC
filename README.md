@@ -50,7 +50,7 @@ There are many platforms that host programming contests and allow you to practic
 Head on over to [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) on Codeforces and sort by rating. Solve some easy problems till you get a feel for it.
 
 ## What's next?
-Once you are familiarize yourself with these things, here are some things you could consider doing next:
+Once you familiarize yourself with these things, here are some things you could consider doing next:
 
 * Take a look at [time and space complexity](https://github.com/the-hyp0cr1t3/CC/blob/master/Complexity%20and%20Big-O%20Notation.md), as will you soon realise that not all logically 'correct' solutions pass the given constraints.
 
