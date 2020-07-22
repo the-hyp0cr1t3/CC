@@ -1,36 +1,73 @@
 # Getting into Competitive Coding
 
+Programming is all about writing code to solve problems or tasks. Competitive programming makes a sport out of this, where contestants compete (usually online) to solve a bunch of such problems in a limited amount of time.
+
+Problems are primarily math, logic and/or algorithm based and typically look something like [this](https://codeforces.com/problemset/problem/71/A). Such problems usually consist of a statement (that details the task), the input and output format, constraints on the input and some examples.
+
+## What's in a problem?
+Let's jump right in. Take a look at this [problem](https://codeforces.com/problemset/problem/71/A). Read the statement carefully and try to understand what it is asking. Once you figure this out, all that's left is to code it.
+
+Here's what one of the many possible solutions looks like.
+<details>
+    <summary>C++ code</summary>
+
+```c++
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    while(n--) {
+        string s;
+        cin >> s;
+        if(s.length() <= 10)
+            cout << s << endl;
+        else
+            cout << s.front() << s.length()-2 << s.back() << endl; 
+    }
+    return 0;
+}
+```
+</details>
+
+## Choosing a language
+Most competitive programmers prefer C++, and for [good reason](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming/). However, Java and Python are also fairly popular. Knowing a programming language is the only pre-requisite.
+
+**Note**: The code snippets in this guide will be in C++ since it is arguably the best language for competitive programming ~~and not because I do not know any other languages :/~~
+
 ## Setting up an IDE
-I like *Sublime Text* because it's fast and light weight. Another popular choice is *Visual Studio* (paired with some useful extensions). However, anything is fine as it comes down to personal preference.\
+If you haven't already set up an IDE, you may find use for one of the following links.\
 [Link](Setting%20up%20Sublime.md) to setting up Sublime\
 [Link](https://github.com/agrawal-d/competitive-programming-helper/) to VS extension (cph)
 
-## Choosing a language
+## Competitive coding platforms
+There are many platforms that host programming contests and allow you to practice solving problems, among other things. One such platform is [Codeforces](https://codeforces.com/), which I primarily recommend and use.
+[Here](CC%20Sites.md) is a detailed guide I've written about it (and a few other platforms).
+
+## Get started
+Head on over to [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) on Codeforces and sort by rating. Solve some easy problems till you get a feel for it.
+
+## What's next?
+Once you are familiarize yourself with these things, here are some things you could consider doing next:
+
+* Take a look at [time (and space) complexity](https://github.com/the-hyp0cr1t3/CC/blob/master/Complexity%20and%20Big-O%20Notation.md), as will you soon realise that not all logically 'correct' solutions pass the given constraints.
+
+* Learn C++ STL. STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://www.hackerearth.com/practice/notes/standard-template-library/) is a good place to start. Try out a few problems [here](https://hackerrank.com/domains/cpp/stl).
+
+* Develop your problem solving approach by tackling topics one at a time. Here's a collection of some common beginner [topics](https://github.com/the-hyp0cr1t3/CC/tree/master/Topics) and problems on the same.
+
+* Turn to the Codeforces [problemset](https://codeforces.com/problemset), and sort by difficulty and tags. Grind problems because there's nothing like **practice, practice, practice**.
+
+* Participate in live [contests](https://codeforces.com/contests) or take [virtual](https://codeforces.com/blog/entry/70036) ones. Virtual contests are a way to participate in or experience old contests that have happened already.
+
 <details>
-  <summary>Spoiler</summary>
- 
-  It's *C++* and [here's](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming) why.\
-  **tl;dr**: C++ is the most commmonly used 'fast' language, that also comes with great functionality.
-  
-  Java is also a popular choice, [however](https://www.quora.com/Why-do-competitive-programmers-prefer-to-use-C++-instead-of-Java-in-the-programming-contests). So if you're not already familiar with C++, it is advised that you switch over; Although you may choose to stick with Java if you feel that it's a better choice. There are infinitely many links on the internet that guide you through the basics of these languages, so none will be mentioned here.
+    <summary>The secret formula</summary>
+    <img src="https://user-images.githubusercontent.com/55075129/88116572-75eb0d80-cbd6-11ea-968a-5807066aeabb.jpg" alt="Practice" style="width:20px;height:20px;">
+
+    In all seriousness though
+    Learn new topic > Practice problems > Improve speed > Learn new topic > Practice ... Rinse and repeat.
 </details>
-
-## C++ STL
-STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://www.hackerearth.com/practice/notes/standard-template-library/) is a good place to start. Try out a few problems [here](https://hackerrank.com/domains/cpp/stl).
-
-## Getting started
-[Here](CC%20Sites.md) is a comprehensive guide on Competitive Coding websites (primarily CodeForces, which I recommend).
-Before you actually start it is important to familiarize yourself with the big-O notation. Understanding [Time and Space Complexity](https://github.com/the-hyp0cr1t3/CC/blob/master/Complexity%20and%20Big-O%20Notation.md) is the only prerequisite (apart from knowing a language). Once you've done all this, you're ready to [start](Hello%20world.md).
-
-## One formula for everything
-* [This](https://github.com/the-hyp0cr1t3/CC/tree/master/Topics) covers most beginner topics. **Upsolve every problem** from these posts. Remember that these are only the first 2-3 problems that will introduce you to the topic. It's upto you to **explore further**.
-
-* Once you're familiar with a particular topic, you can go to [problemset](https://codeforces.com/problemset) on Codeforces and filter by tag and/or rating. From there, it's just **practice**, **practice**, **practice**.
-
-* [Virtual Contests](https://codeforces.com/blog/entry/70036) are a great way to improve speed. You could have all the conceptual knowledge in the world but that wouldn't mean anything if you aren't fast.
-
-### Formula
-Learn new topic > Practice problems > Improve speed > Learn new topic > Practice ... Rinse and repeat.
 
 ## Extras
 [Track your progress](https://cfviz.netlify.com/)\
