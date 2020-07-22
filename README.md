@@ -2,10 +2,10 @@
 
 Programming is all about writing code to solve problems or tasks. Competitive programming makes a sport out of this, where contestants compete (usually online) to solve a bunch of such problems in a limited amount of time.
 
-Problems are primarily math, logic and/or algorithm based and typically look something like [this](https://codeforces.com/problemset/problem/4/A). Such problems usually consist of a statement (that details the task), the input and output format, constraints on the input and some examples.
-
 ## What's in a problem?
-Let's jump right in. Take a look at this [problem](https://codeforces.com/problemset/problem/71/A). Read the statement carefully and try to understand what it is asking. Once you figure this out, all that's left is to code it.
+Problems are primarily math, logic and/or algorithm based and typically look something like [this](https://codeforces.com/problemset/problem/4/A). Such problems usually consist of a statement (that details the task), the input and output format, constraints on the input and some examples (will be further explained later on).
+
+Try [this](https://codeforces.com/problemset/problem/71/A) problem. Read the statement carefully and try to understand what it is asking. Once you figure it out, all that's left is to code.
 
 Here's what one of the many possible solutions looks like.
 <details>
@@ -52,15 +52,15 @@ Head on over to [problemset](https://codeforces.com/problemset?order=BY_RATING_A
 ## What's next?
 Once you are familiarize yourself with these things, here are some things you could consider doing next:
 
-* Take a look at [time (and space) complexity](https://github.com/the-hyp0cr1t3/CC/blob/master/Complexity%20and%20Big-O%20Notation.md), as will you soon realise that not all logically 'correct' solutions pass the given constraints.
+* Take a look at [time and space complexity](https://github.com/the-hyp0cr1t3/CC/blob/master/Complexity%20and%20Big-O%20Notation.md), as will you soon realise that not all logically 'correct' solutions pass the given constraints.
 
 * Learn C++ STL. STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://www.hackerearth.com/practice/notes/standard-template-library/) is a good place to start. Try out a few problems [here](https://hackerrank.com/domains/cpp/stl).
 
 * Develop your problem solving approach by tackling topics one at a time. Here's a collection of some common beginner [topics](https://github.com/the-hyp0cr1t3/CC/tree/master/Topics) and problems on the same.
 
-* Turn to the Codeforces [problemset](https://codeforces.com/problemset), and sort by difficulty and tags. Grind problems because there's nothing like **practice, practice, practice**.
+* Turn to the codeforces [problemset](https://codeforces.com/problemset), and sort by difficulty and tags. Grind problems because there's nothing like **practice, practice, practice**.
 
-* Participate in live [contests](https://codeforces.com/contests) or take [virtual](https://codeforces.com/blog/entry/70036) ones. Virtual contests are a way to participate in or experience old contests that have happened already.
+* Participate in live [contests](https://codeforces.com/contests) or take [virtual](https://codeforces.com/blog/entry/70036) ones. Virtual contests are a way to participate in or experience old contests that have happened in the past.
 
 <details>
     <summary>The secret formula</summary>
