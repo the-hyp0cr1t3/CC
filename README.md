@@ -2,7 +2,7 @@
 
 Programming is all about writing code to solve problems or tasks. Competitive programming makes a sport out of this, where contestants compete (usually online) to solve a bunch of such problems in a limited amount of time.
 
-Problems are primarily math, logic and/or algorithm based and typically look something like [this](https://codeforces.com/problemset/problem/71/A). Such problems usually consist of a statement (that details the task), the input and output format, constraints on the input and some examples.
+Problems are primarily math, logic and/or algorithm based and typically look something like [this](https://codeforces.com/problemset/problem/4/A). Such problems usually consist of a statement (that details the task), the input and output format, constraints on the input and some examples.
 
 ## What's in a problem?
 Let's jump right in. Take a look at this [problem](https://codeforces.com/problemset/problem/71/A). Read the statement carefully and try to understand what it is asking. Once you figure this out, all that's left is to code it.
@@ -43,7 +43,8 @@ If you haven't already set up an IDE, you may find use for one of the following 
 
 ## Competitive coding platforms
 There are many platforms that host programming contests and allow you to practice solving problems, among other things. One such platform is [Codeforces](https://codeforces.com/), which I primarily recommend and use.
-[Here](CC%20Sites.md) is a detailed guide I've written about it (and a few other platforms).
+
+[Here](CC%20Sites.md) is a detailed guide I've written about problem statements, how contests work and the rating system on Codeforces (and a few other platforms).
 
 ## Get started
 Head on over to [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) on Codeforces and sort by rating. Solve some easy problems till you get a feel for it.
