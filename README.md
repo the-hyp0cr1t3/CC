@@ -72,4 +72,5 @@ Once you familiarize yourself with these things, here are some things you could 
 
 ## Extras
 [Track your progress](https://cfviz.netlify.com/)\
+[Codeforces Practice Tracker](https://codeforces.com/blog/entry/78203)\
 [Rating Predictor](https://cf-predictor-frontend.herokuapp.com/) (Download the extension)
