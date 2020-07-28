@@ -9,9 +9,10 @@
 * [Codechef CKISSHUG](https://www.codechef.com/problems/CKISSHUG)
 
 ## Matrix exponentiation
-[Tutorial](https://codeforces.com/blog/entry/67776)\
-[Another good read](http://fusharblog.com/solving-linear-recurrence-for-programming-contest/)\
-[Errichto video](https://www.youtube.com/watch?v=eMXNWcbw75E_)
+[Tutorial](http://zobayer.blogspot.com/2010/11/matrix-exponentiation.html)\
+[Another good read](https://codeforces.com/blog/entry/67776)\
+[Errichto video](https://www.youtube.com/watch?v=eMXNWcbw75E_)\
+[Optimized to O(k^2 logN) using Cayley Hamilton theorem](https://discuss.codechef.com/t/linear-recurrence-using-cayley-hamilton-theorem/6776)
 
 #### Problems
 * [Spoj FIBOFAST](https://www.spoj.com/problems/FIBOFAST/)
