@@ -1,10 +1,9 @@
 # Modular arithmetic
 This is a small but important topic. Following are links to some theory on it.
 
-[Tutorial](https://codeforces.com/blog/entry/72527)
-
-[Errichto video](https://www.youtube.com/watch?v=-OPohCQqi_E)
-
+[Tutorial](https://codeforces.com/blog/entry/72527)\
+[Errichto video](https://www.youtube.com/watch?v=-OPohCQqi_E)\
+[Second Thread video](https://www.youtube.com/watch?v=KfTcd0dg0DI)\
 [Modular Inverse](https://cp-algorithms.com/algebra/module-inverse.html)
 
 Try [this](https://open.kattis.com/problems/modulararithmetic) problem
