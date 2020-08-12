@@ -1,4 +1,6 @@
 // Inspired by [ecnerwala](https://codeforces.com/profile/ecnerwala)
+// Read about from [here](https://mvanier.livejournal.com/2897.html)
+using namesapce std;
 template<class T> class Y {
     T f_;
 public:
@@ -12,6 +14,6 @@ template<class T> Y(T) -> Y<T>;
 
 auto recur = Y([&](auto self, auto&&... params) -> void {
     // ...
-    self(params);
+    self(params...);
 });
 
