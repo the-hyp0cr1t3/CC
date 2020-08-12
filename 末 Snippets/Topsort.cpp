@@ -14,7 +14,6 @@ auto topsort = [&]() {
     vector<int> order; order.reserve(n);
     for(i = 0; i < n; i++) 
         if(!indeg[i]) q.push(i);
-
     while(!q.empty()) {
         auto v = q.front();
         q.pop();
@@ -22,6 +21,5 @@ auto topsort = [&]() {
         for(auto& x: g[v]) 
             if(!--indeg[x]) q.push(x);
     }
-
     return sz(order) == n;      // cycle? false : true
 };
