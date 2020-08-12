@@ -1,5 +1,5 @@
 Inspired by [tmwilliamlin168](https://codeforces.com/profile/tmwilliamlin168)
-
+// O(NlogN) precomp, O(logN) per query, O(NlogN) space
 const int LG = 20;
 int d[N], anc[LG][N];
 vector<int> g[N];
@@ -41,66 +41,86 @@ int LCA(int u, int v) {
 
 /* -------------------------------------------------- */
 // LCA Sparse Table
-const int K = 20;
-int n, tim = 0, height_of[K][2*N], node_of[K][2*N], tin[N], tout[N], d[N];
-vector<int> g[N];
+// O(N) precomp, O(1) per query, O(N) space
+int tin[N], d[N], lg2[2*N];
+vector<int> tree, bmask;
+vector<vector<int>> sparse;
+vector<vector<vector<int>>> best;
 
-int log(int x) {
-    return 31 - __builtin_clz(x);
+int len = 2*n-1, j, k; log2[0] = -1;
+for(i = 1; i <= len; i++) 
+    log2[i] = log2[i/2] + 1;
+
+int b = max(1, log2[len]/2);
+int cntb = (len+b-1)/b;
+
+bmask.resize(cntb); best.resize(1<<b-1);
+sparse.resize(log2[cntb]+1, vector<int>(cntb));
+tree.reserve(len);
+
+void dfs(int v, int p) {
+    tin[v] = sz(tree);
+    tree.pb(v);
+    for(auto x: g[v]) { 
+        if(x == p) continue;
+        d[x] = d[v] + 1;
+        dfs(x, v);
+        tree.pb(v);
+    }    
 }
 
-void build() {
-    int kmax = log(n);
-    for(int k = 1; k <= kmax; k++) {
-        for(int i = 0; i+(1<<k) <= tim; i++) {
-            if(height_of[k-1][i] <= height_of[k-1][i+(1<<(k-1))]) {
-                height_of[k][i] = height_of[k-1][i];
-                node_of[k][i] = node_of[k-1][i];
-            }
-            else {
-                height_of[k][i] = height_of[k-1][i+(1<<(k-1))];
-                node_of[k][i] = node_of[k-1][i+(1<<(k-1))];
-            }
+dfs(0, -1);
+
+auto lower = [&](int p, int q) {
+    return d[tree[p]] < d[tree[q]]? p : q;
+};
+
+for(i = 0; i < len; i++) {
+    int curb = i/b; j = i%b;
+    if(!j or lower(sparse[0][curb], i) == i)
+        sparse[0][curb] = i;
+    if(j and lower(i-1, i) == i-1)
+        bmask[curb] |= 1<<j-1;
+}
+
+for(k = 1; k <= log2[cntb]; k++) {
+    for(i = 0; i < cntb; i++) {
+        j = i + (1<<k-1);
+        sparse[k][i] = sparse[k-1][i];
+        if(j < cntb)
+            sparse[k][i] = lower(sparse[k-1][i], sparse[k-1][j]);
+    }
+}
+
+for(int curb = 0; curb < cntb; curb++) {
+    int mask = bmask[curb];
+    if(sz(best[mask])) continue;
+    best[mask].resize(b, vector<int>(b));
+    for(i = 0; i < b; i++) {
+        best[mask][i][i] = i;
+        for(j = i+1; j < b; j++) {
+            if(b*curb+j >= len) break;
+            best[mask][i][j] = lower(b*curb+best[mask][i][j-1], b*curb+j);
+            best[mask][i][j] -= b*curb;
         }
     }
 }
 
-int LCA(int u, int v) {
-    int l = tin[u], r = tin[v];
-    if(l > r) swap(l, r), swap(u, v);
-    int k = log(r-l+1);
-    r = r-(1<<k)+1;
-    return height_of[k][l] <= height_of[k][r]? node_of[k][l] : node_of[k][r];
-}
+auto geti = [&](int curb, int l, int r) {
+    return best[bmask[curb]][l][r] + b*curb;
+};
 
-void makeG() {
-    for(int i = 0; i < n-1; i++) {
-        int u, v;
-        re(u, v);
-        u--, v--;
-        g[u].pb(v);
-        g[v].pb(u);
+auto LCA = [&](int u, int v) {
+    u = tin[u];
+    v = tin[v];
+    if(u > v) swap(u, v);
+    int bu = u/b, bv = v/b;
+    if(bu == bv)
+        return tree[geti(bu, u%b, v%b)];
+    int res = lower(geti(bu, u%b, b-1), geti(bv, 0, v%b));
+    if(bv-bu > 1) {
+        int z = log2[bv-bu-1];
+        res = lower(res, lower(sparse[z][bu+1], sparse[z][bv-(1<<z)]));
     }
-}
-
-void euler_twour(int v, int p, int h) {
-    d[v] = h;
-    height_of[0][tim] = d[v];
-    node_of[0][tim] = v;
-    tin[v] = tout[v] = tim;
-    tim++;
-    for(auto x: g[v]) {
-        if(x^p) {
-            euler_twour(x, v, h+1);
-            height_of[0][tim] = d[v];
-            node_of[0][tim] = v;
-            tout[v] = tim;
-            tim++;
-        }
-    }
-}
-
-// euler_twour(0, -1, 0);
-// build();
-
-lca
+    return tree[res];
+};
