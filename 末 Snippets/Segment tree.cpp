@@ -1,14 +1,20 @@
-// Inspired by [Ashishgup](https://github.com/Ashishgup1/Competitive-Coding)
 
 template<class T>
 struct SegTree {
     int N; vector<T> st;
-    SegTree(int N) : N(N), st(vector<T>(4*N+5)) {}
+    SegTree(int N): N(N) {
+        int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
+        st.resize(2*SZ+2);
+    }
+    template<class Iter> SegTree(Iter beg, Iter end): N(end-beg) {
+        int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
+        st.resize(2*SZ+2); build(1, 1, N, beg, end);
+    }
     
-    void build(int node, int L, int R) {
-        if(L == R) return st[node] <<= L;
+    template<class Iter> void build(int node, int L, int R, Iter beg, Iter end) {
+        if(L == R) return st[node] <<= *beg;
         int M = L+R>>1;
-        build(node*2, L, M); build(node*2+1, M+1, R);
+        build(node*2, L, M, beg, beg+(M-L)); build(node*2+1, M+1, R, beg+(M-L+1), end);
         st[node] = T(st[node*2], st[node*2+1]);
     }
 
@@ -28,8 +34,8 @@ struct SegTree {
         st[node] = T(st[node*2], st[node*2+1]);
     }
 
-    T query(int pos) { return Query(1, 1, N, pos, pos); }
-    T query(int l, int r) { return Query(1, 1, N, l, r); }
+    auto query(int pos) { return Query(1, 1, N, pos, pos); }
+    auto query(int l, int r) { return Query(1, 1, N, l, r); }
     void update(int pos, int val) { Update(1, 1, N, pos, pos, val); }
     void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
 };
@@ -40,10 +46,9 @@ struct Node {
     Node(const Node& l, const Node& r) {
         val = min(l.val, r.val);
     }
-    void operator<<=(int idx) { val = a[idx-1]; }
+    void operator<<=(int init) { val = init; }
     void operator<<(int delta) { val += delta; }
 };
-
 
 /* -------------------------------------------------- */
 // With lazy prop
@@ -51,13 +56,20 @@ struct Node {
 template<class T, class U = int>
 struct SegTree {
     int N; vector<T> st; vector<U> lazy; vector<bool> pending;
-    SegTree(int N): N(N), st(vector<T>(4*N+5)), 
-        lazy(vector<U>(4*N+5)), pending(vector<bool>(4*N+5)) {}
+    SegTree(int N): N(N) {
+        int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
+        st.resize(2*SZ+2); lazy.resize(2*SZ+2); pending.resize(2*SZ+2);
+    }
+    template<class Iter> SegTree(Iter beg, Iter end): N(end-beg) {
+        int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
+        st.resize(2*SZ+2); lazy.resize(2*SZ+2); pending.resize(2*SZ+2);
+        build(1, 1, N, beg, end);
+    }
 
-    void build(int node, int L, int R) {
-        if(L == R) return st[node] <<= L;
+    template<class Iter> void build(int node, int L, int R, Iter beg, Iter end) {
+        if(L == R) return st[node] <<= *beg;
         int M = L+R>>1;
-        build(node*2, L, M); build(node*2+1, M+1, R);
+        build(node*2, L, M, beg, beg+(M-L)); build(node*2+1, M+1, R, beg+(M-L+1), end);
         st[node] = T(st[node*2], st[node*2+1]);
     }
     
@@ -90,8 +102,8 @@ struct SegTree {
         st[node] = T(st[node*2], st[node*2+1]);
     }
 
-    T query(int pos) { return Query(1, 1, N, pos, pos); }
-    T query(int l, int r) { return Query(1, 1, N, l, r); }
+    auto query(int pos) { return Query(1, 1, N, pos, pos); }
+    auto query(int l, int r) { return Query(1, 1, N, l, r); }
     void update(int pos, int val) { Update(1, 1, N, pos, pos, val); }
     void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
 };
@@ -109,6 +121,6 @@ struct Node {
     Node(const Node& l, const Node& r) {
         val = max(l.val, r.val);
     }
-    void operator<<=(int idx) { val = a[idx-1]; }
+    void operator<<=(int init) { val = init; }
     void operator<<(const Lazy& lzy) { val += lzy.val; }
 };
