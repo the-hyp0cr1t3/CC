@@ -25,19 +25,16 @@ struct SegTree {
         return T(Query(node*2, L, M, i, j), Query(node*2+1, M+1, R, i, j));
     } 
 
-    void Update(int node, int L, int R, int i, int j, int val) {
-        if(i > R or j < L) return;
-        if(i <= L and j >= R) return st[node] << val;
+    void Update(int node, int L, int R, int pos, int val) {
+        if(L == R) return st[node] << val;
         int M = L+R>>1;
-        Update(node*2, L, M, i, j, val);
-        Update(node*2+1, M+1, R, i, j, val);
+        pos <= M? Update(node*2, L, M, pos, val) : Update(node*2+1, M+1, R, pos, val);
         st[node] = T(st[node*2], st[node*2+1]);
     }
 
     auto query(int pos) { return Query(1, 1, N, pos, pos); }
     auto query(int l, int r) { return Query(1, 1, N, l, r); }
-    void update(int pos, int val) { Update(1, 1, N, pos, pos, val); }
-    void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
+    void update(int pos, int val) { Update(1, 1, N, pos, val); }
 };
 
 struct Node {
