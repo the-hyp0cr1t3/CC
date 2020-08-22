@@ -1,6 +1,6 @@
 
 template<class T>
-struct SegTree {
+struct Segtree {
     int N; vector<T> st;
     SegTree(int N): N(N) {
         int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
@@ -40,9 +40,8 @@ struct SegTree {
 struct Node {
     int val;
     Node(int val = 0) : val(val) {}    
-    Node(const Node& l, const Node& r) {
-        val = min(l.val, r.val);
-    }
+    Node(const Node& l, const Node& r)
+        : val(l.val + r.val) {}
     void operator<<=(int init) { val = init; }
     void operator<<(int delta) { val += delta; }
 };
@@ -51,7 +50,7 @@ struct Node {
 // With lazy prop
 
 template<class T, class U = int>
-struct SegTree {
+struct Segtree {
     int N; vector<T> st; vector<U> lazy; vector<bool> pending;
     SegTree(int N): N(N) {
         int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
@@ -115,9 +114,8 @@ struct Lazy {
 struct Node {
     int val;
     Node(int val = 0): val(val) {}    
-    Node(const Node& l, const Node& r) {
-        val = max(l.val, r.val);
-    }
+    Node(const Node& l, const Node& r)
+        : val(l.val + r.val) {}
     void operator<<=(int init) { val = init; }
     void operator<<(const Lazy& lzy) { val += lzy.val; }
 };
