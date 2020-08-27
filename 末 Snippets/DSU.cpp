@@ -1,6 +1,6 @@
 struct DSU {
-    int components;
-    vector<int> data, rootID, rootnode; 
+    int n, components;
+    vector<int> data, rootID, roots; 
     DSU(int n): n(n), components(n), data(vector<int>(n+1, -1)), 
         rootID(vector<int>(n+1, -1)) {}
     int par(int x) { return data[x] < 0 ? x : data[x] = par(data[x]); }
