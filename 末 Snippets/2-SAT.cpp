@@ -1,15 +1,12 @@
 struct Two_SAT {
-    int n, m, sccount; bool ok;
+    int n, m, sccount{0}; bool ok{true};
     vector<vector<int>> g, rg;
     vector<int> comp, assignment;
-    vector<bool> vis;
-    stack<int> st;
+    vector<bool> vis; stack<int> st;
 
-    Two_SAT(int _n): n(2*_n), sccount(0), ok(true) {
-        vis.resize(n);
-        comp.resize(n);
-        g.resize(n);
-        rg.resize(n);
+    Two_SAT(int n): n(2*n) {
+        vis.resize(n); comp.resize(n);
+        g.resize(n); rg.resize(n);
     }
 
     void addedge(int u, int v) {
@@ -20,7 +17,7 @@ struct Two_SAT {
     void dfs1(int v) {
         vis[v] = 1;
         for(auto x: g[v]) 
-            if (!vis[x]) dfs1(x);
+            if(!vis[x]) dfs1(x);
         st.push(v);
     }
 
@@ -30,6 +27,7 @@ struct Two_SAT {
             if(!comp[x]) dfs2(x, k);
     }
 
+    // Kosaraju's SCC
     void scc() {
         for(int i = 0; i < n; i++) 
             if(!vis[i]) dfs1(i);
