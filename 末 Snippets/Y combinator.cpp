@@ -8,12 +8,15 @@ public:
     template<class ...Args> decltype(auto) operator()(Args&&... args) {
         return f_(ref(*this), forward<Args>(args)...);
     }
-}; 
-template<class T> Y(T) -> Y<T>;
+};  template<class T> Y(T) -> Y<T>; // template deduction guide (C++17)
 
+//For C++14 and before, use
+template<class T>
+decltype(auto) Y_result(T&& f) {
+    return Y<decay_t<T>>(forward<T>(f));
+} // use as Y_result([&](auto self, ...){});
 
 auto recur = Y([&](auto self, auto&&... params) -> void {
     // ...
     self(params...);
 });
-
