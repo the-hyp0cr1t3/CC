@@ -76,7 +76,10 @@ int32_t main() {
     vector<int> a{1, 2, 3, 4, 5, 6};
     Segtree<Node, Lazy> st(a.begin(), a.end());
 
-    int N = 1e3;
-    Segtree<Node> st2(N);
+    int arr[] = {3, 4, 5, 6, 7};
+    Segtree<Node, Lazy> st2(arr, arr+5);
+    
+    int N = 1e6;
+    Segtree<Node> st3(N);
 }
 */
