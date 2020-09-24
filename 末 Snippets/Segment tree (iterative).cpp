@@ -1,4 +1,5 @@
-  // init
+// reaad more from (https://codeforces.com/blog/entry/18051)  
+// init
   vector<int> seg(2*n);
   for(i = 0; i < n; i++)
       seg[i+n] = a[i];
