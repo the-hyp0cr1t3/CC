@@ -4,29 +4,28 @@ Anything that starts with a **'#'** is a *preprocessor directive*. A macro is a 
 When it comes to cp, macros are quite useful. Here are a few common ones (along with some other useful things).
 
 ```c++
-#define FastIO cin.tie(nullptr)->sync_with_stdio(false);
-#define endl '\n'
-#define REP(i, a, b) for(int i=a; i<=b; i++)
-#define sz(x) (int)x.size()
-#define F first
-#define S second
-#define pb push_back
-#define mp make_pair
-#define all(v) v.begin(), v.end()
-#define trace(x) cerr << #x << " = " << x << endl
+#include <bits/stdc++.h>
+#define pb emplace_back
+#define sz(x) int(x.size())
+#define all(x) x.begin(), x.end()
+#define trace(x) cerr << #x << " = " << x << '\n'
 
-typedef long long ll;
-typedef vector<int> vi; 
-typedef pair<int, int> pii;
+using namespace std;
+const array dx{1, 0, -1, 0};
+const array dy{0, 1, 0, -1};
+template<class T> bool chmax(T& A, T&& B) 
+    { return B > A? A = B, true : false; }
+template<class T> bool chmin(T& A, T&& B) 
+    { return B < A? A = B, true : false; }
 
-const int MOD = 1000000007;  //1e9 + 7
-const int INF = 2000000000;  //2e9
-const ll LLINF = 1000000000000000000;  //1e18
-
-const int dx[] = {1,0,-1,0};
-const int dy[] = {0,1,0,-1};
-
+const int64_t DESPACITO = 2e18;
+const int INF = 2e9, MOD = 1e9+7;
 const int MxN = 2e5 + 5;
+
+int32_t main() {
+    cin.tie(nullptr)->sync_with_stdio(false);
+    // ...
+}
 ```
 
 ## A few notes
