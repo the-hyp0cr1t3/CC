@@ -3,6 +3,7 @@
 [Another one](https://www.topcoder.com/community/competitive-programming/tutorials/binary-search/)
 
 #### Problems
+* [Recommended](https://codeforces.com/edu/course/2/lesson/6)
 * [Codeforces 706 B](https://codeforces.com/problemset/problem/706/B)
 * [Codeforces 1187 B](https://codeforces.com/contest/1187/problem/B)
 * [Codeforces 1201 C](https://codeforces.com/contest/1201/problem/C)
