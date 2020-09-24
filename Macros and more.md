@@ -4,7 +4,7 @@ Anything that starts with a **'#'** is a *preprocessor directive*. A macro is a 
 When it comes to cp, macros are quite useful. Here are a few common ones (along with some other useful things).
 
 ```c++
-#define FastIO ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+#define FastIO cin.tie(nullptr)->sync_with_stdio(false);
 #define endl '\n'
 #define REP(i, a, b) for(int i=a; i<=b; i++)
 #define sz(x) (int)x.size()
@@ -32,11 +32,9 @@ const int MxN = 2e5 + 5;
 ## A few notes
 ### FastIO
 ```c++
-ios::sync_with_stdio(0); 
-cin.tie(0); 
-cout.tie(0)
+cin.tie(nullptr)->sync_with_stdio(false);
 ```
-The ```std::cin``` and ```std::cout``` streams may sometimes be too slow. Thus when there is large input, it is common practice to include these two lines of code in your program to speed them up. You may refer to [this](https://www.geeksforgeeks.org/fast-io-for-competitive-programming/) for a better understanding on what it does, and how it works.
+The ```std::cin``` and ```std::cout``` streams may sometimes be too slow. Thus when there is large input, it is common practice to disable synchronization with stdio and flushing before every ```cin```. You may refer to [this](https://www.geeksforgeeks.org/fast-io-for-competitive-programming/) for a better understanding on what it does, and how it works.
 
 ### endl vs '\n'
 Using ```'\n'``` is better (faster) than using ```std::endl``` (in the context of cp) and [here's](https://www.educative.io/edpresso/what-is-the-difference-between-endl-and-n-in-cpp) why. 
