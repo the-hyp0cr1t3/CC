@@ -1,3 +1,5 @@
+// Read and practice more from [https://codeforces.com/edu/course/2/lesson/4]
+// Try [https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A]
 template<class T>
 struct Segtree {
     int N; vector<T> st;
