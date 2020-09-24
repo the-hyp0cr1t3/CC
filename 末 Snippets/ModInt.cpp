@@ -3,7 +3,7 @@ const int MOD = 1e9+7;
 
 struct num {
     typedef decay<decltype(MOD)>::type T;
-    T v; 
+    T v; using ll = int64_t;
     static T inv(T a, T m) { a %= m; return a == 1 ? 1 : (T)(m - ll(inv(m, a)) * ll(m) / a); } 
     num() : v(0) {}
     num(ll v_) {
