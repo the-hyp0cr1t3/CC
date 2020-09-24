@@ -357,21 +357,16 @@ Here is a clean way of measuring execution time.
 
 The timer is set to start when the object is instantiated (constructor is invoked). When the object falls out of scope (destructor is invoked) it returns the time elapsed since then.
 ```c++
+using namespace std::chrono;
 struct Timer {
-    string label = "";
-    std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
-    std::chrono::duration<float, std::milli> duration;
-    Timer() {
-        start = std::chrono::high_resolution_clock::now();
-    }
-    Timer(string name) {
-      label = name;
-      start = std::chrono::high_resolution_clock::now();
-    }
+    string name{""};
+    time_point<high_resolution_clock> end, start{high_resolution_clock::now()};
+    duration<float, std::milli> duration;
+    Timer() = default;
+    Timer(string name): name(name) {}
     ~Timer() {
-        end = std::chrono::high_resolution_clock::now();
-        duration = end - start;
-        cout << "@" << label << "> " << duration.count() << " ms" << '\n';
+        end = high_resolution_clock::now(); duration = end - start;
+        cout << "@" << name << "> " << duration.count() << " ms" << '\n';
     }
 };
 ```
