@@ -4,6 +4,7 @@
 [Another](https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/tutorial/)
 
 #### Problems
+* [Recommended](https://codeforces.com/edu/course/2/lesson/7)
 * [Hackerearth Lexicographically minimal string](https://www.hackerearth.com/practice/data-structures/disjoint-data-strutures/basics-of-disjoint-data-structures/practice-problems/algorithm/lexicographically-minimal-string-6edc1406/)
 * [Codeforces 277 A](https://codeforces.com/problemset/problem/277/A)
 * [Codeforces 687 A](https://codeforces.com/problemset/problem/687/A)
