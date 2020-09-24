@@ -1,10 +1,10 @@
-template<class T, class F>
+template<class T, class Cmp>
 struct Sparse {
-    int N, K; F cmp;
+    int N, K; Cmp cmp;
     vector<vector<T>> table; vector<vector<int>> idx;
     template<class Iter, class Func> 
-    explicit Sparse(Iter beg, Iter end, Func&& f)
-        : N(end-beg), K(lg(N)), cmp(forward<Func>(f)),
+    explicit Sparse(Iter beg, Iter end, Func&& cmp)
+        : N(end-beg), K(lg(N)), cmp(forward<Func>(cmp)),
         table(vector<vector<T>>(K+1, vector<T>(N))),
         idx(vector<vector<int>>(K+1, vector<int>(N))) {
 
@@ -37,7 +37,17 @@ struct Sparse {
     }
 };
 
-template<class T, class F>
-Sparse(T, T, F) -> Sparse<typename iterator_traits<T>::value_type, F>;
+template<class T, class Cmp>
+Sparse(T, T, Cmp) -> Sparse<typename iterator_traits<T>::value_type, Cmp>;
 
-// Sparse st(vec.begin(), vec.end(), [](int x, int y) { return x < y; });
+/*
+int32_t main() {
+    int arr[] = {1, 2, 3, 5};
+    vector<int> a{1, 2, 3, 5};
+    Sparse st1(a.begin(), a.end(), std::less{});
+    Sparse st2(a.begin(), a.end(), [](int x, int y){ return x < y; });
+
+    Sparse st3(arr, arr+n, std::less{});
+    Sparse st4(arr, arr+n, [](int x, int y){ return x < y; });
+}
+*/
