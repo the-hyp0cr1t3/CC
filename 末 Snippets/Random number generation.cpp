@@ -1,37 +1,37 @@
 namespace randnum {
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-    // random int or ll in [L, R]
+    // random int in [L, R]
     template<typename T>
     T randint(T L, T R) {
         uniform_int_distribution<T> d(L, R);
         return d(rng);
     }
 
-    // random int or ll in [0, n)
+    // random int in [0, n-1]
     template<typename T>
-    T randint(T n) {
-        return randint(T(0), T(n-1));
+    T randint(T _n) {
+        return randint(T(0), T(_n-1));
     }
 
-    // random array of size n
+    // random array of size N
     // each element in [L, R]
     template<typename T>
-    vector<T> randarr(T n, T L, T R) {
-        vector<T> v(n);
+    vector<T> randarr(T _n, T L, T R) {
+        vector<T> v(_n);
         for(auto& x: v) 
             x = randint(L, R);
         return v;
     }
 
-    // random string of length n
+    // random string of length N
     // each element in charset
     template<typename T>
-    string randstr(T n, string charset = "abcdefghijklmnopqrstuvwxyz") {
-        int w = charset.size();
+    string randstr(T _n, const string charset = "abcdefghijklmnopqrstuvwxyz") {
+        int _w = charset.size();
         string res;
-        for(int i = 0; i < n; i++) 
-            res += charset[randint(w)];
+        for(int i = 0; i < _n; i++) 
+            res += charset[randint(_w)];
         return res;
     }
 
@@ -41,8 +41,7 @@ namespace randnum {
         shuffle(v.begin(), v.end(), rng);
     }
 
-/* weighted random in range [0, n-1] */
-    // from "testlib.h"
+    // weighted random in range [0, n-1]
     // w_rand(n, t) = max(rand(n), rand(n), ...rand(n)) ~--- t times
     // if t < 0, min is taken
     // type specifies number of iterations
@@ -60,13 +59,13 @@ namespace randnum {
         return result;
     }
 
-/* Random tree generator (0-indexed) */
-    // from "testlib.h"
+    // Random tree generator (0-indexed)
     // (Based on Prufer code)
     // n -> number of nodes
-    // elongation -> [-value, +value]
-    // More +ve => less branching
-    // More -ve => more branching
+/* --------  value 1000 is to yet to be tested as bounds ----- */
+    // elongation -> [-1000, +1000]
+    // +1000 => degree at most 2
+    // -1000 => star graph
     vector<pair<int, int>> gen_tree(int n, int elongation) {
         // gen parents, 0 is root
         vector<int> par(n);
@@ -84,11 +83,10 @@ namespace randnum {
         for(int i = 1; i < n; i++) {
             int u = perm[i]; int v = perm[par[i]];
             if(randint(2)) swap(u, v);
-            edges.emplace_back(u, v);
+            edges.emplace_back(u+1, v+1);
         }
 
         shuffle(edges);
         return edges;
     }
-}
-
+} using namespace randnum;
