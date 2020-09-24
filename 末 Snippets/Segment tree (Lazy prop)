@@ -1,0 +1,82 @@
+// T = Node, U = Lazy
+template<class T, class U = int>
+struct Segtree {
+    int N; vector<T> st; vector<U> lazy; vector<bool> pending;
+    Segtree(int N): N(N) { 
+        int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
+        st.resize(2*SZ+2); lazy.resize(2*SZ+2); pending.resize(2*SZ+2);
+    }
+    template<class Iter>
+    Segtree(Iter beg, Iter end)
+        : Segtree(end-beg) { build(1, 1, N, beg, end); }
+
+    template<class Iter>
+    void build(int node, int L, int R, Iter beg, Iter end) {
+        if(L == R) return st[node].set(*beg);
+        int M = L + R >> 1;
+        build(node<<1, L, M, beg, beg+(M-L));
+        build(node<<1|1, M+1, R, beg+(M-L+1), end);
+        st[node] = T(st[node<<1], st[node<<1|1]);
+    }
+    
+    void prop(int node, int L, int R) {
+        if(L != R) {
+            pending[node<<1] = pending[node<<1|1] = true;
+            lazy[node<<1] += lazy[node];        // overload += for custom class U
+            lazy[node<<1|1] += lazy[node];
+        }
+        st[node].upd(lazy[node]);
+        pending[node] = false; lazy[node] = U();
+    }
+
+    T Query(int node, int L, int R, int i, int j) {
+        if(pending[node]) prop(node, L, R);
+        if(i > R or j < L) return T();
+        if(i <= L and j >= R) return st[node];
+        int M = L + R >> 1;
+        return T(Query(node<<1, L, M, i, j), 
+                    Query(node<<1|1, M+1, R, i, j));
+    } 
+
+    void Update(int node, int L, int R, int i, int j, int val) {
+        if(pending[node]) prop(node, L, R);
+        if(i > R or j < L) return;
+        if(i <= L and j >= R) return lazy[node] += val, prop(node, L, R);
+        int M = L + R >> 1;
+        Update(node<<1, L, M, i, j, val);
+        Update(node<<1|1, M+1, R, i, j, val);
+        st[node] = T(st[node<<1], st[node<<1|1]);
+    }
+
+    // helper/wrapper funcs
+    auto query(int pos) { return Query(1, 1, N, pos, pos); }
+    auto query(int l, int r) { return Query(1, 1, N, l, r); }
+    void update(int pos, int val) { Update(1, 1, N, pos, pos, val); }
+    void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
+};
+
+struct Lazy {
+    int64_t lzy{0};
+    Lazy() = default;
+    operator int64_t() const { return lzy; }        // st[node].upd(int)
+    void operator+=(int64_t rhs) { lzy += rhs; }    // lazy[node<<1] += lazy[node]
+};
+
+struct Node {
+    int val{0};             // brace initialize all default values
+    Node() = default;
+    Node(const Node& l, const Node& r)          // merge two nodes
+        : val(l.val + r.val) {}
+    void set(int init) { val = init; }          // set value during build()
+    void upd(int64_t delta) { val += delta; }   // update value
+};
+
+/*
+int32_t main() {
+    vector<int> a{1, 2, 3, 4, 5, 6};
+    Segtree<Node, Lazy> st(a.begin(), a.end());
+
+    int N = 1e3;
+    Segtree<Node> st2(N);
+}
+*/
