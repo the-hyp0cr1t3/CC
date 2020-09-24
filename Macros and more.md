@@ -37,9 +37,7 @@ cin.tie(nullptr)->sync_with_stdio(false);
 The ```std::cin``` and ```std::cout``` streams may sometimes be too slow. Thus when there is large input, it is common practice to disable synchronization with stdio and flushing before every ```cin```. You may refer to [this](https://www.geeksforgeeks.org/fast-io-for-competitive-programming/) for a better understanding on what it does, and how it works.
 
 ### endl vs '\n'
-Using ```'\n'``` is better (faster) than using ```std::endl``` (in the context of cp) and [here's](https://www.educative.io/edpresso/what-is-the-difference-between-endl-and-n-in-cpp) why. 
-
-I like typing one more than the other (hence the macro), but it's completely fine to type ```'\n'``` as is.
+Using ```'\n'``` is better (no flushing, so, faster) than using ```std::endl``` (in the context of cp) and [here's](https://www.educative.io/edpresso/what-is-the-difference-between-endl-and-n-in-cpp) why. 
 
 However, remember to use ```std::endl``` in [interactive problems](https://codeforces.com/blog/entry/45307), not ```'\n'``` as it is required to flush the output.
 
@@ -51,7 +49,6 @@ vector<int> vect{1, 2, 3};
 for(int i = 0; i < (int)vect.size(); i++)
   // do stuff
 ```
-It is thus advisable to explicitly cast it to ```int``` every time, as shown above.
 
 ### Debugging using the power of macros
 The *stringizing* operator (*#*) turns source code into text tokens, i.e, it can turn parameters into string literals.
