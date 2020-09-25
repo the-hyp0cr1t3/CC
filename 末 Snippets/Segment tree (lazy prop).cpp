@@ -60,7 +60,6 @@ struct Segtree {
 
 struct Lazy {
     int64_t lzy{0};
-    Lazy() = default;
     operator int64_t() const { return lzy; }        // st[node].upd(int)
     void operator+=(int64_t rhs) { lzy += rhs; }    // lazy[node<<1] += lazy[node]
 };
