@@ -1,25 +1,29 @@
-// (https://codeforces.com/contest/776/submission/94484305)
+// (https://codeforces.com/contest/776/submission/94490003)
 
 int vis[2*N], comp[2*N], assignment[N];
 vector<int> g[2*N], rg[2*N], order;
 
-// (p ∨ q) meaning at least one is true
-void addedge(int p, int q) {
+// (p → q) if p is true q is also true
+void implies(int p, int q) {
+    g[p].push_back(q); rg[q].push_back(p);
+}
+
+// (p ∨ q) at least one is true
+void Or(int p, int q) {
 // (¬p → q) ∧ (¬q → p)
-    g[p^1].push_back(q); g[q^1].push_back(p);
-    rg[q].push_back(p^1); rg[p].push_back(q^1);
+    implies(p^1, q); implies(q^1, p);
 }
 
-// (p ⊕ q) meaning exactly one is true
-void xoredge(int p, int q) {
+// (p ⊕ q) exactly one is true
+void Xor(int p, int q) {
 // (p ∨ q) ∧ (¬p ∨ ¬q)
-    addedge(p, q); addedge(p^1, q^1);
+    Or(p, q); Or(p^1, q^1);
 }
 
-// (p ↔ q) both are true or both are false
-void biconditionaledge(int p, int q) {
+// (p ↔ q) both are true or both are not
+void Biconditional(int p, int q) {
 // (p → q) ∧ (q → p) ≡ (p ⊕ ¬q)
-    xoredge(p, q^1);
+    Xor(p, q^1);
 }
 
 void dfs1(int v) {
