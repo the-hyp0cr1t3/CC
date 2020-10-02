@@ -6,8 +6,8 @@ vector<int> g[2*N], rg[2*N], order;
 // (p ∨ q) meaning at least one is true
 void addedge(int p, int q) {
 // (¬p → q) ∧ (¬q → p)
-    g[p^1].pb(q); g[q^1].pb(p);
-    rg[q].pb(p^1); rg[p].pb(q^1);
+    g[p^1].push_back(q); g[q^1].push_back(p);
+    rg[q].push_back(p^1); rg[p].push_back(q^1);
 }
 
 // (p ⊕ q) meaning exactly one is true
@@ -26,7 +26,7 @@ void dfs1(int v) {
     vis[v] = 1;
     for(auto& x: g[v])
         if(!vis[x]) dfs1(x);
-    order.pb(v);
+    order.push_back(v);
 }
 
 void dfs2(int v, int k) {
