@@ -1,50 +1,42 @@
-struct Two_SAT {
-    int n, m, sccount{0}; bool ok{true};
-    vector<vector<int>> g, rg;
-    vector<int> comp, assignment;
-    vector<bool> vis; stack<int> st;
+int vis[2*N], comp[2*N], assignment[N], n;
+vector<int> g[2*N], rg[2*N], order;
 
-    Two_SAT(int n): n(2*n) {
-        vis.resize(n); comp.resize(n);
-        g.resize(n); rg.resize(n);
-    }
+// (p ∨ q) implication edge
+void addedge(int p, int q) {
+// (¬p → q) ∧ (¬q → p)
+    g[p^1].pb(q); g[q^1].pb(p);
+    rg[q].pb(p^1); rg[p].pb(q^1);
+}
 
-    void addedge(int u, int v) {
-        g[u].pb(v);
-        rg[v].pb(u);        
-    }
+void dfs1(int v) {
+    vis[v] = 1;
+    for(auto& x: g[v])
+        if(!vis[x]) dfs1(x);
+    order.pb(v);
+}
 
-    void dfs1(int v) {
-        vis[v] = 1;
-        for(auto x: g[v]) 
-            if(!vis[x]) dfs1(x);
-        st.push(v);
-    }
+void dfs2(int v, int k) {
+    comp[v] = k;
+    for(auto& x: rg[v])
+        if(comp[x] == -1) dfs2(x, k);
+}
 
-    void dfs2(int v, int k) {
-        comp[v] = k;
-        for(auto& x: rg[v]) 
-            if(!comp[x]) dfs2(x, k);
-    }
+// i is represented by 2*i, ¬i is represented by 2*i+1
+bool is_sat() {
+    memset(comp, -1, sizeof(comp));
+    order.reserve(2*n);
+    for(int i = 0; i < 2*n; i++)
+        if(!vis[i]) dfs1(i);
 
-    // Kosaraju's SCC
-    void scc() {
-        for(int i = 0; i < n; i++) 
-            if(!vis[i]) dfs1(i);
-        while(!st.empty()) {
-            sccount++;
-            dfs2(st.top(), sccount);
-            while(!st.empty() and comp[st.top()]) st.pop();
-        }
-    }
+    reverse(all(order));
+    int sccnt = 0;
+    for(auto& v: order)
+        if(comp[v] == -1)
+            dfs2(v, sccnt++);
 
-    bool is_sat() {
-        scc();
-        assignment.resize(n);
-        for(int i = 0; i < n; i++) {
-            if(comp[i] == comp[i^1]) ok = 0;
-            assignment[i] = !(comp[i] > comp[i^1]);
-        }
-        return ok;
-    }
-};
+    for(int i = 0; i < n; i++) {
+        if(comp[i<<1] == comp[i<<1|1]) return false;
+        // take topologically later option
+        assignment[i] = comp[i<<1] > comp[i<<1|1];
+    } return true;
+}
