@@ -3,10 +3,12 @@
 template<class T>
 struct Segtree {
     int N; vector<T> st;
+    
+    int getmx(int x) { int y = 1; for(y=1, x<<=1; y<x; y<<=1); return y+2; }
+
     Segtree(int N)
-        : N(N) { int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1); st.resize(2*SZ+2); }
-    template<class Iter> 
-    Segtree(Iter beg, Iter end)
+        : N(N), st(this->getmx(N)) {}
+    template<class Iter> Segtree(Iter beg, Iter end)
         : Segtree(end-beg) { build(1, 1, N, beg, end); }
     
     template<class Iter>
