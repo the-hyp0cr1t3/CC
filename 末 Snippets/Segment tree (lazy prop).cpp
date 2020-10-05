@@ -5,13 +5,12 @@
 template<class T, class U = int>
 struct Segtree {
     int N; vector<T> st; vector<U> lazy; vector<bool> pending;
-    Segtree(int N): N(N) { 
-        int SZ = 1; for(SZ = 1; SZ < N; SZ <<= 1);
-        st.resize(2*SZ+2); lazy.resize(2*SZ+2); pending.resize(2*SZ+2);
-    }
-    template<class Iter>
-    Segtree(Iter beg, Iter end)
+    Segtree(int N)
+        : N(N), st(this->getmx(N)), lazy(st.size()), pending(st.size()) {}
+    template<class Iter> Segtree(Iter beg, Iter end)
         : Segtree(end-beg) { build(1, 1, N, beg, end); }
+
+    int getmx(int x) { int y = 1; for(y=1, x<<=1; y<x; y<<=1); return y+2; }
 
     template<class Iter>
     void build(int node, int L, int R, Iter beg, Iter end) {
