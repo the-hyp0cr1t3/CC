@@ -9,7 +9,6 @@ struct Segtree {
         : N(N), st(this->getmx(N)), lazy(st.size()), pending(st.size()) {}
     template<class Iter> Segtree(Iter beg, Iter end)
         : Segtree(end-beg) { build(1, 1, N, beg, end); }
-
     int getmx(int x) { int y = 1; for(y=1, x<<=1; y<x; y<<=1); return y+2; }
 
     template<class Iter>
