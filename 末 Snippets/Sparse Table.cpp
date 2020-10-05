@@ -3,11 +3,9 @@ struct Sparse {
     int N, K; Cmp cmp;
     vector<vector<T>> table; vector<vector<int>> idx;
     template<class Iter, class Func> 
-    explicit Sparse(Iter beg, Iter end, Func&& cmp)
-        : N(end-beg), K(lg(N)), cmp(forward<Func>(cmp)),
-        table(vector<vector<T>>(K+1, vector<T>(N))),
-        idx(vector<vector<int>>(K+1, vector<int>(N))) {
-
+    explicit Sparse(Iter beg, Iter end, Func&& f)
+        : N(end-beg), K(this->lg(N)), cmp(forward<Func>(f)),
+            table(K+1, vector<T>(N)), idx(K+1, vector<int>(N)) {
         for(int i = 0; i < N; i++) {
             table[0][i] = *(beg+i);
             idx[0][i] = i;
