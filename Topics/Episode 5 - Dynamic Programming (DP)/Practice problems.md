@@ -45,4 +45,4 @@
 * [Sum over subsets (SoS)](https://codeforces.com/blog/entry/45223)
 * [DP on trees](https://codeforces.com/blog/entry/20935)
 
-If you're following the series, the motivation here is to make yourself familiar with the topics mentioned above. You may find some of these problems fairly difficult, so the idea is to put those problems on hold but surely come back later to solve them. As for now, try to attempt at least the first two problems of each sub topic.
+If you're following the series, the motivation here is to make yourself familiar with the topics mentioned above. You may find some of these problems fairly difficult, so the idea is to put those problems on hold but surely come back later to solve them. For now, try to attempt at least the first two problems of each sub topic.
