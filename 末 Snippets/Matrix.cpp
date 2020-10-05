@@ -80,7 +80,7 @@ template<typename T>
 struct Matrix {
     int N, M; vector<vector<T>> a;
     
-    Matrix(int n, int m): N(n), M(m) , a(n, m) {}
+    Matrix(int n, int m): N(n), M(m) , a(n, vector<T>(m)) {}
     explicit Matrix(int n, int m, T x): Matrix(n, m) {
         for(int i = 0; i < min(N, M); i++) a[i][i] = x;
     }
