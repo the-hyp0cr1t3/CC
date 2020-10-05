@@ -14,12 +14,12 @@ struct hash_t {
     vector<int> suf1;
     vector<uint64_t> suf2;
 
-    hash_t(const string& s): suf1(sz(s)+1), suf2(sz(s)+1) {
-        assert(base < mod); const int n = sz(s);
+    hash_t(const string& s): suf1(s.size()+1), suf2(s.size()+1) {
+        assert(base < mod); const int n = s.size();
         pow1.reserve(n+1); pow2.reserve(n+1);
-        while(sz(pow1) <= n) {
-            pow1.pb(1LL * pow1.back() * base % mod);
-            pow2.pb(pow2.back() * base);
+        while(pow1.size() <= n) {
+            pow1.push_back(1LL * pow1.back() * base % mod);
+            pow2.push_back(pow2.back() * base);
         }
 
         for(int i = n-1; ~i; i--) {
