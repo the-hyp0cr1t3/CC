@@ -2,7 +2,7 @@
 // Try [https://codeforces.com/edu/course/2/lesson/5/1/practice/contest/279634/problem/A]
 
 // T = Node, U = Lazy
-template<class T, class U = int>
+template<class T, class U = int64_t>
 struct Segtree {
     int N; vector<T> st; vector<U> lazy; vector<bool> pending;
     Segtree(int N)
