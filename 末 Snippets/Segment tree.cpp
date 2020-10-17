@@ -34,7 +34,7 @@ struct Segtree {
         st[node] = T(st[node<<1], st[node<<1|1]);
     }
 
-    // helper/wrapper funcs
+    // helper/wrapper funcs; 1-based indexing; (l, r) inclusive of both ends
     auto query(int pos) { return Query(1, 1, N, pos, pos); }
     auto query(int l, int r) { return Query(1, 1, N, l, r); }
     void update(int pos, int64_t val) { Update(1, 1, N, pos, val); }
