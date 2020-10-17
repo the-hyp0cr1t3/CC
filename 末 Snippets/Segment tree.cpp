@@ -39,7 +39,9 @@ struct Segtree {
     auto query(int l, int r) { return Query(1, 1, N, l, r); }
     void update(int pos, int64_t val) { Update(1, 1, N, pos, val); }
 };
+// do not edit the above code
 
+// struct Node must be edited accordingly
 struct Node {
     int val{0};     // brace initialize all default values
     Node() = default;
