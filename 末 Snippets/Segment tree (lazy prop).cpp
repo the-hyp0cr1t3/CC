@@ -39,7 +39,7 @@ struct Segtree {
                     Query(node<<1|1, M+1, R, i, j));
     } 
 
-    void Update(int node, int L, int R, int i, int j, int val) {
+    void Update(int node, int L, int R, int i, int j, int64_t val) {
         if(pending[node]) prop(node, L, R);
         if(i > R or j < L) return;
         if(i <= L and j >= R) return lazy[node] += val, prop(node, L, R);
@@ -52,8 +52,8 @@ struct Segtree {
     // helper/wrapper funcs
     auto query(int pos) { return Query(1, 1, N, pos, pos); }
     auto query(int l, int r) { return Query(1, 1, N, l, r); }
-    void update(int pos, int val) { Update(1, 1, N, pos, pos, val); }
-    void update(int l, int r, int val) { Update(1, 1, N, l, r, val); }
+    void update(int pos, int64_t val) { Update(1, 1, N, pos, pos, val); }
+    void update(int l, int r, int64_t val) { Update(1, 1, N, l, r, val); }
 };
 
 struct Lazy {
