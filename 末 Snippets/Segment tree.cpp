@@ -51,6 +51,8 @@ struct Node {
 
 /*
 int32_t main() {
+    // Note: construct only using containers with random access iterators
+    // (or C style arrays) since Segtree::build() assumes so.
     vector<int> a{1, 2, 3, 4, 5, 6};
     Segtree<Node> st(a.begin(), a.end());
 
