@@ -26,7 +26,7 @@ struct Segtree {
                     Query(node<<1|1, M+1, R, i, j));
     } 
 
-    void Update(int node, int L, int R, int pos, int val) {
+    void Update(int node, int L, int R, int pos, int64_t val) {
         if(L == R) return st[node].upd(val);
         int M = L + R >> 1;
         pos <= M? Update(node<<1, L, M, pos, val)
@@ -37,7 +37,7 @@ struct Segtree {
     // helper/wrapper funcs
     auto query(int pos) { return Query(1, 1, N, pos, pos); }
     auto query(int l, int r) { return Query(1, 1, N, l, r); }
-    void update(int pos, int val) { Update(1, 1, N, pos, val); }
+    void update(int pos, int64_t val) { Update(1, 1, N, pos, val); }
 };
 
 struct Node {
