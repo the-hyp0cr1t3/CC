@@ -55,13 +55,17 @@ struct Segtree {
     void update(int pos, int64_t val) { Update(1, 1, N, pos, pos, val); }
     void update(int l, int r, int64_t val) { Update(1, 1, N, l, r, val); }
 };
+// do not edit the above code
 
+// struct Lazy is by default templated as int64_t
+// so you may choose not to define one altogether
 struct Lazy {
     int64_t lzy{0};
     operator int64_t() const { return lzy; }        // st[node].upd(int)
     void operator+=(int64_t rhs) { lzy += rhs; }    // lazy[node<<1] += lazy[node]
 };
 
+// struct Node must be edited accordingly
 struct Node {
     int val{0};             // brace initialize all default values
     Node() = default;
