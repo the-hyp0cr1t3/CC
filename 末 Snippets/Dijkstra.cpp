@@ -1,5 +1,4 @@
-int d[N], p[N];
-vector<pii> g[N];
+vector<pair<int, int>> g[N];
 for(int i = 0; i < m; i++) {
     int u, v, w;
     cin >> u >> v >> w;
@@ -9,25 +8,20 @@ for(int i = 0; i < m; i++) {
 }
 
 auto dijkstra = [&] (int root) {
-    set<pii> q;
-    q.ins({0, root});
-    
-    memset(p, -1, sizeof(p));
-    for(i = 0; i < n; i++) 
-        d[i] = INF;
-    d[root] = 0;
-
-    while(!q.empty()) {
-        auto [y, v] = *q.begin();
-        q.erase(q.begin());
-        for(auto& [to, w]: g[v]) {
-            if(d[to] > d[v] + w) {
-                q.erase({d[to], to});
-                d[to] = d[v] + w;
-                q.ins({d[to], to});
-                p[to] = v;
-            }
-        }
-    }    
+    vector<int64_t> d(n, INF);
+    vector<int> par(n, -1);
+    struct state {
+        int v; int64_t dist;
+        state(int v, int64_t dist): v(v), dist(dist) {}
+        bool operator<(const state& o) { return dist > o.dist; }
+    }; priority_queue<state> pq;
+    for(d[root] = i = 0; i < n; i++)
+        pq.emplace(i, d[i]);
+    while(!pq.empty()) {
+        state top = pq.top(); pq.pop();
+        if(top.dist > d[top.v]) continue;
+        for(auto& [to, w]: g[v])
+            if(chmin(d[to], curd + w))
+                pq.emplace(to, d[to]), par[to] = v;
+    }
 };
-
