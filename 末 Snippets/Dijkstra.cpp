@@ -19,8 +19,7 @@ auto dijkstra = [&] (int root) {
     vector<int64_t> d(n, INF);
     vector<int> par(n, -1);
     priority_queue<state> pq;
-    for(d[root] = i = 0; i < n; i++)
-        pq.emplace(i, d[i]);
+    pq.emplace(root, d[root]);
     
     while(!pq.empty()) {
         state top = pq.top(); pq.pop();
