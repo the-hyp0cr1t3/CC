@@ -27,7 +27,8 @@ auto dijkstra = [&] (int root) {
         for(auto& [to, w]: g[top.v])
             if(d[to] < top.dist + w) {
                 d[to] = top.dist + w;
-                pq.emplace(to, d[to]), par[to] = top.v;
+                pq.emplace(to, d[to]);
+                par[to] = top.v;
             }
     }
 };
