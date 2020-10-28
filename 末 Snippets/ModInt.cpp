@@ -1,4 +1,5 @@
 // Template by [neal](https://codeforces.com/profile/neal)
+// See [submission](https://codeforces.com/contest/1437/submission/96914548)
 
 template<const int& MOD>
 struct Mint {
