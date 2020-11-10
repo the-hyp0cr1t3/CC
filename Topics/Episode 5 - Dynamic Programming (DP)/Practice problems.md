@@ -8,6 +8,7 @@
 * [Codeforces 1196 D2](https://codeforces.com/contest/1196/problem/D2)
 * [Codeforces 607 A](https://codeforces.com/problemset/problem/607/A)
 * [Codeforces 106 C](https://codeforces.com/problemset/problem/106/C)
+* [CSES DP](https://cses.fi/problemset/list/) and [editorial](https://codeforces.com/blog/entry/70018) by [icecuber](https://codeforces.com/profile/icecuber) (recommended)
 
 ### Knapsack
 * [Spoj KNAPSACK](https://www.spoj.com/problems/KNAPSACK/)
