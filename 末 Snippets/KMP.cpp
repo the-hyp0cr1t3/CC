@@ -1,4 +1,8 @@
-auto generate_pi = [&] (string s) {
+// pi[i] is the longest proper prefix
+// that is a suffix ending at position i
+// abcd.abceab
+// 0000 123012
+auto generate_pi = [&] (const string& s) {
     // s = (pattern + '#' + text) 
     int n = sz(s);
     vector<int> pi(n);
@@ -19,5 +23,10 @@ auto generate_pi = [&] (string s) {
             pref[pi[i]]++
         for i = n to 1
             pref[pi[i-1]] += pref[i]
-*/
 
+    Check if it is periodic
+    auto check = [](int len, int pi) {
+        return pi and len % (len - pi) == 0;
+    };
+    check(n, pi[n-1]) == true
+*/
