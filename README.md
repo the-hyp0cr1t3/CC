@@ -34,7 +34,7 @@ int main() {
 ## Choosing a language
 Most competitive programmers prefer C++, and for [good reason](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming/). However, Java and Python are also fairly popular. Knowing a programming language is the only pre-requisite.
 
-**Note**: The code snippets in this guide will be in C++ since it is arguably the best language for competitive programming ~~and not because I do not know any other languages :/~~
+**Note**: The code snippets in this guide will be in C++ since it is arguably the best language for competitive programming ~~and not because I do not know any other languages :/ UPD: I learnt a little bit of Java and Pythom :)~~
 
 ## Setting up an IDE
 If you haven't already set up an IDE, you may find use for one of the following links.\
