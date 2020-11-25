@@ -2,6 +2,7 @@ template<class T, class Cmp>
 struct Sparse {
     int N, K; Cmp cmp;
     vector<vector<T>> table; vector<vector<int>> idx;
+    int lg(int x) const { return 31 - __builtin_clz(x); }
     template<class Iter, class Func> 
     explicit Sparse(Iter beg, Iter end, Func&& f)
         : N(end-beg), K(this->lg(N)), cmp(forward<Func>(f)),
@@ -24,17 +25,12 @@ struct Sparse {
         }
     }
 
-    int lg(int x) {
-        return 31 - __builtin_clz(x);
-    }
-
-    int query(int l, int r) {
+    int query(int l, int r) const {
         int k = lg(r-l+1);
         r = r-(1<<k)+1;
         return cmp(table[k][l], table[k][r])? idx[k][l] : idx[k][r];
     }
 };
-
 template<class T, class Cmp>
 Sparse(T, T, Cmp) -> Sparse<typename iterator_traits<T>::value_type, Cmp>;
 
