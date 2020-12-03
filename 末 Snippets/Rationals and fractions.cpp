@@ -4,7 +4,7 @@ struct frac {
     static T gcd(T x, T y) { return !x or !y? x|y : gcd(y, x % y); }
     static T abs(T x) { return x < 0? -x : x; }
     frac(T num = 0, T den = 1): num(num), den(den) {}
-    explicit operator T() { return floor(); }
+    explicit operator T() { return floor(*this); }
     frac& reduce() {
         if(num == 0) {
             den = 1;
@@ -12,16 +12,14 @@ struct frac {
             T g = gcd(abs(num), abs(den)); num /= g; den /= g;
             if(den < 0) num *= -1, den *= -1;            
         } return *this;
-    } friend frac reduce(frac r) { frac o = r; return o.reduce(); }
+    } friend frac reduce(const frac& r) { frac o = r; return o.reduce(); }
 
-    T floor() const {
-        if(num%den) return num/den - ((num < 0) ^ (den < 0));
-        else return num / den;
-    } friend T floor(const frac& r) { return r.floor(); }
-    T ceil() const { return floor() + !!(num%den); }
-    friend T ceil(const frac& r) { return r.ceil(); }
+    friend T floor(const frac& r) { 
+        if(r.num % r.den) return r.num / r.den - ((r.num < 0) ^ (r.den < 0));
+        else return r.num / r.den;
+    } friend T ceil(const frac& r) { return floor(r) + !!(r.num % r.den); }
 
-    friend ostream& operator<<(ostream& os, const frac& r) { return os << r.num << " / " << r.den; }
+    friend ostream& operator<<(ostream& os, const frac& r) { return os << '(' << r.num << '/' << r.den << ')'; }
     frac operator-() const { return frac(-num, den); }
     frac operator+(const frac& r) const {
         return frac(num * r.den + den * r.num, den * r.den);
