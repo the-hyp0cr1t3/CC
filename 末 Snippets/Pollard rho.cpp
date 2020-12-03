@@ -1,3 +1,5 @@
+// alt implementation: http://morris821028.github.io/2015/07/11/uva-11476/
+
 uint64_t modmul(uint64_t a, uint64_t b, uint64_t M) {
     int64_t ret = a * b - M * uint64_t(1.L / M * a * b);
     return ret + M * (ret < 0) - M * (ret >= (int64_t)M);
