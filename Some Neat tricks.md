@@ -34,11 +34,18 @@ Same thing can be done with *1.0* for ```double```.
 
 ### Bitwise operators and more
 
+The **Bitwise One's Complement** operator,  ```~```,  is a unary operator which flips the bits. How is this useful? It returns a non-zero value for all numbers except -1.
+```c++
+// iterating in reverse, while i >= 0
+for(int i = n-1; ~i; i--) 
+    // do stuff
+```
+
 The **Bitwise AND** operator, ```&```, only sets bits which are common to either operand. It can be used to check parity of an integer.
 ```c++
 int n = 42;
 if(n & 1) cout << "odd";
-else cout << "even";
+if(~n & 1) cout << "even";
 ```
 
 The **Bitwise XOR** operator, ```^```, only sets bits which are exclusive to either operand. It evaluates to 0 if both operands are equal.
@@ -49,17 +56,20 @@ void dfs(int u, int par) {
 }
 ```
 
-The **Bitwise One's Complement** operator,  ```~```,  is a unary operator which flips the bits. How is this useful? It returns a non-zero value for all numbers except -1.
-```c++
-// iterating in reverse, while i >= 0
-for(int i = n-1; ~i; i--) 
-    // do stuff
-```
-
 The **Logical NOT** operator, when used on itself, ```!!```, is equivalent to typecasting the operand to bool, i.e, it returns false if the value is 0, and true if the value is anything else.
 ```c++
 for(int i = 0; i < n; i++)
     cnt_nonzeros += !!arr[i];
+```
+
+Add two ints and divide by two without overflow or underflow (usecases such as binary search):
+```c++
+int L = 2e9, R = 2e9+2;
+int mid = (L + R) / 2;          // -147483647 overflow
+int mid = (L&R) + ((L^R)>>1);   // 2000000001 nice
+
+int mid = (-L + -R) / 2;                  // 147483647 underflow
+int mid = (-L & -R) + ((-L ^ -R) >> 1);   // -2000000001 nice
 ```
 
 Iterate only over n-bit bitmasks with exactly k bits set ([Credit](https://codeforces.com/blog/entry/17881?#comment-227737)):
@@ -128,8 +138,8 @@ for(auto [key, value]: mp) {
 A nifty trick to simultaneously check if a value exists in a set, and insert it otherwise, is to:
 ```c++
 set<int> s;
-auto [itr, isPresent] = s.insert(2);
-if(isPresent)
+auto [itr, isInserted] = s.insert(2);
+if(isInserted)
    cout << *it;
 else
    cout << "is already present";
