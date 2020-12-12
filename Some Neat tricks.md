@@ -62,6 +62,16 @@ for(int i = 0; i < n; i++)
     cnt_nonzeros += !!arr[i];
 ```
 
+Iterate only over n-bit bitmasks with exactly k bits set ([Credit](https://codeforces.com/blog/entry/17881?#comment-227737)):
+```c++
+for(int msk = (1<<k)-1; msk < 1<<n;) {
+    // ...
+    if(!msk) break;
+    int x = msk & -msk, y = msk + x;
+    msk = (msk & ~y) / x >> 1 | y;
+}
+```
+
 ### A more convenient if statement
 Consider a scenario where you are calling some function ```f()```. If its value satisfies some condition ```ok()```, you want use it.
 ```c++
