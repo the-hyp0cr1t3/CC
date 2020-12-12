@@ -72,6 +72,13 @@ int mid = (-L + -R) / 2;                  // 147483647 underflow
 int mid = (-L & -R) + ((-L ^ -R) >> 1);   // -2000000001 nice
 ```
 
+Fast min and max
+```c++
+#define max(x, y) (y-x >> 31 & (x^y) ^ y)
+#define min(x, y) (y-x >> 31 & (x^y) ^ x)
+// Ensure that y-x does not overflow or underflow
+```
+
 Iterate only over n-bit bitmasks with exactly k bits set ([Credit](https://codeforces.com/blog/entry/17881?#comment-227737)):
 ```c++
 for(int msk = (1<<k)-1; msk < 1<<n;) {
