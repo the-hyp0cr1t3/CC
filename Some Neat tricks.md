@@ -104,6 +104,13 @@ if (int x = f(); ok(x)) {
 }
 ```
 
+### Check if a string is a palindrome
+```c++
+inline bool isPalindrome(const string& s) {
+    return std::equal(s.begin(), s.end(), s.rbegin());
+}
+```
+
 ### Auto type-deduction, Range-based for loops and Structured bindings
 The magic word [auto](https://www.tutorialspoint.com/What-does-an-auto-keyword-do-in-Cplusplus) (introduced as a deduced type in C++11), behaves like a placeholder type specifier.
 ```c++
