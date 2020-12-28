@@ -29,9 +29,42 @@ namespace Hashing {
 }
 
 namespace Hashing {
+    // use base and primary mod of your choice
+    template<const int& base, int mod>
+    struct single_hash {
+        static inline vector<int> pows{1};
+        const int n;
+        vector<int> suf;
+        single_hash(const string& s): n(s.size()), suf(n+1) {
+            assert(base < mod);
+            pows.reserve(n+1);
+            while((int)pows.size() <= n)
+                pows.push_back(1LL * pows.back() * base % mod);
+            for(int i = n-1; ~i; i--)
+                suf[i] = (1ll * suf[i+1] * base + s[i]) % mod;
+        }
+        int operator()(int l, int r) const {
+            int res = suf[l] - 1ll * suf[r+1] * pows[r-l+1] % mod;
+            return res < 0? res + mod : res;
+        }
+        int operator()() const { return (*this)(0, n-1); }
+    };
+
+#ifndef __MOD_BASE
+    #define __MOD_BASE 
+    constexpr int _mod = 1e9+123;  // default mod
+    mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;  // random base
+#endif
+    template<const int& base = _base, int mod = _mod>
+    using string_single_hash = single_hash<base, mod>;
+}
+
+namespace Hashing {
     using hash_t = pair<int, uint64_t>;
     vector<uint64_t> pow2{1};
 
+    // use base and primary mod of your choice along with a secondary mod of 2^64
     template<const int& base, int mod>
     struct double_hash {
         static inline vector<int> pow1{1};
@@ -63,49 +96,19 @@ namespace Hashing {
 
 #ifndef __MOD_BASE
     #define __MOD_BASE 
-    constexpr int _mod = 1e9+123;
+    constexpr int _mod = 1e9+123;  // default mod
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;
+    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;  // random base
 #endif
     template<const int& base = _base, int mod = _mod>
     using string_double_hash = double_hash<base, mod>;
 }
 
-namespace Hashing {
-    template<const int& base, int mod>
-    struct single_hash {
-        static inline vector<int> pows{1};
-        const int n;
-        vector<int> suf;
-        single_hash(const string& s): n(s.size()), suf(n+1) {
-            assert(base < mod);
-            pows.reserve(n+1);
-            while((int)pows.size() <= n)
-                pows.push_back(1LL * pows.back() * base % mod);
-            for(int i = n-1; ~i; i--)
-                suf[i] = (1ll * suf[i+1] * base + s[i]) % mod;
-        }
-        int operator()(int l, int r) const {
-            int res = suf[l] - 1ll * suf[r+1] * pows[r-l+1] % mod;
-            return res < 0? res + mod : res;
-        }
-        int operator()() const { return (*this)(0, n-1); }
-    };
-
-#ifndef __MOD_BASE
-    #define __MOD_BASE 
-    constexpr int _mod = 1e9+123;
-    mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;
-#endif
-    template<const int& base = _base, int mod = _mod>
-    using string_single_hash = single_hash<base, mod>;
-}
-
 /*
 int main() {
-    string s = "absedfdsd";
-    Hashing::string_double_hash<> single_hash(s);
+    string s = "absedfd$%#&@sdA01";
+    static const int base = 23;
+    Hashing::string_single_hash<base, int(1e9+7)> single_hash(s);
     Hashing::string_single_hash<> double_hash(s);
     
     cout << single_hash(3, 4) << '\n';
