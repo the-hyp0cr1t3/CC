@@ -29,8 +29,14 @@ namespace Hashing {
 }
 
 namespace Hashing {
+#ifndef __MOD_BASE
+    #define __MOD_BASE 
+    constexpr int _mod = 1e9+123;  // default mod
+    mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;  // random base
+#endif
     // use base and primary mod of your choice
-    template<const int& base, int mod>
+    template<const int& base = _base, int mod = _mod>
     struct single_hash {
         static inline vector<int> pows{1};
         const int n;
@@ -49,23 +55,20 @@ namespace Hashing {
         }
         int operator()() const { return (*this)(0, n-1); }
     };
+}
 
+namespace Hashing {
 #ifndef __MOD_BASE
     #define __MOD_BASE 
     constexpr int _mod = 1e9+123;  // default mod
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
     static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;  // random base
 #endif
-    template<const int& base = _base, int mod = _mod>
-    using string_single_hash = single_hash<base, mod>;
-}
-
-namespace Hashing {
     using hash_t = pair<int, uint64_t>;
     vector<uint64_t> pow2{1};
 
     // use base and primary mod of your choice along with a secondary mod of 2^64
-    template<const int& base, int mod>
+    template<const int& base = _base, int mod = _mod>
     struct double_hash {
         static inline vector<int> pow1{1};
         const int n;
@@ -93,26 +96,17 @@ namespace Hashing {
         }
         hash_t operator()() const { return (*this)(0, n-1); }
     };
-
-#ifndef __MOD_BASE
-    #define __MOD_BASE 
-    constexpr int _mod = 1e9+123;  // default mod
-    mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;  // random base
-#endif
-    template<const int& base = _base, int mod = _mod>
-    using string_double_hash = double_hash<base, mod>;
 }
 
 /*
 int main() {
     string s = "absedfd$%#&@sdA01";
     static const int base = 23;
-    Hashing::string_single_hash<base, int(1e9+7)> single_hash(s);
-    Hashing::string_double_hash<> double_hash(s);
+    Hashing::single_hash<base, int(1e9+7)> A(s);
+    Hashing::double_hash<> B(s);
     
-    cout << single_hash(3, 4) << '\n';
-    auto [x, y] = double_hash();
+    cout << A(3, 4) << '\n';
+    auto [x, y] = B();
     cout << x << ' ' << y;
 }
 */
