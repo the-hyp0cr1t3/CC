@@ -110,3 +110,4 @@ int main() {
     cout << x << ' ' << y;
 }
 */
+// for prefix implementations, see (https://codeforces.com/contest/1469/submission/102644985) and (https://codeforces.com/contest/1469/submission/102644888)
