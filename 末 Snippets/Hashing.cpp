@@ -109,7 +109,7 @@ int main() {
     string s = "absedfd$%#&@sdA01";
     static const int base = 23;
     Hashing::string_single_hash<base, int(1e9+7)> single_hash(s);
-    Hashing::string_single_hash<> double_hash(s);
+    Hashing::string_double_hash<> double_hash(s);
     
     cout << single_hash(3, 4) << '\n';
     auto [x, y] = double_hash();
