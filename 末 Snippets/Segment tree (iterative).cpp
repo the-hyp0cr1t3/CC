@@ -1,4 +1,5 @@
-// Read more from (https://codeforces.com/blog/entry/18051)
+/* Iterative segment tree with point updates */
+// From (https://codeforces.com/blog/entry/18051)
 // Try [https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A]
 
 // init
