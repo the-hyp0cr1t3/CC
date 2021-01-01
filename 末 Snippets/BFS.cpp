@@ -1,3 +1,6 @@
+/* Breadth First Search */
+// (https://cp-algorithms.com/graph/breadth-first-search.html)
+
 int d[N];
 vector<int> g[N];       // adjacency list
 
