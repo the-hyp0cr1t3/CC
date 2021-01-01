@@ -1,4 +1,5 @@
 /* Disjoint Set Union or Union Find */
+// (https://cp-algorithms.com/data_structures/disjoint_set_union.html)
 
 struct DSU {
     int n, components;
