@@ -1,3 +1,5 @@
+/* Disjoint Set Union or Union Find */
+
 struct DSU {
     int n, components;
     vector<int> data, rootID, roots; 
