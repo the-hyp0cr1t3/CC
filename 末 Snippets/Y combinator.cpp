@@ -10,13 +10,10 @@ public:
     }
 };  template<class T> Y(T) -> Y<T>; // template deduction guide (C++17)
 
-//For C++14 and before, use
-template<class T>
-decltype(auto) Y_result(T&& f) {
-    return Y<decay_t<T>>(forward<T>(f));
-} // use as Y_result([&](auto self, ...){});
+//For C++14 and before, refer to [submission](https://codeforces.com/contest/1466/submission/102864010)
 
-auto recur = Y([&](auto self, auto&&... params) -> void {
-    // ...
-    self(params...);
+auto factorial = Y([&](auto self, int n) -> int {
+    return n == 0? 1 : n * self(n-1);
 });
+
+std::cout << factorial(5);
