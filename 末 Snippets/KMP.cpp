@@ -1,3 +1,5 @@
+/* (https://cp-algorithms.com/string/prefix-function.html) */
+
 // pi[i] is the longest proper prefix
 // that is a suffix ending at position i
 // abcd.abceab
