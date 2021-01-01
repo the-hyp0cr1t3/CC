@@ -1,3 +1,6 @@
+/* Floyd-Warshall's all pair shortest paths */
+// (https://cp-algorithms.com/graph/all-pair-shortest-path-floyd-warshall.html)
+
 int d[N][N];
 vector<int> ans;
 
