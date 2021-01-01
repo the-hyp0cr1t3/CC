@@ -1,92 +1,128 @@
-namespace randnum {
+namespace Randnum {
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
-    // random int in [L, R]
-    template<typename T>
-    T randint(T L, T R) {
+#define EnableIntegral typename = enable_if_t<is_integral<T>::value>
+    template<typename T = int, EnableIntegral>
+    T randInt(int64_t L, int64_t R) {   // [L, R] inclusive
         uniform_int_distribution<T> d(L, R);
         return d(rng);
     }
-
-    // random int in [0, n-1]
-    template<typename T>
-    T randint(T _n) {
-        return randint(T(0), T(_n-1));
+    template<typename T = int, EnableIntegral>
+    T randInt(int64_t n) {      // [0, n)
+        return randInt<T>(0, n-1);
     }
 
-    // random array of size N
-    // each element in [L, R]
-    template<typename T>
-    vector<T> randarr(T _n, T L, T R) {
-        vector<T> v(_n);
-        for(auto& x: v) 
-            x = randint(L, R);
+    template<typename T = int, EnableIntegral>
+    vector<T> randArray(int n, int64_t L, int64_t R) {
+        vector<T> v(n);
+        for(auto& x: v)
+            x = randInt<T>(L, R);
         return v;
     }
 
-    // random string of length N
-    // each element in charset
-    template<typename T>
-    string randstr(T _n, const string charset = "abcdefghijklmnopqrstuvwxyz") {
-        int _w = charset.size();
-        string res;
-        for(int i = 0; i < _n; i++) 
-            res += charset[randint(_w)];
-        return res;
-    }
-
-    // random shuffle a vect
     template<typename T>
     void shuffle(vector<T>& v) {
         shuffle(v.begin(), v.end(), rng);
     }
 
-    // weighted random in range [0, n-1]
-    // w_rand(n, t) = max(rand(n), rand(n), ...rand(n)) ~--- t times
-    // if t < 0, min is taken
-    // type specifies number of iterations
-    template<typename T>
-    T w_rand(T n, T type) {
-        T result = randint(n);
-        for(T i = 0; i < type; i++) {
-            T nxt = randint(n);
-            result = result < nxt? nxt : result;
-        }
-        for(T i = 0; i < -type; i++) {
-            T nxt = randint(n);
-            result = result > nxt? nxt : result;
-        }
-        return result;
+    const string binary = "01";
+    const string digits = "0123456789";
+    const string alpha = "abcdefghijklmnopqrstuvwxyz";
+    const string alphanum = alpha + digits;
+    
+    string randString(int n, const string& charset = alpha) {
+        string res; int len = charset.size();
+        for(int i = 0; i < n; i++) 
+            res.push_back(charset[randInt(len)]);
+        return res;
     }
 
-    // Random tree generator (0-indexed)
-    // (Based on Prufer code)
-    // n -> number of nodes
-/* --------  value 1000 is to yet to be tested as bounds ----- */
-    // elongation -> [-1000, +1000]
-    // +1000 => degree at most 2
-    // -1000 => star graph
-    vector<pair<int, int>> gen_tree(int n, int elongation) {
-        // gen parents, 0 is root
-        vector<int> par(n);
-        for(int i = 1; i < n; i++) 
-            par[i] = w_rand(i, elongation);
+/** Weighted random in range [0, n)
+  * w_randInt(n, t) = max(randInt(n), randInt(n),... randInt(n)) ~--- t times
+  * if t < 0, min is taken
+  * magnitude is number of iterations **/
+    template<typename T = int, EnableIntegral>
+    T w_randInt(int64_t n, int type) {
+        T result = randInt<T>(n);
+        for(int i = 0; i < type; i++) {
+            T nxt = randInt<T>(n);
+            result = result < nxt? nxt : result;
+        } for(int i = 0; i < -type; i++) {
+            T nxt = randInt<T>(n);
+            result = result > nxt? nxt : result;
+        } return result;
+    }
 
-        // gen permuation (shuffling of labels)
+    enum InputFormat { Edges, Parents };
+
+/** Random tree generator (1-indexed) **/
+    template<InputFormat inp = Edges>
+    auto randTree(int n, int elongation = 2e9) {
+        if(elongation == 2e9)       // radomized if not passed as an arg
+            elongation = randInt(1, n);    // +ve elong => rope-y, -ve elong => star-y
+
         vector<int> perm(n);
         iota(perm.begin(), perm.end(), 0);
-        shuffle(perm.begin()+1, perm.end(), rng);
+        shuffle(perm);
 
-        // insert each (i, par[i]) pair with respective labels
-        vector<pair<int, int>> edges;
-        edges.reserve(n-1);
-        for(int i = 1; i < n; i++) {
-            int u = perm[i]; int v = perm[par[i]];
-            if(randint(2)) swap(u, v);
-            edges.emplace_back(u+1, v+1);
+        vector<int> p(n);
+        for(int i = 1; i < n; i++)
+            p[i] = w_randInt(i, elongation);
+
+        if constexpr(inp == Parents) { // ----- Parents ------
+            vector<int> par(n, -1);
+            for(int i = 1; i < n; i++)
+                par[perm[i]] = perm[p[i]] + 1;
+            return par;
+        } else {                        // ----- Edges -------
+            vector<pair<int, int>> edges; edges.reserve(n-1);
+            for(int i = 1; i < n; i++)
+                edges.push_back(randInt(2)?
+                    pair{perm[i] + 1, perm[p[i]] + 1}
+                    : pair{perm[p[i]] + 1, perm[i] + 1});
+            return shuffle(edges), edges;        
         }
-
-        shuffle(edges);
-        return edges;
     }
-} using namespace randnum;
+
+/** Random k-ary tree generator (1-indexed) **/
+    // k = 1 for rope/chain, k = n-1 for star
+    template<InputFormat inp = Edges>
+    auto randTreeKary(int n, int k) {
+        vector<int> perm(n);
+        iota(perm.begin(), perm.end(), 0);
+        shuffle(perm);
+
+        if constexpr(inp == Parents) {  // ----- Parents -----
+            vector<int> par(n, -1);
+            for(int i = 0, j = 1; j < n; i++, j+=k)
+                for(int id = j; id < min(n, j+k); id++)
+                    par[perm[id]] = perm[i] + 1;
+            return par;        
+        } else {                        // ----- Edges -------
+            vector<pair<int, int>> edges; edges.reserve(n-1);
+            for(int i = 0, j = 1; j < n; i++, j += k)
+                for(int id = j; id < min(n, j+k); id++)
+                    edges.push_back(randInt(2)?
+                        pair{perm[i] + 1, perm[id] + 1}
+                            : pair{perm[id] + 1, perm[i] + 1});
+            return shuffle(edges), edges;
+        }
+    }
+
+} using namespace Randnum;
+
+/*
+int main() {
+    int n = randInt(2, 5);
+    int64_t m = randInt<int64_t>(12345678901234567LL);
+    string s = randString(n, alpha);
+
+    vector<int64_t> vec = randArray<int64_t>(n, 0, 1ll<<62);
+    shuffle(vec);
+
+    vector<pair<int, int>> edges = randTree<Edges>(n);
+    vector<int> parents = randTree<Parents>(n, -n/2);
+
+    vector<pair<int, int>> karyedges = randTreeKary(n, randInt(1, n-1));
+} // ~W 
+*/
