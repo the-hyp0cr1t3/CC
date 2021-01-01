@@ -1,3 +1,6 @@
+/* Dijkstra's shortest paths */
+// (https://cp-algorithms.com/graph/dijkstra.html)
+
 vector<pair<int, int>> g[N];
 for(int i = 0; i < m; i++) {
     int u, v, w;
