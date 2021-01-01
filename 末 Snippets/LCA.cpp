@@ -1,5 +1,8 @@
-Inspired by [tmwilliamlin168](https://codeforces.com/profile/tmwilliamlin168)
+/* Lowest Common Ancestor */
+
+/* Inspired by [tmwilliamlin168](https://codeforces.com/profile/tmwilliamlin168) */
 // O(NlogN) precomp, O(logN) per query, O(NlogN) space
+// (https://cp-algorithms.com/graph/lca_binary_lifting.html)
 const int LG = 20;
 int d[N], anc[LG][N];
 vector<int> g[N];
@@ -40,8 +43,9 @@ int LCA(int u, int v) {
 }
 
 /* -------------------------------------------------- */
-// LCA Sparse Table
+/* LCA using Sparse Table */
 // O(N) precomp, O(1) per query, O(N) space
+// (https://cp-algorithms.com/graph/lca_farachcoltonbender.html)
 int n;
 vector<int> g[N];   // adjacency list
 
