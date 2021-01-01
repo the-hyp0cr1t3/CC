@@ -20,7 +20,7 @@ function<void(int)> dfs1 = [&](int v) {
     st.push(v);
 };
 
-function<void(int)> dfs2 = [&](int v, int k) {
+function<void(int, int)> dfs2 = [&](int v, int k) {
     comp[v] = k;
     for(auto& x: rg[v]) 
         if(!comp[x]) dfs2(x, k);
