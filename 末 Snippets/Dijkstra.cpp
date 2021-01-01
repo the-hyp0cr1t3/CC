@@ -7,6 +7,9 @@ for(int i = 0; i < m; i++) {
     g[v].pb(u, w);
 }
 
+vector<int64_t> d(n, INF);
+vector<int> par(n, -1);
+
 auto dijkstra = [&] (int root) {
     struct state {
         int v; int64_t dist;
@@ -16,10 +19,8 @@ auto dijkstra = [&] (int root) {
         }
     }; 
     
-    vector<int64_t> d(n, INF);
-    vector<int> par(n, -1);
     priority_queue<state> pq;
-    pq.emplace(root, d[root]);
+    pq.emplace(root, d[root] = 0);
     
     while(!pq.empty()) {
         state top = pq.top(); pq.pop();
