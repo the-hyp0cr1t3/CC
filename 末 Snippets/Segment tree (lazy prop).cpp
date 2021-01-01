@@ -1,5 +1,6 @@
-// Read and practice more from [https://codeforces.com/edu/course/2/lesson/5]
+/* Segment tree with lazy propogation */
 // Try [https://codeforces.com/edu/course/2/lesson/5/1/practice/contest/279634/problem/A]
+// Practice from [https://codeforces.com/edu/course/2/lesson/5]
 
 // T = Node, U = Lazy
 template<class T, class U = int64_t>
