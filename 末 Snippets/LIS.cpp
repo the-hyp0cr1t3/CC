@@ -1,3 +1,6 @@
+/* Longest increasing subsequence */
+// (https://cp-algorithms.com/sequences/longest_increasing_subsequence.html)
+
 auto LIS = [&] (const vector<int>& v) {
     vector<int> lis; lis.reserve(n);
     for(int z = 0; z < n; z++) {
