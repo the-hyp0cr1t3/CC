@@ -63,7 +63,7 @@ namespace Randnum {
 
         vector<int> perm(n);
         iota(perm.begin(), perm.end(), 0);
-        shuffle(perm);
+        shuffle(perm);          // shuffle(perm.begin()+1, perm.end(), rng) to root at 1
 
         vector<int> p(n);
         for(int i = 1; i < n; i++)
