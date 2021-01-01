@@ -1,4 +1,6 @@
+/* Binary Exponentiation */
 // (https://cp-algorithms.com/algebra/binary-exp.html)
+
 template<typename T>
 T expo(T A, int64_t B) {        // A^{B}
     T res{1}; while(B) {
