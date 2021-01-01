@@ -73,6 +73,7 @@ struct Matrix {
         } return res;
     }
 };
+// Matrix<int64_t, 3, 4> M = {{1, 2, 3, 4}, {-1, 234, 2, 45}, {1, 241, 65, 69}};
 
 // -----------------------------------------------------------------
 // vector implementation for non-compile time size matrix (slower)
