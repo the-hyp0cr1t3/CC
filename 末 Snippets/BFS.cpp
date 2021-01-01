@@ -1,5 +1,5 @@
 int d[N];
-vector<int> g[N];
+vector<int> g[N];       // adjacency list
 
 auto bfs = [&] (int root) {
     queue<int> q;
@@ -18,7 +18,7 @@ auto bfs = [&] (int root) {
     }
 };
 
-// BFS 2D
+// BFS 2D -------------------------------------
 const int dx[4] = {1, 0, -1, 0};
 const int dy[4] = {0, 1, 0, -1};
 
