@@ -1,5 +1,7 @@
-// Read and practice more from [https://codeforces.com/edu/course/2/lesson/4]
+/* Segment tree with point updates */
 // Try [https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A]
+// Practice from [https://codeforces.com/edu/course/2/lesson/4]
+
 template<class T>
 struct Segtree {
     int N; vector<T> st;
