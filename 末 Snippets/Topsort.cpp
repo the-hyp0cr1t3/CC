@@ -1,4 +1,5 @@
 /* Topological sort */
+// (https://cp-algorithms.com/graph/topological-sort.html)
 
 int indeg[N];
 vector<int> g[N];
