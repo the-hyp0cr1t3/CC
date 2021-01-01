@@ -1,3 +1,5 @@
+/* Binary Search */
+
 auto check = [&] (int x) {
     // ...
     return true;
