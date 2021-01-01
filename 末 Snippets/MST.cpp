@@ -1,4 +1,6 @@
-// Prim's MST
+/* Minimum Spanning Tree */
+
+// Prim's MST (https://cp-algorithms.com/graph/mst_prim.html)
 int n, m, inedgewt[N], parent[N];
 vector<pii> g[N], tree[N];
 vector<bool> vis;
@@ -53,7 +55,7 @@ auto primsMST = [&] (int root) {
 };
 
 /* -------------------------------------------------- */
-// Krukal's MST
+// Krukal's MST (https://cp-algorithms.com/graph/mst_kruskal.html)
 struct edge_t {
     int u, v, w;
     edge_t(int u, int v, int w) : u(u), v(v), w(w) {}
