@@ -1,3 +1,5 @@
+/* Sparse table for offline range queries */
+
 template<class T, class Cmp>
 struct Sparse {
     int N, K; Cmp cmp;
