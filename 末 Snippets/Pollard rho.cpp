@@ -1,4 +1,5 @@
-// alt implementation: http://morris821028.github.io/2015/07/11/uva-11476/
+/* Pollard Rho integer factorization */
+// (https://www.cs.colorado.edu/~srirams/courses/csci2824-spr14/pollardsRho.html)
 
 uint64_t modmul(uint64_t a, uint64_t b, uint64_t M) {
     int64_t ret = a * b - M * uint64_t(1.L / M * a * b);
@@ -42,3 +43,8 @@ vector<uint64_t> factor(uint64_t n) {
     l.insert(l.end(), all(r)); sort(all(l));
     return l;
 }
+// int64_t x = 6969696923423424;
+// auto factors = factor(x);
+// ~ {2, 2, 2, 2, 2, 2, 3, 37, 281, 2029, 1720769}
+
+// alt implementation: http://morris821028.github.io/2015/07/11/uva-11476/
