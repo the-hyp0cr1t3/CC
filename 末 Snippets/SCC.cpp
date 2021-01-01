@@ -1,3 +1,6 @@
+/* Strongly Connected Components */
+
+// Kosaraju's algorithm (https://cp-algorithms.com/graph/strongly-connected-components.html)
 int n, m, sccount = 0;
 vector<int> g[N], rg[N], comp;
 vector<bool> vis;
@@ -41,7 +44,7 @@ void scc() {
 }
 
 /* -------------------------------------------------- */
-
+// Tarjan's algorithm
 int n, m, id = 0, sccount = 0;
 vector<int> g[N], ids, low;
 vector<bool> onstack;
