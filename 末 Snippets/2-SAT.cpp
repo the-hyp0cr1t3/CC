@@ -1,3 +1,5 @@
+/* 2-SAT or 2-Satisfiability */
+// (https://cp-algorithms.com/graph/2SAT.html)
 // (https://codeforces.com/contest/776/submission/94490003)
 
 int vis[2*N], comp[2*N], assignment[N];
