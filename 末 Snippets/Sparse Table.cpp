@@ -34,7 +34,7 @@ struct Sparse {
     }
 };
 template<class T, class Cmp>
-Sparse(T, T, Cmp) -> Sparse<typename iterator_traits<T>::value_type, Cmp>;
+Sparse(T, T, Cmp) -> Sparse<typename iterator_traits<T>::value_type, Cmp>;      // template deduction guide (C++17)
 
 /*
 int32_t main() {
@@ -45,5 +45,9 @@ int32_t main() {
 
     Sparse st3(arr, arr+n, std::less{});
     Sparse st4(arr, arr+n, [](int x, int y){ return x < y; });
+
+// For C++14 or before, do something like
+    auto cmp = [](int x, int y){ return x < y; };
+    Sparse<int, decltype(cmp)> st(a.begin(), a.end(), cmp);
 }
 */
