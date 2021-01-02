@@ -10,4 +10,4 @@ for(int z = 3; z*z < N; z += 2)
     if(spf[z] == z) for(int y = z*z; y < N; y += z*2)
         if(spf[y] == y) spf[y] = z;
 for(int z = 3; z < N; z += 2) 
-    if(spf[z] == z) primes.pb(z);
+    if(spf[z] == z) primes.push_back(z);
