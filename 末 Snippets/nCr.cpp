@@ -1,18 +1,20 @@
-// ModInt struct num {};
-num fact[N], factinv[N], inv[N];
+/* nCr | Combination(n, r) | N choose R ~ n things taken r at a time without repetition */
+// Note: Mod operations are implicitly handled by ModInt struct mint
+// Note2: May also be used without, by performing required mod ops where necessary
 
-fact[0] = factinv[0] = 1;
-fact[1] = factinv[1] = inv[1] = 1;
+int maxN = 1e6;
 
-for(int i = 2; i < N; i++) {
-    fact[i] = fact[i-1] * num(i);
-    inv[i] = num(-MOD/i) * inv[MOD%i];
-    factinv[i] = factinv[i-1] * inv[i];
-}
+static vector<mint> fact{1, 1}, factinv{1, 1}, inv{0, 1};
+[](int N) {
+    fact.reserve(N); factinv.reserve(N); inv.reserve(N);
+    for(int z = fact.size(); z < N; z++) {
+        // [Modular inverse](https://cp-algorithms.com/algebra/module-inverse.html#mod-inv-all-num)
+        inv.push_back(inv[MOD % z] * (MOD - MOD / z));
+        fact.push_back(z * fact[z-1]);
+        factinv.push_back(inv[z] * factinv[z-1]);            
+    }
+}(maxN);
 
-auto nCr = [&] (int n, int r) {
-    if (r > n) return num(0);
-    num ans = fact[n] * factinv[r] * factinv[n-r];
-    return ans;
+auto nCr = [&](int n, int r) {
+    return r < 0 or r > n? 0 : fact[n] * factinv[r] * factinv[n-r];
 };
-
