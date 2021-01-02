@@ -78,8 +78,8 @@ cout << a;
 >> b ^ 1234567890123456LL               // 504998273
 
 static int _MOD;                        // Mod values only known at run time may also be used by making the variable static
-for(_MOD = 1; _MOD < 8; _MOD++) {       // the reference is a compile time constant (requirement for non type template arguements)
-    Mint<_MOD> x(5);                    // but the value may be modified
+for(_MOD = 1; _MOD < 8; _MOD++) {       // this way, the reference is known at compile time (requirement for non type template arguements)
+    Mint<_MOD> x(5);                    // yet the value may be modified during run time
     cout << x << ' ';
 }
 Output: 0 1 2 1 0 5 5
