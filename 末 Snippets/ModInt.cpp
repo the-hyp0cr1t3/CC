@@ -63,3 +63,17 @@ struct Mint {
 
 const int MOD = 1e9+7;
 using mint = Mint<MOD>;
+
+
+/*
+mint a;
+cin >> a;
+cout << a;
+
+>> mint a(2)
+>> a.inv()      // 500000004
+>> a ^ -1       // 500000004
+>> mint b = a * a + 2 * a - a / 32      // 437500011
+>> b ^ 1234567890123456LL               // 504998273
+
+*/
