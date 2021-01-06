@@ -302,6 +302,7 @@ struct BigInt {
 };
 
 /*
+#define sz(x) (int)x.size()
 int main() {
     BigInt a, b;
     cin >> a >> b;
