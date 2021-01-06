@@ -9,11 +9,15 @@ struct frac {
     friend ostream& operator<<(ostream& os, const frac& r) { return os << '(' << r.num << '/' << r.den << ')'; }
 
     static inline T abs(T x) { return x < 0? -x : x; }
-    static T gcd(T x, T y) { return !x or !y? x|y : gcd(y, x % y); }
+    static inline T gcd(T x, T y) { while(y) { T rem = x % y; x = y; y = rem; } return x; }
+
     inline void reduce() {
         assert(num and den);
         if(num == 0) den = 1;
-        else { T g = gcd(abs(num), abs(den)); num /= g; den /= g; if(den < 0) num *= -1, den *= -1; }
+        else { 
+            T g = gcd(abs(num), abs(den)); num /= g; den /= g;
+            if(den < 0) num *= -1, den *= -1;
+        }
     }
 
     friend const T floor(const frac& r) { return r.num / r.den - ((r.num ^ r.den) < 0 and r.num % r.den); }
