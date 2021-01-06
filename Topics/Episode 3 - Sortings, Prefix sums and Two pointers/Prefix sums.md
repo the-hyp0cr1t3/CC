@@ -1,5 +1,6 @@
 # Prefix sums
-[Tutorial](https://www.hackerrank.com/topics/prefix-sum)
+[Tutorial](https://www.hackerrank.com/topics/prefix-sum)\
+[Range updates using prefix sums](https://codeforces.com/blog/entry/86420)
 
 #### Problems
 * [Spoj CSUMQ](https://www.spoj.com/problems/CSUMQ/)
