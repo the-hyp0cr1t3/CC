@@ -22,7 +22,7 @@ struct frac {
 
     friend const T floor(const frac& r) { return r.num / r.den - ((r.num ^ r.den) < 0 and r.num % r.den); }
     friend const T ceil(const frac& r) { return r.num / r.den + ((r.num ^ r.den) > 0 and r.num % r.den); }
-    friend const frac abs(const frac& r) { return r.num < 0? -r : r; }
+    friend const frac abs(const frac& r) { frac ret = r; if(ret.num < 0) ret.num = -ret.num; return ret; }
 
     int compare(const frac& o) const noexcept {
         if(den == 0 and o.den == 0) return (num ^ o.num) > 0? 0 : num < 0? -1 : 1;
@@ -43,19 +43,19 @@ struct frac {
 
     frac& operator+=(const frac& o) { 
         num = num * o.den + den * o.num; den *= o.den; reduce(); return *this;
-    } const frac operator+(const frac& o) const { return frac(*this) += o; }
+    } const frac operator+(const frac& o) const { frac ret = *this; ret += o; return ret; }
 
     frac& operator-=(const frac& o) { 
         num = num * o.den - den * o.num; den *= o.den; reduce(); return *this;
-    } const frac operator-(const frac& o) const { return frac(*this) -= o; }
+    } const frac operator-(const frac& o) const { frac ret = *this; ret -= o; return ret; }
 
     frac& operator*=(const frac& o) {
         num *= o.num; den *= o.den; reduce(); return *this;
-    } const frac operator*(const frac& o) const { return frac(*this) *= o; }
+    } const frac operator*(const frac& o) const { frac ret = *this; ret *= o; return ret; }
 
     frac& operator/=(const frac& o) {
         num *= o.den; den *= o.num; reduce(); return *this;
-    } const frac operator/(const frac& o) const { return frac(*this) /= o; }
+    } const frac operator/(const frac& o) const { frac ret = *this; ret /= o; return ret; }
 
 };
 
