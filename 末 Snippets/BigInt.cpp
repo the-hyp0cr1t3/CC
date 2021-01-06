@@ -1,275 +1,316 @@
-// From [this](https://codeforces.com/contest/1144/submission/52126022) submission by [YouKn0wWho](https://codeforces.com/profile/YouKn0wWho)
-struct bigint {
-    using ll = long long;
-    static constexpr ll base = 26*26*26*26;
-    static constexpr ll base_digits = 4;
-    vector<ll>  a; ll sign;
- 
-    bigint() : sign(1) {}
-    bigint(ll v) {*this = v;}
-    bigint(const string &s) {read(s);}
- 
-    void operator=(const bigint &v) {
-        sign = v.sign;
-        a = v.a;
+/* Big int ops */
+// References
+// - https://github.com/knst/big_number
+// - https://gist.github.com/ar-pa/957297fb3f88996ead11
+// - https://github.com/dmkz/competitive-programming/blob/master/e-olymp.com/0317.cpp
+
+// alternate: base = 26, grpsz = 6, base_char = 'a'
+template<int base = 10, int grpsz = 9, char base_char = '0'>
+struct BigInt {
+    static constexpr auto t = []() {
+        array<int, grpsz+1> p{1};
+        int n = 0, m = 0;
+        for(int i = 1; i <= grpsz; ++i) {
+            p[i] = p[i-1] * base;
+            if(p[i] <= 1000000) n = i;
+        } m = p.back();
+        return make_tuple(m, n, p);
+    }();
+
+    // more efficient with large base; should not exceed 1e9 (overflow)
+    static constexpr int _mod = get<0>(t);                      // base^{grpsz}
+    static constexpr int reduced_grpsz = get<1>(t);             // to avoid multiplication overflow
+    static constexpr array<int, grpsz+1> pows = get<2>(t);      // _mod powers for base conversion
+    static constexpr int karatsubaMinimalSize = 50;
+    
+    int sign{1};
+    vector<int> d;
+    
+// ctors
+    BigInt(int64_t number = 0) {
+        sign = number < 0? number = -number, -1 : 1;
+        while(number > 0) d.emplace_back(number % _mod), number /= _mod;
     }
- 
-    void operator=(ll v) {
-        sign = 1;
-        if (v < 0) sign = -1, v = -v;
-        a.clear();
-        for (; v > 0; v = v / base)
-            a.pb(v % base);
+    // _digits = MSB...LSB (not in groups of size grpsz); sign = -1 || 1
+    BigInt(const vector<int>& _digits, int sign = 1): sign(sign) {
+        d.reserve(sz(_digits)/grpsz + 1);
+        for(int i = sz(_digits)-1, block = 0; i >= 0; i -= grpsz, block = 0) {
+            for(int j = max(0, i-grpsz+1); j <= i; j++)
+                block = block * base + _digits[j];
+            d.emplace_back(block);
+        } normalize();
     }
- 
-    bigint operator+(const bigint &v) const {
-        if (sign == v.sign) {
-            bigint res = v;
-            for (ll i = 0, carry = 0; i < (ll)max(a.size(), v.a.size()) || carry; ++i) {
-                if (i == (ll)res.a.size())
-                    res.a.pb(0);
-                res.a[i] += carry + (i < (ll)a.size() ? a[i] : 0);
-                carry = res.a[i] >= base;
-                if (carry)
-                    res.a[i] -= base;
-            }
-            return res;
-        }
-        return *this - (-v);
-    }
- 
-    bigint operator-(const bigint &v) const {
-        if (sign == v.sign) {
-            if (abs() >= v.abs()) {
-                bigint res = *this;
-                for (ll i = 0, carry = 0; i < (ll)v.a.size() || carry; ++i) {
-                    res.a[i] -= carry + (i < (ll)v.a.size() ? v.a[i] : 0);
-                    carry = res.a[i] < 0;
-                    if (carry) res.a[i] += base;
-                }
-                res.trim();
-                return res;
-            }
-            return -(v - *this);
-        }
-        return *this + (-v);
-    }
- 
-    void operator*=(ll v) {
-        if (v < 0) sign = -sign, v = -v;
-        for (ll i = 0, carry = 0; i < (ll)a.size() || carry; ++i) {
-            if (i == (ll)a.size()) a.pb(0);
-            ll cur = a[i] * v + carry;
-            carry = cur / base;
-            a[i] = cur % base;
-        }
-        trim();
-    }
- 
-    bigint operator*(ll v) const {
-        bigint res = *this;
-        res *= v;
-        return res;
-    }
- 
-    friend pair<bigint, bigint> divmod(const bigint &a1, const bigint &b1) {
-        ll norm = base / (b1.a.back() + 1);
-        bigint a = a1.abs() * norm;
-        bigint b = b1.abs() * norm;
-        bigint q, r;
-        q.a.resize(a.a.size());
-        for (ll i = (ll)a.a.size() - 1; i >= 0; i--) {
-            r *= base;
-            r += a.a[i];
-            ll s1 = r.a.size() <= b.a.size() ? 0 : r.a[b.a.size()];
-            ll s2 = r.a.size() <= b.a.size() - 1 ? 0 : r.a[b.a.size() - 1];
-            ll d = (base * s1 + s2) / b.a.back();
-            r -= b * d;
-            while (r < 0)
-                r += b, --d;
-            q.a[i] = d;
-        }
-        q.sign = a1.sign * b1.sign;
-        r.sign = a1.sign;
-        q.trim();
-        r.trim();
-        return make_pair(q, r / norm);
-    }
- 
-    bigint operator/(const bigint &v) const {
-        return divmod(*this, v).first;
-    }
- 
-    bigint operator%(const bigint &v) const {
-        return divmod(*this, v).second;
-    }
- 
-    void operator/=(ll v) {
-        if (v < 0) sign = -sign, v = -v;
-        for (ll i = (ll)a.size() - 1, rem = 0; i >= 0; --i) {
-            ll cur = a[i] + rem * base;
-            a[i] = cur / v;
-            rem = cur % v;
-        }
-        trim();
-    }
- 
-    bigint operator/(ll v) const {
-        bigint res = *this;
-        res /= v;
-        return res;
-    }
- 
-    ll operator%(ll v) const {
-        if (v < 0) v = -v;
-        ll m = 0;
-        for (ll i = (ll)a.size() - 1; i >= 0; --i)
-            m = (a[i] + m * base) % v;
-        return m * sign;
-    }
- 
-    void operator+=(const bigint &v) {
-        *this = *this + v;
-    }
-    void operator-=(const bigint &v) {
-        *this = *this - v;
-    }
-    void operator*=(const bigint &v) {
-        *this = *this * v;
-    }
-    void operator/=(const bigint &v) {
-        *this = *this / v;
-    }
- 
-    bool operator<(const bigint &v) const {
-        if (sign != v.sign) return sign < v.sign;
-        if (a.size() != v.a.size())
-            return a.size() * sign < v.a.size() * v.sign;
-        for (ll i = (ll)a.size() - 1; i >= 0; i--)
-            if (a[i] != v.a[i])
-                return a[i] * sign < v.a[i] * sign;
-        return false;
-    }
- 
-    bool operator>(const bigint &v) const {
-        return v < *this;
-    }
-    bool operator<=(const bigint &v) const {
-        return !(v < *this);
-    }
-    bool operator>=(const bigint &v) const {
-        return !(*this < v);
-    }
-    bool operator==(const bigint &v) const {
-        return !(*this < v) && !(v < *this);
-    }
-    bool operator!=(const bigint &v) const {
-        return *this < v || v < *this;
-    }
- 
-    void trim() {
-        while (!a.empty() && !a.back()) a.pop_back();
-        if (a.empty()) sign = 1;
-    }
- 
-    bool isZero() const {
-        return a.empty() || (a.size() == 1 && a[0] == 0);
-    }
- 
-    bigint operator-() const {
-        bigint res = *this;
-        res.sign = -sign;
-        return res;
-    }
- 
-    bigint abs() const {
-        bigint res = *this;
-        res.sign *= res.sign;
-        return res;
-    }
- 
-    ll longValue() const {
-        ll res = 0;
-        for (ll i = (ll)a.size() - 1; i >= 0; i--)
-            res = res * base + a[i];
+    BigInt(const string& s): BigInt(convert_string_to_vector(s), (s[0] == '-'? -1 : 1)) {}
+
+    // does not handle overflow
+    template<typename T, typename = enable_if_t<is_integral<T>::value>>
+    explicit operator T() const {
+        T res = 0;
+        for(auto& _d: d)
+            res = res * _mod + _d;
         return res * sign;
     }
- 
-    void read(const string &s) {
-        sign = 1;
-        a.clear();
-        ll pos = 0;
-        while (pos < (ll)s.size() && (s[pos] == '-' || s[pos] == '+')) {
-            if (s[pos] == '-') sign = -sign;
-            ++pos;
-        }
-        for (ll i = (ll)s.size() - 1; i >= pos; i -= base_digits) {
-            ll x = 0;
-            for (ll j = max(pos, i - base_digits + 1); j <= i; j++)
-                x = x * 26 + s[j] - 'a';
-            a.pb(x);
-        }
-        trim();
-    }
- 
-    friend istream& operator>>(istream &stream, bigint &v) {
+
+// io
+    string to_string() const {
         string s;
-        stream >> s;
-        v.read(s);
-        return stream;
+        if(is0()) s += base_char;
+        else {
+            for(auto res: d)
+                for(int j = 0; j < grpsz; j++)
+                    s += res % base + base_char, res /= base;
+            while(s.size() and s.back() == base_char) s.pop_back();
+            if(sign < 0) s += '-';
+            reverse(s.begin(), s.end());            
+        } return s;
+    }
+
+    friend istream& operator>>(istream& is, BigInt& number) { string s; is >> s; number = BigInt(s); return is; }
+    friend ostream& operator<<(ostream& os, const BigInt& number) { return os << number.to_string(); }
+
+// helpers
+    inline bool is0() const noexcept { return !d.size(); }
+    inline void normalize() noexcept {
+        while(d.size() and !d.back()) d.pop_back();
+        if(!d.size()) sign = 1;
+    }
+    static vector<int> convert_string_to_vector(const string& s) {
+        vector<int> v; v.reserve(s.size());
+        for(auto c: s) if(c != '-')
+            v.emplace_back(c - base_char);
+        return v;
+    }
+
+// compare
+    int compare(const BigInt& o) const noexcept {
+        if(sign != o.sign) return sign == 1? 1 : -1;
+        if(sz(d) > sz(o.d)) return sign == 1? 1 : -1;
+        if(sz(d) < sz(o.d)) return sign == 1? -1 : 1;
+        for(int i = sz(d)-1; i >= 0; --i) {
+            if(d[i] > o.d[i]) return sign == 1? 1 : -1;
+            if(d[i] < o.d[i]) return sign == 1? -1 : 1;
+        } return 0;
+    }
+
+    bool operator< (const BigInt& o) const noexcept { return compare(o) < 0; }
+    bool operator> (const BigInt& o) const noexcept { return compare(o) > 0; }
+    bool operator==(const BigInt& o) const noexcept { return compare(o) == 0; }
+    bool operator<=(const BigInt& o) const noexcept { return compare(o) <= 0; }
+    bool operator>=(const BigInt& o) const noexcept { return compare(o) >= 0; }
+    bool operator!=(const BigInt& o) const noexcept { return compare(o) != 0; }
+
+// operator overloads
+    int operator[](size_t idx) const noexcept { return d[idx]; }
+    BigInt operator-() const { BigInt res = *this; res.sign *= -1; return res; }
+    BigInt abs() const { BigInt res = *this; res.sign *= res.sign; return res; }
+    
+    void increment() { 
+        for(auto& _d: d) { if(++_d < _mod) return; _d = 0; }
+        d.emplace_back(1);
+    }
+    void decrement() {
+        if(is0()) { sign = -1; d.emplace_back(1); }
+        else { for(auto& _d: d) { if(_d--) return normalize(); _d = _mod - 1; } }
+    }
+    
+    BigInt& operator++() { sign > 0? increment() : decrement(); return *this; }
+    BigInt& operator--() { sign > 0? decrement() : increment(); return *this; }
+    BigInt operator++(int) { BigInt res = *this; ++*this; return res; }
+    BigInt operator--(int) { BigInt res = *this; --*this; return res; }
+    
+    BigInt& operator+=(const int64_t num) {
+        if(sign > 0 != num > 0) return *this -= BigInt(-num);
+        if(num >= _mod) return *this += BigInt(num);
+        int carry = num;
+        for(int pos = 0; pos < sz(d) and carry; pos++) {
+            d[pos] += carry;
+            carry = d[pos] >= _mod;
+            if(carry) d[pos] -= _mod;
+        } if(carry) d.emplace_back(1);
+        return normalize(), *this;
+    }
+
+    BigInt& operator+=(const BigInt& o) {
+        if(sign != o.sign) return *this -= -o;
+        d.resize(max(sz(d), sz(o.d)));
+        int carry = 0;
+        for(int pos = 0; pos < sz(d); pos++) {
+            d[pos] += carry + (pos < sz(o.d)? o.d[pos] : 0);
+            carry = d[pos] >= _mod;
+            if(carry) d[pos] -= _mod;
+        } if(carry) d.emplace_back(1);
+        return *this;
+    }
+
+    BigInt& operator-=(const BigInt& o) {
+        if(sign != o.sign) return *this += -o;
+        if(o.abs() > abs()) return *this = -(o - *this);
+        int carry = 0;
+        for(int pos = 0; pos < sz(o.d) or carry; pos++) {
+            d[pos] -= carry + (pos < sz(o.d)? o.d[pos] : 0);
+            carry = d[pos] < 0;
+            if(carry) d[pos] += _mod;
+        } normalize();
+        return *this;
+    }
+
+    BigInt operator+(const BigInt& o) const { BigInt res = *this; res += o; return res; }
+    BigInt operator-(const BigInt& o) const { BigInt res = *this; res -= o; return res; }
+
+    BigInt& operator*=(int num) {
+        if(num < 0) sign = -sign, num = -num;
+        if(num >= _mod) return *this *= BigInt(num), *this;
+        int64_t rem = 0;
+        for(auto& i : d) {
+            rem += 1LL * i * num;
+            int64_t div = rem / _mod;
+            i = rem - div*_mod;
+            rem = div;
+        } if(rem > 0) d.emplace_back(rem);
+        return normalize(), *this;
+    }
+
+    BigInt operator*(int num) const { BigInt res = *this; res *= num; return res; }
+    BigInt operator*=(const BigInt& o) { return *this = *this * o; }
+
+    BigInt operator*(const BigInt &o) const {
+        vector<int64_t> U = convert_base<int64_t>(d, grpsz, reduced_grpsz);
+        vector<int64_t> V = convert_base<int64_t>(o.d, grpsz, reduced_grpsz);
+        int32_t _sz = max(sz(U), sz(V));
+        _sz--; _sz |= _sz >> 1; _sz |= _sz >> 2; _sz |= _sz >> 4;
+        _sz |= _sz >> 8; _sz |= _sz >> 16; _sz++;    // round up to next power of 2 >= size
+        U.resize(_sz); V.resize(_sz);
+        vector<int64_t> ret = karatsubaMultiply(U, V, 0, _sz);
+        BigInt res; res.sign = sign * o.sign;
+        res.d.reserve(sz(ret));
+        for(int i = 0, carry = 0; i < sz(ret); i++) {
+            int64_t cur = ret[i] + carry;
+            res.d.emplace_back(cur % pows[reduced_grpsz]);
+            carry = cur / pows[reduced_grpsz];
+        } res.d = convert_base<int>(res.d, reduced_grpsz, grpsz); res.normalize();
+        return res;
+    }
+
+    BigInt& operator/=(int num) {
+        assert(num && "Divide by zero");
+        if(num >= _mod) return *this /= BigInt(num);
+        if(num < 0) sign = -sign, num = -num;
+        int64_t rem = 0;
+        for(int j = sz(d)-1; ~j; j--) {
+            (rem *= _mod) += d[j];
+            int64_t div = rem / num;
+            d[j] = div;
+            rem -= div * num;
+        } normalize(); return *this;
+    }
+
+    int operator%(int num) const {
+        assert(num && "Divide by zero");
+        if(num < 0) num = -num;
+        int64_t rem = 0;
+        for(int i = sz(d)-1; i >= 0; i--)
+            ((rem *= _mod) += d[i]) %= num;
+        return rem * sign;
+    }
+
+    BigInt operator/(int num) const { BigInt res = *this; res /= num; return res; }
+    BigInt& operator/=(const BigInt& o) { return *this = div_mod(o).first; }
+    BigInt operator/(const BigInt& o) const { return div_mod(o).first; }
+    BigInt& operator%=(const BigInt& o) { return *this = div_mod(o).second; }
+    BigInt operator%(const BigInt& o) const { return div_mod(o).second; }
+    BigInt operator^(const BigInt& o) const {   // exponentiate
+        BigInt res{1}, A = *this, B = o;
+        while(!B.is0()) {
+            if(B % 2) res *= A;
+            B /= 2; A *= A;
+        } return res;
+    }
+
+// Misc.
+    template<typename T> 
+    static vector<T> convert_base(const vector<int>& v, int from_cnt, int to_cnt) {
+        vector<T> res; int64_t cur = 0, have = 0;
+        for(int i = 0; i < sz(v); i++) {
+            cur += 1LL * pows[have] * v[i];
+            have += from_cnt;
+            while(have >= to_cnt) {
+                res.emplace_back(cur % pows[to_cnt]);
+                cur /= pows[to_cnt]; have -= to_cnt;
+            }
+        } res.emplace_back(cur); while(!res.empty() && !res.back()) res.pop_back();
+        return res;
+    }
+
+    static inline vector<int64_t> karatsubaSum(const vector<int64_t>& V, int pos, int len) {
+        vector<int64_t> res(len);
+        for(int i = 0; i < len; i++)
+            res[i] = V[i + pos] + V[i + len + pos];
+        return res;
     }
  
-    friend ostream& operator<<(ostream &stream, const bigint &v) {
-        if (v.sign == -1) stream << '-';
-        stream << (v.a.empty() ? 0 : v.a.back());
-        for (ll i = (ll)v.a.size() - 2; i >= 0; --i)
-            stream << setw(base_digits) << setfill('a') << v.a[i];
-        return stream;
-    }
- 
-    static vector<ll> karatsubaMultiply(const vector<ll> &a, const vector<ll> &b) {
-        ll n = a.size();
-        vector<ll> res(n + n);
-        if (n <= 32) {
-            for (ll i = 0; i < n; i++)
-                for (ll j = 0; j < n; j++)
-                    res[i + j] += a[i] * b[j];
+    static vector<int64_t> karatsubaMultiply(const vector<int64_t>& U, const vector<int64_t>& V, int pos, int len) {
+        vector<int64_t> res(len << 1);
+        if(len <= karatsubaMinimalSize) {
+            for(int i = 0; i < len; i++)
+                for(int j = 0; j < len; j++)
+                    res[i + j] += U[i + pos] * V[j + pos];
             return res;
         }
-        ll k = n >> 1;
-        vector<ll> a1(a.begin(), a.begin() + k);
-        vector<ll> a2(a.begin() + k, a.end());
-        vector<ll> b1(b.begin(), b.begin() + k);
-        vector<ll> b2(b.begin() + k, b.end());
-        vector<ll> a1b1 = karatsubaMultiply(a1, b1);
-        vector<ll> a2b2 = karatsubaMultiply(a2, b2);
-        for (ll i = 0; i < k; i++) a2[i] += a1[i];
-        for (ll i = 0; i < k; i++) b2[i] += b1[i];
-        vector<ll> r = karatsubaMultiply(a2, b2);
-        for (ll i = 0; i < (ll)a1b1.size(); i++) r[i] -= a1b1[i];
-        for (ll i = 0; i < (ll)a2b2.size(); i++) r[i] -= a2b2[i];
-        for (ll i = 0; i < (ll)r.size(); i++) res[i + k] += r[i];
-        for (ll i = 0; i < (ll)a1b1.size(); i++) res[i] += a1b1[i];
-        for (ll i = 0; i < (ll)a2b2.size(); i++) res[i + n] += a2b2[i];
-        return res;
+        int k = len >> 1;
+        vector<int64_t> u1v1 = karatsubaMultiply(U, V, pos, k);
+        vector<int64_t> u2v2 = karatsubaMultiply(U, V, pos+k, k);
+        vector<int64_t> usum = karatsubaSum(U, pos, k);
+        vector<int64_t> vsum = karatsubaSum(V, pos, k);
+        vector<int64_t> usum_vsum = karatsubaMultiply(usum, vsum, 0, k);
+        for(int i = 0; i < len; i++) {
+            res[i] += u1v1[i];
+            res[i + len] += u2v2[i];
+            res[i + k] += usum_vsum[i] - u1v1[i] - u2v2[i];
+        } return res;
     }
- 
-    bigint operator*(const bigint &v) const {
-        vector<ll> x(this->a.begin(), this->a.end());
-        vector<ll> y(v.a.begin(), v.a.end());
-        while (x.size() < y.size()) x.pb(0);
-        while (y.size() < x.size()) y.pb(0);
-        while (x.size() & (x.size() - 1))
-            x.pb(0), y.pb(0);
-        vector<ll> z = karatsubaMultiply(x, y);
-        bigint res;
-        res.sign = sign * v.sign;
-        for (ll i = 0, carry = 0; i < (ll)z.size(); i++) {
-            ll cur = z[i] + carry;
-            res.a.pb(cur % base);
-            carry = cur / base;
+
+    pair<BigInt, BigInt> div_mod(const BigInt& o) const {
+        assert(!o.is0() && "Divide by zero");
+        pair<BigInt, BigInt> res;
+        if(sz(o.d) == 1) {
+            res = {*this / o.d[0], *this % o.d[0]};
+            return res;
         }
-        res.trim();
+        const int norm = _mod / (o.d.back() + 1);
+        const BigInt a = *this * norm;
+        const BigInt b = o * norm;
+        const int sz_a = sz(a.d);
+        const int sz_b = sz(b.d);
+        BigInt q, r; q.d.resize(sz_a);
+        for(int i = sz_a-1; i >= 0; i--) {
+            r *= _mod; r += a.d[i];
+            int s1 = sz(r.d) <= sz_b ? 0 : r.d[sz_b];
+            int s2 = sz(r.d) <= sz_b-1 ? 0 : r.d[sz_b-1];
+            int _d = (1LL * _mod * s1 + s2) / b.d.back();
+            auto temp = b * _d;
+            while(r < temp)
+                r += b, --_d;
+            r -= temp;
+            q.d[i] = _d;
+        }
+        q.sign = a.sign * b.sign; r.sign = a.sign;
+        q.normalize(); res = {move(q), r /= norm};
         return res;
     }
+    
+    friend BigInt gcd(BigInt A, BigInt B) { while(!B.is0()) { A %= B; swap(A, B); } return A; }
 };
+
+/*
+int main() {
+    BigInt a, b;
+    cin >> a >> b;
+    cout << a + b;
+    
+    string s = "bcdeaszza";
+    BigInt<26, 6, 'a'> x(s);
+    
+    a /= b;
+    cout << gcd(a, b);
+}
+*/
