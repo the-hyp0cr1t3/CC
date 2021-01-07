@@ -7,6 +7,7 @@
 // alternate: base = 26, grpsz = 6, base_char = 'a'
 template<int base = 10, int grpsz = 9, char base_char = '0'>
 struct BigInt {
+#if __cplusplus > 201402LL      // C++17
     static constexpr auto t = []() {
         array<int, grpsz+1> p{1};
         int n = 0, m = 0;
@@ -22,7 +23,26 @@ struct BigInt {
     static constexpr int reduced_grpsz = get<1>(t);             // to avoid multiplication overflow
     static constexpr array<int, grpsz+1> pows = get<2>(t);      // _mod powers for base conversion
     static constexpr int karatsubaMinimalSize = 50;
-    
+
+#else       // C++14
+    static const tuple<int, int, array<int, grpsz+1>> t;
+    static auto init() {
+        array<int, grpsz+1> p{1};
+        int n = 0, m = 0;
+        for(int i = 1; i <= grpsz; ++i) {
+            p[i] = p[i-1] * base;
+            if(p[i] <= 1000000) n = i;
+        } m = p.back();
+        return make_tuple(m, n, p);    
+    }
+
+    static const int _mod;
+    static const int reduced_grpsz;
+    static const array<int, grpsz+1> pows;
+    static const int karatsubaMinimalSize = 50;
+
+#endif
+
     int sign{1};
     vector<int> d;
     
@@ -300,6 +320,20 @@ struct BigInt {
     
     friend BigInt gcd(BigInt A, BigInt B) { while(!B.is0()) { A %= B; swap(A, B); } return A; }
 };
+
+#if __cplusplus <= 201402LL     // C++14
+    template<int a, int b, char c>
+    const tuple<int, int, array<int, b+1>> BigInt<a, b, c>::t = init();
+
+    template<int a, int b, char c>
+    const int BigInt<a, b, c>::_mod = get<0>(t);
+    
+    template<int a, int b, char c>
+    const int BigInt<a, b, c>::reduced_grpsz = get<1>(t);
+    
+    template<int a, int b, char c>
+    const array<int, b+1> BigInt<a, b, c>::pows = get<2>(t);
+#endif
 
 /*
 #define sz(x) (int)x.size()
