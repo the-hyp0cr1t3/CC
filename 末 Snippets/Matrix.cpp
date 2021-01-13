@@ -2,77 +2,78 @@
 template<typename T, int N, int M = N>
 struct Matrix {
     array<array<T, M>, N> a{};
+    
     Matrix() = default;
-    explicit Matrix(T x) { for(int i = 0; i < min(N, M); i++) a[i][i] = x; }
+    
+    explicit Matrix(T x) {
+        for(int i = 0; i < min(N, M); i++) a[i][i] = x;
+    }
+    
     Matrix(initializer_list<array<T, M>> x) {
         assert(x.size() <= N);
         for(int i = 0; i < x.size(); i++)
             a[i] = *(x.begin() + i);
     }
 
-    array<T, M>& operator[](int x) { return a[x]; }
-    const array<T, M>& operator[](int x) const { return a[x]; }
-    friend ostream& operator<<(std::ostream& out, const Matrix& x) {
+    array<T, M>& operator[](size_t x) { return a[x]; }
+    const array<T, M>& operator[](size_t x) const { return a[x]; }
+
+    friend ostream& operator<<(ostream& out, const Matrix& x) {
         for(int i = 0; i < N; i++) 
             for(int j = 0; j < M; j++) 
                 out << x.a[i][j] << " \n"[j == M-1];
         return out;
     }
     
-    Matrix& operator+=(const Matrix& x) {
+    Matrix& operator+=(const Matrix& o) {
         for(int i = 0; i < N; i++)
             for(int j = 0; j < M; j++)
-                a[i][j] += x[i][j];
+                a[i][j] += o[i][j];
         return *this;
     }
-    Matrix& operator-=(const Matrix& x) {
+
+    Matrix& operator-=(const Matrix& o) {
         for(int i = 0; i < N; i++)
             for(int j = 0; j < M; j++)
-                a[i][j] -= x[i][j];
+                a[i][j] -= o[i][j];
         return *this;
     }
     
-    Matrix operator+(const Matrix& x) const {
-        Matrix ans = *this;
-        return ans += x;
+    Matrix& operator*=(T o) {
+        for(int i = 0; i < N; i++)
+            for(int j = 0; j < M; j++)
+                a[i][j] *= o;
+        return *this;
     }
-    Matrix operator-(const Matrix& x) const {
-        Matrix ans = *this;
-        return ans -= x;
-    }
-    
+
     template<int K>
-    Matrix<T, N, K> operator*(const Matrix<T, M, K>& x) const {
-        Matrix<T, N, K> ans;
+    Matrix<T, N, K> operator*(const Matrix<T, M, K>& o) const {
+        Matrix<T, N, K> res;
         for(int i = 0; i < N; i++)
             for(int j = 0; j < M; j++)
                 for(int k = 0; k < K; k++)
-                    ans[i][k] += a[i][j] * x[j][k];
-        return ans;
+                    res[i][k] += a[i][j] * o[j][k];
+        return res;
     }
-    Matrix operator*(T x) const {
-        Matrix ans = *this;
-        for(int i = 0; i < N; i++)
-            for(int j = 0; j < M; j++)
-                ans[i][j] *= x;
-        return ans;
-    }
-    Matrix& operator*=(T x) {
-        for(int i = 0; i < N; i++)
-            for(int j = 0; j < M; j++)
-                a[i][j] *= x;
-        return *this;
-    }
-    
-    template<typename K>
-    Matrix operator^(K x) const {
+
+    template<typename U, typename = enable_if_t<is_integral<U>::value && N == M>>
+    Matrix& operator^=(U x) {
         assert(x >= 0);
-        Matrix res(1), A = *this; while(x) {
-            if(x & 1) res = res * A;
-            x >>= 1; A = A * A;
-        } return res;
+        Matrix res(1); while(x) {
+            if(x & 1) res *= *this;
+            x >>= 1; *this *= *this;
+        } return *this = move(res);
     }
+
+    Matrix operator+(const Matrix& o) const { Matrix res = *this; res += o; return res; }
+    Matrix operator-(const Matrix& o) const { Matrix res = *this; res -= o; return res; }
+    Matrix operator*(T o) const { Matrix res = *this; res *= o; return res; }
+    template<typename = enable_if_t<N == M>>
+    Matrix& operator*=(const Matrix& o) { return *this = move(*this * o); }
+    template<typename U, typename = enable_if_t<is_integral<U>::value && N == M>>
+    Matrix operator^(U x) const { Matrix res = *this; res ^= x; return res; }
 };
+
 // Matrix<int64_t, 3, 4> M = {{1, 2, 3, 4}, {-1, 234, 2, 45}, {1, 241, 65, 69}};
 
 // -----------------------------------------------------------------
@@ -82,73 +83,77 @@ struct Matrix {
     int N, M; vector<vector<T>> a;
     
     Matrix(int n, int m): N(n), M(m) , a(n, vector<T>(m)) {}
+
     explicit Matrix(int n, int m, T x): Matrix(n, m) {
         for(int i = 0; i < min(N, M); i++) a[i][i] = x;
     }
+    
     Matrix(initializer_list<vector<T>> x) {
         N = x.size(); M = x.begin()->size(); a.resize(N);
         for(int i = 0; i < sz(x); i++)
             a[i] = *(x.begin() + i), assert(sz(a[i]) == M);
     }
     
-    vector<T>& operator[](int x) { return a[x]; }
-    const vector<T>& operator[](int x) const { return a[x]; }
-    friend ostream& operator<<(std::ostream& out, const Matrix& x) {
+    vector<T>& operator[](size_t x) { return a[x]; }
+    const vector<T>& operator[](size_t x) const { return a[x]; }
+
+    friend ostream& operator<<(ostream& out, const Matrix& x) {
         for(int i = 0; i < x.N; i++) 
             for(int j = 0; j < x.M; j++) 
                 out << x.a[i][j] << " \n"[j == x.M-1];
         return out;
     }
 
-    Matrix& operator+=(const Matrix& x) {
-        assert(N == x.N and M == x.M);
+    Matrix& operator+=(const Matrix& o) {
+        assert(N == o.N && M == o.M);
         for(int i = 0; i < N; i++)
             for(int j = 0; j < M; j++)
-                a[i][j] += x[i][j];
-        return *this;
-    }
-    Matrix& operator-=(const Matrix& x) {
-        assert(N == x.N and M == x.M);
-        for(int i = 0; i < N; i++)
-            for(int j = 0; j < M; j++)
-                a[i][j] -= x[i][j];
+                a[i][j] += o[i][j];
         return *this;
     }
 
-    Matrix operator+(const Matrix& x) const {
-        Matrix ans = *this;
-        return ans += x;
-    }
-    Matrix operator-(const Matrix& x) const {
-        Matrix ans = *this;
-        return ans -= x;
-    }
-
-    Matrix operator*(const Matrix& x) const {
-        Matrix<T> ans(N, x.M);
+    Matrix& operator-=(const Matrix& o) {
+        assert(N == o.N && M == o.M);
         for(int i = 0; i < N; i++)
             for(int j = 0; j < M; j++)
-                for(int k = 0; k < x.M; k++)
-                    ans[i][k] += a[i][j] * x[j][k];
-        return ans;
+                a[i][j] -= o[i][j];
+        return *this;
     }
+
     Matrix& operator*=(T x) {
         for(int i = 0; i < N; i++)
             for(int j = 0; j < M; j++)
                 a[i][j] *= x;
         return *this;
     }
-    Matrix operator*(T x) const {
-        Matrix ans = *this;
-        return ans *= x;
+
+    Matrix operator*(const Matrix& o) const {
+        assert(M == o.N);
+        Matrix<T> res(N, o.M);
+        for(int i = 0; i < N; i++)
+            for(int j = 0; j < M; j++)
+                for(int k = 0; k < o.M; k++)
+                    res[i][k] += a[i][j] * o[j][k];
+        return res;
     }
 
-    template<typename K>
-    Matrix operator^(K x) const {
-        assert(x >= 0);
-        Matrix res{N, M, 1}, A = *this; while(x) {
-            if(x & 1) res = res * A;
-            x >>= 1; A = A * A;
-        } return res;
+    Matrix& operator*=(const Matrix& o) {
+        assert(N == M && o.N == o.M && N == o.N);
+        return *this = move(*this * o);
     }
+
+    template<typename U, typename = enable_if_t<is_integral<U>::value>>
+    Matrix& operator^=(U x) {
+        assert(x >= 0 && N == M);
+        Matrix res(N, N, 1); while(x) {
+            if(x & 1) res *= *this;
+            x >>= 1; *this *= *this;
+        } return *this = move(res);
+    }
+
+    Matrix operator+(const Matrix& o) const { Matrix res = *this; res += o; return res; }
+    Matrix operator-(const Matrix& o) const { Matrix res = *this; res -= o; return res; }
+    Matrix operator*(T o) const { Matrix res = *this; res *= o; return res; }
+    template<typename U, typename = enable_if_t<is_integral<U>::value>>
+    Matrix operator^(U x) const { Matrix res = *this; res ^= x; return res; }
 };
