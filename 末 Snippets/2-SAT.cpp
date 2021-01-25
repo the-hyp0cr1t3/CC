@@ -2,6 +2,7 @@
 // (https://cp-algorithms.com/graph/2SAT.html)
 // (https://www.youtube.com/watch?v=0nNYy3rltgA&ab_channel=AlgorithmsLive)
 // (https://codeforces.com/contest/776/submission/94490003)
+// (https://codeforces.com/contest/1475/submission/105420153)
 
 int vis[2*N], comp[2*N], assignment[N];
 vector<int> g[2*N], rg[2*N], order;
