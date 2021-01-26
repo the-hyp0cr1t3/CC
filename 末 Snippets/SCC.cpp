@@ -59,4 +59,4 @@ function<void(int)> dfs = [&](int v) {
     }
 };
 
-for(i = 0; i < n; i++) dfs(i);
+for(i = 0; i < n; i++) if(id[i] == -1) dfs(i);
