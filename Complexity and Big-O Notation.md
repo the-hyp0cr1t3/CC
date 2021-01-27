@@ -31,8 +31,8 @@ Efficient sorting algorithms run in log-linear time. Read up on Merge Sort if yo
 The runtime of your algorithm increases at an exponential rate. The (most) naive method of finding fibonacci numbers is exponential in time. \
 **Safe zone**: N <= 20
 
-Table of common complexities and their corresponding input sizes: [Link](https://pasteboard.co/J6OCrxR.jpg) \
-Time complexities of various STL containers: [Link](https://users.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html)
+[Table of common complexities](https://pasteboard.co/J6OCrxR.jpg) and their corresponding input sizes. \
+Time complexities of various [STL containers](https://users.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html) (useful later).
 
 ## Space Complexity
 Space Complexity of an algorithm is an estimate of the memory usage of an algorithm as a function of its input size. Similar to time complexity, space complexity also uses the Big-O notation.\
