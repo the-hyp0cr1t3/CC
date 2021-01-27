@@ -25,3 +25,5 @@
           if(r&1) res += seg[--r];
       } return res;
   };
+
+// For iterative segtree with lazy prop see (https://codeforces.com/contest/343/submission/24869698)
