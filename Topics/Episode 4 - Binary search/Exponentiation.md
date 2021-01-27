@@ -2,6 +2,7 @@
 ## Binary exponentiation
 [Tutorial](https://cp-algorithms.com/algebra/binary-exp.html)\
 [Errichto video](https://www.youtube.com/watch?v=L-Wzglnm4dM)
+[Modular arithmetic, combinatorics and exponentiation](https://codeforces.com/blog/entry/78873)
 
 #### Problems
 * [Spoj LASTDIG](https://www.spoj.com/problems/LASTDIG/)
