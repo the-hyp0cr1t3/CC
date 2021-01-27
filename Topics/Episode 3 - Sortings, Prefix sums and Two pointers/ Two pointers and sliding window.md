@@ -11,3 +11,4 @@ Sliding window [applications](https://www.techiedelight.com/sliding-window-probl
 * [Codeforces 1354 B](https://codeforces.com/contest/1354/problem/B)
 * [Codeforces 279 B](https://codeforces.com/problemset/problem/279/B)
 * [Codeforces 1199 C](https://codeforces.com/problemset/problem/1199/C)
+* [Codeforces Edu - Two pointers](https://codeforces.com/edu/course/2/lesson/9)
