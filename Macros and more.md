@@ -63,3 +63,5 @@ int main() {
     return 0;
 }
 ```
+
+[Tips on debugging during contest](https://codeforces.com/blog/entry/80775?#comment-671134)
