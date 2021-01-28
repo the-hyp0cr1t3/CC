@@ -7,10 +7,12 @@ template<class T, class U = int64_t>
 struct Segtree {
     int N; vector<T> st; vector<U> lazy; vector<bool> pending;
     Segtree(int N)
-        : N(N), st(this->getmx(N)), lazy(st.size()), pending(st.size()) {}
+        : N(N), st(ceil2n(N)), lazy(st.size()), pending(st.size()) {}
     template<class Iter> Segtree(Iter beg, Iter end)
         : Segtree(end-beg) { build(1, 1, N, beg, end); }
-    int getmx(int x) { int y = 1; for(y=1, x<<=1; y<x; y<<=1); return y+2; }
+    static int ceil2n(int x) {
+        return (1 << 31 - __builtin_clz(x << 1) + !!(x & x-1)) + 2;
+    }
 
     template<class Iter>
     void build(int node, int L, int R, Iter beg, Iter end) {
@@ -24,10 +26,10 @@ struct Segtree {
     void prop(int node, int L, int R) {
         if(L != R) {
             pending[node<<1] = pending[node<<1|1] = true;
-            lazy[node<<1] += lazy[node];        // overload += for custom class U
+            lazy[node<<1] += lazy[node];
             lazy[node<<1|1] += lazy[node];
         }
-        st[node].upd(lazy[node]);
+        st[node].upd(lazy[node], R-L+1);
         pending[node] = false; lazy[node] = U();
     }
 
@@ -62,7 +64,7 @@ struct Segtree {
 // so you may choose not to define one altogether
 struct Lazy {
     int64_t lzy{0};
-    operator int64_t() const { return lzy; }        // st[node].upd(int)
+    operator int64_t() const { return lzy; }        // st[node].upd(int, int)
     void operator+=(int64_t rhs) { lzy += rhs; }    // lazy[node<<1] += lazy[node]
 };
 
@@ -70,10 +72,11 @@ struct Lazy {
 struct Node {
     int val{0};             // brace initialize all default values
     Node() = default;
-    Node(const Node& l, const Node& r)          // merge two nodes
+    Node(const Node& l, const Node& r)              // merge two nodes
         : val(l.val + r.val) {}
-    void set(int init) { val = init; }          // set value during build()
-    void upd(int64_t delta) { val += delta; }   // update value
+    void set(int init) { val = init; }              // set value during build()
+    void upd(int delta, int len) { val += delta; }  // update value
+    operator int() const { return val; }            // query return
 };
 
 /*
