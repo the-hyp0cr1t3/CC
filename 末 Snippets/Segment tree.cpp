@@ -2,15 +2,17 @@
 // Try [https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A]
 // Practice from [https://codeforces.com/edu/course/2/lesson/4]
 
-template<class T>
+template<class T, class U = int>
 struct Segtree {
     int N; vector<T> st;
     Segtree(int N)
-        : N(N), st(this->getmx(N)) {}
+        : N(N), st(ceil2n(N)) {}
     template<class Iter> Segtree(Iter beg, Iter end)
         : Segtree(end-beg) { build(1, 1, N, beg, end); }
-    int getmx(int x) { int y = 1; for(y=1, x<<=1; y<x; y<<=1); return y+2; }
-    
+    static int ceil2n(int x) {
+        return (1 << 31 - __builtin_clz(x << 1) + !!(x & x-1)) + 2;
+    }
+
     template<class Iter>
     void build(int node, int L, int R, Iter beg, Iter end) {
         if(L == R) return st[node].set(*beg);
@@ -36,7 +38,6 @@ struct Segtree {
         st[node] = T(st[node<<1], st[node<<1|1]);
     }
 
-    // helper/wrapper funcs; 1-based indexing; (l, r) inclusive of both ends
     auto query(int pos) { return Query(1, 1, N, pos, pos); }
     auto query(int l, int r) { return Query(1, 1, N, l, r); }
     void update(int pos, int64_t val) { Update(1, 1, N, pos, val); }
@@ -51,8 +52,8 @@ struct Node {
         : val(l.val + r.val) {}
     void set(int init) { val = init; }      // set value during build()
     void upd(int delta) { val += delta; }   // update value
+    operator int() const { return val; }
 };
-
 /*
 int32_t main() {
     // Note: construct only using containers with random access iterators
