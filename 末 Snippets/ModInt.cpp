@@ -4,7 +4,7 @@
 
 template<const int& MOD>
 struct Mint {
-    using T = decay<decltype(MOD)>::type; T v;
+    using T = typename decay<decltype(MOD)>::type; T v;
     Mint(int64_t v = 0) { if(v < 0) v = v % MOD + MOD; if(v >= MOD) v %= MOD; this->v = T(v); }
     Mint(uint64_t v) { if (v >= MOD) v %= MOD; this->v = T(v); }
     Mint(int v): Mint(int64_t(v)) {}
