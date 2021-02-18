@@ -1,6 +1,7 @@
 # Binary search
 [Tutorial](https://www.hackerearth.com/practice/algorithms/searching/binary-search/tutorial/)\
 [Another one](https://www.topcoder.com/community/competitive-programming/tutorials/binary-search/)
+[Binary search the answer](https://oldaddr.wordpress.com/2014/06/28/binary-search-the-answer/)
 
 #### Problems
 * [Recommended](https://codeforces.com/edu/course/2/lesson/6)
