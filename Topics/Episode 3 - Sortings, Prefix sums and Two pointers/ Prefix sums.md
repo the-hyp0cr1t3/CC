@@ -1,6 +1,7 @@
 # Prefix sums
 [Tutorial](https://www.hackerrank.com/topics/prefix-sum)\
-[Range updates using prefix sums](https://codeforces.com/blog/entry/86420)
+[Range updates using prefix sums](https://codeforces.com/blog/entry/86420)\
+[Video about prefix sums, difference array and the power of half-closed intervals](https://codeforces.com/blog/entry/88474)
 
 #### Problems
 * [Spoj CSUMQ](https://www.spoj.com/problems/CSUMQ/)
