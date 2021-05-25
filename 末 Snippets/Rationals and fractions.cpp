@@ -12,7 +12,7 @@ struct frac {
     static inline T gcd(T x, T y) { while(y) { T rem = x % y; x = y; y = rem; } return x; }
 
     inline void reduce() {
-        assert(num and den);
+        assert((num || den) && "0/0");
         if(num == 0) den = 1;
         else { 
             T g = gcd(abs(num), abs(den)); num /= g; den /= g;
