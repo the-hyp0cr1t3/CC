@@ -2,7 +2,7 @@
 // Try [https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A]
 // Practice from [https://codeforces.com/edu/course/2/lesson/4]
 
-template<class T, class U = int>
+template<class T>
 struct Segtree {
     int N; vector<T> st;
     Segtree(int N)
