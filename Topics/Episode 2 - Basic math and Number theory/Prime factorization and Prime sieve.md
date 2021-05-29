@@ -7,7 +7,7 @@ Prime factorization of a number can be done efficiently in **O(√N)** time.
 
 #### Problems
 * [Spoj FACT0](https://www.spoj.com/problems/FACT0/)
-* [Spoj FACTCG2](https://www.spoj.com/problems/FACTCG2/)
+* [Spoj FACTCG2](https://www.spoj.com/problems/FACTCG2/) ([Solution](http://p.ip.fi/18BY))
 * [Codeforces 26 A](https://codeforces.com/contest/26/problem/A)
 
 ## Prime sieve
