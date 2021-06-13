@@ -35,12 +35,13 @@ while(!st.empty()) {
     while(!st.empty() and comp[st.top()]) st.pop();
 }
 
+// 
 /* -------------------------------------------------- */
 // Tarjan's algorithm
 vector<int> g[N];
 
 int id = 0, sccount = 0;
-vector<int> ids(n, -1), low(n);
+vector<int> ids(n, -1), low(n), comp(n);
 vector<bool> onstack(n);
 stack<int> st;
 
@@ -49,13 +50,13 @@ function<void(int)> dfs = [&](int v) {
     ids[v] = low[v] = id++;
     onstack[v] = 1; st.push(v);
     for(auto& x: g[v]) {
-        if(ids[x] == -1) dfs(x);
-        if(onstack[x]) low[v] = min(low[v], low[x]);
+        if(ids[x] == -1) dfs(x), low[v] = min(low[v], low[x]);
+        else if(onstack[x]) low[v] = min(low[v], low[x]);
     }
     if(low[v] == ids[v]) {
-        while(!st.empty() and st.top() != v) {
-            onstack[st.top()] = 0; st.pop();
-        } onstack[v] = 0; st.pop(); sccount++;
+        while(st.top() != v) {
+            comp[st.top()] = sccount; onstack[st.top()] = 0; st.pop();
+        } comp[v] = sccount++; onstack[v] = 0; st.pop();
     }
 };
 
