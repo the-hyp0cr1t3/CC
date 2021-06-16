@@ -1,6 +1,7 @@
 // Iterative FFT
 // Inspired by Neal's amazing template
 // [neal's submission](https://codeforces.com/contest/1334/submission/76217102)
+// [mine](https://codeforces.com/contest/993/submission/119625892)
 
 namespace FFT {
     using float_t = double;
@@ -75,7 +76,7 @@ namespace FFT {
     }
 
     template<typename T>
-    vector<T> multiply(const vector<T>& a, const vector<T>& b, bool trim = true) {
+    vector<T> multiply(const vector<T>& a, const vector<T>& b, bool trim = false) {
         int n = sz(a), m = sz(b);
         if(n == 0 or m == 0)
             return vector<T>{0};
@@ -108,8 +109,8 @@ namespace FFT {
             fa[i] *= fb[i];
 
         fft(N, fa, true);
-        fa.resize(n + m - 1);
 
+        fa.resize(n + m - 1);
         vector<T> res(n + m - 1);
         for(int i = 0; i < n + m - 1; i++)
             res[i] = is_integral<T>::value? round(fa[i].real()) : fa[i].real();
@@ -122,4 +123,101 @@ namespace FFT {
         return res;
     }
 
+    template<typename T>
+    T expo(T A, int64_t B) {
+        T res{1}; while(B) {
+            if(B & 1) res = res * A;
+            B >>= 1; A = A * A;
+        } return res;
+    }
+
+    template<typename T>
+    vector<T> expo(const vector<T>& a, int e, bool trim = false) {
+        int n = sz(a);
+        int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }((n-1) * e + 1);
+        vector<cd> fa(all(a)); fa.resize(N);
+
+        fft(N, fa);
+
+        for(int i = 0; i < N; i++)
+            fa[i] = expo(fa[i], e);
+
+        fft(N, fa, true);
+
+        fa.resize((n-1) * e + 1);
+        vector<T> res((n-1) * e + 1);
+        for(int i = 0; i < sz(res); i++)
+            res[i] = is_integral<T>::value? round(fa[i].real()) : fa[i].real();
+
+        if(trim) {
+            while(!res.empty() && res.back() == 0)
+                res.pop_back();
+        }
+
+        return res;
+    }
+
 } // namespace FFT 
+
+/* string matching */
+/*  // Note: only works to check perfect match (with wildcards)
+    vector<int> multiply(const string& a, const string& b, bool trim = false) {
+        int n = sz(a), m = sz(b);
+        if(n == 0 or m == 0)
+            return vector<int>{0};
+
+        if(min(n, m) < FFT_CUTOFF) {
+            vector<int> res(n + m - 1);
+            for(int i = 0; i < n; i++)
+                for(int j = 0; j < m; j++)
+                    res[i + j] += a[i] != '?' and a[i] == b[j];
+            
+            if(trim) {
+                while(!res.empty() && res.back() == 0)
+                    res.pop_back();
+            }
+
+            return res;
+        }
+
+        int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }(n + m - 1);
+        vector<cd> fa(N), fb(N);
+        fa.resize(N); fb.resize(N);
+        for(int i = 0; i < n; i++) {
+            if(a[i] != '?') {
+                double theta = 2 * PI / 26 * (a[i] - 'a');            // (https://cp-algorithms.com/algebra/fft.html#toc-tgt-12)
+                fa[i] = cd(cos(theta), sin(theta));
+            }
+        }
+        for(int i = 0; i < m; i++) {
+            if(b[i] != '?') {
+                double theta = - 2 * PI / 26 * (b[i] - 'a');
+                fb[i] = cd(cos(theta), sin(theta));
+            }
+        }
+        
+        bool equal = n == m and a == b;
+        fft(N, fa);
+
+        if(equal) fb = fa;
+        else fft(N, fb);
+
+        for(int i = 0; i < N; i++)
+            fa[i] *= fb[i];
+
+        fft(N, fa, true);
+        fa.resize(n + m - 1);
+
+        vector<int> res(n + m - 1);
+        for(int i = 0; i < n + m - 1; i++)
+            res[i] = floor(fa[i].real() + 0.001);
+
+        if(trim) {
+            while(!res.empty() && res.back() == 0)
+                res.pop_back();
+        }
+
+        return res;
+    }
+// (https://codeforces.com/contest/754/submission/119649507)
+*/
