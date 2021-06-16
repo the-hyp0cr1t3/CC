@@ -9,7 +9,6 @@ namespace NTT {
     int max_size = 1;       // MOD = c∙2^k + 1, maxsize = 2^k
     mint root = 2;          // n must not exceed maxsize
 
-
     auto find_root = []() {
         int order = MOD-1;
         while(~order & 1) order >>= 1, max_size <<= 1;
@@ -55,7 +54,7 @@ namespace NTT {
     }
 
     template<typename T>
-    vector<mint> multiply(const vector<T>& a, const vector<T>& b, bool trim = true) {
+    vector<mint> multiply(const vector<T>& a, const vector<T>& b, bool trim = false) {
         int n = sz(a), m = sz(b);
         if(n == 0 or m == 0)
             return vector<mint>{0};
@@ -65,10 +64,13 @@ namespace NTT {
             for(int i = 0; i < n; i++)
                 for(int j = 0; j < m; j++)
                     res[i + j] += mint(a[i]) * mint(b[j]);
+            
             if(trim) {
                 while(!res.empty() && res.back() == 0)
                     res.pop_back();
-            } return res;
+            }
+
+            return res;
         }
 
         int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }(n + m - 1);
@@ -98,7 +100,7 @@ namespace NTT {
     }
 
     template<typename T>
-    vector<mint> expo(const vector<T>& a, int e, bool trim = true) {
+    vector<mint> expo(const vector<T>& a, int e, bool trim = false) {
         int n = sz(a);
         int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }((n-1) * e + 1);
         vector<mint> fa(all(a)); fa.resize(N);
@@ -121,4 +123,4 @@ namespace NTT {
         return fa;
     }
 
-} // namespace NTT
+} // namespace NTT 
