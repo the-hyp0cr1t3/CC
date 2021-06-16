@@ -50,7 +50,7 @@ namespace NTT {
                 for(int j = 0; j < len; j++) {
                     const mint& even = a[i + j];
                     mint odd = a[i + len + j] * roots[len + j];
-                    a[i + j] = even + odd; a[i + len + j] = even - odd;
+                    a[i + len + j] = even - odd; a[i + j] = even + odd;
                 }
     }
 
