@@ -48,7 +48,7 @@ namespace NTT {
         for(int len = 1; len < n; len <<= 1)
             for(int i = 0; i < n; i += len << 1)
                 for(int j = 0; j < len; j++) {
-                    mint even = a[i + j];
+                    const mint& even = a[i + j];
                     mint odd = a[i + len + j] * roots[len + j];
                     a[i + j] = even + odd; a[i + len + j] = even - odd;
                 }
