@@ -6,7 +6,9 @@ namespace NTT {
     const int FFT_CUTOFF = 150;
     vector<mint> roots = {0, 1};
     vector<int> bit_order;
-    int max_size = 1; mint root = 2;
+    int max_size = 1;       // MOD = c∙2^k + 1, maxsize = 2^k
+    mint root = 2;          // n must not exceed maxsize
+
 
     auto find_root = []() {
         int order = MOD-1;
