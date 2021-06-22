@@ -1,4 +1,5 @@
 /* Segment tree with point updates */
+// Learn [https://csacademy.com/lesson/segment_trees/]
 // Try [https://codeforces.com/edu/course/2/lesson/4/1/practice/contest/273169/problem/A]
 // Practice from [https://codeforces.com/edu/course/2/lesson/4]
 
