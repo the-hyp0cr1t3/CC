@@ -225,7 +225,7 @@ class StarterCppCommand(sublime_plugin.TextCommand):
 
 ```
 
-You can write your own plugins and configure key bindings for them. The class name must be in camel case, while the command in key bindings should be in snake case (omit 'command'). A weird bug I ran into was that plugins don't seem to work if you save the file deeper than one layer in, i.e `/Packages/.../starter.py` works, but `/Packages/.../.../starter.py` does not.
+You can write your own plugins and configure key bindings for them. The class name must be in camel case, while the command in key bindings should be in snake case (omit 'command'). A weird bug I ran into was that plugins don't seem to work if you save the file deeper than one layer in, i.e `/Packages/User/starter.py` works, but `/Packages/User/.../starter.py` does not.
 
 
 ## Misc
