@@ -160,7 +160,8 @@ namespace FFT {
 } // namespace FFT 
 
 /* string matching */
-/*  // Note: only works to check perfect match (with wildcards)
+// (https://codeforces.com/contest/754/submission/119649507)
+// Note: only works to check perfect match (with wildcards)
     vector<int> multiply(const string& a, const string& b, bool trim = false) {
         int n = sz(a), m = sz(b);
         if(n == 0 or m == 0)
@@ -219,5 +220,26 @@ namespace FFT {
 
         return res;
     }
-// (https://codeforces.com/contest/754/submission/119649507)
+
+/*
+Concise: https://cp-algorithms.com/algebra/fft.html (Learn from somewhere else if it's your first time)
+
+FFT
+https://www.spoj.com/problems/POLYMUL/
+https://www.spoj.com/problems/MAXMATCH/
+https://www.spoj.com/problems/ADAMATCH/
+https://codeforces.com/contest/993/problem/E
+https://www.codechef.com/problems/COUNTWAY/
+https://codeforces.com/contest/954/problem/I
+https://codeforces.com/contest/958/problem/F3
+https://open.kattis.com/problems/kinversions
+https://codeforces.com/contest/1398/problem/G
+https://codeforces.com/gym/101667/attachments/download/6491/problemset-2017.pdf (Problem H)
+https://codeforces.com/contest/1251/problem/F (nice :3)
+https://codeforces.com/contest/754/problem/E
+https://codeforces.com/gym/102920/problem/H
+
+NTT
+https://codeforces.com/contest/1096/problem/G
+https://codeforces.com/contest/632/problem/E
 */

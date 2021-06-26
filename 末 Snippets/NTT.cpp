@@ -124,3 +124,8 @@ namespace NTT {
     }
 
 } // namespace NTT 
+
+/*
+https://codeforces.com/contest/1096/problem/G
+https://codeforces.com/contest/632/problem/E
+*/
