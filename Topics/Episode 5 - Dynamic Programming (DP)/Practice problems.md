@@ -39,7 +39,7 @@
 * [AtCoder dp_h](https://atcoder.jp/contests/dp/tasks/dp_h)
 * [Codeforces 1051 D](https://codeforces.com/problemset/problem/1051/D)
 * [Codeforces 577 B](https://codeforces.com/contest/577/problem/B)
-* [AtCoder DP Contest](https://atcoder.jp/contests/dp) (26 quality questions)
+* [AtCoder DP Contest](https://atcoder.jp/contests/dp) (26 quality problems :))
 
 #### Slightly more advanced topics to transition to
 * [Bitmasks](https://www.hackerearth.com/practice/algorithms/dynamic-programming/bit-masking/tutorial/)
