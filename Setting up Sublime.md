@@ -136,7 +136,7 @@ Sublime text has a lot of cool features which you can customize to your liking. 
 
 [Odatnurd](youtube.com/user/nurdz) has great Sublime Text tutorials. Do check out the the channel if interested.
 
-#### Packages
+### Packages
 First thing's first. Install [Package Control](https://packagecontrol.io/installation) if you haven't intstalled it already. Package Control is the Sublime Text package manager. It allows users to find, install and keep packages up to date.
 
 You can discover packages using the `Package Control: Discover Packages` option in the command palette (`ctrl + shift + p`). More importantly, to install a package, go to the command palette and select `Package Control: Install Package`, then enter the package name. These are some packages I use:
