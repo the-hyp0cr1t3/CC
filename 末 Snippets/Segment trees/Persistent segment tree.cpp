@@ -46,10 +46,10 @@ class Segtree {
         if(L == R) return st[node].info.upd(val);
         int M = L + R >> 1, lc = st[node].lc, rc = st[node].rc;
         if(pos <= M) {
-            lc = st[node].lc = create(lc);
+            lc = create(lc); st[node].lc = lc;
             Update(lc, L, M, pos, val);
         } else {
-            rc = st[node].rc = create(rc);
+            rc = create(rc); st[node].rc = rc;
             Update(rc, M + 1, R, pos, val);
         }
 
