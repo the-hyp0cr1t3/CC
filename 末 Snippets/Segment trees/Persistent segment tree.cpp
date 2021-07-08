@@ -103,7 +103,7 @@ public:
     int update(int ver, int pos, int64_t val) {
         if(ver == -1) ver = version_cnt - 1;
         version.push_back(create(version[ver]));
-        Update(version[version_cnt], ONE, N - !ONE, pos, pos, val);
+        Update(version[version_cnt], ONE, N - !ONE, pos, val);
         return version_cnt++;
     }
 
