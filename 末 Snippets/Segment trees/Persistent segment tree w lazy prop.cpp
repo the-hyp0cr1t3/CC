@@ -28,11 +28,11 @@ class Segtree {
         if(L == R)
             return st[node].info = static_cast<T>(*beg), void();
         int M = L + R >> 1;
-
-        int lc = st[node].lc = create();
+        
+        int lc = create(); st[node].lc = lc;
         build(lc, L, M, beg, beg + (opt? M - L : 0), opt);
 
-        int rc = st[node].rc = create();
+        int rc = create(); st[node].rc = rc;
         build(rc, M + 1, R, beg + (opt? M - L + 1 : 0), end, opt);
 
         st[node].info = T(st[lc].info, st[rc].info);
