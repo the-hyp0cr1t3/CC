@@ -100,11 +100,12 @@ public:
         return version_cnt++;
     }
 
-    int update(int ver, int pos, int64_t val) {
+    int update(int ver, int pos, int64_t val, bool in_place = false) {
         if(ver == -1) ver = version_cnt - 1;
-        version.push_back(create(version[ver]));
-        Update(version[version_cnt], ONE, N - !ONE, pos, val);
-        return version_cnt++;
+        if(!in_place)
+            version.push_back(ver = create(version[ver])), version_cnt++;
+        Update(version[ver], ONE, N - !ONE, pos, val);
+        return ver;
     }
 
 };
