@@ -100,6 +100,7 @@ public:
         return version_cnt++;
     }
 
+    // in_place = true -> replace version[ver] with new root
     int update(int ver, int pos, int64_t val, bool in_place = false) {
         if(ver == -1) ver = version_cnt - 1;
         if(!in_place)
