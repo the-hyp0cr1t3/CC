@@ -106,13 +106,13 @@ FastOlympicCoding uses C++11 by default. To change the compile command, go to ``
 </details>
 
 ### Alternative to FastOlympicCoding (Build system)
-If you don't want to use a package, you may use a custim build system to redirect input and output to files.
+If you don't want to use a package, you may use a custom build system to redirect input and output to files.
 
 Go to `Tools → Build System → New Build System`, paste the code below and save it with the `.sublime-build` extension. Note that the `-std=c++17` flag enables C++17. If you want to use a different version, you may (eg. `-std=c++14`).
 
 ```json
 {
-  "shell_cmd": "g++ -std=c++17 -D_GLIBCXX_DEBUG -O2 ${file} -o ${file_base_name} && ${file_base_name}<input.txt>output.txt",
+  "shell_cmd": "g++ -std=c++17 -D_GLIBCXX_DEBUG -O2 \"${file}\" -o \"${file_base_name}\" && \"${file_base_name}\"<input.txt>output.txt",
   "working_dir": "$file_path",
   "selector": "source.c++"
 }
