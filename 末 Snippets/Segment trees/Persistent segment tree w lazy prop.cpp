@@ -120,20 +120,21 @@ public:
         return version_cnt++;
     }
 
-    // [l, r] inclusive
-    // update(ver, ul, ur, args...) -> update(ver, ul, ur, Lazy(args...))
+    // [l, r] inclusive; in_place = true -> replace version[ver] with new root
+    // update(ver, in_place, ul, ur, args...) -> update(ver, in_place, ul, ur, Lazy(args...))
     template<class... Args>
-    int update(int ver, int ul, int ur, Args&&... args) {
+    int update(int ver, bool in_place, int ul, int ur, Args&&... args) {
         U val(forward<Args>(args)...);
         if(ver == -1) ver = version_cnt - 1;
-        version.push_back(create(version[ver]));
-        Update(version[version_cnt], ONE, N - !ONE, ul, ur, val);
-        return version_cnt++;
+        if(!in_place)
+            version.push_back(ver = create(version[ver])), version_cnt++;
+        Update(version[ver], ONE, N - !ONE, ul, ur, val);
+        return ver;
     }
 
     template<class... Args>
-    int update_point(int ver, int pos, Args&&... args) {
-        return update(ver, pos, pos, forward<Args>(args)...);
+    int update_point(int ver, bool in_place, int pos, Args&&... args) {
+        return update(ver, in_place, pos, pos, forward<Args>(args)...);
     }
 
 };
