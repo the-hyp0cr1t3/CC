@@ -127,7 +127,7 @@ public:
         U val(forward<Args>(args)...);
         if(ver == -1) ver = version_cnt - 1;
         if(!in_place)
-            version.push_back(ver = create(version[ver])), version_cnt++;
+            version.push_back(create(version[ver])), ver = version_cnt++;
         Update(version[ver], ONE, N - !ONE, ul, ur, val);
         return ver;
     }
