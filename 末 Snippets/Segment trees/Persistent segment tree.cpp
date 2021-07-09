@@ -42,6 +42,17 @@ class Segtree {
                                     Query(st[node].rc, M + 1, R, M + 1, qr));
     }
 
+    int Queryk(int v1, int v2, int L, int R, int k) {
+        if(L == R) return L;
+        int M = L + R >> 1;
+        int lc1 = st[v1].lc, rc1 = st[v1].rc;
+        int lc2 = st[v2].lc, rc2 = st[v2].rc;
+        int left_child = st[lc2].info - st[lc1].info;
+        return left_child >= k?
+                    Queryk(lc1, lc2, L, M, k)
+                        : Queryk(rc1, rc2, M + 1, R, k - left_child);
+    }
+
     void Update(int node, int L, int R, int pos, int64_t val) {
         if(L == R) return st[node].info.upd(val);
         int M = L + R >> 1, lc = st[node].lc, rc = st[node].rc;
@@ -92,6 +103,10 @@ public:
     T query(int ver, int ql, int qr) {
         if(ver == -1) ver = version_cnt - 1;
         return Query(version[ver], ONE, N - !ONE, ql, qr);
+    }
+
+    int queryk(int v1, int v2, int k) {
+        return Queryk(version[v1], version[v2], ONE, N - !ONE, k);
     }
 
     // copies version ver and returns copy's id
