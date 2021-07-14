@@ -1,36 +1,30 @@
 /* Longest increasing subsequence */
 // (https://cp-algorithms.com/sequences/longest_increasing_subsequence.html)
 
-auto LIS = [&] (const vector<int>& v) {
-    vector<int> lis; lis.reserve(n);
-    for(int z = 0; z < n; z++) {
-        // v[A] <= v[B] for strictly incr, v[A] < v[B] otherwise
-        auto it = upper_bound(all(lis), z, [&](const auto& A, const auto& B) { 
-            return v[A] <= v[B];
-        });
-        int idx = int(it - lis.begin());
-        if(it == lis.end()) lis.pb(z);
-        else lis[idx] = z;
-    } return sz(lis);           // returns length
-};
+template<class T>
+int LIS(const vector<T>& v) {
+    vector<T> lis; lis.reserve(v.size());
+    for(auto& x: v) {
+        auto it = lower_bound(lis.begin(), lis.end(), x);       // upper_bound for non strictly increasing
+        if(it == lis.end()) lis.push_back(x);
+        else *it = x;
+    } return lis.size();
+}
 
 /* -------------------------------------------------- */
 // With path
-auto LIS = [&] (const vector<int>& v) {
-    vector<int> lis; lis.reserve(n);
-    vector<int> path(n, -1), res; res.reserve(n);
-    for(int z = 0; z < n; z++) {
-        // v[A] <= v[B] for strictly incr, v[A] < v[B] otherwise
-        auto it = upper_bound(all(lis), z, [&](const auto& A, const auto& B) { 
-            return v[A] <= v[B];
-        });
-        int idx = int(it - lis.begin());
+template<class T>
+vector<int> LIS(const vector<T>& v) {
+    vector<int> lis, path(v.size(), -1); lis.reserve(v.size());
+    for(int z = 0; z < v.size(); z++) {
+        auto it = lower_bound(all(lis), z, [&v](int A, int B) { return v[A] < v[B]; });      // upper_bound for non strictly increasing
+        if(it != lis.begin()) path[z] = *prev(it);
         if(it == lis.end()) lis.pb(z);
-        else lis[idx] = z;
-        if(idx) path[z] = lis[idx-1];
+        else *it = z;
     }
     int cur = lis.back();
-    while(~cur) res.pb(cur), cur = path[cur];
-    return reverse(all(res)), res;          // returns vector of indices
-};
+    vector<int> res; res.reserve(lis.size());
+    while(~cur) res.push_back(cur), cur = path[cur];
+    return reverse(res.begin(), res.end()), res;
+}
 
