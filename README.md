@@ -5,7 +5,7 @@ Programming is all about writing code to solve problems or tasks. Competitive pr
 ## What's in a problem?
 Problems are primarily math, logic and/or algorithm based and typically look something like [this](https://codeforces.com/problemset/problem/4/A). Such problems usually consist of a statement (that details the task), the input and output format, constraints on the input and some examples (will be further explained later on).
 
-Try [this](https://codeforces.com/problemset/problem/71/A) problem. Read the statement carefully and try to understand what it is asking. Once you figure it out, all that's left is to code.
+Try [this](https://codeforces.com/problemset/problem/71/A) problem. Read the statement carefully and try to understand what it is asking. Once you figure it out, all that's left is to code it.
 
 Here's what one of the many possible solutions looks like.
 <details>
@@ -32,35 +32,35 @@ int main() {
 </details>
 
 ## Choosing a language
-Most competitive programmers prefer C++, and for [good reason](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming/). However, Java and Python are also fairly popular. Knowing a programming language is the only pre-requisite.
+Most competitive programmers prefer C++, and for [good reason](https://www.codingninjas.com/blog/2018/04/11/the-best-languages-for-competitive-programming/). However, Java and Python are also fairly popular. Knowing a programming language is the only pre-requisite. While I do say that, you are by no means expected to be an expert. If you can manage a basic hello world and can work with loops and conditionals, you are good to go.
 
 **Note**: The code snippets in this guide will be in C++ since it is arguably the best language for competitive programming ~~and not because I do not know any other languages :/ UPD: I learnt a little bit of Java and Pythom :)~~
 
 ## Setting up an IDE
-If you haven't already set up an IDE, you may find use for one of the following links.\
-[Link](Setting%20up%20Sublime.md) to setting up Sublime\
-[Link](https://github.com/agrawal-d/competitive-programming-helper/) to VS extension (cph)
+If you haven't already set up an IDE, you may find use for one of the following links. I personally use Sublime Text, with VS code being my second choice, but it is a matter of personal preference.
+* [Sublime Text](./Setting%20up%20Sublime.md)
+* [VS code](https://medium.com/@chinmaykulkarni8/how-to-setup-visual-studio-code-for-c-c-java-python-competitive-programming-angular-22fdc9b1f4c6) and a [cool extension](https://github.com/agrawal-d/competitive-programming-helper/)
 
 ## Competitive coding platforms
-There are many platforms that host programming contests and allow you to practice solving problems, among other things. One such platform is [Codeforces](https://codeforces.com/), which I primarily recommend and use.
+There are many platforms that host programming contests and allow you to practice solving problems, among other things. One such platform is [Codeforces](https://codeforces.com/), which I primarily use and recommend.
 
-[Here](CC%20Sites.md) is a detailed guide I've written about problem statements, how contests work and the rating system on Codeforces (and a few other platforms).
+[Here](./Competitve%20Programming%20Platforms.md) is a detailed guide I've written about problem statements, how contests work and the rating system on Codeforces (and a few other platforms).
 
 ## Get started
-Head on over to [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) on Codeforces and sort by rating. Solve some easy problems till you get a feel for it.
+Head on over to [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) ~~I liked bugabooset better~~ on Codeforces and sort problems by rating. Solve some easy problems till you get a feel for it.
 
 ## What's next?
 Once you familiarize yourself with these things, here are some things you could consider doing next:
 
-* Take a look at [time and space complexity](https://github.com/the-hyp0cr1t3/CC/blob/master/Complexity%20and%20Big-O%20Notation.md), as will you soon realise that not all logically 'correct' solutions pass the given constraints.
+* **Time complexity:** Take a look at [time and space complexity](./Complexity%20and%20Big-O%20Notation.md), as you will soon realise that not all logically 'correct' solutions pass the given constraints.
 
-* Learn C++ STL. STL, or Standard Template Library, is a huge library of useful functions. If you're not already familiar with it, [this](https://www.hackerearth.com/practice/notes/standard-template-library/) is a good place to start. Try out a few problems [here](https://hackerrank.com/domains/cpp/stl).
+* **C++ STL:** If you're a C++ programmer, get acquainted with [STL](https://www.hackerearth.com/practice/notes/standard-template-library/), which stands for Standard Template Library, a huge library of useful functions. [Here](https://hackerrank.com/domains/cpp/stl) are a few problems for practice.
 
-* Develop your problem solving approach by tackling topics one at a time. Here's a collection of some common beginner [topics](https://github.com/the-hyp0cr1t3/CC/tree/master/Topics) and problems on the same. The [cses problemset](https://cses.fi/problemset/list/) is another great place to practice standard problems from various topics.
+* **Learn new concepts/topics:** Develop your problem solving skills by learning new topics, one at a time. [Here's](./Topics) a collection of some common beginner topics and problems on the same. The [cses problemset](https://cses.fi/problemset/list/) is another great place to practice standard problems from various topics.
 
-* Turn to the codeforces [problemset](https://codeforces.com/problemset), and sort by difficulty and tags. Grind problems because there's nothing like **practice, practice, practice**.
+* **Practice:** Turn to the codeforces [problemset](https://codeforces.com/problemset), and sort by difficulty and tags. Grind problems because there's nothing like **practice, practice, practice**.
 
-* Participate in live [contests](https://codeforces.com/contests) or take [virtual](https://codeforces.com/blog/entry/70036) ones. Virtual contests are a way to participate in or experience old contests that have happened in the past.
+* **Contests:** Participate in live [contests](https://codeforces.com/contests) or take [virtual](https://codeforces.com/blog/entry/70036) ones. Virtual contests are a way to participate in or experience old contests that have already happened in the past.
 
 <details>
     <summary>The secret formula</summary>
@@ -71,6 +71,9 @@ Once you familiarize yourself with these things, here are some things you could 
 </details>
 
 ## Extras
-[Track your progress](https://cfviz.netlify.com/)\
-[Codeforces Practice Tracker](https://codeforces.com/blog/entry/78203)\
-[Rating Predictor](https://cf-predictor-frontend.herokuapp.com/) (Download the extension)
+* **Rating predictor:** [CF Predictor](https://cf-predictor-frontend.herokuapp.com/) or [Carrot](https://github.com/meooow25/carrot/)
+* **Problem/Contest parser:** [Competitve Companion](https://github.com/jmerle/competitive-companion) coupled with
+    * [Competitve Programming Helper](https://github.com/agrawal-d/competitive-programming-helper/) (for VS code)
+    * [FastOlympicCodingHook](https://codeforces.com/blog/entry/60627?#comment-593580) \[[alt](https://codeforces.com/blog/entry/85342)\] (for Sublime Text)
+* **Stats:** [Codeforces Visualizer](https://cfviz.netlify.com/), [Codeforces Practice Tracker](https://codeforces.com/blog/entry/78203)
+* **Misc:** [Codeforces Enhancer](https://codeforces.com/blog/entry/74062)
