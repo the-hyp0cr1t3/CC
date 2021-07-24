@@ -47,7 +47,22 @@ There are many platforms that host programming contests and allow you to practic
 [Here](./Competitve%20Programming%20Platforms.md) is a detailed guide I've written about problem statements, how contests work and the rating system on Codeforces (and a few other platforms).
 
 ## Get started
-Head on over to [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) ~~I liked bugabooset better~~ on Codeforces and sort problems by rating. Solve some easy problems till you get a feel for it.
+Here are a few problems for you to get started with. They're really simple and should help you understand how to submit code on online platforms.
+* [AtCoder ABC127A](https://atcoder.jp/contests/abc127/tasks/abc127_a)
+* [Codeforces 4A](https://codeforces.com/problemset/problem/4/A)
+* [AtCoder ABC126A](https://atcoder.jp/contests/abc126/tasks/abc126_a)
+* [Codechef HS08TEST](https://www.codechef.com/problems/HS08TEST)
+* [AtCoder ABC125A](https://atcoder.jp/contests/abc125/tasks/abc125_a)
+* [Codechef FLOW006](https://www.codechef.com/problems/FLOW006)
+* [Codeforces 158A](https://codeforces.com/problemset/problem/158/A)
+* [AtCoder ABC124A](https://atcoder.jp/contests/abc124/tasks/abc124_a)
+* [Codechef FLOW001](https://www.codechef.com/problems/FLOW001)
+* [Codechef START01](https://www.codechef.com/problems/START01)
+* [Codeforces 231A](https://codeforces.com/problemset/problem/231/A)
+* [Codeforces 71A](https://codeforces.com/problemset/problem/71/A)
+* [Codechef INTEST](https://www.codechef.com/problems/INTEST)
+
+Once you're done with these, head on over to the [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) ~~I liked bugabooset better~~ on Codeforces and sort problems by rating. Solve some easy problems till you get a feel for it.
 
 ## What's next?
 Once you familiarize yourself with these things, here are some things you could consider doing next:
