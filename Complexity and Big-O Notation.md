@@ -6,6 +6,7 @@ Time and space complexity analysis is an important part of problem solving. All 
 The Big-O notation describes how an algorithm scales with the input size of the input. Following are some nice beginner articles on the same, and time and space complexity:
 * [Learning & Understanding Big-O Notation](https://www.topcoder.com/blog/learning-understanding-big-o-notation/)
 * [Time and space complexity](https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/)
+* [Codechef practice problems](https://discuss.codechef.com/t/multiple-choice-questions-related-to-testing-knowledge-about-time-and-space-complexity-of-a-program/17976)
 
 #### Some things to try/note/remember (some might start to make sense at a later point)
 * Try to find the time complexity and space complexity as you write code. With practice you will get better at it.
