@@ -75,7 +75,7 @@ Once you familiarize yourself with these things, here are some things you could 
 
 * **Time complexity:** Take a look at [time and space complexity](./Complexity%20and%20Big-O%20Notation.md), as you will soon realise that not all logically 'correct' solutions pass the given constraints.
 
-* **C++ STL:** If you're a C++ programmer, get acquainted with [STL](https://www.hackerearth.com/practice/notes/standard-template-library/), which stands for Standard Template Library, a huge library of useful functions. [Here](https://hackerrank.com/domains/cpp/stl) are a few problems for practice.
+* **C++ STL:** If you're a C++ programmer, get acquainted with [STL](https://www.hackerearth.com/practice/notes/standard-template-library/), which stands for Standard Template Library, a huge library of useful functions. Topcoder has a couple of good articles too ([Pt 1](https://www.topcoder.com/thrive/articles/Power%20up%20C++%20with%20the%20Standard%20Template%20Library%20Part%20One) [Pt 2](https://www.topcoder.com/thrive/articles/Power%20up%20C++%20with%20the%20Standard%20Template%20Library%20Part%20Two)).  [Here](https://hackerrank.com/domains/cpp/stl) are a few problems for practice. 
 
 * **Learn new concepts/topics:** Develop your problem solving skills by learning new topics, one at a time. [Here's](./Topics) a collection of some common beginner topics and problems on the same. The [cses problemset](https://cses.fi/problemset/list/) is another great place to practice standard problems from various topics.
 
