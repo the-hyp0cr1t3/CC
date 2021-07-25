@@ -58,11 +58,13 @@ To be eligible to hack someone you must lock your solution, which is possible on
 To learn more, see [link](https://codeforces.com/blog/entry/456) and [link](https://codeforces.com/blog/entry/4088).
 
 ### Rating System
-<img align="right" src="https://user-images.githubusercontent.com/55075129/126882395-7732a8b7-5d4b-4864-b6d3-7fe1f94495d6.png"/>
-
 Following every official contest are the rating changes. You gain or lose rating based on your rank and performance in the contest. Your rating is a number that goes up as you get better. Based on your rating, you fall under one of the 10 tiers listed on the right.
 
+<img align="right" src="https://user-images.githubusercontent.com/55075129/126892885-b464c9f1-8eeb-4ffa-b49e-fa6f2e68384f.png"/>
+
 There are two broad divisions, namely **Div. 1** (*2100 rating and above*) and **Div. 2** (*below 2100 rating*). Contests are usually rated for one of the divisions. For example, `Codeforces Round #735 (Div. 2)` was rated for all Div. 2 participants (with rating below 2100) only, while `Codeforces Round #732 (Div. 1)` was rated for Div. 1. Some contests such as `Codeforces Round #718 (Div. 1 + Div. 2)`, can be rated for both divisions. Additionally, there are contests rated for **Div. 3** (*below 1600 rating*) only, such as `Codeforces Round #710 (Div. 3)` and also those rated for **Div. 4** (*below 1400 rating*) only, such as `Codeforces Round #640 (Div. 4)`. As the rating caps suggest, Div. 1 contests are the hardest.
+
+<br/>
 
 ---
 
