@@ -48,19 +48,25 @@ There are many platforms that host programming contests and allow you to practic
 
 ## Get started
 Here are a few problems for you to get started with. They're really simple and should help you understand how to submit code on online platforms.
-* [AtCoder ABC127A](https://atcoder.jp/contests/abc127/tasks/abc127_a)
-* [Codeforces 4A](https://codeforces.com/problemset/problem/4/A)
-* [AtCoder ABC126A](https://atcoder.jp/contests/abc126/tasks/abc126_a)
-* [Codechef HS08TEST](https://www.codechef.com/problems/HS08TEST)
-* [AtCoder ABC125A](https://atcoder.jp/contests/abc125/tasks/abc125_a)
-* [Codechef FLOW006](https://www.codechef.com/problems/FLOW006)
-* [Codeforces 158A](https://codeforces.com/problemset/problem/158/A)
-* [AtCoder ABC124A](https://atcoder.jp/contests/abc124/tasks/abc124_a)
-* [Codechef FLOW001](https://www.codechef.com/problems/FLOW001)
-* [Codechef START01](https://www.codechef.com/problems/START01)
-* [Codeforces 231A](https://codeforces.com/problemset/problem/231/A)
-* [Codeforces 71A](https://codeforces.com/problemset/problem/71/A)
-* [Codechef INTEST](https://www.codechef.com/problems/INTEST)
+
+<details>
+    <summary> Click </summary>
+    <ul>
+        <li><a href="https://atcoder.jp/contests/abc127/tasks/abc127_a">AtCoder ABC127A</a></li>
+        <li><a href="https://codeforces.com/problemset/problem/4/A">Codeforces 4A</a></li>
+        <li><a href="https://atcoder.jp/contests/abc126/tasks/abc126_a">AtCoder ABC126A</a></li>
+        <li><a href="https://www.codechef.com/problems/HS08TEST">Codechef HS08TEST</a></li>
+        <li><a href="https://atcoder.jp/contests/abc125/tasks/abc125_a">AtCoder ABC125A</a></li>
+        <li><a href="https://www.codechef.com/problems/FLOW006">Codechef FLOW006</a></li>
+        <li><a href="https://codeforces.com/problemset/problem/158/A">Codeforces 158A</a></li>
+        <li><a href="https://atcoder.jp/contests/abc124/tasks/abc124_a">AtCoder ABC124A</a></li>
+        <li><a href="https://www.codechef.com/problems/FLOW001">Codechef FLOW001</a></li>
+        <li><a href="https://www.codechef.com/problems/START01">Codechef START01</a></li>
+        <li><a href="https://codeforces.com/problemset/problem/231/A">Codeforces 231A</a></li>
+        <li><a href="https://codeforces.com/problemset/problem/71/A">Codeforces 71A</a></li>
+        <li><a href="https://www.codechef.com/problems/INTEST">Codechef INTEST</a></li>
+    </ul>
+</details>
 
 Once you're done with these, head on over to the [problemset](https://codeforces.com/problemset?order=BY_RATING_ASC) ~~I liked bugabooset better~~ on Codeforces and sort problems by rating. Solve some easy problems till you get a feel for it.
 
