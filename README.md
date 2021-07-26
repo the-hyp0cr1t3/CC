@@ -77,7 +77,7 @@ Once you familiarize yourself with these things, here are some things you could 
 
 * **C++ STL:** If you're a C++ programmer, get acquainted with [STL](https://www.hackerearth.com/practice/notes/standard-template-library/), which stands for Standard Template Library, a huge library of useful functions. Topcoder has a couple of good articles too ([Pt 1](https://www.topcoder.com/thrive/articles/Power%20up%20C++%20with%20the%20Standard%20Template%20Library%20Part%20One) [Pt 2](https://www.topcoder.com/thrive/articles/Power%20up%20C++%20with%20the%20Standard%20Template%20Library%20Part%20Two)).  [Here](https://hackerrank.com/domains/cpp/stl) are a few problems for practice. 
 
-* **Learn new concepts/topics:** Develop your problem solving skills by learning new topics, one at a time. [Here's](./Topics) a collection of some common beginner topics and problems on the same. The [cses problemset](https://cses.fi/problemset/list/) is another great place to practice standard problems from various topics.
+* **Learn new concepts/topics:** Develop your problem solving skills by learning new topics, one at a time. [Here's](./Beginner%20T`opics) a collection of some common beginner topics and problems on the same. The [cses problemset](https://cses.fi/problemset/list/) is another great place to practice standard problems from various topics.
 
 * **Practice:** Turn to the codeforces [problemset](https://codeforces.com/problemset), and sort by difficulty and tags. Grind problems because there's nothing like **practice, practice, practice**.
 
