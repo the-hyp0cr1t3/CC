@@ -5,7 +5,12 @@
 // U = int64_t handles regular range add without having to create a Lazy struct
 template<class T, class U = int64_t, bool ONE = true>
 class Segtree {
-    int N; vector<T> st; vector<U> lazy; vector<bool> pending;
+    struct Node {
+        bool pending{false};
+        T info; U lazy{};
+    };
+
+    int N; vector<Node> st;
 
     static int ceil2n(int x) {
         return (1 << 31 - __builtin_clz(x << 1) + !!(x & x-1)) + 2;
@@ -13,41 +18,41 @@ class Segtree {
 
     template<class It>
     void build(int node, int L, int R, It beg, It end, bool opt) {
-        if(L == R) return st[node] = static_cast<T>(*beg), void();
+        if(L == R) return st[node].info = static_cast<T>(*beg), void();
         int M = L + R >> 1;
         build(node << 1, L, M, beg, beg + (opt? M - L : 0), opt);
         build(node << 1 | 1, M + 1, R, beg + (opt? M - L + 1 : 0), end, opt);
-        st[node] = T(st[node << 1], st[node << 1 | 1]);
+        st[node].info = T(st[node << 1].info, st[node << 1 | 1].info);
     }
 
     void prop(int node, int L, int R) {
         if(L != R) {
-            pending[node << 1] = pending[node << 1 | 1] = true;
-            lazy[node << 1] += lazy[node];
-            lazy[node << 1 | 1] += lazy[node];
+            st[node << 1].pending = st[node << 1 | 1].pending = true;
+            st[node << 1].lazy += st[node].lazy;
+            st[node << 1 | 1].lazy += st[node].lazy;
         }
-        st[node].apply_lazy(lazy[node], R - L + 1);
-        pending[node] = false; lazy[node] = U();
+        st[node].info.apply_lazy(st[node].lazy, R - L + 1);
+        st[node].pending = false; st[node].lazy = U();
     }
 
     T Query(int node, int L, int R, int ql, int qr) {
-        if(pending[node]) prop(node, L, R);
+        if(st[node].pending) prop(node, L, R);
         if(qr < ql) return T();
-        if(ql == L and R == qr) return st[node];
+        if(ql == L and R == qr) return st[node].info;
         int M = L + R >> 1;
         return T(Query(node << 1, L, M, ql, min(qr, M)),
                     Query(node << 1 | 1, M + 1, R, max(M + 1, ql), qr));
     }
 
     void Update(int node, int L, int R, int ul, int ur, const U& val) {
-        if(pending[node]) prop(node, L, R);
+        if(st[node].pending) prop(node, L, R);
         if(ur < ul) return;
         if(ul == L and R == ur)
-            return lazy[node] += val, prop(node, L, R);
+            return st[node].lazy += val, prop(node, L, R);
         int M = L + R >> 1;
         Update(node << 1, L, M, ul, min(ur, M), val);
         Update(node << 1 | 1, M + 1, R, max(M + 1, ul), ur, val);
-        st[node] = T(st[node << 1], st[node << 1 | 1]);
+        st[node].info = T(st[node << 1].info, st[node << 1 | 1].info);
     }
 
 
@@ -59,7 +64,7 @@ public:
     //      Segtree(n, args...) builds n leaves with value T(args...)
     template<class... Args>
     Segtree(int N, Args&&... args)
-        : N(N), st(ceil2n(N)), lazy(st.size()), pending(st.size()) {
+        : N(N), st(ceil2n(N)) {
             T val(forward<Args>(args)...); build(1, ONE, N - !ONE, &val, &val, false);
     }
 
@@ -70,7 +75,7 @@ public:
                                             random_access_iterator_tag>::value,
                                 typename iterator_traits<It>::difference_type>>
     Segtree(It beg, It end)
-        : N(end - beg), st(ceil2n(N)), lazy(st.size()), pending(st.size()) {
+        : N(end - beg), st(ceil2n(N)) {
             build(1, ONE, N - !ONE, beg, end, true);
     }
 

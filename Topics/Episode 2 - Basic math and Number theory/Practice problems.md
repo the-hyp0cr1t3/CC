@@ -1,7 +1,5 @@
-# Basic math and Number theory
+# Practice problems
 [Good read](https://www.topcoder.com/community/competitive-programming/tutorials/prime-numbers-factorization-and-euler-function/)
-
-### Practice problems
 * [Codeforces 749 A](https://codeforces.com/contest/749/problem/A)
 * [Codeforces 630 J](https://codeforces.com/contest/630/problem/J)
 * [Codeforces 271 B](https://codeforces.com/contest/271/problem/B)

@@ -44,4 +44,5 @@ int main() {
     Hello world: https://cses.fi/problemset/task/1648/
     More problems: https://codeforces.com/edu/course/2/lesson/4
     Lazy prop variant: https://codeforces.com/contest/343/submission/24869698
+                       https://codeforces.com/contest/1550/submission/122582660
 */
