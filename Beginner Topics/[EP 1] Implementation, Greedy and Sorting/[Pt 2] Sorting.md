@@ -7,7 +7,8 @@ You may also read up on [bubble sort](https://www.programiz.com/dsa/bubble-sort)
 <br/>
 Another sorting algorithm worth mentioning is [counting sort](https://www.geeksforgeeks.org/counting-sort/), which works in $\mathcal{O}(n)$.
 
-**Reading material:** [CPH Ch 3: Sorting](https://cses.fi/book/book.pdf#page=35)
+**Reading material:**
+* *CPH Ch 3: Sorting,* pg [25](https://cses.fi/book/book.pdf#page=35) - [31](https://cses.fi/book/book.pdf#page=41)
 
 <details>
 <summary>Problems</summary>

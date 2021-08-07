@@ -96,5 +96,5 @@ Once you familiarize yourself with these things, here are some things you could 
 * **Problem/Contest parser:** [Competitve Companion](https://github.com/jmerle/competitive-companion) coupled with
     * [Competitve Programming Helper](https://github.com/agrawal-d/competitive-programming-helper/) (for VS code)
     * [FastOlympicCodingHook](https://codeforces.com/blog/entry/60627?#comment-593580) \[[alt](https://codeforces.com/blog/entry/85342)\] (for Sublime Text)
-* **Stats:** [Codeforces Visualizer](https://cfviz.netlify.com/), [Codeforces Practice Tracker](https://codeforces.com/blog/entry/78203)
+* **Stats:** [Codeforces Visualizer](https://cfviz.netlify.com/), [Codeforces Practice Tracker](https://codeforces.com/blog/entry/78203), [CF Analytics](https://codeforces.com/blog/entry/93417)
 * **Misc:** [Codeforces Enhancer](https://codeforces.com/blog/entry/74062)
