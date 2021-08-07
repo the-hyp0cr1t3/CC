@@ -97,4 +97,4 @@ Once you familiarize yourself with these things, here are some things you could 
     * [Competitve Programming Helper](https://github.com/agrawal-d/competitive-programming-helper/) (for VS code)
     * [FastOlympicCodingHook](https://codeforces.com/blog/entry/60627?#comment-593580) \[[alt](https://codeforces.com/blog/entry/85342)\] (for Sublime Text)
 * **Stats:** [Codeforces Visualizer](https://cfviz.netlify.com/), [Codeforces Practice Tracker](https://codeforces.com/blog/entry/78203), [CF Analytics](https://codeforces.com/blog/entry/93417)
-* **Misc:** [Codeforces Enhancer](https://codeforces.com/blog/entry/74062)
+* **Misc:** [Codeforces Enhancer](https://codeforces.com/blog/entry/74062), [Codeforces Customizer](https://codeforces.com/blog/entry/93536), [Dark mode](https://codeforces.com/blog/entry/93606)
