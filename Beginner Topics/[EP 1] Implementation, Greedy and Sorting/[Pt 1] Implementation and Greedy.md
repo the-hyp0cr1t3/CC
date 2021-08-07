@@ -27,7 +27,8 @@ Implementation problems do not rely on the knowledge of any particular data stru
 ## Greedy
 As the name suggests, a greedy approach is one where (greedily) picking the **best option** at every stage leads to the **best overall outcome**.
 
-[Hackerearth [B]](https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/)
+**Reading material:**
+* [Hackerearth [B]](https://www.hackerearth.com/practice/algorithms/greedy/basics-of-greedy-algorithms/tutorial/)
 
 <details>
 <summary>Problems</summary>

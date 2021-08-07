@@ -5,8 +5,8 @@ Efficient factorization and prime checking is a must know when it comes to compe
 * Introduction - *CPH Ch 21: Number theory,* pg [197](https://cses.fi/book/book.pdf#page=207) - [198](https://cses.fi/book/book.pdf#page=208)
 * Primality and Prime factorization - *CPH Ch 21,* pg [199](https://cses.fi/book/book.pdf#page=209)
 * Sieve of Eratosthenes
-    * [CPH Ch 21, pg 200](https://cses.fi/book/book.pdf#page=210)
-    * [Tutorial [V]](https://www.youtube.com/watch?v=pKvGYOnO9Ao)
+    * *CPH Ch 21,* pg [200](https://cses.fi/book/book.pdf#page=210)
+    * [YouTube [V]](https://www.youtube.com/watch?v=pKvGYOnO9Ao)
     * [Visualization [B]](https://brilliant.org/wiki/sieve-of-eratosthenes/)
 * Prime factorization queries - [Tutorial [B]](https://www.geeksforgeeks.org/prime-factorization-using-sieve-olog-n-multiple-queries/)
 * Prime gap - [Article [B]](https://primes.utm.edu/notes/gaps.html)
