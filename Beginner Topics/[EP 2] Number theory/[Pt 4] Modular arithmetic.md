@@ -5,7 +5,7 @@ Have you ever seen something like *find the answer modulo 10<sup>9</sup>+7*?  If
 * [CF Blog [B]](https://codeforces.com/blog/entry/72527)
 * [Errichto video [V]](https://www.youtube.com/watch?v=-OPohCQqi_E)
 * [SecondThread video [V]](https://www.youtube.com/watch?v=KfTcd0dg0DI)
-* [Modular Inverse](https://cp-algorithms.com/algebra/module-inverse.html)
+* *Modular Inverse* - [CP Algorithms](https://cp-algorithms.com/algebra/module-inverse.html)
 * *CPH Ch 21,* pg [201](https://cses.fi/book/book.pdf#page=211) - [203](https://cses.fi/book/book.pdf#page=213)
 
 Try [this](https://open.kattis.com/problems/modulararithmetic) problem.
