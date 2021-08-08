@@ -178,4 +178,4 @@ int main() {
 } // ~W
 ```
 </details>
-See [snippet](./末%20Snippets/ModInt.cpp) for implementation.
+See [snippet](../../末%20Snippets/ModInt.cpp) for implementation.
