@@ -20,16 +20,16 @@ Mashups of topic relevant problems spanning a range of difficulties.
 <details>
 <summary>Mashup 2</summary>
 <ul>
-    <li><a href="https://codeforces.com/contest/749/problem/A">Codeforces 749 A</a></li>
-    <li><a href="https://codeforces.com/contest/630/problem/J">Codeforces 630 J</a></li>
-    <li><a href="https://codeforces.com/contest/271/problem/B">Codeforces 271 B</a></li>
-    <li><a href="https://codeforces.com/contest/1303/problem/B">Codeforces 1303 A</a></li>
-    <li><a href="https://codeforces.com/contest/1332/problem/B">Codeforces 1332 B</a></li>
-    <li><a href="https://codeforces.com/contest/757/problem/B">Codeforces 757 B</a></li>
-    <li><a href="https://codeforces.com/contest/630/problem/K">Codeforces 630 K</a></li>
-    <li><a href="https://codeforces.com/contest/742/problem/B">Codeforces 742 B</a></li>
-    <li><a href="https://codeforces.com/contest/476/problem/D">Codeforces 476 D</a></li>
-    <li><a href="https://codeforces.com/contest/1247/problem/D">Codeforces 1247 D</a></li>
+    <li><a href="https://codeforces.com/contest/749/problem/A">CF 749 A</a></li>
+    <li><a href="https://codeforces.com/contest/630/problem/J">CF 630 J</a></li>
+    <li><a href="https://codeforces.com/contest/271/problem/B">CF 271 B</a></li>
+    <li><a href="https://codeforces.com/contest/1303/problem/B">CF 1303 A</a></li>
+    <li><a href="https://codeforces.com/contest/1332/problem/B">CF 1332 B</a></li>
+    <li><a href="https://codeforces.com/contest/757/problem/B">CF 757 B</a></li>
+    <li><a href="https://codeforces.com/contest/630/problem/K">CF 630 K</a></li>
+    <li><a href="https://codeforces.com/contest/742/problem/B">CF 742 B</a></li>
+    <li><a href="https://codeforces.com/contest/476/problem/D">CF 476 D</a></li>
+    <li><a href="https://codeforces.com/contest/1247/problem/D">CF 1247 D</a></li>
 </ul>
 </details>
 
