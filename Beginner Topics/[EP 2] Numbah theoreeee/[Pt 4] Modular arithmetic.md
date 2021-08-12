@@ -44,7 +44,7 @@ int64_t expo(int64_t a, int64_t b, int64_t MOD) {      // a^b % MOD
 int64_t inv(int64_t a, int64_t m) {        // inv(a, MOD)
     a %= m;
     if(a == 1) return 1;
-    return m - inv(m, a) * m / a;
+    return m - inv(m, a) * (m / a);
 }
 
 int main() {
