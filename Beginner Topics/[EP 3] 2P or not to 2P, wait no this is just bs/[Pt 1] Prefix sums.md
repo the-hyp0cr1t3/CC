@@ -1,7 +1,7 @@
 # Prefix sums
 Given an array $a$ of $n$ elements, prefix sums allow you to calculate the sum of any range of elements $[l, r]$ $1 \leq l \leq r \leq n$ in $\mathcal{O}(1)$ constant time (with $\mathcal{O}(n)$ pre-processing).
 
-The trick is to pre-calculate (to calculate once beforehand for multiple usages later) an array $prefix$, of cumulative sums. For each $i$ from $1$ to $n$, $prefix_i$ stores the sum $a_1 + a_2 + \ldots + a_i$. Then, the sum of elements in the range $[l, r]$ can be easily found out as $prefix_r - prefix_{l-1}$.
+The trick is to pre-calculate (to calculate once beforehand for multiple usages later) an array $\mathrm{prefix}$, of cumulative sums. For each $i$ from $1$ to $n$, $\mathrm{prefix}_i$ stores the sum $a_1 + a_2 + \ldots + a_i$. Then, the sum of elements in the range $[l, r]$ can be easily found out as $\mathrm{prefix}_r - \mathrm{prefix}_{l-1}$.
 
 **Reading material:**
 * [Peltorator [V]](https://codeforces.com/blog/entry/88474) (Use english subtitles)

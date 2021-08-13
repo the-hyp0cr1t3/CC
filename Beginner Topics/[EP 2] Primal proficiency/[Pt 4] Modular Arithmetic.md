@@ -1,4 +1,4 @@
-# Modular arithmetic
+# Modular Arithmetic
 Have you ever seen something like *find the answer modulo 10<sup>9</sup>+7*?  If you're still wondering what it means (or even if you're not), you should read up on *Modular arithmetic*.
 
 **Reading material:**

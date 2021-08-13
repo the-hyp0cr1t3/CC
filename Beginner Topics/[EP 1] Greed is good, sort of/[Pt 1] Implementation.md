@@ -1,5 +1,3 @@
-# Implementation and Greedy
-
 # Ad hoc/Implementation
 Implementation problems do not rely on the knowledge of any particular data structure or algorithm. There isn't really any way to learn this method except to practice problems.
 
