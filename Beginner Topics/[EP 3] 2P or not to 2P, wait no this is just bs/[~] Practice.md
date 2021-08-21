@@ -28,16 +28,16 @@ Mashups of topic relevant problems spanning a range of difficulties.
 <details>
 <summary>Mashup 2</summary>
 <ul>
-    <li><a href="https://codeforces.com/problemset/problem/1293/A">Codeforces 1293 A</a></li>
-    <li><a href="https://codeforces.com/contest/1217/problem/A">Codeforces 1217 A</a></li>
-    <li><a href="https://codeforces.com/problemset/problem/253/B">Codeforces 253 B</a></li>
-    <li><a href="https://codeforces.com/problemset/problem/335/A">Codeforces 335 A</a></li>
-    <li><a href="https://codeforces.com/problemset/problem/676/C">Codeforces 676 C</a></li>
-    <li><a href="https://codeforces.com/problemset/problem/340/D">Codeforces 340 D</a></li>
-    <li><a href="https://codeforces.com/contest/1223/problem/C">Codeforces 1223 C</a></li>
-    <li><a href="https://codeforces.com/contest/231/problem/C">Codeforces 231 C</a></li>
-    <li><a href="https://codeforces.com/contest/287/problem/B">Codeforces 287 B</a></li>
-    <li><a href="https://codeforces.com/contest/448/problem/D">Codeforces 448 D</a></li>
-    <li><a href="https://codeforces.com/problemset/problem/1117/C">Codeforces 1117 C</a></li>
+    <li><a href="https://codeforces.com/problemset/problem/1293/A">CF 1293 A</a></li>
+    <li><a href="https://codeforces.com/contest/1217/problem/A">CF 1217 A</a></li>
+    <li><a href="https://codeforces.com/problemset/problem/253/B">CF 253 B</a></li>
+    <li><a href="https://codeforces.com/problemset/problem/335/A">CF 335 A</a></li>
+    <li><a href="https://codeforces.com/problemset/problem/676/C">CF 676 C</a></li>
+    <li><a href="https://codeforces.com/problemset/problem/340/D">CF 340 D</a></li>
+    <li><a href="https://codeforces.com/contest/1223/problem/C">CF 1223 C</a></li>
+    <li><a href="https://codeforces.com/contest/231/problem/C">CF 231 C</a></li>
+    <li><a href="https://codeforces.com/contest/287/problem/B">CF 287 B</a></li>
+    <li><a href="https://codeforces.com/contest/448/problem/D">CF 448 D</a></li>
+    <li><a href="https://codeforces.com/problemset/problem/1117/C">CF 1117 C</a></li>
 </ul>
 </details>

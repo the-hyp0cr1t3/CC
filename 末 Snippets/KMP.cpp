@@ -1,5 +1,9 @@
 /* Knuth–Morris–Pratt (KMP) algorithm */
-// (https://cp-algorithms.com/string/prefix-function.html)
+/*
+    https://discuss.codechef.com/t/tutorial-prefix-function-pattern-matching-supposedly-kmp/67531
+    https://cp-algorithms.com/string/prefix-function.html
+    https://www.youtube.com/watch?v=nJbNe0Yzjhw
+*/
 
 // pi[i] is the longest proper prefix
 // that is a suffix ending at position i

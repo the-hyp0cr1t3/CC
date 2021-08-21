@@ -37,6 +37,7 @@ Temp
 ## Matrix exponentiation
 * [Modular arithmetic, combinatorics and exponentiation](https://codeforces.com/blog/entry/78873)
 
+https://codeforces.com/blog/entry/93914
 
 [Tutorial](http://zobayer.blogspot.com/2010/11/matrix-exponentiation.html)\
 [Another good read](https://codeforces.com/blog/entry/67776)\
