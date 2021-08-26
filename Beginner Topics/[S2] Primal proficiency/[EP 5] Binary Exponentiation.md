@@ -1,3 +1,4 @@
+
 # Binary Exponentiation
 Binary exponentiation (also known as exponentiation by squaring) is a trick which allows you to calculate $a^n$ using only $\mathcal{O}(logn)$ multiplications (instead of $\mathcal{O}(n)$ multiplications).
 
