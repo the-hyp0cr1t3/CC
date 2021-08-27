@@ -16,6 +16,7 @@ The links that follow are good to start with, but you will most probably have to
 * [Errichto DP Lecture #1 [V]](https://www.youtube.com/watch?v=YBSt1jYwVfU)
 * [Topcoder [B]](https://www.topcoder.com/community/competitive-programming/tutorials/dynamic-programming-from-novice-to-advanced/)
 * [Hackerearth [B]](https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/tutorial/)
+* [Blog [B]](https://skerritt.blog/dynamic-programming/)
 
 <details>
 <summary>Problems</summary>
