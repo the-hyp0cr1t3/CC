@@ -37,12 +37,16 @@
 
 * **Season 5:** &nbsp;[Do you understand the graphity of this situation?](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation)
 
-    1. Graph terminology and representation
-    2. Graph traversal
-        1. DFS
-        2. BFS
-    3. Shortest paths
-        1. Bellman Ford
-        2. Dijkstra
-        3. Floyd Warshall
+    0. &nbsp;EP 0: [Graph terminology and representation](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%200%5D%20Graph%20terminology%20and%20representation.md)
+    1. &nbsp;EP 1: [Graph traversal](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%201%5D%20Graph%20traversal)
+        1. &nbsp;Part 1: [Depth First Search](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%201%5D%20Graph%20traversal/%5BPt%201%5D%20DFS.md)
+        2. &nbsp;Part 2: [Breadth First Search](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%201%5D%20Graph%20traversal/%5BPt%202%5D%20BFS.md)
+    2. &nbsp;EP 2: [Shortest paths](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%202%5D%20Shortest%20paths)
+        1. &nbsp;Part 1: [Bellman-Ford](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%202%5D%20Shortest%20paths/%5BPt%201%5D%20Bellman-Ford.md)
+        2. &nbsp;Part 2: [Dijkstra's](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%202%5D%20Shortest%20paths/%5BPt%202%5D%20Dijkstra%27s.md)
+        3. &nbsp;Part 3: [Floyd-Warshall](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%202%5D%20Shortest%20paths/%5BPt%203%5D%20Floyd-Warshall.md)
+    3. &nbsp;EP 3: [Spanning trees](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%203%5D%20Spanning%20Trees)
+        1. &nbsp;Part 1: [Disjoint Set Union (Union Find)](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%203%5D%20Spanning%20Trees/%5BPt%201%5D%20Disjoint%20Set%20Union%20%28Union%20Find%29.md)
+        2. &nbsp;Part 2: [Kruskal's MST](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%203%5D%20Spanning%20Trees/%5BPt%202%5D%20Kruskal%27s%20MST.md)
+        3. &nbsp;Part 3: [Prim's MST](./%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%203%5D%20Spanning%20Trees/%5BPt%203%5D%20Prim%27s%20MST.md)
 
