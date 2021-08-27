@@ -17,6 +17,7 @@
 [Prim's Algorithm](https://cp-algorithms.com/graph/mst_prim.html)
 
 #### Problems
+https://open.kattis.com/problems/minspantree
 * [Spoj ULM09](https://www.spoj.com/problems/ULM09/)
 * [Codeforces 17 B](https://codeforces.com/contest/17/problem/B)
 * [Hackerearth Travelling Tom](https://www.hackerearth.com/practice/algorithms/graphs/minimum-spanning-tree/practice-problems/algorithm/travelling-tom-7eadedb7/)
