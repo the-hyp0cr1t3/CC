@@ -7,7 +7,7 @@
 * Basic Problems - [E-Olymp DFS](https://www.e-olymp.com/en/contests/9116)
 * DFS Applications
     * *CPH Ch 12,* pg [121](https://cses.fi/book/book.pdf#page=131) - [122](https://cses.fi/book/book.pdf#page=132)
-    * [-is-this-fft-'s legendary blog oon CF](https://codeforces.com/blog/entry/68138) (for later reading)
+    * [-is-this-fft-'s legendary blog on CF](https://codeforces.com/blog/entry/68138) (for later reading)
 
 <details>
 <summary>Problems</summary>
