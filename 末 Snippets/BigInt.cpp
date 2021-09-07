@@ -1,8 +1,14 @@
 /* Big int ops */
-// References
-// - https://github.com/knst/big_number
-// - https://gist.github.com/ar-pa/957297fb3f88996ead11
-// - https://github.com/dmkz/competitive-programming/blob/master/e-olymp.com/0317.cpp
+
+/*
+    References:
+        https://github.com/knst/big_number
+        https://gist.github.com/ar-pa/957297fb3f88996ead11
+        https://github.com/dmkz/competitive-programming/blob/master/e-olymp.com/0317.cpp
+    Example:
+        https://codeforces.com/contest/1144/submission/103589811
+*/
+
 
 // alternate: base = 26, grpsz = 6, base_char = 'a'
 template<int base = 10, int grpsz = 9, char base_char = '0'>
@@ -349,4 +355,3 @@ int main() {
     cout << gcd(a, b);
 }
 */
-// see (https://codeforces.com/problemset/submission/1144/103589811)

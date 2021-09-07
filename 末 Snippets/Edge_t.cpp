@@ -1,3 +1,5 @@
+/* Edge struct */
+
 struct edge_t {
     int u{-1}, v{-1}; int64_t w{0};
     edge_t() = default;

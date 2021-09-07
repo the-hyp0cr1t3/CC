@@ -1,5 +1,8 @@
 /* Binary Exponentiation */
-// (https://cp-algorithms.com/algebra/binary-exp.html)
+
+/*
+    https://github.com/the-hyp0cr1t3/CC/blob/master/Beginner%20Topics/%5BS2%5D%20Primal%20proficiency/%5BEP%205%5D%20Binary%20Exponentiation.md
+*/
 
 template<typename T>
 T expo(T A, int64_t B) {        // A^{B}

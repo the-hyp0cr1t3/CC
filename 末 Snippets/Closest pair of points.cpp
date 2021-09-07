@@ -1,25 +1,25 @@
-// https://cp-algorithms.com/geometry/nearest_points.html
+/* Closest pair of points */
+
+/*
+    https://cp-algorithms.com/geometry/nearest_points.html
+*/
+
 #include <bits/stdc++.h>
-#define IOS ios::sync_with_stdio(0); cin.tie(0); cout.tie(0)
 using namespace std;
-#define endl "\n"
-typedef long long ll;
-using pii = pair<int, int>;
 const int N = 2e5 + 5;
 
 struct point {
     int x, y, id;
 };
 
-pii ans;
-ll min_val = 1e18;
-point tmp[N];
+pair<int, int> ans;
+int64_t min_val = 1e18;
 vector<point> a;
 
 auto update = [] (const point& p, const point& q) {
-    ll dist = 1ll*(p.x-q.x)*(p.x-q.x) + 1ll*(p.y-q.y)*(p.y-q.y);
+    int64_t dist = 1ll*(p.x-q.x)*(p.x-q.x) + 1ll*(p.y-q.y)*(p.y-q.y);
     if(dist < min_val) 
-        min_val = dist, ans = pii(p.id, q.id);
+        min_val = dist, ans = make_pair(p.id, q.id);
 };
 
 void recur(int l, int r) {
@@ -33,13 +33,16 @@ void recur(int l, int r) {
                 update(a[i], a[j]);
         return;
     }
+
     int m = (l+r)/2;
-    recur(l, m);
-    recur(m, r);
-    merge(a.begin()+l, a.begin()+m, a.begin()+m, a.begin()+r, tmp, [](const point& A, const point& B) { 
-        return A.y == B.y? A.x < B.x : A.y < B.y; 
-    });
+    recur(l, m); recur(m, r);
+
+    static point tmp[N];
+    merge(a.begin()+l, a.begin()+m, a.begin()+m, a.begin()+r, tmp,
+        [](const point& A, const point& B) { return A.y == B.y? A.x < B.x : A.y < B.y; });
+
     copy(tmp, tmp+r-l, a.begin()+l);
+
     int top = -1;
     for(i = l; i < r; i++) {
         if(abs(a[i].x-a[m].x) >= min_val) continue;
@@ -50,7 +53,6 @@ void recur(int l, int r) {
 }
 
 int32_t main() {
-    IOS;
     int i, n;
     cin >> n; a.resize(n);
     for(i = 0; i < n; i++) 
@@ -63,7 +65,7 @@ int32_t main() {
     recur(0, n);
     double dist = sqrt(min_val);
     cout << fixed << setprecision(4);
-    cout << dist << endl;
-    cout << ans.first << " " << ans.second;
+    cout << dist << '\n' << ans.first << ' ' << ans.second;
+
     return 0;
 }
