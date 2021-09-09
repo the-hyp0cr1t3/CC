@@ -42,7 +42,7 @@ Y([&](auto dfs, int v) -> void {
         if(!e->done)
             e->done = true, dfs(e->u ^ e->v ^ v);
     } tour.push_back(v);
-})(0);
+})(0);      // dfs(0);
 
 for(i = 0; i < n; i++)
     if(deg[i] > 0)

@@ -1,53 +1,27 @@
-/* Hashing templates - custom hash, gp_hash_table, string hashing */
+/* String hashing w/ Roling/Polynomial hash */
 
 /*
-    - pbds gp hash table (better than unordered_map)
-        https://codeforces.com/blog/entry/60737
-    - custom hash, blowing up unordered_map
-        https://codeforces.com/blog/entry/62393
-    - string hashing
-        for prefix implementations, see
-            https://codeforces.com/contest/1469/submission/102644985
-            https://codeforces.com/contest/1469/submission/102644888
+    Blog:
+        https://codeforces.com/blog/entry/60445
+    Algorithms Live:
+        https://www.youtube.com/watch?v=rA1ZevamGDc
+    Problems:
+        https://codeforces.com/contest/1326/problem/D2
+        https://codeforces.com/contest/835/problem/D
+    Prefix implementations:
+        https://codeforces.com/contest/1469/submission/102644985 (single hash)
+        https://codeforces.com/contest/1469/submission/102644888 (double hash)
 */
 
-#include <ext/pb_ds/assoc_container.hpp>
-namespace Hashing {    
-    using hash_t = pair<int, uint64_t>;
-    static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
-    
-    // Custom hash using splitmix64 (https://codeforces.com/blog/entry/62393)
-    struct custom_hash {
-        static uint64_t splitmix64(uint64_t x) {
-            x += 0x9e3779b97f4a7c15;
-            x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
-            x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
-            return x ^ (x >> 31);
-        }
-        size_t operator()(uint64_t x) const {
-            return splitmix64(x + FIXED_RANDOM);
-        }
-        size_t operator()(const hash_t& x) const {
-            return splitmix64(FIXED_RANDOM + x.second)
-                    ^ (splitmix64(FIXED_RANDOM + x.first) << 1);
-        }
-    };
-    
-    // gp_hash_table benchmarks vs unordered_map (https://codeforces.com/blog/entry/60737)
-    template<typename K, typename V, typename Hash = custom_hash>
-    using hash_map = __gnu_pbds::gp_hash_table<K, V, Hash>;
-    
-    template<typename K, typename Hash = custom_hash>
-    using hash_set = hash_map<K, __gnu_pbds::null_type, Hash>;
-}
-
+// Single hash
 namespace Hashing {
 #ifndef __MOD_BASE
-    #define __MOD_BASE 
-    constexpr int _mod = 1e9+123;  // default mod
+    #define __MOD_BASE
+    constexpr int _mod = 1e9+123;   // default mod
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;  // random base
+    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;   // random base
 #endif
+
     // use base and primary mod of your choice
     template<const int& base = _base, int mod = _mod>
     struct single_hash {
@@ -68,19 +42,20 @@ namespace Hashing {
         }
         int operator()() const { return (*this)(0, n-1); }
     };
+
 }
 
+// double hash
 namespace Hashing {
 #ifndef __MOD_BASE
-    #define __MOD_BASE 
-    constexpr int _mod = 1e9+123;  // default mod
+    #define __MOD_BASE
+    constexpr int _mod = 1e9+123;
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;  // random base
+    static const int _base = uniform_int_distribution<int>(256, _mod-2)(rng) | 1;
 #endif
     using hash_t = pair<int, uint64_t>;
     vector<uint64_t> pow2{1};
 
-    // use base and primary mod of your choice along with a secondary mod of 2^64
     template<const int& base = _base, int mod = _mod>
     struct double_hash {
         static inline vector<int> pow1{1};
@@ -109,7 +84,9 @@ namespace Hashing {
         }
         hash_t operator()() const { return (*this)(0, n-1); }
     };
+
 }
+
 
 /*
 int main() {
@@ -117,7 +94,7 @@ int main() {
     static const int base = 23;
     Hashing::single_hash<base, int(1e9+7)> A(s);
     Hashing::double_hash<> B(s);
-    
+
     cout << A(3, 4) << '\n';
     auto [x, y] = B();
     cout << x << ' ' << y;

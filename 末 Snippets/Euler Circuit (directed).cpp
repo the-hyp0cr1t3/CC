@@ -32,7 +32,7 @@ Y([&](auto dfs, int v) -> void {
     while(outdeg[v]-- > 0)
         dfs(g[v][outdeg[v]]);
     tour.push_back(v);
-})(0);
+})(0);      // dfs(0);
 
 for(i = 0; i < n; i++)
     if(outdeg[i] > 0)

@@ -1,25 +1,19 @@
-// Sorting
-#define all(x) x.begin(), x.end()
+/* Sets, priority queues & sorting vectors with custom comparators */
 
-vector<pii> v;
-
-sort(all(v), [&](const auto& A, const auto& B) { 
+vector<pair<int, int>> v;
+sort(v.begin(), v.end(), [](const auto& A, const auto& B) {
     // ...
     // for pairs
-    if(A.second == B.second)
-        return A.first < B.first;
-    return A.second < B.second;
+    return A.second == B.second?
+                A.first < B.first : A.second < B.second;
 });
 
+
 // STL set and priority_queue comparators
-struct lmao {
-    int val;
-    lmao(int val) : val(val) {}
+auto cmp = [](const auto& A, const auto& B) {
+    return A < B;
 };
 
-auto cmp = [] (const lmao& A, const lmao& B) {
-    return A.val < B.val;
-};
+set<T, decltype(cmp)> s(cmp);
+priority_queue<T, vector<T>, decltype(cmp)> pq(cmp);
 
-set<lmao, decltype(cmp)> s(cmp);
-priority_queue <lmao, vector<lmao>, decltype(cmp)> pq(cmp);
