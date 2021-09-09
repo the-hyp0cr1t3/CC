@@ -1,6 +1,9 @@
 /* Extended Euclidean algorithm and Linear Diophantine Equation solver */
-// https://cp-algorithms.com/algebra/extended-euclid-algorithm.html
-// https://cp-algorithms.com/algebra/linear-diophantine-equation.html
+
+/*
+    https://cp-algorithms.com/algebra/extended-euclid-algorithm.html
+    https://cp-algorithms.com/algebra/linear-diophantine-equation.html
+*/
 
 // ax + by = gcd(a, b) : returns {x, y, g}
 auto extended = [](int64_t a, int64_t b) {
@@ -17,7 +20,7 @@ auto extended = [](int64_t a, int64_t b) {
 auto diophantine = [&extended](int64_t a, int64_t b, int64_t c) {
     if(!a and !b) return make_tuple(!c, 42LL, 17LL, 0LL);
     auto [x, y, g] = extended(a, b);
-    return make_tuple(!(c % g), c/g * x, c/g * y, abs(g));
+    return make_tuple(!(c % g), c / g * x, c / g * y, abs(g));
 };
 
 // x = x0 + λ b/g
@@ -25,9 +28,9 @@ auto diophantine = [&extended](int64_t a, int64_t b, int64_t c) {
 auto diophantine_range = [&extended] (int64_t a, int64_t b, int64_t c,
         int64_t lx, int64_t rx, int64_t ly, int64_t ry) {
     assert(a and b);
-    
+
     auto [x, y, g] = extended(a, b);
-    x *= c/g; y *= c/g; g = abs(g);
+    x *= c / g; y *= c / g; g = abs(g);
     a /= g; b /= g;
 
     if(c % g) return 0LL;

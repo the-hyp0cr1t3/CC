@@ -1,4 +1,6 @@
+/* Prime factorization */
 /* [neal](https://codeforces.com/profile/neal) orz */
+
 // Prime factorizes n in worst case O(sqrt n).
 vector<pair<int64_t, int>> prime_factorize(int64_t n) {
     assert(n >= 1);

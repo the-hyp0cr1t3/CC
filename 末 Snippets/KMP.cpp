@@ -1,4 +1,5 @@
-/* Knuth–Morris–Pratt (KMP) algorithm */
+/* KMP */
+
 /*
     https://discuss.codechef.com/t/tutorial-prefix-function-pattern-matching-supposedly-kmp/67531
     https://cp-algorithms.com/string/prefix-function.html
@@ -11,7 +12,7 @@
 // 0000 123012
 auto generate_pi = [&] (const string& s) {
     // s = (pattern + '#' + text) 
-    int n = sz(s);
+    int n = s.size();
     vector<int> pi(n);
     for(i = 1; i < n; i++) {
         int p = pi[i-1];

@@ -1,3 +1,16 @@
+/* Hashing templates - custom hash, gp_hash_table, string hashing */
+
+/*
+    - pbds gp hash table (better than unordered_map)
+        https://codeforces.com/blog/entry/60737
+    - custom hash, blowing up unordered_map
+        https://codeforces.com/blog/entry/62393
+    - string hashing
+        for prefix implementations, see
+            https://codeforces.com/contest/1469/submission/102644985
+            https://codeforces.com/contest/1469/submission/102644888
+*/
+
 #include <ext/pb_ds/assoc_container.hpp>
 namespace Hashing {    
     using hash_t = pair<int, uint64_t>;
@@ -110,4 +123,3 @@ int main() {
     cout << x << ' ' << y;
 }
 */
-// for prefix implementations, see (https://codeforces.com/contest/1469/submission/102644985) and (https://codeforces.com/contest/1469/submission/102644888)

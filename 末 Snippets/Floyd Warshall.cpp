@@ -1,43 +1,24 @@
 /* Floyd-Warshall's all pair shortest paths */
-// (https://cp-algorithms.com/graph/all-pair-shortest-path-floyd-warshall.html)
 
-int d[N][N];
-vector<int> ans;
+/*
+    https://github.com/the-hyp0cr1t3/CC/blob/master/Beginner%20Topics/%5BS5%5D%20Do%20you%20understand%20the%20graphity%20of%20this%20situation/%5BEP%202%5D%20Shortest%20paths/%5BPt%203%5D%20Floyd-Warshall.md
+*/
 
-for(i = 0; i < n; i++) {
-    for(j = 0; j < n; j++) {
-        d[i][j] = INF;
-        p[i][j] = -1;
-    }
-    d[i][i] = 0;
-    p[i][i] = 0;
+auto chmin = [](auto& A, auto&& B) { return B < A? A = B, true : false; };
+
+vector d(n, vector<int>(n, INF)), path(n, vector<int>(n, -1));
+for(auto [u, v, w]: edges)
+    d[u][v] = w, path[u][v] = v;
+// d[i][i] = 0;
+
+for(int k = 0; k < n; k++)
+    for(int i = 0; i < n; i++)
+        for(int j = 0; j < n; j++)
+            if(chmin(d[i][j], d[i][k] + d[k][j]))
+                path[i][j] = path[i][k];
+
+vector<int> ans{ u };
+while(u ^ v) {
+    u = path[u][v];
+    ans.push_back(u);
 }
-
-for(i = 0; i < m; i++) {
-    int u, v, cost;
-    cin >> u >> v >> cost;
-    u--, v--;
-    d[u][v] = d[v][u] = cost;
-    p[u][v] = v;
-    p[v][u] = u;
-}
-
-void warshall() {
-    for(int k = 0; k < n; k++) {
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                if(d[i][k]^INF and d[k][j]^INF and (d[i][k]+d[k][j] < d[i][j])) {
-                    d[i][j] = d[i][k] + d[k][j];
-                    p[i][j] = p[i][k];
-                }
-            }
-        }
-    }
-};
-
-void path(int u, int v) {
-    ans.pb(u+1);
-    if(u == v) return;
-    path(p[u][v], v);    
-}
-

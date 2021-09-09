@@ -1,6 +1,17 @@
-// Inspired by Neal's amazing template
-// [neal's submission](https://codeforces.com/contest/1096/submission/47700940)
-// [my submission](https://codeforces.com/contest/1096/submission/119566645)
+/* Iterative NTT */
+
+/*
+    Inspired by Neal's amazing template
+    [neal's submission](https://codeforces.com/contest/1096/submission/47700940)
+    [my submission](https://codeforces.com/contest/1096/submission/119566645)
+
+    uses modint template -> mint
+
+    NTT problems:
+        https://codeforces.com/contest/1096/problem/G
+        https://codeforces.com/contest/632/problem/E
+*/
+
 
 namespace NTT {
     const int FFT_CUTOFF = 150;
@@ -124,8 +135,3 @@ namespace NTT {
     }
 
 } // namespace NTT 
-
-/*
-https://codeforces.com/contest/1096/problem/G
-https://codeforces.com/contest/632/problem/E
-*/

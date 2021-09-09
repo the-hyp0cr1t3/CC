@@ -1,4 +1,16 @@
-// https://codeforces.com/blog/entry/68953
+/* Gaussian Elimination */
+
+/*
+    Blog:
+        https://codeforces.com/blog/entry/68953
+    General RREF:
+        https://cp-algorithms.com/linear_algebra/linear-system-gauss.html
+    Problems:
+        https://codeforces.com/contest/1101/problem/G
+        https://codeforces.com/contest/895/problem/C
+        https://www.codechef.com/problems/XORCMPNT
+        https://codeforces.com/gym/102920/problem/J
+*/
 
 // Use int or int64_t for upto 63 bits
 struct BinarySpan {
@@ -66,12 +78,3 @@ int gauss(int n, int m, vector<bitset<N>>& a) {
 
     return pivots;
 }
-
-// General RREF: [https://cp-algorithms.com/linear_algebra/linear-system-gauss.html]
-
-/*
-https://codeforces.com/contest/1101/problem/G
-https://codeforces.com/contest/895/problem/C
-https://www.codechef.com/problems/XORCMPNT
-https://codeforces.com/gym/102920/problem/J
-*/
