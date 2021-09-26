@@ -29,7 +29,7 @@ int main() {
 
 /* via command line */
 // Windows
-// g++ -Wl,-stack=268435456 -std=c++17 file.cpp -o file
+// g++ -Wl,-stack=1073741824 -std=c++17 file.cpp -o file    // 1 GB
 
 // Linux
 // ulimit -s unlimited && g++ -std=c++17 file.cpp -o file
