@@ -90,6 +90,7 @@ Once you familiarize yourself with these things, here are some things you could 
 </details>
 
 ## Extras
+* **Cool repos:** [YouKn0wWho](https://github.com/ShahjalalShohag/code-library), [smax](https://github.com/mzhang2021/cp-library), [Ashishgup](https://github.com/Ashishgup1/Competitive-Coding)
 * **Rating predictor:** [CF Predictor](https://cf-predictor-frontend.herokuapp.com/) or [Carrot](https://github.com/meooow25/carrot/)
 * **Problem/Contest parser:** [Competitve Companion](https://github.com/jmerle/competitive-companion) coupled with
     * [Competitve Programming Helper](https://github.com/agrawal-d/competitive-programming-helper/) (for VS code)
