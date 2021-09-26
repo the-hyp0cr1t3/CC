@@ -1,5 +1,8 @@
 /* Longest increasing subsequence */
-// (https://cp-algorithms.com/sequences/longest_increasing_subsequence.html)
+
+/*
+    https://github.com/the-hyp0cr1t3/CC/blob/master/Beginner%20Topics/%5BS4%5D%20Boohoo~%20It%27s%20dp%20time/%5BEP%205%5D%20LIS.md
+*/
 
 template<class T>
 int LIS(const vector<T>& v) {
@@ -11,8 +14,8 @@ int LIS(const vector<T>& v) {
     } return lis.size();
 }
 
-/* -------------------------------------------------- */
-// With path
+
+// Retrieve indices
 template<class T>
 vector<int> LIS(const vector<T>& v) {
     vector<int> lis, path(v.size(), -1); lis.reserve(v.size());
@@ -27,4 +30,3 @@ vector<int> LIS(const vector<T>& v) {
     while(~cur) res.push_back(cur), cur = path[cur];
     return reverse(res.begin(), res.end()), res;
 }
-
