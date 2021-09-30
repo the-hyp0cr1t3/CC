@@ -1,4 +1,30 @@
-// Inspired by [this](https://codeforces.com/contest/954/submission/41309586) submission by [LHiC](https://codeforces.com/profile/LHiC)
+/* Matrix struct using std::array (faster than vector for small sizes) */
+
+/*
+    Inspired by [this](https://codeforces.com/contest/954/submission/41309586)
+    - compile time matrix dimensions only
+
+    Blogs:
+        http://zobayer.blogspot.com/2010/11/matrix-exponentiation.html
+        https://codeforces.com/blog/entry/67776
+
+    Errichto video + blog + gym mashup:
+        https://www.youtube.com/watch?v=eMXNWcbw75E_
+        https://codeforces.com/blog/entry/80195
+
+    Optimized to O(k^2 logN) using Cayley Hamilton theorem:
+        https://discuss.codechef.com/t/linear-recurrence-using-cayley-hamilton-theorem/6776
+
+    Problems:
+        https://www.spoj.com/problems/FIBOFAST/
+        https://www.spoj.com/problems/MPOW/
+        https://www.spoj.com/problems/FIBOSUM/cstart=10
+        https://codeforces.com/contest/185/problem/A
+        https://codeforces.com/problemset/problem/166/E
+        https://codeforces.com/problemset/problem/1117/D
+        https://codeforces.com/gym/102644
+*/
+
 template<typename T, int N, int M = N>
 struct Matrix {
     array<array<T, M>, N> a{};

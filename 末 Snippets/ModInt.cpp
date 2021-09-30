@@ -1,6 +1,9 @@
-// Template inspired by [neal](https://codeforces.com/profile/neal)
-// See [submission](https://codeforces.com/contest/1437/submission/96914548)
-// Try (https://open.kattis.com/problems/modulararithmetic)
+/* Modulo int template */
+
+/*
+    Inspired by [submission](https://codeforces.com/contest/1437/submission/96914548)
+    Verify: https://open.kattis.com/problems/modulararithmetic
+*/
 
 template<const int& MOD>
 struct Mint {
@@ -62,7 +65,7 @@ struct Mint {
     }
 };
 
-const int MOD = 1e9+7;
+const int MOD = 1e9 + 7;
 using mint = Mint<MOD>;
 
 
