@@ -1,6 +1,21 @@
 /* Spread queue (using two stacks) */
-// Calculate and maintain associative functions over a segment (pair with 2-pointer) in O(n)
-// Eg: Find the number of segments of an array with gcd = 1 or max - min <= k
+
+
+/*
+    Calculate and maintain associative functions over a segment (pair with 2-pointer) in O(n)
+    Eg: Find the number of segments of an array with gcd = 1 or max - min <= k
+
+    Blog:
+        https://codeforces.com/edu/course/2/lesson/9/2
+
+    Gcd:
+        https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/G
+        http://p.ip.fi/ow-L
+
+    Min-max:
+        https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/F
+        http://p.ip.fi/GWT_
+*/
 
 // T = val, e is the identity element (e ⊕ a = a ⊕ e = a)
 // T f(T, T)
@@ -51,14 +66,3 @@ int main() {
                 [](auto x, auto y) { return max(x, y); });
 
 }
-
-
-/*
-    Resource: https://codeforces.com/edu/course/2/lesson/9/2
-
-    Gcd: https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/G
-    http://p.ip.fi/ow-L
-
-    Min-max: https://codeforces.com/edu/course/2/lesson/9/2/practice/contest/307093/problem/F
-    http://p.ip.fi/GWT_
-*/

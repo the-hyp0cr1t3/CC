@@ -1,3 +1,5 @@
+/* Fractions & Rationals template */
+
 template<class T>
 struct frac {
     T num, den;

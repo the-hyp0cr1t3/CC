@@ -1,5 +1,10 @@
-// Inspired by [ecnerwala](https://codeforces.com/profile/ecnerwala)
-// Read more from [here](https://mvanier.livejournal.com/2897.html)
+/* Y combinator - facilitate recursion in lambdas */
+
+/*
+    Inspired by [ecnerwala](https://codeforces.com/profile/ecnerwala)
+    Read more from [here](https://mvanier.livejournal.com/2897.html)
+*/
+
 using namespace std;
 template<class T> class Y {
     T f_;

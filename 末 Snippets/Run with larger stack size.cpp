@@ -1,5 +1,9 @@
-/* directly from code */
-// https://codeforces.com/blog/entry/94726?#comment-839042
+/* Run with larger stack size */
+
+/*
+    > directly from code
+    https://codeforces.com/blog/entry/94726?#comment-839042
+*/
 
 void main_() {
     int i, n;
@@ -27,9 +31,13 @@ int main() {
     return 0;
 }
 
-/* via command line */
-// Windows
-// g++ -Wl,-stack=1073741824 -std=c++17 file.cpp -o file    // 1 GB
+/*
+    > via command line
 
-// Linux
-// ulimit -s unlimited && g++ -std=c++17 file.cpp -o file
+    Windows:
+        g++ -Wl,-stack=1073741824 -std=c++17 file.cpp -o file    // 1 GB
+
+    Linux:
+        ulimit -s unlimited && g++ -std=c++17 file.cpp -o file   // replace 1048576 with for 1 GB
+*/
+

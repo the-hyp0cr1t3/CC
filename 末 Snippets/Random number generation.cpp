@@ -1,3 +1,5 @@
+/* Random namespace */
+
 namespace Randnum {
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -109,10 +111,12 @@ namespace Randnum {
         }
     }
 
-} using namespace Randnum;
+}
 
 /*
 int main() {
+    using namespace Randnum;
+
     int n = randInt(2, 5);
     int64_t m = randInt<int64_t>(12345678901234567LL);
     string s = randString(n, alpha);
