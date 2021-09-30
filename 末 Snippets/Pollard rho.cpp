@@ -40,7 +40,7 @@ vector<uint64_t> factor(uint64_t n) {
     if(isPrime(n)) return {n};
     uint64_t x = pollard(n);
     auto l = factor(x), r = factor(n / x);
-    l.insert(l.end(), all(r)); sort(all(l));
+    l.insert(l.end(), r.begin(), r.end()); sort(l.begin(), l.end());
     return l;
 }
 // int64_t x = 6969696923423424;

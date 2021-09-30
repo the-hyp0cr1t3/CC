@@ -62,8 +62,8 @@ namespace FFT {
     vector<int> bit_order;
 
     void prepare_roots(int n) {
-        if(sz(roots) >= n) return;
-        int len = sz(roots);
+        if(roots.size() >= n) return;
+        int len = roots.size();
         roots.resize(n); inv_roots.resize(n);
         while(n > len) {
             const cd w(cos(PI / len), sin(PI / len)), inv_w(w.real(), -w.imag());
@@ -77,7 +77,7 @@ namespace FFT {
     }
 
     void reorder_bits(int n, vector<cd>& a) {
-        if(sz(bit_order) != n) {
+        if(bit_order.size() != n) {
             bit_order.assign(n, 0);
             int len = __builtin_ctz(n);
             for(int i = 0; i < n; i++)
@@ -103,7 +103,7 @@ namespace FFT {
 
     template<typename T>
     vector<T> multiply(const vector<T>& a, const vector<T>& b, bool trim = false) {
-        int n = sz(a), m = sz(b);
+        int n = a.size(), m = b.size();
         if(n == 0 or m == 0)
             return vector<T>{0};
 
@@ -122,7 +122,7 @@ namespace FFT {
         }
 
         int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }(n + m - 1);
-        vector<cd> fa(all(a)), fb(all(b));
+        vector<cd> fa(a.begin(), a.end()), fb(b.begin(), b.end());
         fa.resize(N); fb.resize(N);
         
         bool equal = n == m and a == b;
@@ -159,9 +159,9 @@ namespace FFT {
 
     template<typename T>
     vector<T> expo(const vector<T>& a, int e, bool trim = false) {
-        int n = sz(a);
+        int n = a.size();
         int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }((n-1) * e + 1);
-        vector<cd> fa(all(a)); fa.resize(N);
+        vector<cd> fa(a.begin(), a.end()); fa.resize(N);
 
         fft(N, fa);
 
@@ -172,7 +172,7 @@ namespace FFT {
 
         fa.resize((n-1) * e + 1);
         vector<T> res((n-1) * e + 1);
-        for(int i = 0; i < sz(res); i++)
+        for(int i = 0; i < res.size(); i++)
             res[i] = is_integral<T>::value? round(fa[i].real()) : fa[i].real();
 
         if(trim) {
@@ -189,7 +189,7 @@ namespace FFT {
 // (https://codeforces.com/contest/754/submission/119649507)
 // Note: only works to check perfect match (with wildcards)
     vector<int> multiply(const string& a, const string& b, bool trim = false) {
-        int n = sz(a), m = sz(b);
+        int n = a.size(), m = b.size();
         if(n == 0 or m == 0)
             return vector<int>{0};
 

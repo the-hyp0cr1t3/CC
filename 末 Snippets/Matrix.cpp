@@ -90,8 +90,8 @@ struct Matrix {
     
     Matrix(initializer_list<vector<T>> x) {
         N = x.size(); M = x.begin()->size(); a.resize(N);
-        for(int i = 0; i < sz(x); i++)
-            a[i] = *(x.begin() + i), assert(sz(a[i]) == M);
+        for(int i = 0; i < x.size(); i++)
+            a[i] = *(x.begin() + i), assert(a[i].size() == M);
     }
     
     vector<T>& operator[](size_t x) { return a[x]; }

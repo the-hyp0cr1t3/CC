@@ -9,8 +9,8 @@ for(i = 0; i < m; i++) {
     int u, v, w;
     cin >> u >> v >> w;
     u--, v--;
-    g[u].pb(v, w);
-    g[v].pb(u, w);
+    g[u].emplace_back(v, w);
+    g[v].emplace_back(u, w);
 }
 vis.rsz(n);
 for(i = 0; i < n; i++) 
@@ -36,8 +36,8 @@ auto primsMST = [&] (int root) {
         vis[cur] = 1;
         cost += wt;
         if(~parent[cur]) {
-            tree[cur].pb(parent[cur], wt);
-            tree[parent[cur]].pb(cur, wt);
+            tree[cur].emplace_back(parent[cur], wt);
+            tree[parent[cur]].emplace_back(cur, wt);
         }
         
         for(auto [to, newwt] : g[cur]) {
@@ -64,7 +64,7 @@ struct edge_t {
 };
 
 vector<int> par(n), sz_(n, 1);
-iota(all(par), 0);
+iota(par.begin(), par.end(), 0);
 
 auto getpar = [&] (int x) {
     int pp = x;
@@ -89,10 +89,10 @@ auto merge = [&] (int x, int y) {
 
 vector<edge_t> edges, ans;
 // ...
-sort(all(edges));
+sort(edges.begin(), edges.end());
 int cost = 0;
 
 for(auto& e: edges)
     if(merge(e.u, e.v))
-        cost += e.w, ans.pb(e);
+        cost += e.w, ans.push_back(e);
 

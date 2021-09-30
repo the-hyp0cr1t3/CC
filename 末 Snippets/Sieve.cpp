@@ -3,7 +3,7 @@
 
 const int N = 1e7;
 // spf = smallest prime factor
-array<int, N> spf; iota(all(spf), 0);
+array<int, N> spf; iota(spf.begin(), spf.end(), 0);
 vector<int> primes{2}; primes.reserve(N);
 for(int z = 4; z < N; z += 2) spf[z] = 2;
 for(int z = 3; z*z < N; z += 2)

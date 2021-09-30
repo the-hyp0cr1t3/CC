@@ -29,8 +29,8 @@ namespace NTT {
     }();
 
     void prepare_roots(int n) {
-        if(sz(roots) >= n) return;
-        int len = __builtin_ctz(sz(roots));
+        if(roots.size() >= n) return;
+        int len = __builtin_ctz(roots.size());
         roots.resize(n);
         while(n > 1 << len) {
             mint z = root ^ max_size >> len + 1;
@@ -42,7 +42,7 @@ namespace NTT {
     }
 
     void reorder_bits(int n, vector<mint>& a) {
-        if(sz(bit_order) != n) {
+        if(bit_order.size() != n) {
             bit_order.assign(n, 0);
             int len = __builtin_ctz(n);
             for(int i = 0; i < n; i++)
@@ -66,7 +66,7 @@ namespace NTT {
 
     template<typename T>
     vector<mint> multiply(const vector<T>& a, const vector<T>& b, bool trim = false) {
-        int n = sz(a), m = sz(b);
+        int n = a.size(), m = b.size();
         if(n == 0 or m == 0)
             return vector<mint>{0};
 
@@ -85,7 +85,7 @@ namespace NTT {
         }
 
         int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }(n + m - 1);
-        vector<mint> fa(all(a)), fb(all(b));
+        vector<mint> fa(a.begin(), a.end()), fb(b.begin(), b.end());
         fa.resize(N); fb.resize(N);
 
         bool equal = fa == fb;
@@ -112,9 +112,9 @@ namespace NTT {
 
     template<typename T>
     vector<mint> expo(const vector<T>& a, int e, bool trim = false) {
-        int n = sz(a);
+        int n = a.size();
         int N = [](int x) { while(x & x-1) x = (x | x-1) + 1; return x; }((n-1) * e + 1);
-        vector<mint> fa(all(a)); fa.resize(N);
+        vector<mint> fa(a.begin(), a.end()); fa.resize(N);
 
         fft(N, fa);
 

@@ -23,9 +23,9 @@ vector<vector<vector<int>>> best(1 << b-1);
 tree.reserve(n << 1);
 
 Y([&](auto dfs, int v, int p) -> void {
-    tin[v] = sz(tree); tree.pb(v);
+    tin[v] = tree.size(); tree.push_back(v);
     for(auto x: g[v]) if(x^p) {
-        d[x] = d[v] + 1; dfs(x, v); tree.pb(v);
+        d[x] = d[v] + 1; dfs(x, v); tree.push_back(v);
     }
 })(0, -1);      // dfs(0, -1);
 
@@ -52,7 +52,7 @@ for(k = 1; k <= lg2[cntb]; k++) {
 
 for(int curb = 0; curb < cntb; curb++) {
     int mask = bmask[curb];
-    if(sz(best[mask])) continue;
+    if(best[mask].size()) continue;
     best[mask].resize(b, vector<int>(b));
     for(i = 0; i < b; i++) {
         best[mask][i][i] = i;

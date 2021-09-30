@@ -62,7 +62,7 @@ bool is_sat(int n) {
     for(int i = 0; i < 2*n; i++)
         if(!vis[i]) dfs1(i);
 
-    reverse(all(order));
+    reverse(order.begin(), order.end());
     int sccnt = 0;
     for(auto& v: order)
         if(comp[v] == -1)
@@ -82,16 +82,16 @@ bool is_sat(int n) {
 vector<int> comp(n << 1, -1), order, assignment(n);
 vector<vector<int>> g(n << 1), rg(n << 1);
 
-auto implies = [&](int p, int q) { g[p].pb(q); rg[q].pb(p); };              // p → q
-auto add_or = [&](int p, int q) { implies(p ^ 1, q); implies(q ^ 1, p); };  // p ∨ q ≡ (¬p → q) ∧ (¬q → p)
-auto add_xor = [&](int p, int q) { add_or(p, q); add_or(p ^ 1, q ^ 1); };   // p ⊕ q ≡ (p ∨ q) ∧ (¬p ∨ ¬q)
-auto add_bicond = [&](int p, int q) { add_xor(p, q ^ 1); };                 // p ↔ q ≡ (p → q) ∧ (q → p) ≡ (p ⊕ ¬q)
+auto implies = [&](int p, int q) { g[p].push_back(q); rg[q].push_back(p); };        // p → q
+auto add_or = [&](int p, int q) { implies(p ^ 1, q); implies(q ^ 1, p); };          // p ∨ q ≡ (¬p → q) ∧ (¬q → p)
+auto add_xor = [&](int p, int q) { add_or(p, q); add_or(p ^ 1, q ^ 1); };           // p ⊕ q ≡ (p ∨ q) ∧ (¬p ∨ ¬q)
+auto add_bicond = [&](int p, int q) { add_xor(p, q ^ 1); };                         // p ↔ q ≡ (p → q) ∧ (q → p) ≡ (p ⊕ ¬q)
 
 auto dfs = Y([&](auto dfs, int v, int k, const auto& gr) -> void {
     comp[v] = k;
     for(auto& x: gr[v])
         if(comp[x] == -1) dfs(x, k, gr);
-    if(k == -2) order.pb(v);
+    if(k == -2) order.push_back(v);
 });
 
 // add edges here
@@ -100,7 +100,7 @@ order.reserve(n << 1);
 for(i = 0; i < n << 1; i++)
     if(comp[i] == -1) dfs(i, -2, g);
 
-reverse(all(order));
+reverse(order.begin(), order.end());
 comp.assign(n << 1, -1);
 
 int _ = 0;

@@ -20,5 +20,5 @@ auto topsort = [&]() {
         order.push_back(v);
         for(auto& x: g[v]) 
             if(!--indeg[x]) q.push(x);
-    } return sz(order) == n;      // cycle? false : true
+    } return order.size() == n;      // cycle? false : true
 };

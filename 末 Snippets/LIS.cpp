@@ -20,9 +20,9 @@ template<class T>
 vector<int> LIS(const vector<T>& v) {
     vector<int> lis, path(v.size(), -1); lis.reserve(v.size());
     for(int z = 0; z < v.size(); z++) {
-        auto it = lower_bound(all(lis), z, [&v](int A, int B) { return v[A] < v[B]; });      // upper_bound for non strictly increasing
+        auto it = lower_bound(lis.begin(), lis.end(), z, [&v](int A, int B) { return v[A] < v[B]; });      // upper_bound for non strictly increasing
         if(it != lis.begin()) path[z] = *prev(it);
-        if(it == lis.end()) lis.pb(z);
+        if(it == lis.end()) lis.push_back(z);
         else *it = z;
     }
     int cur = lis.back();

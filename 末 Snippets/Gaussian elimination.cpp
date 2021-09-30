@@ -26,7 +26,7 @@ struct BinarySpan {
         if(x = reduce(x))           // unordered
             basis.push_back(x);
         // if(x = reduce(x))        // ordered by pivot (MSB)
-            // basis.insert(upper_bound(all(basis), x, greater{}), x);
+            // basis.insert(upper_bound(basis.begin(), basis.end(), x, greater{}), x);
         return !!x;
     };
 
@@ -53,7 +53,7 @@ struct BinarySpan {
 
     bool add(bitset<N> x) {
         if((x = reduce(x)).any())
-            basis.insert(upper_bound(all(basis), x,
+            basis.insert(upper_bound(basis.begin(), basis.end(), x,
                 [](const auto& A, const auto& B) {
                     return A._Find_first() < B._Find_first();
                 }), x);
