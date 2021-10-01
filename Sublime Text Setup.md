@@ -1,4 +1,5 @@
-# Setting up C++ for competitive programming in Sublime Text
+# Setting up C++ in Sublime Text for Competitive Programming
+
 I use and recommend Sublime Text over other editors/IDEs because it is light weight and fast. IDEs in general are heavy and slow. Sublime also has many shortcuts and features to explore.
 
 ### MinGW (GNU C/C++ compiler collection for Windows 64-bit)
@@ -59,7 +60,7 @@ FastOlympicCoding uses C++11 by default. To change the compile command, go to ``
 ```
 
 <details>
-  <summary> My settings </summary>
+  <summary> My Windows settings </summary>
 
 ```json
 {
@@ -104,6 +105,48 @@ FastOlympicCoding uses C++11 by default. To change the compile command, go to ``
 }
 ```
 </details>
+
+
+<details>
+  <summary> My Linux settings </summary>
+
+```json
+{
+  "lint_enabled": false,
+  "cpp_complete_enabled": false,
+  "close_sidebar": true,
+  "stress_time_limit_seconds": 3,
+
+  // "tests_file_suffix": "__tests",
+
+  "run_settings": [
+    {
+      "name": "C++",
+      "extensions": [ "cpp" ],
+      "compile_cmd": "g++ -DLOCAL -DW -fmessage-length=38 -Warray-bounds -Wformat=2 -Wmaybe-uninitialized -D_GLIBCXX_DEBUG -g \"{source_file}\" -O2 -std=gnu++17 -o \"{file_name}\"",
+      "run_cmd": "ulimit -s 1048576 && ulimit -v 2097152 && ./\"{file_name}\" {args} -debug",   // 1 GB, 2 GB
+      // "run_cmd": "./\"{file_name}\" {args} -debug",
+      "lint_compile_cmd": "g++ -Warray-bounds -Wmisleading-indentation -Wformat=2 -Wmaybe-uninitialized -Wsign-compare -Wconversion -Wshift-overflow=2 -Wstrict-overflow=5 -Wshadow -Wdangling-else -std=gnu++17 \"{source_file}\" -I \"{source_file_dir}\""
+    },
+
+    {
+      "name": "C",
+      "extensions": [ "c" ],
+      "compile_cmd": "gcc \"{source_file}\" -std=c99 -o \"{file_name}\"",
+      "run_cmd": "\"{source_file_dir}/{file_name}\""
+    },
+
+    {
+      "name": "Python",
+      "extensions": [ "py" ],
+      "compile_cmd": null,
+      "run_cmd": "python3 \"{source_file}\""
+    }
+  ]
+}
+```
+</details>
+
 
 ### Alternative to FastOlympicCoding (Build system)
 If you don't want to use a package, you may use a custom build system to redirect input and output to files.
@@ -439,5 +482,5 @@ Replace `PATH` with the appropriate path of the `bits` folder which contains `st
 If it was successful, `stdc++.h.gch` should appear.
 
 ## Credits
-(☞ﾟ∀ﾟ)☞ Muzaffar Ahmed, for some of the content on this page \
-[Link](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/)
+(☞ﾟ∀ﾟ)☞ Muzaffar Ahmed, for inspiring me to write this \
+[Link to post](https://facebook.com/groups/BPHCCompetitiveCoding/permalink/2365719330329693/)

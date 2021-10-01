@@ -38,7 +38,7 @@ Most competitive programmers prefer C++, and for [good reason](https://www.codin
 
 ## Setting up an IDE
 If you haven't already set up an IDE, you may find use for one of the following links. I personally use Sublime Text, with VS code being my second choice, but it is a matter of personal preference.
-* [Sublime Text](./Setting%20up%20Sublime.md)
+* [Sublime Text](./Sublime%20Text%20Setup.md)
 * [VS code](https://medium.com/@chinmaykulkarni8/how-to-setup-visual-studio-code-for-c-c-java-python-competitive-programming-angular-22fdc9b1f4c6) and a [cool extension](https://github.com/agrawal-d/competitive-programming-helper/)
 
 ## Competitive coding platforms
