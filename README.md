@@ -83,7 +83,7 @@ Once you familiarize yourself with these things, here are some things you could 
 
 <details>
     <summary>The secret formula</summary>
-    <img src="https://user-images.githubusercontent.com/55075129/88116572-75eb0d80-cbd6-11ea-968a-5807066aeabb.jpg" alt="Practice" style="width:20px;height:20px;">
+    <img src="https://user-images.githubusercontent.com/55075129/88116572-75eb0d80-cbd6-11ea-968a-5807066aeabb.jpg" alt="Practice">
 
     In all seriousness though
     Learn new topic > Practice problems > Improve speed > Learn new topic > Practice ... Rinse and repeat.
