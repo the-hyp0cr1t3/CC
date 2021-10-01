@@ -13,25 +13,47 @@ When it comes to cp, macros are quite useful. Here are a few common ones (along 
 using namespace std;
 const array dx{1, 0, -1, 0};
 const array dy{0, 1, 0, -1};
-template<class T> bool chmax(T& A, T&& B) 
-    { return B > A? A = B, true : false; }
-template<class T> bool chmin(T& A, T&& B) 
-    { return B < A? A = B, true : false; }
+template<class T> bool chmax(T& A, T&& B) { return B > A? A = B, true : false; }
+template<class T> bool chmin(T& A, T&& B) { return B < A? A = B, true : false; }
 
 const int64_t DESPACITO = 2e18;
 const int INF = 2e9, MOD = 1e9+7;
 const int MxN = 2e5 + 5;
 
 int32_t main() {
-    cin.tie(nullptr)->sync_with_stdio(false);
+    ios_base::sync_with_stdio(false), cin.tie(nullptr);
     // ...
 }
 ```
 
+<details>
+    <summary>What I currently use (as of Oct-1-2021)</summary>
+
+```c++
+#ifdef W
+    #include <k_II.h>
+#else
+    #include <bits/stdc++.h>
+    using namespace std;
+#endif
+
+int main() {
+    ios_base::sync_with_stdio(false), cin.tie(nullptr);
+    int i, n;
+    cin >> n;
+    
+} // ~W
+
+```
+
+I like to keep my template clean and simple. All my debugging tools are defined in <a href="https://github.com/the-hyp0cr1t3/CC/blob/master/%E6%9C%AB%20Snippets/k_II.h">k_II.h</a>, a separate header file.
+
+</details>
+
 ## A few notes
 ### FastIO
 ```c++
-cin.tie(nullptr)->sync_with_stdio(false);
+ios_base::sync_with_stdio(false); cin.tie(nullptr);
 ```
 The ```std::cin``` and ```std::cout``` streams may sometimes be too slow. Thus when there is large input, it is common practice to disable synchronization with stdio and flushing before every ```cin```. You may refer to [this](https://www.geeksforgeeks.org/fast-io-for-competitive-programming/) for a better understanding on what it does, and how it works.
 
