@@ -1,3 +1,5 @@
+# C++ Tips and Tricks
+
 Here are some neat tricks I've come across through my experience with CP and C++ in general. The inspiration to write this came from [here](https://codeforces.com/blog/entry/74684).
  
 ### Global variable initialization
@@ -372,6 +374,12 @@ cout << __builtin_ctz(x);   // returns 1.
 int x = 10;    // 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00001010 (64 bits)
 cout << __builtin_clzll(x);   // returns 60.
 cout << __builtin_ctzll(x);   // returns 1.
+```
+
+One particularly common use case is to find the greatest power of two which is less than or equal to a number, i.e its most significant bit. This can be done with `__builtin_clz`.
+```c++
+cout << 31 - __builtin_clz(n) << '\n';
+cout << 63 - __builtin_clzll(n) << '\n';
 ```
 
 #### __builtin_ffs() and __lg()
