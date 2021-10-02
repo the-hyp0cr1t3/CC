@@ -37,6 +37,6 @@ Further, you can sort any range $[l, r)$ $(0 \leq l \leq r \leq n)$ in a contain
 
 **Note**: You can even use `std::sort` on strings. For a string $s$, `sort(s.begin(), s.end())` would sort the characters of the string.
 
-See also [lambdas](../../Some%20Neat%20tricks.md#lambdas) for custom comparison sorting.
+See also [lambdas](../../C%2B%2B%20Tips%20and%20Tricks.md#lambdas) for custom comparison sorting.
 
 *This page uses math latex formatting. Download the [extension](https://chrome.google.com/webstore/detail/github-math-display/cgolaobglebjonjiblcjagnpmdmlgmda) to render it.*
