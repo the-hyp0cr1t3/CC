@@ -44,7 +44,7 @@ public:
     //      Segtree(n, args...) builds n leaves with value T(args...)
     template<class... Args>
     Segtree(int N, Args&&... args): N(N), st(ceil2n(N)) {
-        T val(forward<Args>(args)...); build(1, 1, N - !ONE, &val, &val, false);
+        T val(forward<Args>(args)...); build(1, ONE, N - !ONE, &val, &val, false);
     }
 
     // Iterator ctor
