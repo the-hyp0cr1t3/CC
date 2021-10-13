@@ -244,7 +244,7 @@ reverse(vect.begin(), vect.end());
 ```
 Instead,
 ```c++
-sort(vect.end(), vect.begin());
+sort(vect.rbegin(), vect.rend());
 ```
 
 #### Min-max of multiple elements
