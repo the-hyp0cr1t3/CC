@@ -19,7 +19,7 @@ Efficient factorization and prime checking is a must know when it comes to compe
     <li><a href="https://codeforces.com/contest/26/problem/A">CF 26 A</a></li>
     <li><a href="https://codeforces.com/problemset/problem/154/B">CF 154 B</a></li>
     <li><a href="https://www.spoj.com/problems/DIV/">Spoj DIV</a></li>
-    <li><a href="https://www.spoj.com/problems/FACTCG2/) ([Solution](http://p.ip.fi/ZcNP)">Spoj FACTCG2</a></li>
+    <li><a href="https://www.spoj.com/problems/FACTCG2/">Spoj FACTCG2</a> <a href="http://p.ip.fi/ZcNP">(solution)</a></li>
 </ul>
 </details>
 <br/>
