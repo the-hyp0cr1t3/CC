@@ -177,7 +177,7 @@ You can edit the build file and add more flags, similar to the previous section.
 ## Customize Sublime Text
 Sublime text has a lot of cool features which you can customize to your liking. Settings can be modified by editing `json` files — while this is a little trickier than using a GUI, you're rewarded with a flexible system. The left-hand pane contains all of the default settings, sometimes with descriptions. You can override the default settings in the right-hand pane.
 
-[Odatnurd](https://www.youtube.com/user/nurdz) has great Sublime Text tutorials. Do check out the the channel if interested.
+[Odatnurd](https://www.youtube.com/user/nurdz) has great Sublime Text tutorials. Do check out the channel if interested.
 
 ### Packages
 First thing's first. Install [Package Control](https://packagecontrol.io/installation) if you haven't intstalled it already. Package Control is the Sublime Text package manager. It allows users to find, install and keep packages up to date.
