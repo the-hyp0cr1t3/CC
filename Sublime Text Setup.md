@@ -479,7 +479,7 @@ g++ -std=c++17 -D_GLIBCXX_DEBUG -O2 stdc++.h
 
 Replace `PATH` with the appropriate path of the `bits` folder which contains `stdc++.h`. Make sure that you run the `g++` command with exactly the same flags FastOlympicCoding/your build system uses.
 
-If it was successful, `stdc++.h.gch` should appear.
+If it was successful, `stdc++.h.gch` should appear. Refer to [link](https://codeforces.com/blog/entry/53909?#comment-729130).
 
 ## Credits
 (☞ﾟ∀ﾟ)☞ Muzaffar Ahmed, for inspiring me to write this \
