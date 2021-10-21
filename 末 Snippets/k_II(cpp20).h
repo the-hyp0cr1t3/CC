@@ -34,6 +34,8 @@ namespace concepts {
 
 namespace reading {
     template <concepts::is_readable T> void re(T& t) { std::cin >> t; }
+    template <typename T> requires(concepts::is_tuple_like<T> && !concepts::is_readable<T>)
+    void re(T& t);      // dummy definition because iterable and tuple might need each other
     template <typename T> requires(concepts::is_iterable<T> && !concepts::is_readable<T>)
     void re(T& t) { for(auto& x: t) re(x); }
     template <typename T> requires(concepts::is_tuple_like<T> && !concepts::is_readable<T>)
@@ -43,6 +45,9 @@ namespace reading {
 
 namespace writing {
     template <concepts::is_writable T> void pr(const T& t) { std::cout << t; }
+
+    template <typename T> requires(concepts::is_tuple_like<T> && !concepts::is_writable<T>)
+    void pr(const T& t);    // dummy definition because iterable and tuple might need each other
 
     template <typename T> requires(concepts::is_iterable<T> && !concepts::is_writable<T>)
     void pr(const T& t) {
