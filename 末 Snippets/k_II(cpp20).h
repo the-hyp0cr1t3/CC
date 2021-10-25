@@ -30,6 +30,11 @@ namespace concepts {
     concept is_tuple_like = requires(T x) {
         typename std::tuple_size<T>::type;
     };
+
+    template <typename T>
+    concept is_arr = requires(T x) {
+        typename std::is_array<T>;
+    };
 }
 
 namespace reading {
@@ -46,18 +51,10 @@ namespace reading {
 namespace writing {
     template <concepts::is_writable T> void pr(const T& t) { std::cout << t; }
 
-    template <typename T> requires(concepts::is_tuple_like<T> && !concepts::is_writable<T>)
+    template <typename T> requires(concepts::is_iterable<T> && !concepts::is_writable<T>)
     void pr(const T& t);    // dummy definition because iterable and tuple might need each other
 
-    template <typename T> requires(concepts::is_iterable<T> && !concepts::is_writable<T>)
-    void pr(const T& t) {
-        std::cout << '{';
-        for(bool fst = true; const auto& x: t)
-            std::cout << (fst? fst = false, "" : sep), pr(x);
-        std::cout << '}';
-    }
-
-    template <typename T> requires(concepts::is_tuple_like<T> && !concepts::is_writable<T>)
+    template <typename T> requires(concepts::is_tuple_like<T> && !concepts::is_writable<T> && !concepts::is_arr<T>)
     void pr(const T& t) {
         std::cout << '(';
         apply([&](const auto&... args) {
@@ -67,20 +64,25 @@ namespace writing {
         std::cout << ')';
     }
 
+    template <typename T> requires(concepts::is_iterable<T> && !concepts::is_writable<T>)
+    void pr(const T& t) {
+        std::cout << '{';
+        for(bool fst = true; const auto& x: t)
+            std::cout << (fst? fst = false, "" : sep), pr(x);
+        std::cout << '}';
+    }
+
     template <class T, class... Ts>
     void pr(const T& t, const Ts&... ts) {
         pr(t), ((std::cout << sep, pr(ts)), ...);
     }
 
+    void ps() { std::cout << std::endl; }
     template <class... Ts>
-    void ps(const Ts&... ts) {
-        pr(ts...), std::cout << std::endl;
-    }
+    void ps(const Ts&... ts) { pr(ts...), ps(); }
 
     template <class... Ts>
-    void pw(Ts&&... ts) {
-        pr(ts...), std::cout << ' ';
-    }
+    void pw(Ts&&... ts) { pr(ts...), std::cout << ' '; }
 
     template <class T, class... Ts>
     void ptrace(const char *name, const T& A, const Ts&... rest) {
