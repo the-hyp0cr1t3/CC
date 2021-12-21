@@ -1,7 +1,14 @@
-/* Persistent segment tree with lazy propagation (range updates) */
+/**
+ 🍪 the_hyp0cr1t3
+ 🍪 18.12.2021 20:51:37
+**/
+#ifdef W
+    #include <k_II.h>
+#else
+    #include <bits/stdc++.h>
+    using namespace std;
+#endif
 
-// 0-based indexing [0, n-1] -> ONE = false
-// T = Node
 template<class T, bool ONE = true>
 class Segtree {
     int N, size{1}, version_cnt{0};
@@ -73,7 +80,6 @@ class Segtree {
 
 public:
 
-    // Vector ctor
     template<typename A>
     Segtree(const vector<A>& a): N(a.size()), st(1) {
         st.reserve((1 << 31 - __builtin_clz(N << 1) + !!(N & N-1)) + 2);
@@ -81,22 +87,14 @@ public:
         build(1, ONE, N - !ONE, a);
     }
 
-    // Default value ctor
-    // similar to std::vector
-    //      Segtree(n) builds n leaves with value T()
-    //      Segtree(n, args...) builds n leaves with value T(args...)
     template<class... Args>
     Segtree(int n, Args&&... args): Segtree(vector<T>(n, T(forward<Args>(args)...))) {}
 
-    // copies version ver and returns copy's id
     int copy(int ver) {
         version.push_back(create(version[ver]));
         return version_cnt++;
     }
 
-    // [l, r] inclusive; in_place = true -> replace version[ver] with new root
-    // ver = -1 -> use the latest version
-    // update(ver, in_place, ul, ur, args...) -> update(ver, in_place, ul, ur, Lazy(args...))
     template<class... Args>
     int update_range(int ver, bool in_place, int l, int r, Args&&... args) {
         if(ver == -1) ver = version_cnt - 1;
@@ -111,8 +109,6 @@ public:
         return update_range(ver, in_place, pos, pos, forward<Args>(args)...);
     }
 
-    // [l, r] inclusive
-    // ver = -1 -> use the latest version
     T query(int ver, int pos) { return query(ver, pos, pos); }
     T query(int ver, int l, int r) {
         if(ver == -1) ver = version_cnt - 1;
@@ -127,37 +123,45 @@ public:
 
 struct Node {
     using V = int64_t;
-    // using L = int64_t;                       // can replace lazy struct with an int/int64_t
+    // using L = int64_t;
     using L = struct Lazy {
         V lzy;
-        Lazy(V lzy = 0): lzy(lzy) {}            // default value
+        Lazy(V lzy = 0): lzy(lzy) {}
         operator V() const { return lzy; }
-        void operator+=(const Lazy& rhs) { lzy += rhs.lzy; }    // combine with other lazy
+        void operator+=(const Lazy& rhs) { lzy += rhs.lzy; }
     };
 
     int lc{-1}, rc{-1};
     bool pending{false};
     V val; L lazy{};
-    Node(V val = 0): val(val) {}                // default values
-    Node(const Node& l, const Node& r)          // merge two nodes
+    Node(V val = 0): val(val) {}
+    Node(const Node& l, const Node& r)
         : val(l.val + r.val) {}
-    void apply_lazy(int len) { val += lazy * len; }     // update node
+    void apply_lazy(int len) { val += lazy * len; }
     operator V() const { return val; }
 };
 
-/*
-int32_t main() {
-    int N = 1e6;
-    Segtree<Node> st1(N);
-    Segtree<Node, 0> st2(N, 42);
+int main() {
+#if __cplusplus > 201703L
+    namespace R = ranges;
+#endif
 
-    vector<int> a{ 1, 2, 3, 4, 5, 6 };
-    Segtree<Node> st3(a);
-}
-*/
+    vector<int> a{1, 1, 2, 3, 5};
 
-/*
-    Blog:
-    Hello world:
-    More problems:
-*/
+    ps(a);
+    Segtree<Node> seg(a);
+    seg.update_range(-1, false, 2, 4, 1);
+
+    for(int i = 1; i <= 5; i++) {
+        auto x = seg.query(-1, i);
+        tr(x);
+        ps(); ps();
+    }
+    // ps(seg.query(-1, 2));
+    // ps(seg.query(-1, 2));
+    // ps(seg.query(-1, 2));
+
+    // Node x(5);
+    // x.lc = 3, x.rc = 4;
+
+} // ~W
