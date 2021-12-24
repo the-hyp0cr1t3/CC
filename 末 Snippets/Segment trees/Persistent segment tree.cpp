@@ -117,11 +117,7 @@ int32_t main() {
     Segtree<Node, 0> st2(N, 42);
 
     vector<int> a{ 1, 2, 3, 4, 5, 6 };
-    Segtree<Node> st3(a.begin(), a.end());
-
-    int arr[] = { 3, 4, 5, 6 };
-    Segtree<Node, false> st4(arr, arr + 4);
-
+    Segtree<Node> st3(a);
 }
 */
 
