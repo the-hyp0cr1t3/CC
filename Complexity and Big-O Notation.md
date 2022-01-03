@@ -3,7 +3,7 @@
 
 Time and space complexity analysis is an important part of problem solving. All competitive programming problems have a time limit and a memory limit. Even if your solution is logically 'correct', it may not meet these requirements. Thus, it is important to be able to estimate the runtime and memory usage of your algorithm to come up with solutions that pass.
 
-The Big-O notation describes how an algorithm scales with the input size of the input. Following are some nice beginner articles on the same, and time and space complexity:
+The Big-O notation is used to describe how an algorithm scales with the size of the input. The following are some nice beginner articles on the same:
 * [Learning & Understanding Big-O Notation](https://www.topcoder.com/blog/learning-understanding-big-o-notation/)
 * [Time and space complexity](https://www.hackerearth.com/practice/basic-programming/complexity-analysis/time-and-space-complexity/tutorial/)
 * [Codechef practice problems](https://discuss.codechef.com/t/multiple-choice-questions-related-to-testing-knowledge-about-time-and-space-complexity-of-a-program/17976)
