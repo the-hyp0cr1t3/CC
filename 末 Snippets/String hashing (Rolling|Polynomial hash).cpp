@@ -52,9 +52,12 @@ namespace Hashing {
 
 // double hash
 namespace Hashing {
+#ifndef __MOD_BASE
+    #define __MOD_BASE
     constexpr int _mod = 1e9 + 123;
     mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
     static const int _base = uniform_int_distribution<int>(256, _mod - 2)(rng) | 1;
+#endif
     using hash_t = pair<int, uint64_t>;
     vector<uint64_t> pow2{1};
 
