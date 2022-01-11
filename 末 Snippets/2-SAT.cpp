@@ -14,102 +14,60 @@
             https://codeforces.com/contest/1475/submission/105420153
         https://codeforces.com/contest/776/problem/D
             https://codeforces.com/contest/776/submission/94490003
+        https://codeforces.com/contest/1615/problem/D
+            https://codeforces.com/contest/1615/submission/142375358 (updated)
 */
 
-int vis[2*N], comp[2*N], assignment[N];
-vector<int> g[2*N], rg[2*N], order;
+// 0-indexed, (i, ¬i) represented by (i, i + n)
+class TwoSAT {
+    int N;
+    vector<int> comp, order;
+    vector<vector<int>> g, rg;
 
-// (p → q) if p is true q is also true
-void implies(int p, int q) {
-    g[p].push_back(q); rg[q].push_back(p);
-}
+    int complement(int i) { return i < N? i + N : i - N; }
 
-// (p ∨ q) at least one is true
-void Or(int p, int q) {
-// (¬p → q) ∧ (¬q → p)
-    implies(p^1, q); implies(q^1, p);
-}
+    void dfs(int v, int k, const vector<vector<int>>& gr) {
+        comp[v] = k;
+        for(auto& x: gr[v])
+            if(comp[x] == -1) dfs(x, k, gr);
+        if(k == -2) order.push_back(v);
+    };
 
-// (p ⊕ q) exactly one is true
-void Xor(int p, int q) {
-// (p ∨ q) ∧ (¬p ∨ ¬q)
-    Or(p, q); Or(p^1, q^1);
-}
+public:
 
-// (p ↔ q) both are true or both are not
-void Biconditional(int p, int q) {
-// (p → q) ∧ (q → p) ≡ (p ⊕ ¬q)
-    Xor(p, q^1);
-}
+    TwoSAT(int n): N(n), comp(n << 1, -1), g(n << 1), rg(n << 1) {}
 
-void dfs1(int v) {
-    vis[v] = 1;
-    for(auto& x: g[v])
-        if(!vis[x]) dfs1(x);
-    order.push_back(v);
-}
+    // p, q ∈ [0, 2n)
+    void implies(int p, int q) { g[p].push_back(q); rg[q].push_back(p); };                  // p → q
+    void add_truth(int p) { implies(complement(p), p); }                                    // p ≡ ¬p → p
+    void add_or (int p, int q) { implies(complement(p), q); implies(complement(q), p); };   // p ∨ q ≡ (¬p → q) ∧ (¬q → p)
+    // p, q ∈ [0, n) sufficient
+    void add_xor(int p, int q) { add_or(p, q); add_or(complement(p), complement(q)); };     // p ⊕ q ≡ (p ∨ q) ∧ (¬p ∨ ¬q)
+    void add_bicond(int p, int q) { add_xor(p, complement(q)); };                           // p ↔ q ≡ (p → q) ∧ (q → p) ≡ (p ⊕ ¬q)
 
-void dfs2(int v, int k) {
-    comp[v] = k;
-    for(auto& x: rg[v])
-        if(comp[x] == -1) dfs2(x, k);
-}
+    bool is_sat() {
+        order.reserve(N << 1);
+        for(int i = 0; i < N << 1; i++)
+            if(comp[i] == -1) dfs(i, -2, g);
 
-// i is represented by 2*i, ¬i is represented by 2*i+1
-bool is_sat(int n) {
-    memset(comp, -1, sizeof(comp));
-    order.reserve(2*n);
-    for(int i = 0; i < 2*n; i++)
-        if(!vis[i]) dfs1(i);
+        reverse(order.begin(), order.end());
+        comp.assign(N << 1, -1);
 
-    reverse(order.begin(), order.end());
-    int sccnt = 0;
-    for(auto& v: order)
-        if(comp[v] == -1)
-            dfs2(v, sccnt++);
+        int _ = 0;
+        for(auto& v: order)
+            if(comp[v] == -1) dfs(v, _++, rg);
 
-    for(int i = 0; i < n; i++) {
-        if(comp[i<<1] == comp[i<<1|1]) return false;
-        // take topologically later option
-        assignment[i] = comp[i<<1] > comp[i<<1|1];
-    } return true;
-}
+        for(int i = 0; i < N; i++)
+            if(comp[i] == comp[i + N]) return false;
 
+        return true;
+    }
 
-// -----------------------------------------------------------------------------------------------
-/* v2 */
+    vector<int> get_assignment() {
+        vector<int> assn(N);
+        for(int i = 0; i < N; i++)
+            assn[i] = comp[i] > comp[i + N];
+        return assn;
+    }
 
-vector<int> comp(n << 1, -1), order, assignment(n);
-vector<vector<int>> g(n << 1), rg(n << 1);
-
-auto implies = [&](int p, int q) { g[p].push_back(q); rg[q].push_back(p); };        // p → q
-auto add_or = [&](int p, int q) { implies(p ^ 1, q); implies(q ^ 1, p); };          // p ∨ q ≡ (¬p → q) ∧ (¬q → p)
-auto add_xor = [&](int p, int q) { add_or(p, q); add_or(p ^ 1, q ^ 1); };           // p ⊕ q ≡ (p ∨ q) ∧ (¬p ∨ ¬q)
-auto add_bicond = [&](int p, int q) { add_xor(p, q ^ 1); };                         // p ↔ q ≡ (p → q) ∧ (q → p) ≡ (p ⊕ ¬q)
-
-auto dfs = Y([&](auto dfs, int v, int k, const auto& gr) -> void {
-    comp[v] = k;
-    for(auto& x: gr[v])
-        if(comp[x] == -1) dfs(x, k, gr);
-    if(k == -2) order.push_back(v);
-});
-
-// add edges here
-
-order.reserve(n << 1);
-for(i = 0; i < n << 1; i++)
-    if(comp[i] == -1) dfs(i, -2, g);
-
-reverse(order.begin(), order.end());
-comp.assign(n << 1, -1);
-
-int _ = 0;
-for(auto& v: order)
-    if(comp[v] == -1)
-        dfs(v, _++, rg);
-
-bool bad = false;
-for(i = 0; i < n; i++) {
-    if(comp[i << 1] == comp[i << 1 | 1]) bad = true;
-    assignment[i] = comp[i << 1] > comp[i << 1 | 1];
-}
+};
