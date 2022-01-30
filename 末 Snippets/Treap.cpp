@@ -13,6 +13,8 @@
         https://codeforces.com/gym/102787
 
     Examples:
+        https://www.spoj.com/problems/ADACROP/
+            http://p.ip.fi/z2n1
         https://codeforces.com/gym/102787/problem/B
             http://p.ip.fi/66Nm
         https://codeforces.com/gym/102787/problem/C
@@ -37,6 +39,10 @@ namespace Treap {
             if(r) sz += r->sz;
         }
     };
+
+    inline int size(treap_node *t) {
+        return t? t->sz : 0;
+    }
 
     void heapify(treap_node *t) {
         if(!t) return;
@@ -65,10 +71,10 @@ namespace Treap {
     // l has subtree size sz
     void split_by_sz(treap_node *t, int sz, treap_node* &l, treap_node* &r) {
         if(!t) l = r = nullptr;
-        else if(sz <= (t->l? t->l->sz : 0))
+        else if(sz <= size(t->l))
             split_by_sz(t->l, sz, l, t->l), r = t, t->pull();
         else
-            split_by_sz(t->r, sz - (t->l? t->l->sz : 0) - 1, t->r, r), l = t, t->pull();
+            split_by_sz(t->r, sz - size(t->l) - 1, t->r, r), l = t, t->pull();
     }
 
     // r starts with key
@@ -95,11 +101,10 @@ namespace Treap {
         else if(nd->prio > t->prio)
             split_by_sz(t, sz, nd->l, nd->r), t = nd;
         else {
-            int lsz = t->l? t->l->sz : 0;
-            if(sz <= lsz)
+            if(sz <= size(t->l))
                 insert_at_pos(t->l, sz, nd);
             else
-                insert_at_pos(t->r, sz - lsz - 1, nd);
+                insert_at_pos(t->r, sz - size(t->l) - 1, nd);
         }
         t->pull();
     }
@@ -109,10 +114,10 @@ namespace Treap {
         int res = 0;
         if(!t) t = nd;
         else if(nd->prio > t->prio)
-            split_by_key(t, nd->key, nd->l, nd->r), t = nd, res += (t->l? t->l->sz : 0);
+            split_by_key(t, nd->key, nd->l, nd->r), t = nd, res += size(t->l);
         else {
             if(nd->key > t->key)
-                res += 1 + (t->l? t->l->sz : 0);
+                res += 1 + size(t->l);
             res += insert_key(nd->key < t->key? t->l : t->r, nd);
         }
         t->pull();
@@ -122,13 +127,12 @@ namespace Treap {
     // pos(i.e. sz) -> 0-based
     void erase_at_pos(treap_node* &t, int sz) {
         if(!t) return;
-        int lsz = t->l? t->l->sz : 0;
-        if(sz == lsz)
+        if(sz == size(t->l))
             meld(t, t->l, t->r);
-        else if(sz < lsz)
+        else if(sz < size(t->l))
             erase_at_pos(t->l, sz);
         else
-            erase_at_pos(t->r, sz - lsz - 1);
+            erase_at_pos(t->r, sz - size(t->l) - 1);
         if(t) t->pull();
     }
 
@@ -137,13 +141,26 @@ namespace Treap {
         if(!t) return 0;
         int res = 0;
         if(key == t->key)
-            res += (t->l? t->l->sz : 0), meld(t, t->l, t->r);
+            res += size(t->l), meld(t, t->l, t->r);
         else {
             if(key > t->key)
-                res += 1 + (t->l? t->l->sz : 0);
+                res += 1 + size(t->l);
            res += erase_key(key < t->key ? t->l : t->r, key);
         }
         if(t) t->pull();
+        return res;
+    }
+
+    int order_of_key(treap_node *t, treap_node::key_t key) {
+        if(!t) return 0;
+        int res = 0;
+        if(key == t->key)
+            res += size(t->l);
+        else {
+            if(key > t->key)
+                res += 1 + size(t->l);
+           res += order_of_key(key < t->key ? t->l : t->r, key);
+        }
         return res;
     }
 
