@@ -112,11 +112,11 @@ namespace Treap {
         inorder(t->r, res);
     }
 
-    vector<treap_node*> to_vector() {
-        if(!root) return {};
+    vector<treap_node*> to_vector(treap_node *t) {
+        if(!t) return {};
         vector<treap_node*> res;
-        res.reserve(root->sz);
-        inorder(root, res);
+        res.reserve(t->sz);
+        inorder(t, res);
         return res;
     }
 
