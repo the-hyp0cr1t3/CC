@@ -137,7 +137,7 @@ struct Treap {
         if(key == t->key)
             meld(t, t->l, t->r);
         else
-            erase(key < t->key ? t->l : t->r, key);
+            erase_key(key < t->key ? t->l : t->r, key);
         if(t) t->pull();
     }
 
