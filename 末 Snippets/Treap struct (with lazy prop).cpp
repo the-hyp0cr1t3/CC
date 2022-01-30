@@ -92,6 +92,7 @@ struct Treap {
         if(t) t->pull();
     }
 
+    // pos(i.e. sz) -> 0-based
     static void insert_at_pos(T* &t, int sz, T *nd) {
         if(!t) t = nd;
         else if(nd->prio > t->prio)
@@ -107,17 +108,24 @@ struct Treap {
         t->pull();
     }
 
-    static void insert_key(T* &t, T *nd) {
+    // returns pos inserted (0-based)
+    static int insert_key(T* &t, T *nd) {
+        int res = 0;
         if(!t) t = nd;
-        else if(nd->prio > t->prio)
-            split_by_key(t, nd->key, nd->l, nd->r), t = nd;
-        else {
+        else if(nd->prio > t->prio) {
+            split_by_key(t, nd->key, nd->l, nd->r);
+            t = nd; res += (t->l? t->l->sz : 0);
+        } else {
             t->prop();
+            if(nd->key > t->key)
+                res += 1 + (t->l? t->l->sz : 0);
             insert_key(nd->key < t->key? t->l : t->r, nd);
         }
         t->pull();
+        return res;
     }
 
+    // pos(i.e. sz) -> 0-based
     static void erase_at_pos(T* &t, int sz) {
         if(!t) return;
         t->prop();
@@ -131,14 +139,20 @@ struct Treap {
         if(t) t->pull();
     }
 
-    static void erase_key(T* &t, key_t key) {
-        if(!t) return;
+    // returns pos erased (0-based)
+    static int erase_key(T* &t, key_t key) {
+        if(!t) return 0;
+        int res = 0;
         t->prop();
         if(key == t->key)
-            meld(t, t->l, t->r);
-        else
+            res += (t->l? t->l->sz : 0), meld(t, t->l, t->r);
+        else {
+            if(key > t->key)
+                res += 1 + (t->l? t->l->sz : 0);
             erase_key(key < t->key ? t->l : t->r, key);
+        }
         if(t) t->pull();
+        return res;
     }
 
     // 0-based [lpos, rpos)

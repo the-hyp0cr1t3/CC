@@ -63,12 +63,22 @@ namespace Treap {
     }
 
     // l has subtree size sz
-    void split(treap_node *t, int sz, treap_node* &l, treap_node* &r) {
+    void split_by_sz(treap_node *t, int sz, treap_node* &l, treap_node* &r) {
         if(!t) l = r = nullptr;
         else if(sz <= (t->l? t->l->sz : 0))
-            split(t->l, sz, l, t->l), r = t, t->pull();
+            split_by_sz(t->l, sz, l, t->l), r = t, t->pull();
         else
-            split(t->r, sz - (t->l? t->l->sz : 0) - 1, t->r, r), l = t, t->pull();
+            split_by_sz(t->r, sz - (t->l? t->l->sz : 0) - 1, t->r, r), l = t, t->pull();
+    }
+
+    // r starts with key
+    void split_by_key(treap_node *t, treap_node::key_t key, treap_node* &l, treap_node* &r) {
+        if(!t) return l = r = nullptr, void();
+        if(key <= t->key)
+            split_by_key(t->l, key, l, t->l), r = t;
+        else
+            split_by_key(t->r, key, t->r, r), l = t;
+        t->pull();
     }
 
     void meld(treap_node* &t, treap_node *l, treap_node *r) {
@@ -79,30 +89,62 @@ namespace Treap {
             meld(r->l, l, r->l), t = r, t->pull();
     }
 
-    void insert(treap_node* &t, int sz, treap_node *nd) {
+    // pos(i.e. sz) -> 0-based
+    void insert_at_pos(treap_node* &t, int sz, treap_node *nd) {
         if(!t) t = nd;
         else if(nd->prio > t->prio)
-            split(t, sz, nd->l, nd->r), t = nd;
+            split_by_sz(t, sz, nd->l, nd->r), t = nd;
         else {
             int lsz = t->l? t->l->sz : 0;
             if(sz <= lsz)
-                insert(t->l, sz, nd);
+                insert_at_pos(t->l, sz, nd);
             else
-                insert(t->r, sz - lsz - 1, nd);
+                insert_at_pos(t->r, sz - lsz - 1, nd);
         }
         t->pull();
     }
 
-    void erase(treap_node* &t, int sz) {
+    // returns pos inserted (0-based)
+    int insert_key(treap_node* &t, treap_node *nd) {
+        int res = 0;
+        if(!t) t = nd;
+        else if(nd->prio > t->prio)
+            split_by_key(t, nd->key, nd->l, nd->r), t = nd, res += (t->l? t->l->sz : 0);
+        else {
+            if(nd->key > t->key)
+                res += 1 + (t->l? t->l->sz : 0);
+            res += insert_key(nd->key < t->key? t->l : t->r, nd);
+        }
+        t->pull();
+        return res;
+    }
+
+    // pos(i.e. sz) -> 0-based
+    void erase_at_pos(treap_node* &t, int sz) {
         if(!t) return;
         int lsz = t->l? t->l->sz : 0;
         if(sz == lsz)
             meld(t, t->l, t->r);
         else if(sz < lsz)
-            erase(t->l, sz);
+            erase_at_pos(t->l, sz);
         else
-            erase(t->r, sz - lsz - 1);
+            erase_at_pos(t->r, sz - lsz - 1);
         if(t) t->pull();
+    }
+
+    // returns pos erased (0-based)
+    int erase_key(treap_node* &t, treap_node::key_t key) {
+        if(!t) return 0;
+        int res = 0;
+        if(key == t->key)
+            res += (t->l? t->l->sz : 0), meld(t, t->l, t->r);
+        else {
+            if(key > t->key)
+                res += 1 + (t->l? t->l->sz : 0);
+           res += erase_key(key < t->key ? t->l : t->r, key);
+        }
+        if(t) t->pull();
+        return res;
     }
 
     void inorder(treap_node *t, vector<treap_node*>& res) {
