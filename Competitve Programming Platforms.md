@@ -67,6 +67,8 @@ There are broadly two divisions, namely **Div. 1** (*2100 rating and above*) and
 
 <br/>
 
+ If you are interested, here's a very cool blog that covers a lot more aspects of the website: [How to use Codeforces [GUIDE]](https://codeforces.com/blog/entry/99660).
+ 
 ---
 
 ## AtCoder
