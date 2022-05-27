@@ -31,10 +31,10 @@ namespace Randnum {
     const string digits = "0123456789";
     const string alpha = "abcdefghijklmnopqrstuvwxyz";
     const string alphanum = alpha + digits;
-    
+
     string randString(int n, const string& charset = alpha) {
         string res; int len = charset.size();
-        for(int i = 0; i < n; i++) 
+        for(int i = 0; i < n; i++)
             res.push_back(charset[randInt(len)]);
         return res;
     }
@@ -80,9 +80,9 @@ namespace Randnum {
             vector<pair<int, int>> edges; edges.reserve(n-1);
             for(int i = 1; i < n; i++)
                 edges.push_back(randInt(2)?
-                    pair{perm[i] + 1, perm[p[i]] + 1}
-                    : pair{perm[p[i]] + 1, perm[i] + 1});
-            return shuffle(edges), edges;        
+                    make_pair(perm[i] + 1, perm[p[i]] + 1)
+                    : make_pair(perm[p[i]] + 1, perm[i] + 1));
+            return shuffle(edges), edges;
         }
     }
 
@@ -99,14 +99,14 @@ namespace Randnum {
             for(int i = 0, j = 1; j < n; i++, j+=k)
                 for(int id = j; id < min(n, j+k); id++)
                     par[perm[id]] = perm[i] + 1;
-            return par;        
+            return par;
         } else {                        // ----- Edges -------
             vector<pair<int, int>> edges; edges.reserve(n-1);
             for(int i = 0, j = 1; j < n; i++, j += k)
                 for(int id = j; id < min(n, j+k); id++)
                     edges.push_back(randInt(2)?
-                        pair{perm[i] + 1, perm[id] + 1}
-                            : pair{perm[id] + 1, perm[i] + 1});
+                        make_pair(perm[i] + 1, perm[id] + 1)
+                            : make_pair(perm[id] + 1, perm[i] + 1));
             return shuffle(edges), edges;
         }
     }
