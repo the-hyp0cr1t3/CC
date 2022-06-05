@@ -2,10 +2,9 @@
 The two pointer or 2p technique, is an op technique that has the power to reduce an $\mathcal{O}(n^2)$ algorithm to an $\mathcal{O}(n)$ one.
 
 **Reading material:**
-* Two pointers - [Quora [B]](https://www.quora.com/q/techparoksha/The-Two-Pointer-Algorithm)
+* Two pointers - [Quora [B]](https://tp-iiita.quora.com/The-Two-Pointer-Algorithm) & [CF EDU](https://codeforces.com/edu/course/2/lesson/9)
 * Sliding window - [GFG [B]](https://www.geeksforgeeks.org/window-sliding-technique/)
 * Sliding window applications - [Medium [B]](https://medium.com/techie-delight/top-problems-on-sliding-window-technique-8e63f1e2b1fa)
-* CF EDU on [Two pointers](https://codeforces.com/edu/course/2/lesson/9)
 
 <details>
 <summary>Problems</summary>
