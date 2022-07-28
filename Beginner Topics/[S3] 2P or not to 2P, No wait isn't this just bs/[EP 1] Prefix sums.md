@@ -21,6 +21,7 @@ The trick is to pre-calculate (to calculate once beforehand for multiple usages 
     <li><a href="https://codeforces.com/problemset/problem/1265/C">CF 1265 C</a></li>
     <li><a href="https://codeforces.com/problemset/problem/1118/B">CF 1118 B</a></li>
     <li><a href="https://codeforces.com/contest/1200/problem/D">CF 1200 D</a></li>
+    <li><a href="https://atcoder.jp/contests/abc260/tasks/abc260_g">AtCoder ABC 260 G</a></li>
 </ul>
 </details>
 <br/>
