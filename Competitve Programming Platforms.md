@@ -53,7 +53,7 @@ Another way to lose points is to get hacked. If you're unlucky enough, you may s
 
 This immediately invalidates your submission and rescinds the points that you were awarded for it. In addition, it may award the hacker some points for the successful hacking attempt. Likewise, an unsuccessful hacking attempt may come with a penalty of some points.
 
-To be eligible to hack someone you must lock your solution, which is possible only after you have solved it yourself during the contest. Note that locking a problem means that you will not be able to resubmit another solution even if someone else hacks your solution. Once you lock your solution, you can see the solutions of others and attempt to hack them if you wish to do so.
+To be eligible to hack someone you must lock your solution, which is possible only after you have solved it yourself during the contest. Note that locking a problem means that you will not be able to resubmit another solution even if someone else hacks your solution. Once you lock your solution, you can see the solutions of others and attempt to hack them if you wish to do so. Read more about hacking [here](https://codeforces.com/blog/entry/107753).
 
 To learn more, see [link](https://codeforces.com/blog/entry/456) and [link](https://codeforces.com/blog/entry/4088).
 
