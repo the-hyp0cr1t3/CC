@@ -18,7 +18,7 @@ int x = sz(v);
 ```
 
 #### Use 1LL or 1ll
-When you are handling arithmetic expressions which may overlow ```int```, you have to typecast it to ```long long```. A simpler way of doing that is:
+When you are handling arithmetic expressions which may overflow ```int```, you have to typecast it to ```long long```. A simpler way of doing that is:
 ```c++
 int x = 1e9;
 long long a = x * x;
